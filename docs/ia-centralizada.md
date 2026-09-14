@@ -40,7 +40,7 @@ Não é necessária chave privada Firebase Admin para essa verificação de ID t
 - Limite adicional em memória: 10 por usuário/minuto e 60 totais/minuto por instância. Reinicia com a instância; não é cota diária persistente nem teto global de custos.
 - Recibos: JPG, PNG ou WebP até 3 MB, para caber no limite de payload da função com base64.
 - Mensagem: até 4.000 caracteres; histórico: até dez pares completos; resumo financeiro: até 30.000 caracteres.
-- Saída do modelo limitada a 2.048 tokens; chamada com timeout de 20 segundos.
+- Saída do modelo limitada a 2.048 tokens; chamada ao Gemini com timeout de 45 segundos e espera no navegador de 55 segundos. O Gemini 3.8 Flash usa `thinkingLevel: low` para reduzir latência; outros modelos mantêm sua configuração padrão.
 - Respostas não são armazenadas em cache. Erros do provedor são traduzidos sem retornar detalhes da chave.
 
 A cota do Google é compartilhada. A função não ativa faturamento nem garante uso gratuito: consumo depende da configuração do projeto Google e do plano da hospedagem. Os limites diários persistentes sugeridos anteriormente não foram implementados nesta etapa.
@@ -51,6 +51,12 @@ O botão e o modal de configuração foram removidos, assim como o SDK Gemini do
 
 A API recebe o resumo financeiro do próprio usuário autenticado e o trata como dados não confiáveis. A IA apenas responde ou preenche um formulário; não executa movimentações. A chave é controlada pelo administrador e o acesso ao endpoint exige login.
 
-30 testes locais aprovados, incluindo assinatura e claims Firebase, inicialização com a restrição de módulos do Lambda, validação, limite, recibos e tratamento de erros. Não foi feita chamada real ao Gemini nem deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
+32 testes locais aprovados, incluindo assinatura e claims Firebase, inicialização com a restrição de módulos do Lambda, validação, limite, recibos e tratamento de erros. Não foi feita chamada real ao Gemini nem deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
 
 Referências: [Firebase ID tokens](https://firebase.google.com/docs/auth/admin/verify-id-tokens), [Gemini generateContent](https://ai.google.dev/api/generate-content), [Netlify Functions](https://docs.netlify.com/build/functions/api/).
+
+## Timeout e avisos de login
+
+O HTTP 504 com a mensagem genérica anterior podia ser gerado pelo timeout de 20 segundos do backend. Agora o timeout retorna uma mensagem específica, sem repetição automática da chamada. Os testes simulam a demora; não garantem a latência do provedor em produção. O limite síncrono documentado da Netlify é de 60 segundos, deixando margem para autenticação e resposta. Referências: [limites Netlify](https://docs.netlify.com/build/functions/configuration/), [raciocínio Gemini](https://ai.google.dev/gemini-api/docs/generate-content/thinking).
+
+Os avisos `Cross-Origin-Opener-Policy` sobre `window.closed` pertencem ao popup de login. Na inspeção do site publicado, a página não enviava cabeçalhos COOP e a função retornava corretamente 401 sem token. Esses avisos não identificam a causa do timeout da chamada Gemini.

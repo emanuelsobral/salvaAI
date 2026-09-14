@@ -23,9 +23,12 @@ async function requestAI(payload) {
   try {
     response = await fetch('/api/ai', { method: 'POST',
       headers: { 'Content-Type': 'application/json', Authorization: 'Bearer ' + token },
-      body: JSON.stringify(payload), signal: AbortSignal.timeout(25000),
+      body: JSON.stringify(payload), signal: AbortSignal.timeout(55000),
     });
-  } catch { throw new Error('Não foi possível conectar à IA. Verifique sua conexão e tente novamente.'); }
+  } catch (error) {
+    if (error.name === 'TimeoutError') throw new Error('A IA demorou demais para responder. Tente novamente em instantes.');
+    throw new Error('Não foi possível conectar à IA. Verifique sua conexão e tente novamente.');
+  }
   return parseAiResponse(response);
 }
 export async function generateFinancialInsight(data) {

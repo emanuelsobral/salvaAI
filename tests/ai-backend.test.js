@@ -70,3 +70,26 @@ test('limite local restringe rajadas por usuário', () => {
   assert.doesNotThrow(() => limit('other-user'));
 });
 
+test('Gemini 3.8 usa raciocínio low sem enviar configuração incompatível ao 2.5', async () => {
+  for (const model of ['gemini-3.8-flash', 'gemini-2.5-flash']) {
+    const handler = createAiHandler({ env: { ...env, GEMINI_MODEL: model },
+      verifyToken: async () => ({ uid: 'user' }), fetchImpl: async (_url, options) => {
+        const config = JSON.parse(options.body).generationConfig;
+        assert.deepEqual(config.thinkingConfig, model === 'gemini-3.8-flash' ? { thinkingLevel: 'low' } : undefined);
+        return Response.json({ candidates: [{ content: { parts: [{ text: 'Resposta' }] } }] });
+      } });
+    assert.equal((await handler(request(body))).status, 200);
+  }
+});
+
+test('timeout do Gemini retorna 504 com mensagem específica e não repete consumo', async () => {
+  let calls = 0;
+  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
+    calls++;
+    throw new DOMException('internal details', 'TimeoutError');
+  } });
+  const response = await handler(request(body));
+  assert.equal(response.status, 504);
+  assert.match((await response.json()).error, /45 segundos/);
+  assert.equal(calls, 1);
+});

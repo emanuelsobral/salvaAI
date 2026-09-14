@@ -76,9 +76,13 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
       limit(identity.uid);
       const model = env.GEMINI_MODEL || 'gemini-3.8-flash';
       if (!/^[a-zA-Z0-9.-]+$/.test(model)) throw fail(503, 'Configuração de IA inválida.');
+      // O 3.8 usa raciocínio medium por padrão; low reduz latência no chat.
+      if (model === 'gemini-3.8-flash') {
+        payload.generationConfig.thinkingConfig = { thinkingLevel: 'low' };
+      }
       const response = await fetchImpl('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY.trim() },
-        body: JSON.stringify(payload), signal: AbortSignal.timeout(20000),
+        body: JSON.stringify(payload), signal: AbortSignal.timeout(45000),
       });
       if (response.status === 429) throw fail(429, 'A cota de IA foi atingida. Tente novamente mais tarde.');
       if (!response.ok) throw fail(502, 'O serviço de IA está indisponível. Tente novamente mais tarde.');
@@ -91,7 +95,10 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
       }
       return json({ text });
     } catch (error) {
-      const status = error.status || (error.name === 'TimeoutError' ? 504 : 500);
+      if (error.name === 'TimeoutError') {
+        return json({ error: 'O Gemini demorou mais de 45 segundos para responder. Tente novamente em instantes.' }, 504);
+      }
+      const status = error.status || 500;
       return json({ error: error.status ? error.message : 'Não foi possível consultar a IA agora. Tente novamente.' }, status);
     }
   };
