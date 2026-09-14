@@ -6,11 +6,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
-import AiSettingsModal from '../Modals/AiSettingsModal';
 
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [aiModalOpen, setAiModalOpen] = useState(false);
   const { displayName, logout } = useAuth();
   const menuRef = useRef(null);
   const triggerRef = useRef(null);
@@ -118,9 +116,6 @@ export default function Sidebar() {
             <span className="icon">🌓</span> Trocar Tema
           </button>
           
-          <button className="theme-toggle" onClick={() => { closeMobile(); setAiModalOpen(true); }} style={{ marginTop: '0.5rem', color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>
-            <span className="icon">✨</span> Configurar IA
-          </button>
 
           <button
             onClick={handleLogout}
@@ -142,7 +137,6 @@ export default function Sidebar() {
         </div>
       </aside>
 
-      {aiModalOpen && <AiSettingsModal isOpen={aiModalOpen} onClose={() => setAiModalOpen(false)} />}
     </>
   );
 }

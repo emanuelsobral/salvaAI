@@ -41,3 +41,8 @@ Ao mudar uma função pública, atualizar o catálogo de funções. Ao mudar um 
 
 [Variáveis de ambiente e preparação para Git](configuracao-e-git.md): configuração Firebase externa, arquivos locais ignorados e parâmetros para build.
 
+
+## IA centralizada
+
+[Configuração da chave Gemini no servidor](ia-centralizada.md): substitui o modelo anterior de chaves por usuário.
+

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { chatWithAI, hasApiKey } from '../../services/aiService';
+import { chatWithAI } from '../../services/aiService';
 import { getDashboardData } from '../../services/dashboardService';
 import { completedChatHistory } from '../../utils/chat';
 
@@ -24,10 +24,6 @@ export default function AIChatWidget() {
     e.preventDefault();
     if (!input.trim() || loading) return;
 
-    if (!hasApiKey()) {
-      alert('Por favor, configure sua Chave de API de IA no menu esquerdo (Configurar IA).');
-      return;
-    }
 
     const userMessage = input.trim();
     setInput('');

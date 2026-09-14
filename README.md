@@ -29,9 +29,7 @@ O inicializador `Run_AgentFinanceiro.bat` da raiz pertence ao sistema antigo.
 
 ## Configurar IA
 
-Após login, abrir **Configurar IA** e informar a chave Gemini. Ela fica no navegador por UID; salvar vazio remove a configuração. Esse armazenamento não é um cofre de segredos.
-
-Modelo padrão: `gemini-2.5-flash`. Para alterar, ajustar `VITE_GEMINI_MODEL` no `.env.local` existente e reiniciar Vite. Não colocar chaves secretas em variáveis `VITE_*`.
+A chave Gemini agora é do administrador e fica somente no backend. Preencha `GEMINI_API_KEY` no `.env.local` e reinicie `npm run dev`. Na Netlify, cadastre a chave e `FIREBASE_PROJECT_ID` nas variáveis das Functions e faça novo deploy. Consulte [IA centralizada](docs/ia-centralizada.md).
 
 ## Verificar e compilar
 
@@ -60,4 +58,3 @@ Pagamentos são registros internos, sem transação bancária real. Dados do SQL
 ## Configuração e Git
 
 Consulte [configuração por ambiente e preparação para Git](docs/configuracao-e-git.md). A configuração anterior foi preservada em `.env.local`, ignorado pelo Git. Em novas cópias, preencha o exemplo antes de iniciar ou compilar.
-

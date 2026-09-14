@@ -2,7 +2,7 @@ import { useOperationKey } from '../../hooks/useOperationKey';
 import { localDate } from '../../utils/finance';
 import { useState, useRef } from 'react';
 import { createTransaction } from '../../services/transactionService';
-import { extractReceiptData, hasApiKey } from '../../services/aiService';
+import { extractReceiptData } from '../../services/aiService';
 
 export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
   const operation = useOperationKey();
@@ -49,16 +49,12 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
   const handleScanReceipt = async (e) => {
     const file = e.target.files[0];
     if (!file) return;
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 5 * 1024 * 1024) {
-      alert('Use uma imagem JPG, PNG ou WebP de até 5 MB.');
+    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 3 * 1024 * 1024) {
+      alert('Use uma imagem JPG, PNG ou WebP de até 3 MB.');
       e.target.value = '';
       return;
     }
 
-    if (!hasApiKey()) {
-      alert('Chave de API do Gemini não configurada. Configure no menu lateral em "Ajustes de IA".');
-      return;
-    }
 
     setScanning(true);
     try {

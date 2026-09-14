@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { generateFinancialInsight, hasApiKey } from '../../services/aiService';
+import { generateFinancialInsight } from '../../services/aiService';
 
 export default function AIAdvisor({ data }) {
   const [insight, setInsight] = useState('');
@@ -7,10 +7,6 @@ export default function AIAdvisor({ data }) {
   const [error, setError] = useState('');
 
   const handleGenerate = async () => {
-    if (!hasApiKey()) {
-      setError('Chave de API não configurada. Use o menu lateral para configurar.');
-      return;
-    }
     
     setLoading(true);
     setError('');
