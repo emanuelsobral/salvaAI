@@ -1,5 +1,5 @@
 // Uma pausa por aba, compartilhada por todas as ações de IA.
-// Não representa o instante de renovação da cota do Google.
+// Usa o retryAfterSeconds informado pelo backend (que reflete o retry-after do Google).
 export function createAiAvailability(now = Date.now) {
   let blockedUntil = 0;
   let pending = false;
@@ -11,7 +11,10 @@ export function createAiAvailability(now = Date.now) {
     try {
       const response = await operation();
       if (response.status === 429 || response.status === 503) {
-        blockedUntil = now() + (response.status === 429 ? 60000 : 30000);
+        // Clona para não consumir o corpo que parseAiResponse ainda precisa ler.
+        const body = await response.clone().json().catch(() => ({}));
+        const wait = (body.retryAfterSeconds || (response.status === 429 ? 60 : 30)) * 1000;
+        blockedUntil = now() + wait;
       }
       return response;
     } finally { pending = false; }

@@ -55,11 +55,19 @@ test('validação rejeita ações, históricos, mensagens e corpos excessivos', 
   assert.equal((await handler(request({ ...body, message: 'a'.repeat(5 * 1024 * 1024) }))).status, 413);
 });
 test('erros do provedor não expõem segredo e cota retorna 429', async () => {
-  for (const status of [400, 429, 500, 503]) {
+  for (const status of [400, 500]) {
     const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
       new Response('sensitive ' + env.GEMINI_API_KEY, { status }) });
     const response = await handler(request(body));
-    assert.equal(response.status, [429, 503].includes(status) ? status : 502);
+    assert.equal(response.status, 502);
+    assert.ok(!(await response.text()).includes(env.GEMINI_API_KEY));
+  }
+  // 429 e 503 agora leem o corpo como JSON; testar com corpo JSON.
+  for (const status of [429, 503]) {
+    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
+      Response.json({ error: { message: 'quota', status: 'RESOURCE_EXHAUSTED' } }, { status }) });
+    const response = await handler(request(body));
+    assert.equal(response.status, status);
     assert.ok(!(await response.text()).includes(env.GEMINI_API_KEY));
   }
 });
@@ -116,14 +124,40 @@ test('falhas Gemini distinguem acesso, modelo, bloqueio e limite de geração', 
   }
 });
 
-test('503, 429 e sucesso não geram chamadas automáticas adicionais', async () => {
-  for (const status of [503, 429, 200]) {
-    let calls = 0;
-    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
-      calls++;
-      return Response.json({ candidates: [{ content: { parts: [{ text: 'OK' }] } }] }, { status });
-    } });
-    assert.equal((await handler(request(body))).status, status);
-    assert.equal(calls, 1);
-  }
+test('503 faz até 3 tentativas, 429 e sucesso não repetem', async () => {
+  // 503: 1 tentativa original + 2 retries = 3 chamadas ao Gemini
+  let calls503 = 0;
+  const handler503 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
+    calls503++;
+    return Response.json({ error: { message: 'unavailable' } }, { status: 503 });
+  } });
+  assert.equal((await handler503(request(body))).status, 503);
+  assert.equal(calls503, 3);
+  // 429: sem retry (1 chamada)
+  let calls429 = 0;
+  const handler429 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
+    calls429++;
+    return Response.json({ error: { message: 'quota' } }, { status: 429 });
+  } });
+  assert.equal((await handler429(request(body))).status, 429);
+  assert.equal(calls429, 1);
+  // 200: sem retry (1 chamada)
+  let calls200 = 0;
+  const handler200 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
+    calls200++;
+    return Response.json({ candidates: [{ content: { parts: [{ text: 'OK' }] } }] });
+  } });
+  assert.equal((await handler200(request(body))).status, 200);
+  assert.equal(calls200, 1);
+});
+
+test('429 propaga retryAfterSeconds do header retry-after do Gemini', async () => {
+  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
+    new Response(JSON.stringify({ error: { message: 'quota', details: [{ metadata: { quota_limit: 'GenerateContentRequestsPerMinutePerProject', quota_limit_value: '10' } }] } }),
+      { status: 429, headers: { 'Content-Type': 'application/json', 'retry-after': '45' } }) });
+  const response = await handler(request(body));
+  assert.equal(response.status, 429);
+  const data = await response.json();
+  assert.equal(data.retryAfterSeconds, 45);
+  assert.ok(data.error);
 });
