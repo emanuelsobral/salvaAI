@@ -116,23 +116,7 @@ test('falhas Gemini distinguem acesso, modelo, bloqueio e limite de geração', 
   }
 });
 
-test('503 transitório recupera com uma tentativa e o mesmo prazo e conteúdo', async () => {
-  const attempts = [];
-  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async (url, options) => {
-    attempts.push({ url, ...options });
-    return attempts.length === 1 ? new Response('unavailable', { status: 503 }) :
-      Response.json({ candidates: [{ content: { parts: [{ text: 'Recuperado' }] } }] });
-  } });
-  const response = await handler(request(body));
-  assert.equal(response.status, 200);
-  assert.equal((await response.json()).text, 'Recuperado');
-  assert.equal(attempts.length, 2);
-  assert.equal(attempts[0].signal, attempts[1].signal);
-  assert.equal(attempts[0].body, attempts[1].body);
-  assert.equal(attempts[0].url, attempts[1].url);
-});
-
-test('503 persistente para após duas chamadas; 429 e sucesso não repetem', async () => {
+test('503, 429 e sucesso não geram chamadas automáticas adicionais', async () => {
   for (const status of [503, 429, 200]) {
     let calls = 0;
     const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
@@ -140,6 +124,6 @@ test('503 persistente para após duas chamadas; 429 e sucesso não repetem', asy
       return Response.json({ candidates: [{ content: { parts: [{ text: 'OK' }] } }] }, { status });
     } });
     assert.equal((await handler(request(body))).status, status);
-    assert.equal(calls, status === 503 ? 2 : 1);
+    assert.equal(calls, 1);
   }
 });

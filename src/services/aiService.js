@@ -1,6 +1,9 @@
 import { auth } from './firebase';
 import { validateReceipt } from '../utils/receipt';
 import { parseAiResponse } from '../utils/aiResponse';
+import { createAiAvailability } from '../utils/aiAvailability';
+
+const withAvailability = createAiAvailability();
 
 function clearLegacyKeys() {
   try {
@@ -15,7 +18,7 @@ function summarize(data) {
   return { balances: data?.balances, curr_invoice: data?.curr_invoice, period: data?.period,
     categories: data?.charts?.donut, lighthouse: data?.lighthouse, notifications: data?.notifications };
 }
-async function requestAI(payload) {
+async function sendAI(payload) {
   const user = auth.currentUser;
   if (!user) throw new Error('Entre na sua conta para usar a IA.');
   const token = await user.getIdToken();
@@ -29,7 +32,10 @@ async function requestAI(payload) {
     if (error.name === 'TimeoutError') throw new Error('A IA demorou demais para responder. Tente novamente em instantes.');
     throw new Error('Não foi possível conectar à IA. Verifique sua conexão e tente novamente.');
   }
-  return parseAiResponse(response);
+  return response;
+}
+async function requestAI(payload) {
+  return parseAiResponse(await withAvailability(() => sendAI(payload)));
 }
 export async function generateFinancialInsight(data) {
   return (await requestAI({ action: 'insight', context: summarize(data) })).text;

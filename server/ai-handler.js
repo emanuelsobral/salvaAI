@@ -1,5 +1,4 @@
 import { validateReceipt } from '../src/utils/receipt.js';
-import { setTimeout as delay } from 'node:timers/promises';
 
 const MAX_BODY = 4.5 * 1024 * 1024;
 const fail = (status, message) => Object.assign(new Error(message), { status });
@@ -87,16 +86,7 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
         method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY.trim() },
         body: JSON.stringify(payload), signal,
       };
-      let response = await fetchImpl(url, options);
-      // Apenas uma repetição em 503, compartilhando o prazo da primeira chamada.
-      // Não repete erros de chave, cota, timeout ou respostas já geradas.
-      if (response.status === 503) {
-        await response.body?.cancel();
-        try { await delay(1000, undefined, { signal }); }
-        catch (error) { signal.throwIfAborted(); throw error; }
-        signal.throwIfAborted();
-        response = await fetchImpl(url, options);
-      }
+      const response = await fetchImpl(url, options);
       if (response.status === 429) throw fail(429, 'A cota de IA foi atingida. Tente novamente mais tarde.');
       if (response.status === 503) throw fail(503, 'O Gemini está temporariamente indisponível (HTTP 503). Aguarde alguns instantes e tente novamente.');
       if (response.status === 400) throw fail(502, 'O Gemini recusou a solicitação (HTTP 400). Verifique a configuração do modelo e da chave no servidor.');
