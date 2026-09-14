@@ -1,5 +1,6 @@
 import { auth } from './firebase';
 import { validateReceipt } from '../utils/receipt';
+import { parseAiResponse } from '../utils/aiResponse';
 
 function clearLegacyKeys() {
   try {
@@ -25,10 +26,7 @@ async function requestAI(payload) {
       body: JSON.stringify(payload), signal: AbortSignal.timeout(25000),
     });
   } catch { throw new Error('Não foi possível conectar à IA. Verifique sua conexão e tente novamente.'); }
-  const data = await response.json().catch(() => null);
-  if (!response.ok) throw new Error(data?.error || (response.status === 429 ? 'Limite temporário de IA atingido. Tente mais tarde.' : 'Serviço de IA indisponível.'));
-  if (!data) throw new Error('A API de IA não está disponível nesta hospedagem.');
-  return data;
+  return parseAiResponse(response);
 }
 export async function generateFinancialInsight(data) {
   return (await requestAI({ action: 'insight', context: summarize(data) })).text;

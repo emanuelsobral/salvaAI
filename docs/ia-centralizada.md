@@ -20,7 +20,9 @@ Executar `npm install` para atualizar dependências e `npm run dev`. Reiniciar o
 
 Nas variáveis de ambiente do site, cadastrar `GEMINI_API_KEY`, `GEMINI_MODEL` e `FIREBASE_PROJECT_ID` com escopo **Functions**. Manter as variáveis públicas `VITE_FIREBASE_*` no escopo de build. Se a interface não oferecer escopos individuais, usar um escopo que inclua Functions para as três variáveis do servidor.
 
-Executar novo deploy após salvar. O `netlify.toml` encaminha `/api/ai` à função antes do fallback React. Não colocar segredos nesse arquivo. O código usa Node 20 ou superior (ambiente local validado com Node 24).
+Executar novo deploy após salvar. O `netlify.toml` encaminha `/api/ai` à função antes do fallback React. Não colocar segredos nesse arquivo. O projeto usa Node 24, definido em `.node-version` e `NODE_VERSION` no build.
+
+No painel Netlify, definir também `AWS_LAMBDA_JS_RUNTIME=nodejs24.x` disponível no escopo de build e executar novo deploy. Essa variável de seleção do runtime precisa ser cadastrada pelo painel, CLI ou API; não funciona no `netlify.toml`. Isso corrige o HTTP 502 observado em produção: `jwks-rsa` tentava carregar `jose` via `require()` em um runtime sem suporte, causando `ERR_REQUIRE_ESM` durante a inicialização do Firebase Admin, antes de chamar o Gemini. A importação foi validada localmente no Node 24. Referência: [runtime das Functions](https://docs.netlify.com/build/functions/configuration/#node-js-version-for-runtime).
 
 Remover a variável antiga `VITE_GEMINI_MODEL` do painel: o servidor usa `GEMINI_MODEL`, cujo valor é um nome público e não deve ser marcado como segredo. O `netlify.toml` exclui somente esses dois nomes de variável da verificação de segredos para evitar o falso positivo observado no deploy. `GEMINI_API_KEY` continua sujeita à verificação e deve permanecer secreta, com escopo Functions. Referência: [configuração do scanner Netlify](https://docs.netlify.com/build/environment-variables/secrets-controller/#configure-secret-scanning).
 
