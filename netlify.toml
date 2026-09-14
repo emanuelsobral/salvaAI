@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = "dist"
+  environment = { SECRETS_SCAN_OMIT_KEYS = "VITE_GEMINI_MODEL" }
 
 # SPA — redireciona todas as rotas para index.html (React Router)
 [[redirects]]
