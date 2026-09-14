@@ -3,7 +3,7 @@
  * Inclui menu mobile (hamburger) com overlay.
  */
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import AiSettingsModal from '../Modals/AiSettingsModal';
@@ -12,6 +12,29 @@ export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [aiModalOpen, setAiModalOpen] = useState(false);
   const { displayName, logout } = useAuth();
+  const menuRef = useRef(null);
+  const triggerRef = useRef(null);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const menu = menuRef.current;
+    const trigger = triggerRef.current;
+    const focusable = () => [...menu.querySelectorAll('a, button')].filter(el => el.getClientRects().length);
+    // Espera o menu sair de visibility:hidden antes de mover o foco.
+    const frame = requestAnimationFrame(() => focusable()[0]?.focus());
+    const handleKey = (event) => {
+      if (event.key === 'Escape') setMobileOpen(false);
+      if (event.key !== 'Tab') return;
+      const items = focusable();
+      const first = items[0];
+      const last = items.at(-1);
+      if (!menu.contains(document.activeElement)) { event.preventDefault(); first?.focus(); return; }
+      if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last?.focus(); }
+      if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first?.focus(); }
+    };
+    document.addEventListener('keydown', handleKey);
+    return () => { cancelAnimationFrame(frame); document.removeEventListener('keydown', handleKey); trigger?.focus(); };
+  }, [mobileOpen]);
 
   const toggleTheme = () => {
     const html = document.documentElement;
@@ -30,13 +53,19 @@ export default function Sidebar() {
   return (
     <>
       {/* Botão Hamburger Mobile */}
+      <header className="mobile-topbar">
+      <span className="mobile-brand">Salva<span>AI</span></span>
       <button
+        ref={triggerRef}
         className="mobile-menu-btn"
         onClick={() => setMobileOpen(true)}
         aria-label="Abrir menu"
+        aria-expanded={mobileOpen}
+        aria-controls="app-sidebar"
       >
         ☰
       </button>
+      </header>
 
       {/* Overlay escuro */}
       <div
@@ -45,9 +74,10 @@ export default function Sidebar() {
       />
 
       {/* Sidebar */}
-      <aside className={`sidebar ${mobileOpen ? 'open' : ''}`}>
+      <aside id="app-sidebar" ref={menuRef} className={`sidebar ${mobileOpen ? 'open' : ''}`} aria-label="Menu principal">
         <div className="logo">
           <h2>Salva<span>AI</span></h2>
+          <button className="btn-close mobile-menu-close" onClick={closeMobile} aria-label="Fechar menu">&times;</button>
         </div>
 
         <nav>
@@ -84,13 +114,13 @@ export default function Sidebar() {
           </div>
 
           <p>Modo de Exibição</p>
-          <div className="theme-toggle" onClick={toggleTheme}>
+          <button className="theme-toggle" onClick={toggleTheme}>
             <span className="icon">🌓</span> Trocar Tema
-          </div>
+          </button>
           
-          <div className="theme-toggle" onClick={() => setAiModalOpen(true)} style={{ marginTop: '0.5rem', color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>
+          <button className="theme-toggle" onClick={() => { closeMobile(); setAiModalOpen(true); }} style={{ marginTop: '0.5rem', color: 'var(--accent-primary)', borderColor: 'var(--accent-primary)' }}>
             <span className="icon">✨</span> Configurar IA
-          </div>
+          </button>
 
           <button
             onClick={handleLogout}

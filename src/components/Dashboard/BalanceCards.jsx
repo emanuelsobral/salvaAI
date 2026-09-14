@@ -4,7 +4,7 @@ export default function BalanceCards({ balances }) {
   const { GENERAL = 0, CAIXINHA = 0, VR = 0, VA = 0 } = balances || {};
 
   return (
-    <div className="dashboard-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
+    <div className="dashboard-grid balances-grid" style={{ gridTemplateColumns: 'repeat(4, 1fr)' }}>
       <div className="card balance-card general">
         <h3>Conta Corrente 🏦</h3>
         <h2>{formatBRL(GENERAL)}</h2>

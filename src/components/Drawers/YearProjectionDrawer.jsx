@@ -5,8 +5,8 @@ export default function YearProjectionDrawer({ isOpen, onClose, projection }) {
 
   return (
     <div className={`drawer-overlay ${isOpen ? 'active' : ''}`} onClick={onClose}>
-      <div className={`drawer-content ${isOpen ? 'active' : ''}`} onClick={e => e.stopPropagation()}>
-        <button className="btn-close" onClick={onClose} style={{ position: 'absolute', top: '15px', right: '15px', zIndex: 10 }}>&times;</button>
+      <div className={`drawer-content projection-panel ${isOpen ? 'active' : ''}`} onClick={e => e.stopPropagation()}>
+        <button className="btn-close" aria-label="Fechar projeção" onClick={onClose} style={{ position: 'absolute', top: '15px', right: '15px', zIndex: 10 }}>&times;</button>
         <h2 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>Projeção 12 Meses 🔮</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '2rem' }}>
           Simulação com o saldo atual e compromissos cadastrados. Inclui assinaturas e parcelas pendentes; não pressupõe novos salários ou compras. Parcelas atrasadas já são descontadas do saldo inicial.

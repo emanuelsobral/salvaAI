@@ -25,7 +25,7 @@ export default function TransactionTable({ transactions }) {
   return (
     <div className="card" style={{ marginTop: '1.8rem', overflowX: 'auto' }}>
       <h3 style={{ marginBottom: '1.5rem', fontSize: '1.1rem' }}>Últimas Movimentações Globais</h3>
-      <table style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
+      <table className="responsive-transactions" style={{ width: '100%', borderCollapse: 'collapse', textAlign: 'left', fontSize: '0.95rem' }}>
         <tbody>
           {transactions.map(t => {
             const isIncome = t.type === 'INCOME';
@@ -33,13 +33,13 @@ export default function TransactionTable({ transactions }) {
             const prefix = isIncome ? '+' : '-';
 
             return (
-              <tr key={t.id} style={{ borderBottom: '1px solid var(--border-color)' }}>
-                <td style={{ padding: '1rem', paddingLeft: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t.date}</td>
-                <td style={{ padding: '1rem', fontWeight: 500 }}>{t.description}</td>
-                <td style={{ padding: '1rem', textAlign: 'center' }}>
+              <tr className="transaction-row" key={t.id} style={{ borderBottom: '1px solid var(--border-color)' }}>
+                <td className="transaction-date" style={{ padding: '1rem', paddingLeft: 0, color: 'var(--text-muted)', fontSize: '0.9rem' }}>{t.date}</td>
+                <td className="transaction-description" style={{ padding: '1rem', fontWeight: 500 }}>{t.description}</td>
+                <td className="transaction-account" style={{ padding: '1rem', textAlign: 'center' }}>
                   {getAccountBadge(t.account_type)}
                 </td>
-                <td style={{ padding: '1rem', textAlign: 'right', fontWeight: 700, color: amountColor }}>
+                <td className="transaction-amount" style={{ padding: '1rem', textAlign: 'right', fontWeight: 700, color: amountColor }}>
                   {prefix} {formatBRL(t.amount)}
                 </td>
               </tr>

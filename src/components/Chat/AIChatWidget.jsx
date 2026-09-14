@@ -10,7 +10,7 @@ export default function AIChatWidget() {
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
-  
+
   const messagesEndRef = useRef(null);
 
   // Faz rolagem automática para baixo
@@ -23,7 +23,7 @@ export default function AIChatWidget() {
   const handleSend = async (e) => {
     e.preventDefault();
     if (!input.trim() || loading) return;
-    
+
     if (!hasApiKey()) {
       alert('Por favor, configure sua Chave de API de IA no menu esquerdo (Configurar IA).');
       return;
@@ -37,8 +37,8 @@ export default function AIChatWidget() {
     try {
       const freshContext = await getDashboardData(user.uid);
       const reply = await chatWithAI(
-        completedChatHistory(history), 
-        userMessage, 
+        completedChatHistory(history),
+        userMessage,
         freshContext
       );
       setHistory(prev => [...prev, { role: 'model', parts: [{ text: reply }] }]);
@@ -52,7 +52,9 @@ export default function AIChatWidget() {
   return (
     <>
       {/* Botão Flutuante */}
-      <div 
+      <button
+        className="chat-launcher"
+        aria-label="Abrir assistente financeiro"
         onClick={() => setIsOpen(true)}
         style={{
           position: 'fixed',
@@ -61,7 +63,7 @@ export default function AIChatWidget() {
           width: '60px',
           height: '60px',
           borderRadius: '50%',
-          background: 'linear-gradient(135deg, var(--accent-primary), var(--accent-secondary))',
+          background: 'linear-gradient(135deg, var(--accent-primary), #2980b9)',
           boxShadow: '0 4px 15px rgba(0,245,212,0.3)',
           display: isOpen ? 'none' : 'flex',
           justifyContent: 'center',
@@ -72,12 +74,12 @@ export default function AIChatWidget() {
         }}
       >
         ✨
-      </div>
+      </button>
 
       {/* Chat Drawer */}
       <div className={`drawer-overlay ${isOpen ? 'active' : ''}`} onClick={() => setIsOpen(false)} style={{ zIndex: 1100 }}>
-        <div 
-          className={`drawer-content ${isOpen ? 'active' : ''}`} 
+        <div
+          className={`drawer-content chat-panel ${isOpen ? 'active' : ''}`}
           onClick={e => e.stopPropagation()}
           style={{ padding: 0, display: 'flex', flexDirection: 'column' }}
         >
@@ -89,29 +91,29 @@ export default function AIChatWidget() {
                 Seu assistente financeiro pessoal
               </p>
             </div>
-            <button className="btn-close" onClick={() => setIsOpen(false)}>&times;</button>
+            <button className="btn-close" aria-label="Fechar assistente" onClick={() => setIsOpen(false)}>&times;</button>
           </div>
 
           {/* Área de Mensagens */}
-          <div style={{ flex: 1, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <div className="chat-messages" style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {history.length === 0 && (
               <div style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
                 <p>Faça uma pergunta sobre suas finanças!</p>
                 <p style={{ fontSize: '0.85rem' }}>Ex: "Onde eu gastei mais este mês?"</p>
               </div>
             )}
-            
+
             {history.map((msg, idx) => {
               const isUser = msg.role === 'user';
               return (
                 <div key={idx} style={{ display: 'flex', justifyContent: isUser ? 'flex-end' : 'flex-start' }}>
-                  <div style={{ 
-                    maxWidth: '85%', 
-                    padding: '1rem', 
+                  <div style={{
+                    maxWidth: '85%',
+                    padding: '1rem',
                     borderRadius: '12px',
                     background: isUser ? 'var(--accent-purple)' : 'rgba(255,255,255,0.05)',
                     border: isUser ? 'none' : '1px solid var(--border-color)',
-                    color: '#fff',
+                    color: isUser ? '#fff' : 'var(--text-main)',
                     lineHeight: '1.5',
                     fontSize: '0.95rem'
                   }}>
@@ -120,7 +122,7 @@ export default function AIChatWidget() {
                 </div>
               );
             })}
-            
+
             {loading && (
               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                 <div style={{ padding: '1rem', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '8px' }}>
@@ -133,26 +135,28 @@ export default function AIChatWidget() {
           </div>
 
           {/* Input Area */}
-          <div style={{ padding: '1rem', borderTop: '1px solid var(--border-color)', background: 'var(--bg-sidebar)' }}>
+          <div className="chat-composer" style={{ padding: '1rem', borderTop: '1px solid var(--border-color)', background: 'var(--bg-sidebar)' }}>
             <form onSubmit={handleSend} style={{ display: 'flex', gap: '10px' }}>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Pergunte algo..."
-                style={{ flex: 1, padding: '0.8rem 1rem', borderRadius: '25px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: '#fff' }}
+                aria-label="Sua pergunta"
+                style={{ flex: 1, minWidth: 0, padding: '0.8rem 1rem', borderRadius: '25px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-main)' }}
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
+                aria-label="Enviar pergunta"
                 disabled={loading || !input.trim()}
-                style={{ 
-                  background: 'var(--accent-primary)', 
-                  border: 'none', 
-                  borderRadius: '50%', 
-                  width: '45px', 
-                  height: '45px', 
-                  display: 'flex', 
-                  justifyContent: 'center', 
+                style={{
+                  background: 'var(--accent-primary)',
+                  border: 'none',
+                  borderRadius: '50%',
+                  width: '45px',
+                  height: '45px',
+                  display: 'flex',
+                  justifyContent: 'center',
                   alignItems: 'center',
                   cursor: 'pointer'
                 }}

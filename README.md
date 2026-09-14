@@ -18,6 +18,8 @@ Ambiente validado: Node.js 24.11.1 e Java 25.0.1 para o emulador. Dentro de `sal
 
 ```powershell
 npm ci
+Copy-Item .env.example .env.local
+# Preencha as variáveis Firebase antes de iniciar. Não sobrescreva um .env.local existente.
 npm run dev
 ```
 

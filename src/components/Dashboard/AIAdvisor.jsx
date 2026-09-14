@@ -37,7 +37,7 @@ export default function AIAdvisor({ data }) {
         ✨
       </div>
       
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+      <div className="advisor-layout" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
         <div>
           <h3 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '8px' }}>
             ✨ SalvaAI Conselheiro

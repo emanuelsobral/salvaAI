@@ -82,7 +82,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div id="view-dashboard" className="view-section active" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <div id="view-dashboard" className="view-section active dashboard-loading">
         <h2 style={{ color: 'var(--text-muted)' }}>Carregando seus dados financeiros...</h2>
       </div>
     );
@@ -98,12 +98,12 @@ export default function DashboardPage() {
           <h1>{getGreeting()}, {displayName} 👋</h1>
           <p>Aqui está o resumo e a projeção da sua saúde financeira.</p>
         </div>
-        <div className="actions">
+        <div className="actions dashboard-actions">
           <button className="btn-outline" style={{ borderColor: '#00f5d4', color: '#00f5d4' }} onClick={() => setImportModalOpen(true)}>
-            📥 Smart Paste (Lote)
+            📥 Importar CSV
           </button>
           <button className="btn-purple" onClick={() => setCardModalOpen(true)}>
-            💳 Cartão de Crédito
+            💳 Compra no cartão
           </button>
           <button className="btn-primary" onClick={() => setTxnModalOpen(true)}>
             + Nova Transação
@@ -112,8 +112,6 @@ export default function DashboardPage() {
       </header>
 
       <NotificationsBanner notifications={data.notifications} />
-      
-      <AIAdvisor data={data} />
       
       <BalanceCards balances={data.balances} />
 
@@ -131,6 +129,8 @@ export default function DashboardPage() {
         <Lighthouse lighthouse={data.lighthouse} />
         <GoalsList goals={data.goals} onOpenGoalModal={() => setGoalModalOpen(true)} />
       </div>
+
+      <div style={{ marginTop: '1.8rem' }}><AIAdvisor data={data} /></div>
 
       <Suspense fallback={<p>Carregando gráficos...</p>}><Charts charts={data.charts} /></Suspense>
 

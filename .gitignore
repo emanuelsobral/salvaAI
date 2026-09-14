@@ -45,3 +45,4 @@ backups/
 
 # Prévias e intermediários da documentação Word
 docs/word-build/
+.mobile-qa/
