@@ -85,8 +85,18 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
         body: JSON.stringify(payload), signal: AbortSignal.timeout(45000),
       });
       if (response.status === 429) throw fail(429, 'A cota de IA foi atingida. Tente novamente mais tarde.');
+      if (response.status === 503) throw fail(503, 'O Gemini está temporariamente indisponível (HTTP 503). Aguarde alguns instantes e tente novamente.');
+      if (response.status === 400) throw fail(502, 'O Gemini recusou a solicitação (HTTP 400). Verifique a configuração do modelo e da chave no servidor.');
+      if (response.status === 401 || response.status === 403) throw fail(502, 'O Gemini recusou o acesso (HTTP ' + response.status + '). Verifique a chave e as permissões do projeto no servidor.');
+      if (response.status === 404) throw fail(502, 'O modelo Gemini configurado não foi encontrado ou não está disponível para esta API (HTTP 404).');
       if (!response.ok) throw fail(502, 'O serviço de IA está indisponível. Tente novamente mais tarde.');
       const result = await response.json();
+      if (result.promptFeedback?.blockReason) throw fail(422, 'O Gemini bloqueou esta solicitação. Reformule a mensagem ou use outra imagem.');
+      const finishReason = result.candidates?.[0]?.finishReason;
+      if (['SAFETY', 'RECITATION', 'BLOCKLIST', 'PROHIBITED_CONTENT', 'SPII', 'IMAGE_SAFETY'].includes(finishReason)) {
+        throw fail(422, 'O Gemini interrompeu a resposta por uma restrição de conteúdo. Reformule a solicitação.');
+      }
+      if (finishReason === 'MAX_TOKENS') throw fail(502, 'O Gemini atingiu o limite de geração antes de concluir. Faça uma pergunta mais curta ou específica.');
       const text = result.candidates?.[0]?.content?.parts?.filter(p => !p.thought).map(p => p.text || '').join('').trim();
       if (!text) throw fail(502, 'A IA não retornou uma resposta. Tente reformular a solicitação.');
       if (body.action === 'receipt') {

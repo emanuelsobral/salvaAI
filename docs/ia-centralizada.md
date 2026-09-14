@@ -51,7 +51,7 @@ O botão e o modal de configuração foram removidos, assim como o SDK Gemini do
 
 A API recebe o resumo financeiro do próprio usuário autenticado e o trata como dados não confiáveis. A IA apenas responde ou preenche um formulário; não executa movimentações. A chave é controlada pelo administrador e o acesso ao endpoint exige login.
 
-32 testes locais aprovados, incluindo assinatura e claims Firebase, inicialização com a restrição de módulos do Lambda, validação, limite, recibos e tratamento de erros. Não foi feita chamada real ao Gemini nem deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
+33 testes locais aprovados, incluindo assinatura e claims Firebase, inicialização com a restrição de módulos do Lambda, validação, limite, recibos e tratamento de erros. Foram realizadas duas chamadas reais com perguntas fictícias e a configuração local: ambas retornaram HTTP 503 UNAVAILABLE do Gemini (aproximadamente 27 e 12 segundos), uma sem histórico e outra com histórico. Não foi feito deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
 
 Referências: [Firebase ID tokens](https://firebase.google.com/docs/auth/admin/verify-id-tokens), [Gemini generateContent](https://ai.google.dev/api/generate-content), [Netlify Functions](https://docs.netlify.com/build/functions/api/).
 
@@ -60,3 +60,7 @@ Referências: [Firebase ID tokens](https://firebase.google.com/docs/auth/admin/v
 O HTTP 504 com a mensagem genérica anterior podia ser gerado pelo timeout de 20 segundos do backend. Agora o timeout retorna uma mensagem específica, sem repetição automática da chamada. Os testes simulam a demora; não garantem a latência do provedor em produção. O limite síncrono documentado da Netlify é de 60 segundos, deixando margem para autenticação e resposta. Referências: [limites Netlify](https://docs.netlify.com/build/functions/configuration/), [raciocínio Gemini](https://ai.google.dev/gemini-api/docs/generate-content/thinking).
 
 Os avisos `Cross-Origin-Opener-Policy` sobre `window.closed` pertencem ao popup de login. Na inspeção do site publicado, a página não enviava cabeçalhos COOP e a função retornava corretamente 401 sem token. Esses avisos não identificam a causa do timeout da chamada Gemini.
+
+## Indisponibilidade do provedor
+
+O backend agora preserva HTTP 503 quando o Gemini retorna indisponibilidade, em vez de convertê-lo em 502. A interface informa que é necessário tentar novamente mais tarde. Não há repetição automática nem troca automática de modelo. O diagnóstico local confirma indisponibilidade nas duas chamadas testadas; a configuração e a resposta de uma chamada autenticada na Netlify ainda podem diferir. Os demais diagnósticos distinguem acesso recusado, modelo não encontrado, bloqueio de conteúdo e limite de geração.

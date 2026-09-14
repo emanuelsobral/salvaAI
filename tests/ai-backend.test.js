@@ -55,11 +55,11 @@ test('validação rejeita ações, históricos, mensagens e corpos excessivos', 
   assert.equal((await handler(request({ ...body, message: 'a'.repeat(5 * 1024 * 1024) }))).status, 413);
 });
 test('erros do provedor não expõem segredo e cota retorna 429', async () => {
-  for (const status of [400, 429, 500]) {
+  for (const status of [400, 429, 500, 503]) {
     const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
       new Response('sensitive ' + env.GEMINI_API_KEY, { status }) });
     const response = await handler(request(body));
-    assert.equal(response.status, status === 429 ? 429 : 502);
+    assert.equal(response.status, [429, 503].includes(status) ? status : 502);
     assert.ok(!(await response.text()).includes(env.GEMINI_API_KEY));
   }
 });
@@ -92,4 +92,26 @@ test('timeout do Gemini retorna 504 com mensagem específica e não repete consu
   assert.equal(response.status, 504);
   assert.match((await response.json()).error, /45 segundos/);
   assert.equal(calls, 1);
+});
+
+test('falhas Gemini distinguem acesso, modelo, bloqueio e limite de geração', async () => {
+  const cases = [
+    [400, { error: { message: 'private key server-secret-test' } }, 502, /HTTP 400/],
+    [403, { error: { message: 'private key server-secret-test' } }, 502, /HTTP 403/],
+    [404, {}, 502, /HTTP 404/],
+    [200, { promptFeedback: { blockReason: 'SAFETY' } }, 422, /bloqueou/],
+    [200, { candidates: [{ finishReason: 'SAFETY' }] }, 422, /restrição/],
+    [200, { candidates: [{ finishReason: 'MAX_TOKENS', content: { parts: [{ text: 'partial' }] } }] }, 502, /limite de geração/],
+    [200, { candidates: [{ finishReason: 'STOP', content: { parts: [{ thought: true, text: 'internal' }] } }] }, 502, /não retornou/],
+  ];
+  for (const [upstream, result, status, message] of cases) {
+    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }),
+      fetchImpl: async () => Response.json(result, { status: upstream }) });
+    const response = await handler(request(body));
+    assert.equal(response.status, status);
+    const text = await response.text();
+    assert.match(text, message);
+    assert.ok(!text.includes('server-secret-test'));
+    assert.ok(!text.includes('partial'));
+  }
 });
