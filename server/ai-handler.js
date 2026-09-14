@@ -74,7 +74,7 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
       const body = await readBody(request);
       const payload = buildGeminiRequest(body);
       limit(identity.uid);
-      const model = env.GEMINI_MODEL || 'gemini-2.5-flash';
+      const model = env.GEMINI_MODEL || 'gemini-3.8-flash';
       if (!/^[a-zA-Z0-9.-]+$/.test(model)) throw fail(503, 'Configuração de IA inválida.');
       const response = await fetchImpl('https://generativelanguage.googleapis.com/v1beta/models/' + model + ':generateContent', {
         method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': env.GEMINI_API_KEY.trim() },

@@ -8,7 +8,7 @@ No `.env.local` existente, preencher somente o campo vazio:
 
 ```dotenv
 GEMINI_API_KEY=sua_chave_gemini
-GEMINI_MODEL=gemini-2.5-flash
+GEMINI_MODEL=gemini-3.8-flash
 FIREBASE_PROJECT_ID=seu_projeto_firebase
 ```
 
@@ -22,7 +22,13 @@ Nas variáveis de ambiente do site, cadastrar `GEMINI_API_KEY`, `GEMINI_MODEL` e
 
 Executar novo deploy após salvar. O `netlify.toml` encaminha `/api/ai` à função antes do fallback React. Não colocar segredos nesse arquivo. O projeto usa Node 24, definido em `.node-version` e `NODE_VERSION` no build.
 
-No painel Netlify, definir também `AWS_LAMBDA_JS_RUNTIME=nodejs24.x` disponível no escopo de build e executar novo deploy. Essa variável de seleção do runtime precisa ser cadastrada pelo painel, CLI ou API; não funciona no `netlify.toml`. Isso corrige o HTTP 502 observado em produção: `jwks-rsa` tentava carregar `jose` via `require()` em um runtime sem suporte, causando `ERR_REQUIRE_ESM` durante a inicialização do Firebase Admin, antes de chamar o Gemini. A importação foi validada localmente no Node 24. Referência: [runtime das Functions](https://docs.netlify.com/build/functions/configuration/#node-js-version-for-runtime).
+O runtime pode ser fixado no painel com `AWS_LAMBDA_JS_RUNTIME=nodejs24.x` (escopo de build). Essa variável não funciona no `netlify.toml`. Porém, mudar somente o Node não resolve o `ERR_REQUIRE_ESM`: o AWS Lambda desativa `require()` de ESM por padrão inclusive no Node 24.
+
+A correção substitui o Firebase Admin por importação ESM direta de `jose`, eliminando `jwks-rsa` da função. A verificação mantém assinatura RS256, chaves públicas Google de origem fixa, emissor, projeto, expiração, datas de emissão/autenticação e subject. Não é necessário habilitar flags experimentais no painel.
+
+Para publicar a correção, enviar juntos `server/firebase-auth.js`, `package.json` e `package-lock.json`, além dos demais arquivos alterados. Cadastrar `GEMINI_MODEL=gemini-3.8-flash` no escopo Functions e executar um novo deploy. Alterar `.env.local` não altera a Netlify. Após o deploy, um POST JSON sem token em `/api/ai` deve responder 401, e não 502; esse teste não consome Gemini.
+
+Referências: [runtime Netlify](https://docs.netlify.com/build/functions/configuration/#node-js-version-for-runtime), [restrições de módulos no AWS Lambda](https://docs.aws.amazon.com/lambda/latest/dg/lambda-nodejs.html), [Gemini 3.8 Flash](https://ai.google.dev/gemini-api/docs/models/gemini-3.8-flash).
 
 Remover a variável antiga `VITE_GEMINI_MODEL` do painel: o servidor usa `GEMINI_MODEL`, cujo valor é um nome público e não deve ser marcado como segredo. O `netlify.toml` exclui somente esses dois nomes de variável da verificação de segredos para evitar o falso positivo observado no deploy. `GEMINI_API_KEY` continua sujeita à verificação e deve permanecer secreta, com escopo Functions. Referência: [configuração do scanner Netlify](https://docs.netlify.com/build/environment-variables/secrets-controller/#configure-secret-scanning).
 
@@ -45,6 +51,6 @@ O botão e o modal de configuração foram removidos, assim como o SDK Gemini do
 
 A API recebe o resumo financeiro do próprio usuário autenticado e o trata como dados não confiáveis. A IA apenas responde ou preenche um formulário; não executa movimentações. A chave é controlada pelo administrador e o acesso ao endpoint exige login.
 
-25 testes locais aprovados, incluindo autenticação, validação, limite, recibos e tratamento de erros. Não foi feita chamada real ao Gemini nem deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
+30 testes locais aprovados, incluindo assinatura e claims Firebase, inicialização com a restrição de módulos do Lambda, validação, limite, recibos e tratamento de erros. Não foi feita chamada real ao Gemini nem deploy nesta revisão. O Word e os guias anteriores descrevem etapas históricas; este documento substitui as instruções antigas de chave por usuário.
 
 Referências: [Firebase ID tokens](https://firebase.google.com/docs/auth/admin/verify-id-tokens), [Gemini generateContent](https://ai.google.dev/api/generate-content), [Netlify Functions](https://docs.netlify.com/build/functions/api/).
