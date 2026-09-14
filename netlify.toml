@@ -3,6 +3,11 @@
   publish = "dist"
   functions = "netlify/functions"
 
+[build.environment]
+  # Nomes públicos de modelos; inclui a variável legada ainda presente no painel.
+  # GEMINI_API_KEY deve continuar sendo verificada como segredo.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GEMINI_MODEL,GEMINI_MODEL"
+
 [functions]
   node_bundler = "esbuild"
 

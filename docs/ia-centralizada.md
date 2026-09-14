@@ -22,6 +22,8 @@ Nas variáveis de ambiente do site, cadastrar `GEMINI_API_KEY`, `GEMINI_MODEL` e
 
 Executar novo deploy após salvar. O `netlify.toml` encaminha `/api/ai` à função antes do fallback React. Não colocar segredos nesse arquivo. O código usa Node 20 ou superior (ambiente local validado com Node 24).
 
+Remover a variável antiga `VITE_GEMINI_MODEL` do painel: o servidor usa `GEMINI_MODEL`, cujo valor é um nome público e não deve ser marcado como segredo. O `netlify.toml` exclui somente esses dois nomes de variável da verificação de segredos para evitar o falso positivo observado no deploy. `GEMINI_API_KEY` continua sujeita à verificação e deve permanecer secreta, com escopo Functions. Referência: [configuração do scanner Netlify](https://docs.netlify.com/build/environment-variables/secrets-controller/#configure-secret-scanning).
+
 Não é necessária chave privada Firebase Admin para essa verificação de ID token com projeto explícito: são usados os certificados públicos. Essa verificação não consulta revogação de tokens; um token emitido pode permanecer válido até expirar. O backend não possui acesso administrativo ao banco configurado por esta mudança.
 
 ## Limites e operação
