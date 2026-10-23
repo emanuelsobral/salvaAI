@@ -1,0 +1,108 @@
+{
+  "protocolo_versao": "1.0.0",
+  "esquema_versao": "1.0.0",
+  "tipo_registro": "exemplo_extracao",
+  "documento_id": "exemplo-sintetico-001",
+  "pdf_sha256": null,
+  "versao_extrator": null,
+  "anotacao": null,
+  "processamento": {
+    "status": "nao_executado",
+    "duracao_ms": null,
+    "erros": []
+  },
+  "campos": {
+    "valor_parcela": {
+      "estado": "encontrado",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "1200.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 1.200,00, com vencimento todo dia 10."
+        }
+      ],
+      "confianca": "alta",
+      "regra_id": "exemplo-valor_parcela-v1",
+      "motivo": "Exemplo ilustrativo feito à mão; não é resultado do extrator."
+    },
+    "numero_parcelas": {
+      "estado": "encontrado",
+      "valor": {
+        "tipo": "determinado",
+        "quantidade": 12
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Serão devidas 12 parcelas mensais."
+        }
+      ],
+      "confianca": "alta",
+      "regra_id": "exemplo-numero_parcelas-v1",
+      "motivo": "Exemplo ilustrativo feito à mão; não é resultado do extrator."
+    },
+    "data_vencimento": {
+      "estado": "encontrado",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 10,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 1.200,00, com vencimento todo dia 10."
+        }
+      ],
+      "confianca": "alta",
+      "regra_id": "exemplo-data_vencimento-v1",
+      "motivo": "Exemplo ilustrativo feito à mão; não é resultado do extrator."
+    },
+    "vigencia": {
+      "estado": "encontrado",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2027-01-01",
+        "fim": "2027-12-31",
+        "duracao_meses": 12,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A vigência é de 01/01/2027 a 31/12/2027, pelo prazo de 12 meses."
+        }
+      ],
+      "confianca": "alta",
+      "regra_id": "exemplo-vigencia-v1",
+      "motivo": "Exemplo ilustrativo feito à mão; não é resultado do extrator."
+    },
+    "regra_reajuste": {
+      "estado": "encontrado",
+      "valor": {
+        "tipo": "indice",
+        "indices": [
+          "IPCA"
+        ],
+        "percentual": null,
+        "periodicidade_meses": 12,
+        "regra": "O valor será reajustado a cada 12 meses pelo IPCA."
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O valor será reajustado a cada 12 meses pelo IPCA."
+        }
+      ],
+      "confianca": "alta",
+      "regra_id": "exemplo-regra_reajuste-v1",
+      "motivo": "Exemplo ilustrativo feito à mão; não é resultado do extrator."
+    }
+  }
+}

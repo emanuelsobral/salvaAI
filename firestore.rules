@@ -14,6 +14,21 @@ service cloud.firestore {
     }
     match /users/{uid}/transactions/{id} {
       allow read, delete: if owner(uid);
+      // Conciliação altera somente o vínculo; valor, conta, data e descrição permanecem imutáveis.
+      allow update: if owner(uid)
+        && resource.data.get('importFormat', '') in ['csv', 'ofx', 'pdf']
+        && resource.data.type == 'EXPENSE' && resource.data.status == 'COMPLETED'
+        && resource.data.accountType == 'GENERAL'
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['kind', 'subscriptionId', 'dueDate'])
+        // Uma segunda confirmação concorrente pode ser avaliada após o primeiro commit.
+        // A escrita idêntica precisa ser autorizada para o Firestore repetir a transação.
+        && (request.resource.data.diff(resource.data).affectedKeys().size() == 0
+        || (resource.data.kind == 'REGULAR' && request.resource.data.kind == 'RECURRING_PAYMENT'
+          && request.resource.data.dueDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+          && getAfter(/databases/$(database)/documents/users/$(uid)/subscriptions/$(request.resource.data.subscriptionId)).data.payments.get(request.resource.data.dueDate, {}).get('transactionId', '') == id)
+        || (resource.data.kind == 'RECURRING_PAYMENT' && request.resource.data.kind == 'REGULAR'
+          && request.resource.data.subscriptionId == null && request.resource.data.dueDate == null
+          && !getAfter(/databases/$(database)/documents/users/$(uid)/subscriptions/$(resource.data.subscriptionId)).data.payments.keys().hasAny([resource.data.dueDate])));
       allow create: if owner(uid) && positive(request.resource.data.amount)
         && request.resource.data.type in ['INCOME', 'EXPENSE']
         && request.resource.data.status in ['COMPLETED', 'PENDING']

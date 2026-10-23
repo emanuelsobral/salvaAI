@@ -1,6 +1,8 @@
 # Documentação do AgentFinanceiro / SalvaAI
 
-Atualização: **13/09/2026**, horário de São Paulo.
+Atualização do índice: **13/10/2026**, horário de São Paulo. Os guias históricos conservam suas datas e evidências originais.
+
+**Planejamento atual:** [Kanban do SalvaAI](kanban.md), com prioridades, dependências e níveis recomendados do GPT-6. O [experimento de contratos](../experiments/contracts/README.md) tem piloto original de 26 PDFs e protótipo 0.1.0 validado tecnicamente, com baixa cobertura inicial. Após a identificação de modelos em branco, foram selecionados [dois contratos institucionais preenchidos](../experiments/contracts/coleta-preenchidos.md) como complemento de desenvolvimento. Próximo passo: [anotação humana E03](../experiments/contracts/guia-anotacao.md) do `pub-alu-03`, com Alto para apoio técnico. Gabarito, precisão e coleta de contratos pessoais preenchidos continuam pendentes. Agenda de contas na sequência. O produto continua sem chamadas de IA.
 
 Esta documentação descreve o código disponível nesta pasta. Não há histórico Git na raiz nesta revisão; portanto, as etapas abaixo são marcos de comparação, não versões publicadas ou tags de releases.
 
@@ -24,7 +26,11 @@ Esta documentação descreve o código disponível nesta pasta. Não há histór
 | [README da aplicação](../salva-ai/README.md) | Guia rápido de desenvolvimento |
 | [Arquitetura histórica](project_architecture.md) | Proposta anterior preservada; não é o inventário do sistema atual |
 
-## Estado verificável
+## Evidência mais recente — 12/10/2026
+
+O [registro de edição de recorrências](edicao-recorrencias.md) documenta 79 testes locais, dois testes no emulador, build aprovado e verificação de navegador em 320/390/1280 pixels. As alterações recentes permanecem locais, com publicação pendente. A criação do Kanban não executou novamente esses testes.
+
+## Estado verificado na revisão inicial — 13/09/2026
 
 - A compilação da aplicação atual passou.
 - Os 16 testes de domínio/serviços com banco simulado passaram.
@@ -46,3 +52,13 @@ Ao mudar uma função pública, atualizar o catálogo de funções. Ao mudar um 
 
 [Configuração da chave Gemini no servidor](ia-centralizada.md): substitui o modelo anterior de chaves por usuário.
 
+
+- [Operação sem IA — estado atual](sem-ia.md)
+
+- [Importação de extratos CSV e OFX](importacao-extratos.md)
+
+- [Contas recorrentes — 12/10/2026](contas-recorrentes.md)
+
+- [Conciliação de extratos e recorrências — 12/10/2026](conciliacao-extratos.md)
+
+- [Edição de recorrências por data — 12/10/2026](edicao-recorrencias.md)

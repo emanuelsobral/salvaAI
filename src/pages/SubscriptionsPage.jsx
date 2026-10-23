@@ -12,11 +12,11 @@ export default function SubscriptionsPage() {
     <div id="view-subs" className="view-section active">
       <header className="topbar">
         <div className="greeting">
-          <h1>Minhas Assinaturas 📦</h1>
-          <p>Gerencie pagamentos recorrentes como Netflix, Academia, Internet e nuvem.</p>
+          <h1>Contas recorrentes 📦</h1>
+          <p>Acompanhe vencimentos e pagamentos de aluguel, internet, assinaturas e outras contas.</p>
         </div>
         <div className="actions">
-          <button className="btn-primary" onClick={() => setModalOpen(true)}>+ Nova Assinatura</button>
+          <button className="btn-primary" onClick={() => setModalOpen(true)}>+ Nova conta recorrente</button>
         </div>
       </header>
 

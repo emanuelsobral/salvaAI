@@ -1,0 +1,140 @@
+{
+  "versao": "1.0.0",
+  "data": "2026-10-13",
+  "escopo_revisao": "Triagem documental: primeira página renderizada de cada PDF, camada de texto de todas as páginas, comparação de semelhança textual. Não é gabarito nem revisão integral das cláusulas.",
+  "familias": {
+    "agehab-locacao": "desenvolvimento",
+    "rodovalho-locacao": "desenvolvimento",
+    "adventista-educacional": "desenvolvimento",
+    "fwb-educacional": "desenvolvimento",
+    "faveni-educacional": "desenvolvimento",
+    "colonia-saber-educacional": "desenvolvimento",
+    "fratelli-educacional": "desenvolvimento",
+    "uniarp-educacional": "desenvolvimento",
+    "itau-imobiliario": "desenvolvimento",
+    "volvo-ccb": "desenvolvimento",
+    "norden-plano-a": "desenvolvimento",
+    "santa-saude-individual": "desenvolvimento",
+    "unimed-scprev": "desenvolvimento",
+    "saude-brb": "desenvolvimento",
+    "wondershare-locacao": "teste",
+    "pontoxp-locacao": "teste",
+    "anchieta-educacional": "teste",
+    "santa-teresinha-educacional": "teste",
+    "silva-abreu-educacional": "teste",
+    "aeb-educacional": "teste",
+    "porto-ccb": "teste",
+    "notrelife-individual": "teste",
+    "unimed-bh-unipart": "teste"
+  },
+  "documentos": {
+    "alu-01": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "alu-02": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "alu-03": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "alu-04": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-01": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-02": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-03": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-04": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-05": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-06": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-07": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-08": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-09": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "edu-10": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "fin-01": {
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal"
+    },
+    "fin-04": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "fin-06": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "sau-01": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "sau-02": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "observacao": "Página 1 com capa em imagem; demais páginas com camada de texto. Não presumir texto contratual perdido apenas pela capa."
+    },
+    "sau-03": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "sau-04": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "sau-05": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "sau-06": {
+      "natureza": "condicoes_gerais",
+      "estrato": "principal"
+    },
+    "fin-05": {
+      "natureza": "condicoes_gerais",
+      "estrato": "complementar",
+      "observacao": "Financiamento BNDES FINAME; analisar separadamente do crédito pessoal."
+    },
+    "sau-07": {
+      "natureza": "contrato_coletivo_institucional",
+      "estrato": "complementar",
+      "observacao": "Contrato coletivo publicado por instituição; não equivale a uma contratação individual."
+    },
+    "sau-09": {
+      "natureza": "regulamento",
+      "estrato": "complementar",
+      "observacao": "Regulamento de plano; não é contrato individual preenchido."
+    }
+  }
+}

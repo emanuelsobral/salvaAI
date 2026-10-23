@@ -1,5 +1,22 @@
 # Arquitetura e catálogo de funções do SalvaAI
 
+**Edição de recorrências — 12/10/2026:** `editRecurringSubscription` acrescenta uma condição com controle de versão e idempotência; `prepareRecurringRevision`, `earliestRevisionDate` e `effectiveSchedule` validam e selecionam as condições. `recurringOccurrences` passa a respeitar intervalos de vigência e `payRecurringBill` valida opcionalmente o valor confirmado pela interface. Veja [contratos e fluxo](edicao-recorrencias.md).
+
+**Conciliação — 12/10/2026:** `suggestRecurringMatches` ordena correspondências por valor, data e descrição; `importStatement` recebe escolhas por linha; `getReconciliationCandidates`, `reconcileTransaction` e `undoReconciliation` permitem vincular e desvincular despesas já importadas. Confira [contratos, fluxo e restrições](conciliacao-extratos.md).
+
+## Complemento de 12/10/2026: contas recorrentes
+
+- `validateSchedule(schedule)` valida frequência, primeiro vencimento e término.
+- `recurringOccurrences(sub, from, to, today)` calcula vencimentos e estados no intervalo, sem gravar no banco.
+- `createSubscription(uid, payload)` aceita `frequency`, `start_date` e `end_date` para contas pagas diretamente pela conta corrente. O contrato antigo com `due_day` permanece para compatibilidade.
+- `getSubscriptions(uid)` inclui contas encerradas para preservar pendências e pagamentos anteriores.
+- `payRecurringBill(uid, subId, dueDate, paidDate, operationId)` registra pagamento com atualização atômica do saldo e vínculo por vencimento.
+- `deleteSubscription(uid, subId)` encerra a recorrência; `deleteTransaction` também estorna pagamentos recorrentes.
+- `getActiveSubscriptionsTotal(uid, now)` soma os vencimentos das contas ativas no mês de referência, respeitando frequência e término.
+- `calculateDashboard` inclui recorrências na projeção e nos avisos, sem incluí-las na fatura do cartão.
+
+Veja [fluxos e limites](contas-recorrentes.md). O catálogo original segue abaixo.
+
 [Índice](README.md) · [Comparação com o legado](evolucao-antigo-novo.md) · [Modelo de dados](migracao-de-dados.md)
 
 ## 1. Fluxo da aplicação

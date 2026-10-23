@@ -1,8 +1,7 @@
 import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
-import { chatWithAI } from '../../services/aiService';
+import { localReply } from '../../utils/localAssistant';
 import { getDashboardData } from '../../services/dashboardService';
-import { completedChatHistory } from '../../utils/chat';
 
 export default function AIChatWidget() {
   const { user } = useAuth();
@@ -31,12 +30,8 @@ export default function AIChatWidget() {
     setLoading(true);
 
     try {
-      const freshContext = await getDashboardData(user.uid);
-      const reply = await chatWithAI(
-        completedChatHistory(history),
-        userMessage,
-        freshContext
-      );
+      let reply = localReply(userMessage);
+      if (reply === null) reply = localReply(userMessage, await getDashboardData(user.uid));
       setHistory(prev => [...prev, { role: 'model', parts: [{ text: reply }] }]);
     } catch (error) {
       setHistory(prev => [...prev, { role: 'model', isError: true, parts: [{ text: `🚨 Ops! Ocorreu um erro: ${error.message}` }] }]);
@@ -82,9 +77,9 @@ export default function AIChatWidget() {
           {/* Header do Chat */}
           <div style={{ padding: '1.5rem', background: 'rgba(0, 0, 0, 0.2)', borderBottom: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
             <div>
-              <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>SalvaAI Chat ✨</h3>
+              <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>Assistente SalvaAI</h3>
               <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                Seu assistente financeiro pessoal
+                Consultas automáticas, sem IA
               </p>
             </div>
             <button className="btn-close" aria-label="Fechar assistente" onClick={() => setIsOpen(false)}>&times;</button>
@@ -94,8 +89,8 @@ export default function AIChatWidget() {
           <div className="chat-messages" style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {history.length === 0 && (
               <div style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
-                <p>Faça uma pergunta sobre suas finanças!</p>
-                <p style={{ fontSize: '0.85rem' }}>Ex: "Onde eu gastei mais este mês?"</p>
+                <p>Consulte os dados do seu painel.</p>
+                <p style={{ fontSize: '0.85rem' }}>Digite: saldo, fatura, gastos, maior categoria ou projeção.</p>
               </div>
             )}
 
@@ -123,7 +118,7 @@ export default function AIChatWidget() {
               <div style={{ display: 'flex', justifyContent: 'flex-start' }}>
                 <div style={{ padding: '1rem', borderRadius: '12px', background: 'rgba(255,255,255,0.05)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                   <div className="spinner" style={{ width: '15px', height: '15px', borderWidth: '2px' }}></div>
-                  <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Pensando...</span>
+                  <span style={{ fontSize: '0.9rem', color: 'var(--text-muted)' }}>Consultando seus registros...</span>
                 </div>
               </div>
             )}
@@ -137,7 +132,7 @@ export default function AIChatWidget() {
                 type="text"
                 value={input}
                 onChange={e => setInput(e.target.value)}
-                placeholder="Pergunte algo..."
+                placeholder="Ex.: qual meu saldo?"
                 aria-label="Sua pergunta"
                 style={{ flex: 1, minWidth: 0, padding: '0.8rem 1rem', borderRadius: '25px', border: '1px solid var(--border-color)', background: 'var(--bg-card)', color: 'var(--text-main)' }}
               />

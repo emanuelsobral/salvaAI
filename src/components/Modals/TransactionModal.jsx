@@ -1,8 +1,7 @@
 import { useOperationKey } from '../../hooks/useOperationKey';
 import { localDate } from '../../utils/finance';
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { createTransaction } from '../../services/transactionService';
-import { extractReceiptData } from '../../services/aiService';
 
 export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
   const operation = useOperationKey();
@@ -15,9 +14,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
     description: ''
   });
   const [loading, setLoading] = useState(false);
-  const [scanning, setScanning] = useState(false);
   
-  const fileInputRef = useRef(null);
 
   if (!isOpen) return null;
 
@@ -46,81 +43,12 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
     }
   };
 
-  const handleScanReceipt = async (e) => {
-    const file = e.target.files[0];
-    if (!file) return;
-    if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 3 * 1024 * 1024) {
-      alert('Use uma imagem JPG, PNG ou WebP de até 3 MB.');
-      e.target.value = '';
-      return;
-    }
-
-
-    setScanning(true);
-    try {
-      const reader = new FileReader();
-      reader.onerror = () => { setScanning(false); alert('Não foi possível ler a imagem.'); };
-      reader.onload = async () => {
-        const base64Data = reader.result.split(',')[1];
-        try {
-          const aiData = await extractReceiptData(base64Data, file.type);
-          
-          setFormData(prev => ({
-            ...prev,
-            transaction_type: 'EXPENSE',
-            amount: aiData.amount ?? '',
-            date: aiData.date ?? '',
-            description: aiData.description ?? '',
-            category: aiData.category || 'OUTROS'
-          }));
-        } catch (err) {
-          alert(err.message);
-        } finally {
-          setScanning(false);
-          // reset file input
-          if (fileInputRef.current) fileInputRef.current.value = '';
-        }
-      };
-      reader.readAsDataURL(file);
-    } catch {
-      alert('Erro ao ler a imagem localmente.');
-      setScanning(false);
-    }
-  };
-
   return (
     <div className="modal-overlay active">
       <div className="modal-content" style={{ position: 'relative' }}>
         <button className="btn-close" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>&times;</button>
         <h2>Nova Movimentação Dinheiro</h2>
         
-        <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
-          <input 
-            type="file" 
-            accept="image/*" 
-            capture="environment" 
-            ref={fileInputRef}
-            style={{ display: 'none' }}
-            onChange={handleScanReceipt}
-          />
-          <button 
-            type="button" 
-            className="btn-outline-sm" 
-            onClick={() => fileInputRef.current?.click()}
-            disabled={scanning || loading}
-            style={{ width: '100%', borderColor: 'var(--accent-primary)', color: 'var(--accent-primary)', display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '8px' }}
-          >
-            {scanning ? (
-              <>
-                <div className="spinner" style={{ width: '15px', height: '15px', borderWidth: '2px' }}></div>
-                Lendo Cupom Fiscal com IA...
-              </>
-            ) : (
-              '📸 Escanear Cupom Fiscal com IA'
-            )}
-          </button>
-        </div>
-
         <form onSubmit={handleSubmit}>
           <div className="form-group toggle-group">
             <label className={`toggle-btn expense ${formData.transaction_type === 'EXPENSE' ? 'active' : ''}`}>
@@ -180,7 +108,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
             <input type="text" name="description" required placeholder="Ex: Mercado, Uber..." value={formData.description} onChange={handleChange} />
           </div>
 
-          <button type="submit" className="btn-primary" style={{ width: '100%' }} disabled={loading || scanning}>
+          <button type="submit" className="btn-primary" style={{ width: '100%' }} disabled={loading}>
             {loading ? 'Processando...' : 'Processar Movimentação'}
           </button>
         </form>

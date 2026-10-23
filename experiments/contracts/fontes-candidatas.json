@@ -1,0 +1,279 @@
+{
+  "versao": "1.0.0",
+  "data_pesquisa": "2026-10-13",
+  "observacao": "Fontes públicas candidatas; elegibilidade e divisão dependem de triagem. Não contém gabarito.",
+  "fontes": [
+    {
+      "id": "pub-alu-01",
+      "categoria": "aluguel",
+      "titulo": "Presidente Bernardes — contrato de locação 122/2025",
+      "familia": "presidente-bernardes-locacao",
+      "url": "https://www.presidentebernardes.mg.gov.br/uploads-pdf/Contrato-1746561623681a6a573267d5.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "pub-alu-02",
+      "categoria": "aluguel",
+      "titulo": "Mafra — contrato de locação 054/2024",
+      "familia": "mafra-locacao",
+      "url": "https://mafra.sc.gov.br/uploads/sites/372/2024/03/Contr-054.2024-INEX.002.2024-Proc.-010.2024-MARCELO-SARTORI.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "pub-alu-03",
+      "categoria": "aluguel",
+      "titulo": "Cruz das Almas — contrato de locação 567/2022",
+      "familia": "cruz-das-almas-locacao",
+      "url": "https://acessoainformacao.cruzdasalmas.ba.gov.br/uploads/contratos/20220712151103_GERAL_194003146462cdb9376aecc.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-06",
+      "categoria": "financiamento",
+      "titulo": "Porto Seguro — cédula de crédito bancário",
+      "familia": "porto-ccb",
+      "url": "https://www.portoseguro.com.br/NovoInstitucional/static_files/CGs/auto_credito_porto_seguro/cg_cedula_de_credito_bancario.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "alu-05",
+      "categoria": "aluguel",
+      "titulo": "Cora — modelo de contrato de locação",
+      "familia": "cora-locacao",
+      "url": "https://materiais.cora.com.br/wp-content/uploads/2022/08/Modelo-de-Contrato-de-Locacao-Cora.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-09",
+      "categoria": "mensalidade_escolar",
+      "titulo": "UNIARP — Colégio de Aplicação 2025",
+      "familia": "uniarp-educacional",
+      "url": "https://colegiodeaplicacao.uniarp.edu.br/wp-content/uploads/2024/10/CONTRATO-CA-2025-PRESTACAO-DE-SERVICOS-EDUCACIONAIS.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-10",
+      "categoria": "mensalidade_escolar",
+      "titulo": "AEB — prestação de serviços educacionais",
+      "familia": "aeb-educacional",
+      "url": "https://aeb.edu.br/aeb/wp-content/uploads/2025/07/contrato-de-prestacao-de-servico.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-09",
+      "categoria": "plano_saude",
+      "titulo": "Saúde BRB — regulamento Plano A1",
+      "familia": "saude-brb",
+      "url": "https://saudebrb.com.br/wp-content/uploads/2023/05/Saude-BRB-Regulamento-Plano-A1-.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-10",
+      "categoria": "plano_saude",
+      "titulo": "Sindjus-MA — contrato Unimed Teresina 2018",
+      "familia": "unimed-teresina",
+      "url": "https://www.sindjusma.org/UserFiles/Files/CONTRATO%20UNIMED%20TERESINA%202018.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-01",
+      "categoria": "financiamento",
+      "titulo": "Itaú — financiamento imobiliário taxa de mercado",
+      "familia": "itau-imobiliario",
+      "url": "https://ww3.itau.com.br/imobline/pre/pdf/TaxadeMercado.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-02",
+      "categoria": "financiamento",
+      "titulo": "Itaú — financiamento de bens C2",
+      "familia": "itau-ccb-veiculos",
+      "url": "https://www.itaucred.com.br/itaucred/pdf/itau/Condicoes_Gerais_-_Financiamento_itc.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-03",
+      "categoria": "financiamento",
+      "titulo": "Santander — condições gerais CCB",
+      "familia": "santander-ccb",
+      "url": "https://www.santander.com.br/hotsite/santanderfinanciamentos/pdf/Condicoes_Gerais_Contrato.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-04",
+      "categoria": "financiamento",
+      "titulo": "Volvo — CDC",
+      "familia": "volvo-ccb",
+      "url": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/compliance/Condicoes-Gerais-da-Cedula-de-Credito-Bancario-CDC-Sob-Registro-n-1.201.667.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "fin-05",
+      "categoria": "financiamento",
+      "titulo": "Volvo — abertura de crédito",
+      "familia": "volvo-ccb",
+      "url": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/splash/sob-registro-n-1.180.196.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "alu-01",
+      "categoria": "aluguel",
+      "titulo": "AGEHAB — modelo de locação residencial",
+      "familia": "agehab-locacao",
+      "url": "https://goias.gov.br/agehab/wp-content/uploads/sites/18/2022/03/contrato.de_.locacao.006-7a4.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "alu-02",
+      "categoria": "aluguel",
+      "titulo": "Rodovalho — modelo de locação",
+      "familia": "rodovalho-locacao",
+      "url": "https://rodovalhoempreendimentos.com.br/img/modelo-contrato-locacao.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "alu-03",
+      "categoria": "aluguel",
+      "titulo": "Wondershare — modelo de aluguel",
+      "familia": "wondershare-locacao",
+      "url": "https://pdf.wondershare.com.br/modelo/contrato/aluguel_para_imprimir.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "alu-04",
+      "categoria": "aluguel",
+      "titulo": "PontoXP — modelo de locação residencial",
+      "familia": "pontoxp-locacao",
+      "url": "https://www.pontoxp.com/wp-content/uploads/2013/03/MODELO-DE-CONTRATO-DE-ALUGUEL-RESIDENCIAL.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-01",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Adventista — contrato educacional 2026",
+      "familia": "adventista-educacional",
+      "url": "https://s.educacaoadventista.org.br/escola/arquivos/TDLFbJJU9BKA5qB6hoOHW5RUGBa7eoHFdZpDxDvX.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-02",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Anchieta Maceió — matrícula 2026",
+      "familia": "anchieta-educacional",
+      "url": "https://www.anchietamaceio.com.br/downloads/contrato-de-matricula-e-prestacao-de-servicos-educacionais-2026.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-03",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Santa Teresinha — serviços escolares 2026",
+      "familia": "santa-teresinha-educacional",
+      "url": "https://matriculas.colegiosantateresinha.com.br/downloads/contrato.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-04",
+      "categoria": "mensalidade_escolar",
+      "titulo": "FWB — serviços educacionais 2021/2",
+      "familia": "fwb-educacional",
+      "url": "https://fwb.edu.br/documentos/2021/2_2021/contrato_prestacao_servicos_educacionais_2_2021.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-05",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Dom Alberto — graduação 2022",
+      "familia": "faveni-educacional",
+      "url": "https://domalberto.edu.br/wp-content/uploads/sites/24/2022/01/CONTRATO-GRADUACAO-E-SEGUNDA-GRADUACAO-01-2022-.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-06",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Colônia do Saber — serviços educacionais",
+      "familia": "colonia-saber-educacional",
+      "url": "https://coloniadosaber.com/site/files/CONTRATO_PRESTACAO_DE_SERVICOS_EDUCACIONAIS_2017_-_9_meses.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-07",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Instituto Fratelli — serviços educacionais",
+      "familia": "fratelli-educacional",
+      "url": "https://institutofratelli.com/wp-content/uploads/2023/10/CONTRATO-DE-PRESTACAO-DE-SERVICOS-EDUCACIONAIS-Instituto-Fratelli-2023.2.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "edu-08",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Silva Abreu — anual fundamental 2021",
+      "familia": "silva-abreu-educacional",
+      "url": "https://www.colegiosilvaabreu.com/pdf/contratos/contrato-anual-2021-fundamental1.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-01",
+      "categoria": "plano_saude",
+      "titulo": "Norden — Plano A Copart",
+      "familia": "norden-plano-a",
+      "url": "https://meunorden.com/wp-content/uploads/Contrato-PlanoA-Copart.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-02",
+      "categoria": "plano_saude",
+      "titulo": "NotreLife — ambulatorial SP",
+      "familia": "notrelife-individual",
+      "url": "https://www2.gndi.com.br/documents/20182/247210781/00%2BNDI%2BSP%2B-NOTRELIFE%2BAMB%2BSP%2BCP%2B-%2B495367233%2B-%2Bnov.24.pdf/dd343f2f-07e5-4e60-4724-8d083357617c",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-03",
+      "categoria": "plano_saude",
+      "titulo": "NotreLife — apartamento RJ",
+      "familia": "notrelife-individual",
+      "url": "https://www2.gndi.com.br/documents/20182/240897362/NOTRELIFE%2B50%2B%2BAPTO%2BRJ%2BCP%2B-%2B495269233%2B-%2Bv.%2B07.2024.pdf/82219bb5-493e-83de-7f94-b1089af0f147",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-04",
+      "categoria": "plano_saude",
+      "titulo": "Santa Saúde — individual executivo",
+      "familia": "santa-saude-individual",
+      "url": "https://planosantasaude.com.br/wp-content/uploads/2021/08/473.884.15-5-Contrato-Individual-Executivo-com-Obstetricia-Odontogico.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-05",
+      "categoria": "plano_saude",
+      "titulo": "Santa Saúde — individual preferencial",
+      "familia": "santa-saude-individual",
+      "url": "https://planosantasaude.com.br/wp-content/uploads/2021/08/458.384.08-1-Contrato-Individual-Preferencial-com-Obsteticia1.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-06",
+      "categoria": "plano_saude",
+      "titulo": "CAA-MG — Unipart Nacional 2022",
+      "familia": "unimed-bh-unipart",
+      "url": "https://caamg.org.br/oab-caa-saude/pdf/contratounipartnacional2apartamento_2022.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-07",
+      "categoria": "plano_saude",
+      "titulo": "SCPREV — Unimed nacional referência",
+      "familia": "unimed-scprev",
+      "url": "https://scprev.com.br/wp-content/uploads/2023/12/Contrato-n-9085101-UNIMED.pdf",
+      "origem": "publica"
+    },
+    {
+      "id": "sau-08",
+      "categoria": "plano_saude",
+      "titulo": "SINPOL-TO — Unimed Palmas",
+      "familia": "unimed-palmas",
+      "url": "https://www.sinpol-to.org.br/media/sinpol/plano_unimed/1_-_contrato_unimed_n%C2%BA_222301100_coparticipativo_consultas.pdf",
+      "origem": "publica"
+    }
+  ]
+}

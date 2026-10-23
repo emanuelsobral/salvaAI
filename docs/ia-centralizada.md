@@ -1,4 +1,6 @@
-# Gemini com chave do administrador
+# Gemini com chave do administrador — histórico
+
+> Atualização de 09/10/2026: integração desativada. O aplicativo usa respostas locais e a rota retorna 410, sem consultar Gemini. As instruções abaixo descrevem a versão anterior. Consulte [operação sem IA](sem-ia.md).
 
 O usuário faz login e usa chat, conselheiro e recibos. O navegador chama `/api/ai` com um ID token Firebase. A Netlify Function verifica assinatura, validade e projeto desse token antes de consultar o Gemini. A chave Gemini permanece no servidor.
 

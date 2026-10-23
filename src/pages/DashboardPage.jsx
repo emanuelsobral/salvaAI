@@ -100,7 +100,7 @@ export default function DashboardPage() {
         </div>
         <div className="actions dashboard-actions">
           <button className="btn-outline" style={{ borderColor: '#00f5d4', color: '#00f5d4' }} onClick={() => setImportModalOpen(true)}>
-            📥 Importar CSV
+            📥 Importar extrato
           </button>
           <button className="btn-purple" onClick={() => setCardModalOpen(true)}>
             💳 Compra no cartão

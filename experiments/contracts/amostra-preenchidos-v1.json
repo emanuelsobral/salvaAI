@@ -1,0 +1,158 @@
+{
+  "versao": "preenchidos-1.0.0",
+  "protocolo": "1.0.0",
+  "congelado_em": "2026-10-13",
+  "status": "amostra_complementar_de_desenvolvimento",
+  "observacao": "Dois contratos institucionais preenchidos, coletados após crítica aos modelos em branco. Não substitui nem altera o piloto anterior; não é conjunto reservado de teste.",
+  "documentos": [
+    {
+      "id": "pub-alu-02",
+      "categoria": "aluguel",
+      "titulo": "Mafra — contrato de locação 054/2024",
+      "familia": "mafra-locacao",
+      "url": "https://mafra.sc.gov.br/uploads/sites/372/2024/03/Contr-054.2024-INEX.002.2024-Proc.-010.2024-MARCELO-SARTORI.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T15:45:28.549855-03:00",
+      "url_origem": "https://mafra.sc.gov.br/uploads/sites/372/2024/03/Contr-054.2024-INEX.002.2024-Proc.-010.2024-MARCELO-SARTORI.pdf",
+      "url_final": "https://mafra.sc.gov.br/uploads/sites/372/2024/03/Contr-054.2024-INEX.002.2024-Proc.-010.2024-MARCELO-SARTORI.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "ff86412a437af5bf1d146c94b11feca5342c953f28a07f4c3f8ff9bfc17567f2",
+      "bytes": 652376,
+      "baixado_em": "2026-10-13T15:45:28.549855-03:00",
+      "arquivo": "data/originais/pub-alu-02.pdf",
+      "criptografado": false,
+      "paginas": 12,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2580,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3206,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3201,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3608,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 3855,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 3367,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3621,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3451,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 3451,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 3202,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 806,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 1053,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T184528546766Z.jsonl",
+      "natureza": "contrato_publico_preenchido",
+      "estrato": "complementar",
+      "divisao": "desenvolvimento",
+      "observacao": "Locação institucional, fora do contexto residencial pessoal. Conteúdo financeiro individualizado e indicação visual de assinatura. Sem validação criptográfica e sem gabarito preenchido.",
+      "triagem_visual_paginas": [
+        1,
+        12
+      ]
+    },
+    {
+      "id": "pub-alu-03",
+      "categoria": "aluguel",
+      "titulo": "Cruz das Almas — contrato de locação 567/2022",
+      "familia": "cruz-das-almas-locacao",
+      "url": "https://acessoainformacao.cruzdasalmas.ba.gov.br/uploads/contratos/20220712151103_GERAL_194003146462cdb9376aecc.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T15:45:28.550786-03:00",
+      "url_origem": "https://acessoainformacao.cruzdasalmas.ba.gov.br/uploads/contratos/20220712151103_GERAL_194003146462cdb9376aecc.pdf",
+      "url_final": "https://acessoainformacao.cruzdasalmas.ba.gov.br/uploads/contratos/20220712151103_GERAL_194003146462cdb9376aecc.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "f5f51b72c9daa71553eeea00f8cce74c20ec197cdfb45320193150e980793736",
+      "bytes": 503313,
+      "baixado_em": "2026-10-13T15:45:28.550786-03:00",
+      "arquivo": "data/originais/pub-alu-03.pdf",
+      "criptografado": false,
+      "paginas": 5,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3556,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3347,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3915,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3105,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 1455,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T184528546766Z.jsonl",
+      "natureza": "contrato_publico_preenchido",
+      "estrato": "complementar",
+      "divisao": "desenvolvimento",
+      "observacao": "Locação institucional, fora do contexto residencial pessoal. Conteúdo financeiro individualizado e indicação visual de assinatura. Sem validação criptográfica e sem gabarito preenchido.",
+      "triagem_visual_paginas": [
+        2,
+        5
+      ]
+    }
+  ]
+}

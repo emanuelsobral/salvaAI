@@ -99,7 +99,7 @@ export default function Sidebar() {
             className={({ isActive }) => isActive ? 'active' : ''}
             onClick={closeMobile}
           >
-            📦 Assinaturas
+            📦 Contas recorrentes
           </NavLink>
         </nav>
 

@@ -1,0 +1,141 @@
+{
+  "protocolo_versao": "1.0.0",
+  "natureza": "Casos sintéticos esperados para E06; nenhuma medição de contratos.",
+  "casos": [
+    {
+      "id": "misto",
+      "gabarito_presente": 4,
+      "gabarito_ausente": 1,
+      "verdadeiros_positivos": 2,
+      "falsos_positivos": 1,
+      "falsos_negativos": 2,
+      "ausencias_corretas": 1,
+      "nao_identificados": 1,
+      "respostas_alta_confianca": 2,
+      "erros_alta_confianca": 1,
+      "esperado": {
+        "acerto_exato": [
+          3,
+          5
+        ],
+        "precisao": [
+          2,
+          3
+        ],
+        "revocacao": [
+          2,
+          4
+        ],
+        "taxa_nao_identificados": [
+          1,
+          4
+        ],
+        "erro_alta_confianca": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "id": "campo_ausente_preenchido",
+      "gabarito_presente": 0,
+      "gabarito_ausente": 1,
+      "verdadeiros_positivos": 0,
+      "falsos_positivos": 1,
+      "falsos_negativos": 0,
+      "ausencias_corretas": 0,
+      "nao_identificados": 0,
+      "respostas_alta_confianca": 1,
+      "erros_alta_confianca": 1,
+      "esperado": {
+        "acerto_exato": [
+          0,
+          1
+        ],
+        "precisao": [
+          0,
+          1
+        ],
+        "revocacao": null,
+        "taxa_nao_identificados": null,
+        "erro_alta_confianca": [
+          1,
+          1
+        ]
+      }
+    },
+    {
+      "id": "falha_total_com_gabarito_presente",
+      "gabarito_presente": 1,
+      "gabarito_ausente": 0,
+      "verdadeiros_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 1,
+      "ausencias_corretas": 0,
+      "nao_identificados": 1,
+      "respostas_alta_confianca": 0,
+      "erros_alta_confianca": 0,
+      "esperado": {
+        "acerto_exato": [
+          0,
+          1
+        ],
+        "precisao": null,
+        "revocacao": [
+          0,
+          1
+        ],
+        "taxa_nao_identificados": [
+          1,
+          1
+        ],
+        "erro_alta_confianca": null
+      }
+    },
+    {
+      "id": "ausencia_correta",
+      "gabarito_presente": 0,
+      "gabarito_ausente": 1,
+      "verdadeiros_positivos": 0,
+      "falsos_positivos": 0,
+      "falsos_negativos": 0,
+      "ausencias_corretas": 1,
+      "nao_identificados": 0,
+      "respostas_alta_confianca": 0,
+      "erros_alta_confianca": 0,
+      "esperado": {
+        "acerto_exato": [
+          1,
+          1
+        ],
+        "precisao": null,
+        "revocacao": null,
+        "taxa_nao_identificados": null,
+        "erro_alta_confianca": null
+      }
+    }
+  ],
+  "correspondencias": [
+    {
+      "campo": "valor_parcela.quantia",
+      "gabarito": "1200.00",
+      "previsto": "1200.01",
+      "exato": false,
+      "tolerante": true
+    },
+    {
+      "campo": "valor_parcela.quantia",
+      "gabarito": "1200.00",
+      "previsto": "1200.02",
+      "exato": false,
+      "tolerante": false
+    },
+    {
+      "campo": "data_vencimento.data",
+      "gabarito": "2027-01-10",
+      "previsto": "2027-01-11",
+      "exato": false,
+      "tolerante": false
+    }
+  ]
+}

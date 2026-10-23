@@ -64,5 +64,5 @@ export function legacyInvoiceKey(txn) {
 
 export function unpaidSubscriptions(subs, invoice, month, year) {
   const key = invoiceKey(month, year);
-  return subs.filter(sub => sub.isActive && (!sub.startMonth || sub.startMonth <= key) && !invoice?.subscriptionPayments?.[sub.id]);
+  return subs.filter(sub => sub.billingMode !== 'ACCOUNT' && sub.isActive && (!sub.startMonth || sub.startMonth <= key) && !invoice?.subscriptionPayments?.[sub.id]);
 }

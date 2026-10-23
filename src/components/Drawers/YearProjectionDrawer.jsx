@@ -9,7 +9,7 @@ export default function YearProjectionDrawer({ isOpen, onClose, projection }) {
         <button className="btn-close" aria-label="Fechar projeção" onClick={onClose} style={{ position: 'absolute', top: '15px', right: '15px', zIndex: 10 }}>&times;</button>
         <h2 style={{ color: 'var(--accent-primary)', marginBottom: '0.5rem' }}>Projeção 12 Meses 🔮</h2>
         <p style={{ color: 'var(--text-muted)', fontSize: '0.9rem', marginBottom: '2rem' }}>
-          Simulação com o saldo atual e compromissos cadastrados. Inclui assinaturas e parcelas pendentes; não pressupõe novos salários ou compras. Parcelas atrasadas já são descontadas do saldo inicial.
+          Simulação com o saldo atual e compromissos cadastrados. Inclui contas recorrentes, assinaturas e parcelas pendentes; não pressupõe novos salários ou compras. Parcelas atrasadas já são descontadas do saldo inicial. Contas recorrentes atrasadas entram no primeiro mês.
         </p>
 
         <div className="timeline-list" style={{ overflowY: 'auto', maxHeight: 'calc(100vh - 120px)', paddingRight: '10px' }}>
@@ -31,11 +31,13 @@ export default function YearProjectionDrawer({ isOpen, onClose, projection }) {
                   </div>
                   
                   <div style={{ width: '100%', background: 'rgba(255,255,255,0.03)', padding: '0.8rem', borderRadius: '8px', border: '1px solid var(--border-color)', display: 'flex', justifyContent: 'space-between', fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                    <span>Faturas + Assinaturas:</span>
+                    <span>Faturas e assinaturas no cartão:</span>
                     <span style={{ fontWeight: 600, color: 'var(--accent-red)' }}>
                       {item.fatura_prevista > 0 ? '-' : ''} {formatBRL(item.fatura_prevista)}
                     </span>
                   </div>
+                  <p style={{ fontSize: '0.85rem' }}>Contas recorrentes: {formatBRL(item.recorrentes_previstas || 0)}</p>
+                  <p style={{ fontSize: '0.85rem' }}>Outras despesas pendentes: {formatBRL(item.despesas_previstas || 0)}</p>
                 </div>
               );
             })

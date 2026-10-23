@@ -1,5 +1,11 @@
 # Modelo de dados e migração SQLite → Firestore
 
+**Edição de recorrências — 12/10/2026:** `subscriptions.revisions` armazena condições sucessivas (`effectiveFrom`, `amount`, `frequency`, `startDate`, `endDate`), preservando os campos originais e o mapa de pagamentos. Cadastros sem versões continuam válidos. Veja [compatibilidade e cálculo por vigência](edicao-recorrencias.md).
+
+**Conciliação — 12/10/2026:** despesas importadas mantêm valor, conta, data, descrição e categoria. O vínculo altera apenas `kind`, `subscriptionId` e `dueDate`, e registra `source: IMPORT` no pagamento da recorrência. Desvincular preserva a despesa; estornar pelo histórico exclui a despesa e devolve o saldo. As regras Firestore locais foram atualizadas e precisam ser publicadas. Veja [conciliação de extratos](conciliacao-extratos.md).
+
+**Complemento de 12/10/2026:** novas contas recorrentes reutilizam `subscriptions` com `billingMode: ACCOUNT`, frequência, início, término e mapa de pagamentos por vencimento. A transação de pagamento possui `kind: RECURRING_PAYMENT`, `subscriptionId` e `dueDate`. `cancelledOn` limita vencimentos futuros após encerramento. Documentos antigos continuam cobrados na fatura e não são migrados automaticamente. Veja o [modelo detalhado e a compatibilidade](contas-recorrentes.md).
+
 [Índice](README.md) · [Regras financeiras](regras-financeiras.md) · [Pendências](pendencias.md)
 
 ## 1. Estado da migração

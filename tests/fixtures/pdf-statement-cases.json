@@ -1,0 +1,18 @@
+[
+  { "id": "summary-opening", "text": "16/10/2026 Saldo anterior 900,00", "suggest": false },
+  { "id": "summary-closing", "text": "16/10/2026 SALDO DO DIA 800,00", "suggest": false },
+  { "id": "summary-total", "text": "16/10/2026 Total de débitos 100,00", "suggest": false },
+  { "id": "merchant-total", "text": "16/10/2026 Total Atacado -100,00", "suggest": true, "date": "2026-10-16", "amount": "100.00", "direction": "EXPENSE" },
+  { "id": "merchant-saldo", "text": "16/10/2026 Pix Loja Saldo Bom -20,00", "suggest": true, "date": "2026-10-16", "amount": "20.00", "direction": "EXPENSE" },
+  { "id": "merchant-resumo", "text": "16/10/2026 Resumo Livraria -15,00", "suggest": true, "date": "2026-10-16", "amount": "15.00", "direction": "EXPENSE" },
+  { "id": "two-dates", "text": "16/10/2026 17/10/2026 Transferencia -10,00", "suggest": true, "date": "", "dateHint": "", "amount": "10.00", "direction": "EXPENSE" },
+  { "id": "balance-column", "text": "16/10/2026 Compra -10,00 790,00", "suggest": true, "date": "2026-10-16", "amount": "", "direction": "" },
+  { "id": "missing-year", "text": "31/12 Compra -10,00", "suggest": true, "date": "", "dateHint": "31/12", "amount": "10.00", "direction": "EXPENSE" },
+  { "id": "unsigned", "text": "01/01/2027 Compra 10,00", "suggest": true, "date": "2027-01-01", "amount": "10.00", "direction": "" },
+  { "id": "conflicting-sign", "text": "16/10/2026 Pix -10,00 C", "suggest": true, "date": "2026-10-16", "amount": "10.00", "direction": "" },
+  { "id": "invalid-date", "text": "31/02/2026 Compra -10,00", "suggest": true, "date": "", "amount": "10.00", "direction": "EXPENSE" },
+  { "id": "debit-suffix", "text": "16/10/2026 Compra 10,00 D", "suggest": true, "date": "2026-10-16", "amount": "10.00", "direction": "EXPENSE" },
+  { "id": "credit-suffix", "text": "16/10/2026 Deposito 10,00 C", "suggest": true, "date": "2026-10-16", "amount": "10.00", "direction": "INCOME" },
+  { "id": "iso-date", "text": "2026-10-16 Deposito +10,00", "suggest": true, "date": "2026-10-16", "amount": "10.00", "direction": "INCOME" },
+  { "id": "wrapped-description", "text": "Complemento da descricao sem data e valor", "suggest": false }
+]

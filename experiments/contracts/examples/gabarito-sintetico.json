@@ -1,0 +1,113 @@
+{
+  "protocolo_versao": "1.0.0",
+  "esquema_versao": "1.0.0",
+  "tipo_registro": "exemplo_gabarito",
+  "documento_id": "exemplo-sintetico-001",
+  "pdf_sha256": null,
+  "versao_extrator": null,
+  "anotacao": {
+    "anotador_id": "EXEMPLO-NAO-HUMANO",
+    "revisor_id": null,
+    "estado_revisao": "revisao_unica",
+    "data": "2026-10-13"
+  },
+  "processamento": {
+    "status": "nao_executado",
+    "duracao_ms": null,
+    "erros": []
+  },
+  "campos": {
+    "valor_parcela": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "1200.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 1.200,00, com vencimento todo dia 10."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Exemplo sintético de formato; não constitui anotação humana independente."
+    },
+    "numero_parcelas": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "determinado",
+        "quantidade": 12
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Serão devidas 12 parcelas mensais."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Exemplo sintético de formato; não constitui anotação humana independente."
+    },
+    "data_vencimento": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 10,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 1.200,00, com vencimento todo dia 10."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Exemplo sintético de formato; não constitui anotação humana independente."
+    },
+    "vigencia": {
+      "estado": "presente",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2027-01-01",
+        "fim": "2027-12-31",
+        "duracao_meses": 12,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A vigência é de 01/01/2027 a 31/12/2027, pelo prazo de 12 meses."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Exemplo sintético de formato; não constitui anotação humana independente."
+    },
+    "regra_reajuste": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "indice",
+        "indices": [
+          "IPCA"
+        ],
+        "percentual": null,
+        "periodicidade_meses": 12,
+        "regra": "O valor será reajustado a cada 12 meses pelo IPCA."
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O valor será reajustado a cada 12 meses pelo IPCA."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Exemplo sintético de formato; não constitui anotação humana independente."
+    }
+  }
+}

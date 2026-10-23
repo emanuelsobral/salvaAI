@@ -1,5 +1,7 @@
 # Regras financeiras do SalvaAI
 
+**Atualização de 12/10/2026:** novas contas recorrentes usam pagamento direto pela conta corrente, com frequência semanal, mensal ou anual. As descrições de assinaturas na fatura abaixo continuam válidas para cadastros antigos. Veja [calendário, estados, pagamento e projeção](contas-recorrentes.md) para as regras da nova modalidade.
+
 [Índice](README.md) · [Funções](arquitetura-salva-ai.md) · [Dados e migração](migracao-de-dados.md)
 
 ## 1. Contas e unidade monetária

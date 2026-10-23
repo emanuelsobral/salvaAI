@@ -72,17 +72,22 @@ export async function harness() {
     return new vm.SyntheticModule(Object.keys(exports), function () { for (const [name, value] of Object.entries(exports)) this.setExport(name, value); }, { context, identifier: key });
   }
   const firebase = synthetic('firebase/firestore', firestore), db = synthetic('firebase-config', { db: {} });
-  async function load(filename) {
+  function load(filename) {
     if (modules.has(filename)) return modules.get(filename);
-    const module = new vm.SourceTextModule(await readFile(filename, 'utf8'), { context, identifier: filename });
-    modules.set(filename, module);
-    await module.link(async (specifier, parent) => {
-      if (specifier === 'firebase/firestore') return firebase;
-      if (specifier === './firebase') return db;
-      const target = path.resolve(path.dirname(parent.identifier), specifier.endsWith('.js') ? specifier : specifier + '.js');
-      return load(target);
-    });
-    return module;
+    // Cache a promessa antes do primeiro I/O: dependências compartilhadas não podem
+    // receber duas instâncias nem um módulo cujo link ainda está em andamento.
+    const ready = (async () => {
+      const module = new vm.SourceTextModule(await readFile(filename, 'utf8'), { context, identifier: filename });
+      await module.link(async (specifier, parent) => {
+        if (specifier === 'firebase/firestore') return firebase;
+        if (specifier === './firebase') return db;
+        const target = path.resolve(path.dirname(parent.identifier), specifier.endsWith('.js') ? specifier : specifier + '.js');
+        return load(target);
+      });
+      return module;
+    })();
+    modules.set(filename, ready);
+    return ready;
   }
   return {
     seed: (collection, id, data, uid = 'test') => { const key = 'users/' + uid + '/' + collection + '/' + id; records.set(key, structuredClone(data)); versions.set(key, (versions.get(key) || 0) + 1); },

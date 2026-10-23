@@ -140,6 +140,14 @@ export async function deleteTransaction(uid, txnId) {
     const account = await transaction.get(accountRef);
     if (!account.exists()) throw new Error('Conta não encontrada.');
     const amount = positiveMoney(txn.amount);
+    let recurringRef, recurring;
+    if (txn.kind === 'RECURRING_PAYMENT') {
+      recurringRef = doc(db, 'users', uid, 'subscriptions', txn.subscriptionId);
+      recurring = await transaction.get(recurringRef);
+      if (!recurring.exists() || recurring.data().payments?.[txn.dueDate]?.transactionId !== realId) {
+        throw new Error('Vínculo do pagamento recorrente inconsistente. Nenhum saldo foi alterado.');
+      }
+    }
     let peerRef, peer, peerAccountRef, peerAccount, invoiceRef, invoice, paidCards = [];
     if (isTransfer(txn)) {
       peerRef = doc(txnsRef(uid), txn.peerTransactionId);
@@ -162,6 +170,11 @@ export async function deleteTransaction(uid, txnId) {
       }
     }
     if (txn.status === 'COMPLETED') transaction.update(accountRef, { balance: addMoney(account.data().balance, txn.type === 'INCOME' ? -amount : amount) });
+    if (recurring) {
+      const payments = { ...recurring.data().payments };
+      delete payments[txn.dueDate];
+      transaction.update(recurringRef, { payments });
+    }
     if (peer) {
       transaction.update(peerAccountRef, { balance: addMoney(peerAccount.data().balance, peer.data().type === 'INCOME' ? -amount : amount) });
       transaction.delete(peerRef);

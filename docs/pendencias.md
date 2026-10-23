@@ -2,7 +2,23 @@
 
 [Índice](README.md) · [Mudanças concluídas](CHANGELOG.md)
 
-Estes itens são propostas, não funcionalidades implementadas. A ordem prioriza integridade dos dados e preparação para uso real.
+Atualizado em **13/10/2026**. O acompanhamento está no **[Kanban do SalvaAI](kanban.md)**, com prioridades, dependências, critérios de conclusão e movimentações. Use esse quadro como fonte de status.
+
+**E03 — anotação humana pendente, com Alto para apoio técnico.** O [experimento](../experiments/contracts/README.md) tem protótipo local 0.1.0, piloto original de 26 PDFs e [dois contratos institucionais preenchidos](../experiments/contracts/coleta-preenchidos.md) em catálogo complementar de desenvolvimento. Começar pelo `pub-alu-03`; os 28 formulários continuam vazios e os dez documentos de teste originais permanecem reservados. A cobertura inicial do extrator é baixa e a precisão não foi medida. Faltam anotar/revisar o gabarito e congelar versões antes da E05. E02 continua em andamento (Médio), sobretudo para obter contratos pessoais preenchidos. A agenda K01 permanece pronta para a sequência. Backup, testes, regras do banco e publicação estão em K02–K07.
+
+## Atualização das pendências
+
+- CSV/OFX, recorrências, conciliação de extratos e edição por data já estão implementados localmente. A conciliação dos dados antigos sem vínculos continua em K28.
+- As novas recorrências preservam condições e pagamentos. O histórico das assinaturas antigas do cartão tem cartão próprio, K15.
+- IA está desativada. Migração do SDK Gemini e novas chamadas de chat/recibos deixaram de ser próximos passos.
+- Git e configuração Netlify já existem. Preparação/publicação das alterações recentes continuam pendentes; integração contínua está em K24.
+- Mobile responsivo já existe. PWA, uso offline e notificações com aplicativo fechado são entregas futuras distintas.
+
+Concluído no código local não significa publicado. Consulte as evidências no [Kanban](kanban.md) e no [changelog](CHANGELOG.md).
+
+## Lista histórica — revisão de 13/09/2026
+
+O conteúdo abaixo é preservado como histórico e **não representa o status atual**. Os itens ainda aplicáveis foram incorporados ao Kanban; OFX e IA, por exemplo, tiveram seu estado alterado desde esta revisão.
 
 ## Prioridade 1 — Dados e publicação
 

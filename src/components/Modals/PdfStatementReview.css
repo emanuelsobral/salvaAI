@@ -1,0 +1,26 @@
+.pdf-review { margin: 1rem 0; min-width: 0; }
+.pdf-review p { margin: .7rem 0; }
+.pdf-review fieldset { border: 0; padding: 0; min-width: 0; }
+.pdf-review legend { font-weight: 600; margin: .8rem 0; }
+.pdf-page { overflow: auto; max-height: 450px; margin: .75rem 0; background: white; }
+.pdf-page canvas { display: block; max-width: 100%; height: auto; }
+.pdf-page-zoomed canvas { max-width: none; }
+.pdf-drafts, .pdf-source-lines { max-height: 550px; overflow: auto; }
+.pdf-draft { padding: .8rem; border: 1px solid var(--border-color); border-radius: 8px; margin: .7rem 0; }
+.pdf-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .7rem; }
+.pdf-fields label, .pdf-year label { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
+.pdf-review input:not([type=checkbox]), .pdf-review select { width: 100%; min-width: 0; padding: .6rem; background: var(--bg-card); color: var(--text-main); border: 1px solid var(--border-color); border-radius: 6px; }
+.pdf-review input[type=checkbox] { width: auto; accent-color: var(--accent-primary); }
+.pdf-source { white-space: pre-wrap; overflow-wrap: anywhere; font-size: .85rem; color: var(--text-muted); }
+.pdf-confirm { display: block; margin: 1rem 0; }
+.pdf-review details { margin: 1rem 0; }
+.pdf-review summary { cursor: pointer; }
+.pdf-year { display: flex; flex-wrap: wrap; align-items: end; gap: .5rem; }
+.pdf-year input { max-width: 100px; }
+.pdf-error { color: var(--accent-red); white-space: pre-line; }
+@media (max-width: 600px) {
+  .pdf-review input:not([type=checkbox]), .pdf-review select { min-height: 44px; font-size: 16px; }
+  .pdf-draft > label, .pdf-confirm { display: flex; align-items: flex-start; gap: .5rem; min-height: 44px; padding: .5rem 0; }
+  .pdf-review input[type=checkbox] { width: 20px; height: 20px; flex-shrink: 0; margin-top: .15rem; }
+  .pdf-review button { min-height: 44px; white-space: normal; }
+}

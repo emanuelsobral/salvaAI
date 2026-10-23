@@ -1,0 +1,5 @@
+# Podem conter contratos e dados pessoais; exemplos sintéticos ficam em examples/.
+data/
+runs/
+__pycache__/
+.venv/

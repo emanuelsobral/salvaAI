@@ -1,0 +1,2 @@
+# Dependência somente da coleta/inspeção local; não integra a aplicação web.
+pypdf==6.10.0

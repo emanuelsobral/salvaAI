@@ -1,0 +1,3343 @@
+{
+  "versao": "piloto-1.0.0",
+  "protocolo": "1.0.0",
+  "congelado_em": "2026-10-13",
+  "status": "piloto_inicial_ampliacao_pendente",
+  "meta_documentos": 40,
+  "meta_por_categoria": 10,
+  "observacao": "Triagem anterior à implementação. Não contém gabarito, saídas do extrator ou métricas de acerto. Teste reservado para avaliação futura.",
+  "escopo_revisao": "Triagem documental: primeira página renderizada de cada PDF, camada de texto de todas as páginas, comparação de semelhança textual. Não é gabarito nem revisão integral das cláusulas.",
+  "documentos": [
+    {
+      "id": "alu-01",
+      "categoria": "aluguel",
+      "titulo": "AGEHAB — modelo de locação residencial",
+      "familia": "agehab-locacao",
+      "url": "https://goias.gov.br/agehab/wp-content/uploads/sites/18/2022/03/contrato.de_.locacao.006-7a4.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:42.063141-03:00",
+      "url_origem": "https://goias.gov.br/agehab/wp-content/uploads/sites/18/2022/03/contrato.de_.locacao.006-7a4.pdf",
+      "url_final": "https://goias.gov.br/agehab/wp-content/uploads/sites/18/2022/03/contrato.de_.locacao.006-7a4.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "cabb00d319616e0185e1ba1d73f8e97dcbdbd983edb5a7fd9622d72382d9eb57",
+      "bytes": 430884,
+      "baixado_em": "2026-10-13T09:30:42.063141-03:00",
+      "arquivo": "data/originais/alu-01.pdf",
+      "criptografado": false,
+      "paginas": 2,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1781,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 1602,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "alu-02",
+      "categoria": "aluguel",
+      "titulo": "Rodovalho — modelo de locação",
+      "familia": "rodovalho-locacao",
+      "url": "https://rodovalhoempreendimentos.com.br/img/modelo-contrato-locacao.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:42.406820-03:00",
+      "url_origem": "https://rodovalhoempreendimentos.com.br/img/modelo-contrato-locacao.pdf",
+      "url_final": "https://rodovalhoempreendimentos.com.br/img/modelo-contrato-locacao.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "0799f89b49c683f50edb31c4f06323c6cbc261bd577732ae0e188a1200984102",
+      "bytes": 812120,
+      "baixado_em": "2026-10-13T09:30:42.406820-03:00",
+      "arquivo": "data/originais/alu-02.pdf",
+      "criptografado": false,
+      "paginas": 7,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1864,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3807,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3710,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3835,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 3999,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 1531,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 1787,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "alu-03",
+      "categoria": "aluguel",
+      "titulo": "Wondershare — modelo de aluguel",
+      "familia": "wondershare-locacao",
+      "url": "https://pdf.wondershare.com.br/modelo/contrato/aluguel_para_imprimir.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:42.554946-03:00",
+      "url_origem": "https://pdf.wondershare.com.br/modelo/contrato/aluguel_para_imprimir.pdf",
+      "url_final": "https://pdf.wondershare.com.br/modelo/contrato/aluguel_para_imprimir.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "790d41c61877bdd74e7c6112bebcd5af94db9dd8efeecd32b6b6042a2025af47",
+      "bytes": 32169,
+      "baixado_em": "2026-10-13T09:30:42.554946-03:00",
+      "arquivo": "data/originais/alu-03.pdf",
+      "criptografado": false,
+      "paginas": 2,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2979,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 4052,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "alu-04",
+      "categoria": "aluguel",
+      "titulo": "PontoXP — modelo de locação residencial",
+      "familia": "pontoxp-locacao",
+      "url": "https://www.pontoxp.com/wp-content/uploads/2013/03/MODELO-DE-CONTRATO-DE-ALUGUEL-RESIDENCIAL.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:43.233078-03:00",
+      "url_origem": "https://www.pontoxp.com/wp-content/uploads/2013/03/MODELO-DE-CONTRATO-DE-ALUGUEL-RESIDENCIAL.pdf",
+      "url_final": "https://www.pontoxp.com/wp-content/uploads/2013/03/MODELO-DE-CONTRATO-DE-ALUGUEL-RESIDENCIAL.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "c47f08bdf399040398f0f17776990ecdddaa9ecf3bff959f6c7d364792a8186f",
+      "bytes": 24664,
+      "baixado_em": "2026-10-13T09:30:43.233078-03:00",
+      "arquivo": "data/originais/alu-04.pdf",
+      "criptografado": false,
+      "paginas": 4,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1545,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 2354,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2509,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 1015,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "alu-05",
+      "categoria": "aluguel",
+      "titulo": "Cora — modelo de contrato de locação",
+      "familia": "cora-locacao",
+      "url": "https://materiais.cora.com.br/wp-content/uploads/2022/08/Modelo-de-Contrato-de-Locacao-Cora.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.168186-03:00",
+      "status_coleta": "falhou",
+      "erro": {
+        "tipo": "HTTPError",
+        "mensagem": "HTTP Error 404: Not Found"
+      },
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "divisao": null,
+      "estrato": "falha_coleta"
+    },
+    {
+      "id": "edu-01",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Adventista — contrato educacional 2026",
+      "familia": "adventista-educacional",
+      "url": "https://s.educacaoadventista.org.br/escola/arquivos/TDLFbJJU9BKA5qB6hoOHW5RUGBa7eoHFdZpDxDvX.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:43.309004-03:00",
+      "url_origem": "https://s.educacaoadventista.org.br/escola/arquivos/TDLFbJJU9BKA5qB6hoOHW5RUGBa7eoHFdZpDxDvX.pdf",
+      "url_final": "https://s.educacaoadventista.org.br/escola/arquivos/TDLFbJJU9BKA5qB6hoOHW5RUGBa7eoHFdZpDxDvX.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "07990db835e307040c0502b53a5f5e3edc917839f798734e8094e9625d46aac1",
+      "bytes": 181758,
+      "baixado_em": "2026-10-13T09:30:43.309004-03:00",
+      "arquivo": "data/originais/edu-01.pdf",
+      "criptografado": false,
+      "paginas": 16,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1991,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3044,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2903,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2920,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2628,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2761,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3021,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2786,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2911,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2823,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2868,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2742,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2937,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 2734,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2673,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 93,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-02",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Anchieta Maceió — matrícula 2026",
+      "familia": "anchieta-educacional",
+      "url": "https://www.anchietamaceio.com.br/downloads/contrato-de-matricula-e-prestacao-de-servicos-educacionais-2026.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:44.446285-03:00",
+      "url_origem": "https://www.anchietamaceio.com.br/downloads/contrato-de-matricula-e-prestacao-de-servicos-educacionais-2026.pdf",
+      "url_final": "https://www.anchietamaceio.com.br/downloads/contrato-de-matricula-e-prestacao-de-servicos-educacionais-2026.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "8d0ef91d19452152a0aa7c667171cdbc4a35ed5b0e4cf47fade7679e9cfa6d9a",
+      "bytes": 248779,
+      "baixado_em": "2026-10-13T09:30:44.446285-03:00",
+      "arquivo": "data/originais/edu-02.pdf",
+      "criptografado": false,
+      "paginas": 3,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3540,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 2956,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 1702,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "edu-03",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Santa Teresinha — serviços escolares 2026",
+      "familia": "santa-teresinha-educacional",
+      "url": "https://matriculas.colegiosantateresinha.com.br/downloads/contrato.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:44.681678-03:00",
+      "url_origem": "https://matriculas.colegiosantateresinha.com.br/downloads/contrato.pdf",
+      "url_final": "https://matriculas.colegiosantateresinha.com.br/downloads/contrato.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "7ecb6e7ac07ff529ca7cdd565dce52f78df69db353c87e4ff122436483519a62",
+      "bytes": 538428,
+      "baixado_em": "2026-10-13T09:30:44.681678-03:00",
+      "arquivo": "data/originais/edu-03.pdf",
+      "criptografado": false,
+      "paginas": 9,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2628,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 4142,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3321,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 4296,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 4185,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 4134,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 4083,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3671,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 1884,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "edu-04",
+      "categoria": "mensalidade_escolar",
+      "titulo": "FWB — serviços educacionais 2021/2",
+      "familia": "fwb-educacional",
+      "url": "https://fwb.edu.br/documentos/2021/2_2021/contrato_prestacao_servicos_educacionais_2_2021.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:44.824726-03:00",
+      "url_origem": "https://fwb.edu.br/documentos/2021/2_2021/contrato_prestacao_servicos_educacionais_2_2021.pdf",
+      "url_final": "https://fwb.edu.br/documentos/2021/2_2021/contrato_prestacao_servicos_educacionais_2_2021.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "0a8e0dd3b298a9d9cc394a7eefb4e36d498262c363216cfa0cad538305f304d6",
+      "bytes": 309849,
+      "baixado_em": "2026-10-13T09:30:44.824726-03:00",
+      "arquivo": "data/originais/edu-04.pdf",
+      "criptografado": false,
+      "paginas": 4,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2538,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 4359,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 4356,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3530,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-05",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Dom Alberto — graduação 2022",
+      "familia": "faveni-educacional",
+      "url": "https://domalberto.edu.br/wp-content/uploads/sites/24/2022/01/CONTRATO-GRADUACAO-E-SEGUNDA-GRADUACAO-01-2022-.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:45.472838-03:00",
+      "url_origem": "https://domalberto.edu.br/wp-content/uploads/sites/24/2022/01/CONTRATO-GRADUACAO-E-SEGUNDA-GRADUACAO-01-2022-.pdf",
+      "url_final": "https://domalberto.edu.br/wp-content/uploads/sites/24/2022/01/CONTRATO-GRADUACAO-E-SEGUNDA-GRADUACAO-01-2022-.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "06ae106802f4f70df137f6593c928876e93717d32422a38d282582ac348f4f55",
+      "bytes": 1903840,
+      "baixado_em": "2026-10-13T09:30:45.472838-03:00",
+      "arquivo": "data/originais/edu-05.pdf",
+      "criptografado": false,
+      "paginas": 21,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2148,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3245,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3512,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3159,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2953,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2520,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3326,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2876,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2821,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2933,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2808,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 3164,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2798,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 2735,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 1019,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 44,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 1588,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 1094,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 1858,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 1792,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 1885,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-06",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Colônia do Saber — serviços educacionais",
+      "familia": "colonia-saber-educacional",
+      "url": "https://coloniadosaber.com/site/files/CONTRATO_PRESTACAO_DE_SERVICOS_EDUCACIONAIS_2017_-_9_meses.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:45.493867-03:00",
+      "url_origem": "https://coloniadosaber.com/site/files/CONTRATO_PRESTACAO_DE_SERVICOS_EDUCACIONAIS_2017_-_9_meses.pdf",
+      "url_final": "https://coloniadosaber.com/site/files/CONTRATO_PRESTACAO_DE_SERVICOS_EDUCACIONAIS_2017_-_9_meses.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "dca64faf68451f8304f9f387ca3b61ce83c85bf36ff69784d45931cbd660a752",
+      "bytes": 241636,
+      "baixado_em": "2026-10-13T09:30:45.493867-03:00",
+      "arquivo": "data/originais/edu-06.pdf",
+      "criptografado": false,
+      "paginas": 2,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 5972,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 5306,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-07",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Instituto Fratelli — serviços educacionais",
+      "familia": "fratelli-educacional",
+      "url": "https://institutofratelli.com/wp-content/uploads/2023/10/CONTRATO-DE-PRESTACAO-DE-SERVICOS-EDUCACIONAIS-Instituto-Fratelli-2023.2.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:46.043428-03:00",
+      "url_origem": "https://institutofratelli.com/wp-content/uploads/2023/10/CONTRATO-DE-PRESTACAO-DE-SERVICOS-EDUCACIONAIS-Instituto-Fratelli-2023.2.pdf",
+      "url_final": "https://institutofratelli.com/wp-content/uploads/2023/10/CONTRATO-DE-PRESTACAO-DE-SERVICOS-EDUCACIONAIS-Instituto-Fratelli-2023.2.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "34f02df1850c6fc12b4f963d5f17851771eb241fae9930d5e06328d171eb6325",
+      "bytes": 109335,
+      "baixado_em": "2026-10-13T09:30:46.043428-03:00",
+      "arquivo": "data/originais/edu-07.pdf",
+      "criptografado": false,
+      "paginas": 7,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1520,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 1644,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 1983,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 1732,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 1685,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 1565,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 1047,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-08",
+      "categoria": "mensalidade_escolar",
+      "titulo": "Silva Abreu — anual fundamental 2021",
+      "familia": "silva-abreu-educacional",
+      "url": "https://www.colegiosilvaabreu.com/pdf/contratos/contrato-anual-2021-fundamental1.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:47.020726-03:00",
+      "url_origem": "https://www.colegiosilvaabreu.com/pdf/contratos/contrato-anual-2021-fundamental1.pdf",
+      "url_final": "https://www.colegiosilvaabreu.com/pdf/contratos/contrato-anual-2021-fundamental1.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "6d90ab5cd95d1aad67da00bdd3b4dbd99ca93bef0ab0bbf4a4012df14b8e14da",
+      "bytes": 557288,
+      "baixado_em": "2026-10-13T09:30:47.020726-03:00",
+      "arquivo": "data/originais/edu-08.pdf",
+      "criptografado": false,
+      "paginas": 17,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 2280,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 2043,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2301,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2305,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2336,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2245,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 2234,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2089,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2344,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2237,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2409,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2005,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2630,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 1943,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2311,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 2366,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 1062,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "edu-09",
+      "categoria": "mensalidade_escolar",
+      "titulo": "UNIARP — Colégio de Aplicação 2025",
+      "familia": "uniarp-educacional",
+      "url": "https://colegiodeaplicacao.uniarp.edu.br/wp-content/uploads/2024/10/CONTRATO-CA-2025-PRESTACAO-DE-SERVICOS-EDUCACIONAIS.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.169187-03:00",
+      "url_origem": "https://colegiodeaplicacao.uniarp.edu.br/wp-content/uploads/2024/10/CONTRATO-CA-2025-PRESTACAO-DE-SERVICOS-EDUCACIONAIS.pdf",
+      "url_final": "https://colegiodeaplicacao.uniarp.edu.br/wp-content/uploads/2024/10/CONTRATO-CA-2025-PRESTACAO-DE-SERVICOS-EDUCACIONAIS.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "066567e3aa1e7fb2a77250adc686195f74b206098f5bb4cbafb42675417d2aea",
+      "bytes": 209235,
+      "baixado_em": "2026-10-13T09:39:13.169187-03:00",
+      "arquivo": "data/originais/edu-09.pdf",
+      "criptografado": false,
+      "paginas": 5,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3455,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3968,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 4456,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3802,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 893,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "edu-10",
+      "categoria": "mensalidade_escolar",
+      "titulo": "AEB — prestação de serviços educacionais",
+      "familia": "aeb-educacional",
+      "url": "https://aeb.edu.br/aeb/wp-content/uploads/2025/07/contrato-de-prestacao-de-servico.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.170187-03:00",
+      "url_origem": "https://aeb.edu.br/aeb/wp-content/uploads/2025/07/contrato-de-prestacao-de-servico.pdf",
+      "url_final": "https://aeb.edu.br/aeb/wp-content/uploads/2025/07/contrato-de-prestacao-de-servico.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "e1589171a0f60607c007d5eebd52ac22da97f7676bed1cf394e3a3ae15b0f916",
+      "bytes": 930301,
+      "baixado_em": "2026-10-13T09:39:13.170187-03:00",
+      "arquivo": "data/originais/edu-10.pdf",
+      "criptografado": false,
+      "paginas": 11,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1850,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3498,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3372,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3657,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 3351,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 3960,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3722,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3700,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 3139,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 3735,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 795,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "fin-01",
+      "categoria": "financiamento",
+      "titulo": "Itaú — financiamento imobiliário taxa de mercado",
+      "familia": "itau-imobiliario",
+      "url": "https://ww3.itau.com.br/imobline/pre/pdf/TaxadeMercado.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:41.842823-03:00",
+      "url_origem": "https://ww3.itau.com.br/imobline/pre/pdf/TaxadeMercado.pdf",
+      "url_final": "https://ww3.itau.com.br/imobline/pre/pdf/TaxadeMercado.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "04cd66aa15e643eb6957328e72ba3b453dabac714a1290298c6e7d3da3e6e44d",
+      "bytes": 137128,
+      "baixado_em": "2026-10-13T09:30:41.842823-03:00",
+      "arquivo": "data/originais/fin-01.pdf",
+      "criptografado": false,
+      "paginas": 17,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1713,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 1985,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 1773,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 4962,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 4894,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 4962,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 4338,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 4314,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 4360,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 4179,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 4172,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 4874,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 4547,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 5558,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 5268,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 5667,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 2043,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "modelo_com_lacunas",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "fin-02",
+      "categoria": "financiamento",
+      "titulo": "Itaú — financiamento de bens C2",
+      "familia": "itau-ccb-veiculos",
+      "url": "https://www.itaucred.com.br/itaucred/pdf/itau/Condicoes_Gerais_-_Financiamento_itc.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:41.843826-03:00",
+      "status_coleta": "falhou",
+      "erro": {
+        "tipo": "HTTPError",
+        "mensagem": "HTTP Error 403: Forbidden"
+      },
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "divisao": null,
+      "estrato": "falha_coleta"
+    },
+    {
+      "id": "fin-03",
+      "categoria": "financiamento",
+      "titulo": "Santander — condições gerais CCB",
+      "familia": "santander-ccb",
+      "url": "https://www.santander.com.br/hotsite/santanderfinanciamentos/pdf/Condicoes_Gerais_Contrato.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:41.843826-03:00",
+      "status_coleta": "falhou",
+      "erro": {
+        "tipo": "HTTPError",
+        "mensagem": "HTTP Error 403: Forbidden"
+      },
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "divisao": null,
+      "estrato": "falha_coleta"
+    },
+    {
+      "id": "fin-04",
+      "categoria": "financiamento",
+      "titulo": "Volvo — CDC",
+      "familia": "volvo-ccb",
+      "url": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/compliance/Condicoes-Gerais-da-Cedula-de-Credito-Bancario-CDC-Sob-Registro-n-1.201.667.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:41.844825-03:00",
+      "url_origem": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/compliance/Condicoes-Gerais-da-Cedula-de-Credito-Bancario-CDC-Sob-Registro-n-1.201.667.pdf",
+      "url_final": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/compliance/Condicoes-Gerais-da-Cedula-de-Credito-Bancario-CDC-Sob-Registro-n-1.201.667.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "00e4409e4c3484ea09c3930e87240e82bf5cb511068b54d3e556cf58549c5de0",
+      "bytes": 351417,
+      "baixado_em": "2026-10-13T09:30:41.844825-03:00",
+      "arquivo": "data/originais/fin-04.pdf",
+      "criptografado": false,
+      "paginas": 20,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3583,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3720,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3546,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3861,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 3686,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 4268,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3931,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3295,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 4175,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 3379,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 3497,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 4717,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 3941,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 4130,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 3516,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 3635,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 3615,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 3648,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 3871,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 1330,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "fin-05",
+      "categoria": "financiamento",
+      "titulo": "Volvo — abertura de crédito",
+      "familia": "volvo-ccb",
+      "url": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/splash/sob-registro-n-1.180.196.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:42.049633-03:00",
+      "url_origem": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/splash/sob-registro-n-1.180.196.pdf",
+      "url_final": "https://www.volvofinancialservices.com/content/dam/volvo-financial-services/markets/brazil/splash/sob-registro-n-1.180.196.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "62ef0666aca54f064c1d63a9a3286f9612459660a3f1aaf6dcd891b5205b9f2b",
+      "bytes": 601632,
+      "baixado_em": "2026-10-13T09:30:42.049633-03:00",
+      "arquivo": "data/originais/fin-05.pdf",
+      "criptografado": false,
+      "paginas": 37,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3601,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3298,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 3269,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3146,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 3077,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 3396,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 3090,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3409,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 3308,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 3829,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 3619,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 3609,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 3391,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 3952,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 3526,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 3760,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 3883,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 3612,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 3946,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 3445,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 3514,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 4010,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 3697,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 3386,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 3475,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 3461,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 3616,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 3516,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 3682,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 3573,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 3155,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 3652,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 3700,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 3723,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 3429,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 3516,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 2232,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "complementar",
+      "observacao": "Financiamento BNDES FINAME; analisar separadamente do crédito pessoal.",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "fin-06",
+      "categoria": "financiamento",
+      "titulo": "Porto Seguro — cédula de crédito bancário",
+      "familia": "porto-ccb",
+      "url": "https://www.portoseguro.com.br/NovoInstitucional/static_files/CGs/auto_credito_porto_seguro/cg_cedula_de_credito_bancario.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.168186-03:00",
+      "url_origem": "https://www.portoseguro.com.br/NovoInstitucional/static_files/CGs/auto_credito_porto_seguro/cg_cedula_de_credito_bancario.pdf",
+      "url_final": "https://www.portoseguro.com.br/NovoInstitucional/static_files/CGs/auto_credito_porto_seguro/cg_cedula_de_credito_bancario.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "94bff9e6c04027de8f222960de3fe7491b467e4d3ea020b887d1e9230f0213ad",
+      "bytes": 116661,
+      "baixado_em": "2026-10-13T09:39:13.168186-03:00",
+      "arquivo": "data/originais/fin-06.pdf",
+      "criptografado": false,
+      "paginas": 5,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 4329,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 4278,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 4898,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 4765,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 5566,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "sau-01",
+      "categoria": "plano_saude",
+      "titulo": "Norden — Plano A Copart",
+      "familia": "norden-plano-a",
+      "url": "https://meunorden.com/wp-content/uploads/Contrato-PlanoA-Copart.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:47.496035-03:00",
+      "url_origem": "https://meunorden.com/wp-content/uploads/Contrato-PlanoA-Copart.pdf",
+      "url_final": "https://meunorden.com/wp-content/uploads/Contrato-PlanoA-Copart.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "cd66c21c800fc669b6e035380caf5dcfc823313544f93d1171989e32e608ce93",
+      "bytes": 811374,
+      "baixado_em": "2026-10-13T09:30:47.496035-03:00",
+      "arquivo": "data/originais/sau-01.pdf",
+      "criptografado": false,
+      "paginas": 33,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1027,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 1636,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 1943,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2200,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2420,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2336,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 2081,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2406,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 1847,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2223,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2315,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2140,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2148,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 1958,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2426,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 2072,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 2288,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 2329,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 2354,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 1978,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 2238,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 2167,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 2260,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 2307,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 2427,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 2211,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 1072,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 1869,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 1919,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 972,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 815,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 1910,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 1318,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "sau-02",
+      "categoria": "plano_saude",
+      "titulo": "NotreLife — ambulatorial SP",
+      "familia": "notrelife-individual",
+      "url": "https://www2.gndi.com.br/documents/20182/247210781/00%2BNDI%2BSP%2B-NOTRELIFE%2BAMB%2BSP%2BCP%2B-%2B495367233%2B-%2Bnov.24.pdf/dd343f2f-07e5-4e60-4724-8d083357617c",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:47.560357-03:00",
+      "url_origem": "https://www2.gndi.com.br/documents/20182/247210781/00%2BNDI%2BSP%2B-NOTRELIFE%2BAMB%2BSP%2BCP%2B-%2B495367233%2B-%2Bnov.24.pdf/dd343f2f-07e5-4e60-4724-8d083357617c",
+      "url_final": "https://www2.gndi.com.br/documents/20182/247210781/00%2BNDI%2BSP%2B-NOTRELIFE%2BAMB%2BSP%2BCP%2B-%2B495367233%2B-%2Bnov.24.pdf/dd343f2f-07e5-4e60-4724-8d083357617c",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "50596eda65219ab8d0c507975e1e3c897984f7835389195535b0dd1f84f59879",
+      "bytes": 414414,
+      "baixado_em": "2026-10-13T09:30:47.560357-03:00",
+      "arquivo": "data/originais/sau-02.pdf",
+      "criptografado": false,
+      "paginas": 41,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 3044,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2190,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2335,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2218,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2599,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 2304,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 1060,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 3003,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2467,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2555,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2819,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2633,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 2483,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2320,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 2813,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 2309,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 2305,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 2652,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 2738,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 2883,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 2859,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 2901,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 2906,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 2662,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 2536,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 2348,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 2434,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 2799,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 2795,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 2525,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 3011,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 2797,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 2814,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 2728,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 2048,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 2680,
+          "erro": null
+        },
+        {
+          "pagina": 38,
+          "caracteres": 3564,
+          "erro": null
+        },
+        {
+          "pagina": 39,
+          "caracteres": 3119,
+          "erro": null
+        },
+        {
+          "pagina": 40,
+          "caracteres": 2916,
+          "erro": null
+        },
+        {
+          "pagina": 41,
+          "caracteres": 1378,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "misto_ou_paginas_vazias",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "observacao": "Página 1 com capa em imagem; demais páginas com camada de texto. Não presumir texto contratual perdido apenas pela capa.",
+      "divisao": "teste"
+    },
+    {
+      "id": "sau-03",
+      "categoria": "plano_saude",
+      "titulo": "NotreLife — apartamento RJ",
+      "familia": "notrelife-individual",
+      "url": "https://www2.gndi.com.br/documents/20182/240897362/NOTRELIFE%2B50%2B%2BAPTO%2BRJ%2BCP%2B-%2B495269233%2B-%2Bv.%2B07.2024.pdf/82219bb5-493e-83de-7f94-b1089af0f147",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:49.516877-03:00",
+      "url_origem": "https://www2.gndi.com.br/documents/20182/240897362/NOTRELIFE%2B50%2B%2BAPTO%2BRJ%2BCP%2B-%2B495269233%2B-%2Bv.%2B07.2024.pdf/82219bb5-493e-83de-7f94-b1089af0f147",
+      "url_final": "https://www2.gndi.com.br/documents/20182/240897362/NOTRELIFE%2B50%2B%2BAPTO%2BRJ%2BCP%2B-%2B495269233%2B-%2Bv.%2B07.2024.pdf/82219bb5-493e-83de-7f94-b1089af0f147",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "dc73c179ba8c6439e853fac239ca2e3b725af652a84244c90c2f2ff5b4fcad56",
+      "bytes": 249146,
+      "baixado_em": "2026-10-13T09:30:49.516877-03:00",
+      "arquivo": "data/originais/sau-03.pdf",
+      "criptografado": false,
+      "paginas": 40,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 3075,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 2226,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2349,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2230,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2589,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2397,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 1663,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 3073,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2306,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 3048,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2960,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2632,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2855,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 2582,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2665,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 2552,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 2291,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 2404,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 2695,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 3126,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 2993,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 2978,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 2738,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 2894,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 2406,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 2193,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 2781,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 2758,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 2839,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 2769,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 2704,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 2616,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 2646,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 2851,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 2860,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 2152,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 3137,
+          "erro": null
+        },
+        {
+          "pagina": 38,
+          "caracteres": 3543,
+          "erro": null
+        },
+        {
+          "pagina": 39,
+          "caracteres": 2928,
+          "erro": null
+        },
+        {
+          "pagina": 40,
+          "caracteres": 2461,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "sau-04",
+      "categoria": "plano_saude",
+      "titulo": "Santa Saúde — individual executivo",
+      "familia": "santa-saude-individual",
+      "url": "https://planosantasaude.com.br/wp-content/uploads/2021/08/473.884.15-5-Contrato-Individual-Executivo-com-Obstetricia-Odontogico.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:49.782869-03:00",
+      "url_origem": "https://planosantasaude.com.br/wp-content/uploads/2021/08/473.884.15-5-Contrato-Individual-Executivo-com-Obstetricia-Odontogico.pdf",
+      "url_final": "https://planosantasaude.com.br/wp-content/uploads/2021/08/473.884.15-5-Contrato-Individual-Executivo-com-Obstetricia-Odontogico.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "3f663343c929fa2769c9993b222dce6c12b08284add925db56485f261418eed6",
+      "bytes": 7361532,
+      "baixado_em": "2026-10-13T09:30:49.782869-03:00",
+      "arquivo": "data/originais/sau-04.pdf",
+      "criptografado": false,
+      "paginas": 37,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 0,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "sem_texto_util",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "sau-05",
+      "categoria": "plano_saude",
+      "titulo": "Santa Saúde — individual preferencial",
+      "familia": "santa-saude-individual",
+      "url": "https://planosantasaude.com.br/wp-content/uploads/2021/08/458.384.08-1-Contrato-Individual-Preferencial-com-Obsteticia1.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:51.080994-03:00",
+      "url_origem": "https://planosantasaude.com.br/wp-content/uploads/2021/08/458.384.08-1-Contrato-Individual-Preferencial-com-Obsteticia1.pdf",
+      "url_final": "https://planosantasaude.com.br/wp-content/uploads/2021/08/458.384.08-1-Contrato-Individual-Preferencial-com-Obsteticia1.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "3daaba02839b5551715a0d7c7cb3853eefb915501710a0f8f78e07e7b44a240b",
+      "bytes": 9496136,
+      "baixado_em": "2026-10-13T09:30:51.080994-03:00",
+      "arquivo": "data/originais/sau-05.pdf",
+      "criptografado": false,
+      "paginas": 37,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 0,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "sem_texto_util",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "sau-06",
+      "categoria": "plano_saude",
+      "titulo": "CAA-MG — Unipart Nacional 2022",
+      "familia": "unimed-bh-unipart",
+      "url": "https://caamg.org.br/oab-caa-saude/pdf/contratounipartnacional2apartamento_2022.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:52.805612-03:00",
+      "url_origem": "https://caamg.org.br/oab-caa-saude/pdf/contratounipartnacional2apartamento_2022.pdf",
+      "url_final": "https://caamg.org.br/oab-caa-saude/pdf/contratounipartnacional2apartamento_2022.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "da6e947f89540aceed1513e26b1dedcbaae7005ac0406409c758a64c5aa3772f",
+      "bytes": 6050471,
+      "baixado_em": "2026-10-13T09:30:52.805612-03:00",
+      "arquivo": "data/originais/sau-06.pdf",
+      "criptografado": false,
+      "paginas": 25,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 0,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 0,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "sem_texto_util",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "condicoes_gerais",
+      "estrato": "principal",
+      "divisao": "teste"
+    },
+    {
+      "id": "sau-07",
+      "categoria": "plano_saude",
+      "titulo": "SCPREV — Unimed nacional referência",
+      "familia": "unimed-scprev",
+      "url": "https://scprev.com.br/wp-content/uploads/2023/12/Contrato-n-9085101-UNIMED.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:54.980613-03:00",
+      "url_origem": "https://scprev.com.br/wp-content/uploads/2023/12/Contrato-n-9085101-UNIMED.pdf",
+      "url_final": "https://scprev.com.br/wp-content/uploads/2023/12/Contrato-n-9085101-UNIMED.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "e721ed5cfacd0620b35221d7d7027e9b0e2997af982a1dda29c4ad260de0916c",
+      "bytes": 2344252,
+      "baixado_em": "2026-10-13T09:30:54.980613-03:00",
+      "arquivo": "data/originais/sau-07.pdf",
+      "criptografado": false,
+      "paginas": 56,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 4830,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 4698,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 4659,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 3197,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2354,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 3140,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 1570,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2155,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2139,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2782,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 3018,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 3206,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 3144,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 3235,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 3492,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 3284,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 3013,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 3453,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 3415,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 2917,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 2595,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 2825,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 2989,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 2939,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 3064,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 3525,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 3577,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 3416,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 3309,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 3260,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 3127,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 3747,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 3586,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 3693,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 2885,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 2794,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 2940,
+          "erro": null
+        },
+        {
+          "pagina": 38,
+          "caracteres": 2520,
+          "erro": null
+        },
+        {
+          "pagina": 39,
+          "caracteres": 2521,
+          "erro": null
+        },
+        {
+          "pagina": 40,
+          "caracteres": 3616,
+          "erro": null
+        },
+        {
+          "pagina": 41,
+          "caracteres": 3117,
+          "erro": null
+        },
+        {
+          "pagina": 42,
+          "caracteres": 2852,
+          "erro": null
+        },
+        {
+          "pagina": 43,
+          "caracteres": 3741,
+          "erro": null
+        },
+        {
+          "pagina": 44,
+          "caracteres": 3391,
+          "erro": null
+        },
+        {
+          "pagina": 45,
+          "caracteres": 3043,
+          "erro": null
+        },
+        {
+          "pagina": 46,
+          "caracteres": 3659,
+          "erro": null
+        },
+        {
+          "pagina": 47,
+          "caracteres": 2799,
+          "erro": null
+        },
+        {
+          "pagina": 48,
+          "caracteres": 609,
+          "erro": null
+        },
+        {
+          "pagina": 49,
+          "caracteres": 2514,
+          "erro": null
+        },
+        {
+          "pagina": 50,
+          "caracteres": 2695,
+          "erro": null
+        },
+        {
+          "pagina": 51,
+          "caracteres": 4202,
+          "erro": null
+        },
+        {
+          "pagina": 52,
+          "caracteres": 5676,
+          "erro": null
+        },
+        {
+          "pagina": 53,
+          "caracteres": 5393,
+          "erro": null
+        },
+        {
+          "pagina": 54,
+          "caracteres": 2572,
+          "erro": null
+        },
+        {
+          "pagina": 55,
+          "caracteres": 1792,
+          "erro": null
+        },
+        {
+          "pagina": 56,
+          "caracteres": 1882,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "natureza": "contrato_coletivo_institucional",
+      "estrato": "complementar",
+      "observacao": "Contrato coletivo publicado por instituição; não equivale a uma contratação individual.",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "sau-08",
+      "categoria": "plano_saude",
+      "titulo": "SINPOL-TO — Unimed Palmas",
+      "familia": "unimed-palmas",
+      "url": "https://www.sinpol-to.org.br/media/sinpol/plano_unimed/1_-_contrato_unimed_n%C2%BA_222301100_coparticipativo_consultas.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:30:57.626499-03:00",
+      "status_coleta": "falhou",
+      "erro": {
+        "tipo": "ValueError",
+        "mensagem": "PDF excedeu limite de 20 MiB"
+      },
+      "log_coleta": "data/coletas/20261013T123041841825Z.jsonl",
+      "divisao": null,
+      "estrato": "falha_coleta"
+    },
+    {
+      "id": "sau-09",
+      "categoria": "plano_saude",
+      "titulo": "Saúde BRB — regulamento Plano A1",
+      "familia": "saude-brb",
+      "url": "https://saudebrb.com.br/wp-content/uploads/2023/05/Saude-BRB-Regulamento-Plano-A1-.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.652884-03:00",
+      "url_origem": "https://saudebrb.com.br/wp-content/uploads/2023/05/Saude-BRB-Regulamento-Plano-A1-.pdf",
+      "url_final": "https://saudebrb.com.br/wp-content/uploads/2023/05/Saude-BRB-Regulamento-Plano-A1-.pdf",
+      "status_http": 200,
+      "content_type": "application/pdf",
+      "sha256": "0ebb1458695e83403991bbf9ddb1ef5ae37a8b20d4004cf0be12b32ac0ad7374",
+      "bytes": 1293111,
+      "baixado_em": "2026-10-13T09:39:13.652884-03:00",
+      "arquivo": "data/originais/sau-09.pdf",
+      "criptografado": false,
+      "paginas": 50,
+      "leitura_paginas": [
+        {
+          "pagina": 1,
+          "caracteres": 1579,
+          "erro": null
+        },
+        {
+          "pagina": 2,
+          "caracteres": 787,
+          "erro": null
+        },
+        {
+          "pagina": 3,
+          "caracteres": 2348,
+          "erro": null
+        },
+        {
+          "pagina": 4,
+          "caracteres": 2546,
+          "erro": null
+        },
+        {
+          "pagina": 5,
+          "caracteres": 2224,
+          "erro": null
+        },
+        {
+          "pagina": 6,
+          "caracteres": 2982,
+          "erro": null
+        },
+        {
+          "pagina": 7,
+          "caracteres": 2271,
+          "erro": null
+        },
+        {
+          "pagina": 8,
+          "caracteres": 2663,
+          "erro": null
+        },
+        {
+          "pagina": 9,
+          "caracteres": 2112,
+          "erro": null
+        },
+        {
+          "pagina": 10,
+          "caracteres": 2441,
+          "erro": null
+        },
+        {
+          "pagina": 11,
+          "caracteres": 2055,
+          "erro": null
+        },
+        {
+          "pagina": 12,
+          "caracteres": 2174,
+          "erro": null
+        },
+        {
+          "pagina": 13,
+          "caracteres": 2466,
+          "erro": null
+        },
+        {
+          "pagina": 14,
+          "caracteres": 2102,
+          "erro": null
+        },
+        {
+          "pagina": 15,
+          "caracteres": 2156,
+          "erro": null
+        },
+        {
+          "pagina": 16,
+          "caracteres": 2260,
+          "erro": null
+        },
+        {
+          "pagina": 17,
+          "caracteres": 1948,
+          "erro": null
+        },
+        {
+          "pagina": 18,
+          "caracteres": 2273,
+          "erro": null
+        },
+        {
+          "pagina": 19,
+          "caracteres": 2243,
+          "erro": null
+        },
+        {
+          "pagina": 20,
+          "caracteres": 2714,
+          "erro": null
+        },
+        {
+          "pagina": 21,
+          "caracteres": 1932,
+          "erro": null
+        },
+        {
+          "pagina": 22,
+          "caracteres": 2106,
+          "erro": null
+        },
+        {
+          "pagina": 23,
+          "caracteres": 2441,
+          "erro": null
+        },
+        {
+          "pagina": 24,
+          "caracteres": 1873,
+          "erro": null
+        },
+        {
+          "pagina": 25,
+          "caracteres": 2205,
+          "erro": null
+        },
+        {
+          "pagina": 26,
+          "caracteres": 1887,
+          "erro": null
+        },
+        {
+          "pagina": 27,
+          "caracteres": 2034,
+          "erro": null
+        },
+        {
+          "pagina": 28,
+          "caracteres": 2503,
+          "erro": null
+        },
+        {
+          "pagina": 29,
+          "caracteres": 2654,
+          "erro": null
+        },
+        {
+          "pagina": 30,
+          "caracteres": 2559,
+          "erro": null
+        },
+        {
+          "pagina": 31,
+          "caracteres": 2237,
+          "erro": null
+        },
+        {
+          "pagina": 32,
+          "caracteres": 1966,
+          "erro": null
+        },
+        {
+          "pagina": 33,
+          "caracteres": 2445,
+          "erro": null
+        },
+        {
+          "pagina": 34,
+          "caracteres": 2233,
+          "erro": null
+        },
+        {
+          "pagina": 35,
+          "caracteres": 2855,
+          "erro": null
+        },
+        {
+          "pagina": 36,
+          "caracteres": 2368,
+          "erro": null
+        },
+        {
+          "pagina": 37,
+          "caracteres": 2500,
+          "erro": null
+        },
+        {
+          "pagina": 38,
+          "caracteres": 2499,
+          "erro": null
+        },
+        {
+          "pagina": 39,
+          "caracteres": 2559,
+          "erro": null
+        },
+        {
+          "pagina": 40,
+          "caracteres": 2083,
+          "erro": null
+        },
+        {
+          "pagina": 41,
+          "caracteres": 2283,
+          "erro": null
+        },
+        {
+          "pagina": 42,
+          "caracteres": 2471,
+          "erro": null
+        },
+        {
+          "pagina": 43,
+          "caracteres": 2060,
+          "erro": null
+        },
+        {
+          "pagina": 44,
+          "caracteres": 2428,
+          "erro": null
+        },
+        {
+          "pagina": 45,
+          "caracteres": 428,
+          "erro": null
+        },
+        {
+          "pagina": 46,
+          "caracteres": 686,
+          "erro": null
+        },
+        {
+          "pagina": 47,
+          "caracteres": 2104,
+          "erro": null
+        },
+        {
+          "pagina": 48,
+          "caracteres": 2245,
+          "erro": null
+        },
+        {
+          "pagina": 49,
+          "caracteres": 2247,
+          "erro": null
+        },
+        {
+          "pagina": 50,
+          "caracteres": 835,
+          "erro": null
+        }
+      ],
+      "classificacao_automatica": "texto",
+      "status_coleta": "baixado",
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "natureza": "regulamento",
+      "estrato": "complementar",
+      "observacao": "Regulamento de plano; não é contrato individual preenchido.",
+      "divisao": "desenvolvimento"
+    },
+    {
+      "id": "sau-10",
+      "categoria": "plano_saude",
+      "titulo": "Sindjus-MA — contrato Unimed Teresina 2018",
+      "familia": "unimed-teresina",
+      "url": "https://www.sindjusma.org/UserFiles/Files/CONTRATO%20UNIMED%20TERESINA%202018.pdf",
+      "origem": "publica",
+      "coletado_em": "2026-10-13T09:39:13.840035-03:00",
+      "status_coleta": "falhou",
+      "erro": {
+        "tipo": "ValueError",
+        "mensagem": "PDF excedeu limite de 20 MiB"
+      },
+      "log_coleta": "data/coletas/20261013T123913167186Z.jsonl",
+      "divisao": null,
+      "estrato": "falha_coleta"
+    }
+  ]
+}
