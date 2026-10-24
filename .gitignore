@@ -47,3 +47,4 @@ backups/
 docs/word-build/
 .mobile-qa/
 .statement-qa/
+.netlify/

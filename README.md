@@ -2,7 +2,7 @@
 
 Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Firestore. Gerencia receitas, despesas, contas, caixinhas, cartões parcelados, assinaturas e importação CSV/OFX e PDF com revisão manual, com dashboard e consultas automáticas sem IA.
 
-## Estado atual — 23/10/2026
+## Estado atual — 24/10/2026
 
 Esta documentação descreve o código desta atualização. **Publicação em andamento:** as regras Firestore foram publicadas no projeto de produção; falta confirmar a nova interface na Netlify. O resultado será registrado em [publicação de 23/10/2026](docs/deploy-2026-10-23.md).
 
@@ -36,7 +36,7 @@ Desde a base de código `2b26e97` (14/09/2026), esta entrega reúne:
 - Experimento de contratos, protocolo, comparador e regras até 0.1.25, separados do aplicativo publicado.
 - Guias de uso, limitações, validações e Kanban. Os documentos recebidos no GitHub até `45f3abb` foram preservados.
 
-Essa base identifica a comparação do código; não comprova a data do último deploy Netlify. O histórico detalhado está no [changelog](docs/CHANGELOG.md).
+A Netlify confirmou que a versão anterior em produção era o commit `45f3abb`, publicado em 21/09/2026. A comparação com `2b26e97` inclui a mesma base funcional e a documentação remota acrescentada depois. O histórico detalhado está no [changelog](docs/CHANGELOG.md).
 
 ### Ainda não disponível
 
