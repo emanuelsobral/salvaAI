@@ -4,7 +4,7 @@ Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Fire
 
 ## Estado atual — 24/10/2026
 
-Esta documentação descreve o código desta atualização. **Publicação em andamento:** as regras Firestore foram publicadas no projeto de produção; falta confirmar a nova interface na Netlify. O resultado será registrado em [publicação de 23/10/2026](docs/deploy-2026-10-23.md).
+Esta documentação descreve o código desta atualização. **Publicado em 24/10/2026:** interface e arquivos OCR confirmados pela API da Netlify, com regras Firestore publicadas previamente. Validação visual e teste autenticado em produção permanecem pendentes. Consulte [publicação de 23/10/2026](docs/deploy-2026-10-23.md).
 
 ### O que funciona e quais são os limites
 

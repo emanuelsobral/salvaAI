@@ -1,5 +1,13 @@
 # Registro de mudanças
 
+## 24/10/2026 — Publicação das atualizações acumuladas
+
+- Publicadas as regras Firestore validadas e a atualização de recorrências, conciliação, importação CSV/OFX/PDF, OCR local e operação sem IA na Netlify.
+- README reorganizado com funcionalidades disponíveis, limites, mudanças e estado da publicação; protótipo de contratos permanece separado do aplicativo.
+- Corrigido bloqueio do scanner causado pelo identificador público do projeto na documentação, sem desativar a verificação de segredos.
+- 129 testes do aplicativo, dois testes no emulador e build aprovados; lint com cinco avisos conhecidos. Publicação confirmada pela API e arquivos OCR presentes. Validação visual pós-deploy pendente por bloqueio da revisão automática do navegador.
+- [Registro da publicação](deploy-2026-10-23.md). Publicação concluída; K07 em validação dos fluxos de produção. Experimento de contratos permanece em 29%.
+
 ## 23/10/2026 — Contratos: diagnóstico de cronogramas por fase 0.1.25
 
 - Comando de extração passa a salvar diagnóstico auxiliar de carência, amortização, eventos e dia útil, com evidências e dependências. Nenhum calendário gerado.

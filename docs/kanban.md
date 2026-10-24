@@ -1,10 +1,12 @@
 # Kanban do SalvaAI
 
-Atualizado em **23/10/2026**. Quadro principal de acompanhamento do projeto.
+Atualizado em **24/10/2026**. Quadro principal de acompanhamento do projeto.
 
 Objetivo: gestão financeira na web e no celular, com dados em nuvem, extratos, contas programadas e planejamento baseado nos compromissos cadastrados. **Sem depender de IA ou de cotas de modelos.** Contratos serão cadastrados manualmente primeiro; interpretação automática não está prometida nesta etapa.
 
 Prioridades e ordem são propostas de execução. As datas indicam registros, não prazos de entrega. Entrar neste quadro não significa iniciar ou publicar uma funcionalidade.
+
+**Publicação de 24/10/2026:** atualização funcional confirmada na Netlify e regras Firebase publicadas. README atualizado. K07 segue em validação para conferência visual e fluxos autenticados em produção. [Registro do deploy](deploy-2026-10-23.md).
 
 ## Prioridade atual — contratos retomados
 
@@ -19,7 +21,7 @@ Prioridades e ordem são propostas de execução. As datas indicam registros, n�
 | A fazer | Pronto para iniciar | Em andamento | Em validação | Concluído no código local |
 |---|---|---|---|---|
 | E05–E07 · Experimento de contratos | — | **E03 · Anotação humana; E02 · Ampliação da coleta** | — | E01 · Protocolo; E04 · Protótipo 0.1.25; comparador sintético (apoio) |
-| K03–K07 · Preparação e publicação | **K01 · Agenda de contas** | Nenhum cartão | Nenhum cartão | C01 · Regras financeiras |
+| K03–K06 · Preparação e validação ampliada | **K01 · Agenda de contas** | Nenhum cartão | K07 · Publicado; conferência de uso pendente | C01 · Regras financeiras |
 | K08–K12 · Planejamento e contratos | K02 · Backup e restauração | — | — | C02 · Configuração por ambiente |
 | K13–K19 · Cartões, metas e importação | — | — | — | C03 · Interface mobile |
 | K20–K23 · Experiência e celular | — | — | — | C04 · Assistente sem IA |
@@ -281,3 +283,5 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 | 20/10/2026 | E04 assistido | 0.1.24: alternativas e perfis escolares preservados, tabela conferida e opções de encargos separadas do plano principal. Seis campos com diagnóstico específico, sem plano escolhido. Dezesseis testes novos; 303 totais; 18 saídas válidas e 84/90 campos idênticos. Próximo: cronogramas por fase, com Alto. Entrega 100%; experimento original 29%. |
 
 | 23/10/2026 | E04 assistido | 0.1.25: diagnóstico de cronogramas por fase salvo pelo comando de extração, com eventos e dependências sem calendário. 24 testes novos; 327 totais; 18 saídas válidas e 90/90 campos oficiais idênticos. Próximo: piloto de OCR local para contratos, com Alto. Entrega 100%; experimento original 29%. |
+
+| 24/10/2026 | K07 · Publicação | Regras Firebase publicadas em 23/10; Netlify confirmou o commit funcional 3f58af4 em produção em 24/10. Scanner ativo após retirar identificador público da documentação. README atualizado; 129 testes + dois de integração e build aprovados. Publicação concluída; validação visual/fluxos autenticados ainda pendentes. Contratos: 29%. |
