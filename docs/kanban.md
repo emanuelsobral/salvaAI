@@ -12,7 +12,7 @@ Prioridades e ordem são propostas de execução. As datas indicam registros, n�
 
 **23/10/2026: diagnóstico de cronogramas por fase concluído na 0.1.25.** O comando de extração salva condições de carência, amortização, ausência de carência e dia útil com evidências e dependências. Não gera calendário. 327 testes e 18 saídas validadas; 90/90 campos oficiais idênticos à versão anterior. **Entrega 100% (3/3); experimento original 29% (2/7).** [Relatório](../experiments/contracts/cronograma-fases-0125.md).
 
-**Atualização de 25/10/2026: integração inicial de contratos concluída localmente.** M1/K10a (cadastro), M2/K10b (compromissos fixos), M3/K34 (PDF com revisão) e M4/K34 (OCR) implementados e testados. [Roteiro e critérios](contratos-mvp.md): **100% dos quatro marcos locais**, ainda não publicados; não representa precisão de leitura ou conclusão do projeto inteiro. Próximo: K07, publicação e teste autenticado, com Alto. [Piloto OCR](contratos-ocr-validacao.md): 74 páginas processadas; ausências e ambiguidades preservadas. O experimento independente permanece em 29%.
+**Atualização de 25/10/2026: integração inicial de contratos publicada.** M1/K10a (cadastro), M2/K10b (compromissos fixos), M3/K34 (PDF com revisão) e M4/K34 (OCR) implementados, testados localmente e publicados. [Roteiro e critérios](contratos-mvp.md): **100% dos quatro marcos**, sem representar precisão de leitura ou conclusão do projeto inteiro. [Deploy confirmado](deploy-2026-10-25.md); K07 permanece em validação para teste autenticado, com Alto. [Piloto OCR](contratos-ocr-validacao.md): 74 páginas processadas; ausências e ambiguidades preservadas. O experimento independente permanece em 29%.
 
 **Extratos:** C09/PDF e OCR concluídos no código local; rodada de qualidade concluída em 3/3 blocos, com revisão em 320/390 pixels e limitações registradas. O usuário adiou o teste em celular físico. Mais digitalizações e bancos continuam pendentes, sem bloquear os contratos. Isso não representa cobertura de todos os bancos. [Validação dos PDFs](validacao-extratos-pdf.md) · [Qualidade do OCR](validacao-ocr-qualidade.md).
 
@@ -22,7 +22,7 @@ Prioridades e ordem são propostas de execução. As datas indicam registros, n�
 |---|---|---|---|---|
 | E05–E07 · Experimento de contratos | — | **E03 · Anotação humana; E02 · Ampliação da coleta** | — | E01 · Protocolo; E04 · Protótipo 0.1.25; comparador sintético (apoio) |
 | K03–K06 · Preparação e validação ampliada | **K01 · Agenda de contas** | Nenhum cartão | K07 · Publicado; conferência de uso pendente | C01 · Regras financeiras |
-| K08/K09/K11/K12 · Planejamento | K07 · Publicar contratos; K02 · Backup | — | — | C02 · Configuração; **M1/M2/K10 · Cadastro e compromissos fixos; M3/M4/K34 · PDF e OCR com revisão** |
+| K08/K09/K11/K12 · Planejamento | K02 · Backup | — | K07 · Contratos publicados; teste autenticado pendente | C02 · Configuração; **M1/M2/K10 · Cadastro e compromissos fixos; M3/M4/K34 · PDF e OCR com revisão** |
 | K13–K19 · Cartões, metas e importação | — | — | — | C03 · Interface mobile |
 | K20–K23 · Experiência e celular | — | — | — | C04 · Assistente sem IA |
 | K24–K32 · Qualidade, segurança e dados | — | — | — | C05 · Importação CSV/OFX |
@@ -148,7 +148,7 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 | ID | Prioridade | GPT-6 recomendado | Entrega | Quando estará concluída | Depende de |
 |---|---|---|---|---|---|
 | K33 | P3 | Alto | Orçamento por categoria | Limites mensais, comparação com gastos e saldo do orçamento, sem misturar transferências ou contar faturas duas vezes. | K18 |
-| K34 | P1/P3 | Alto | Leitura local e anexos | M3/PDF e M4/OCR concluídos localmente, com revisão e evidências; publicação pendente. Armazenamento privado do arquivo original continua P3 e depende de K31. Não há promessa de interpretação completa das cláusulas. | K10; K31 apenas para armazenamento de anexos |
+| K34 | P1/P3 | Alto | Leitura local e anexos | M3/PDF e M4/OCR publicados, com revisão e evidências. Armazenamento privado do arquivo original continua P3 e depende de K31. Não há promessa de interpretação completa das cláusulas. | K10; K31 apenas para armazenamento de anexos |
 | K35 | P3 | Alto | Notificações com app fechado | Escolher mecanismo e avaliar suporte/custos; depois implementar permissões, cancelamento e prevenção de avisos duplicados ou de contas pagas. | K21, K22 e decisão sobre infraestrutura |
 | K36 | P3 | Alto | Tipagem e fuso do perfil | Avaliar TypeScript gradual e necessidade de fuso por usuário; registrar decisões e, se adotadas, validar migração e datas entre dispositivos. | Necessidade comprovada e testes de calendário |
 
@@ -289,3 +289,4 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 | 24/10/2026 | K07 · Publicação | Regras Firebase publicadas em 23/10; Netlify confirmou o commit funcional 3f58af4 em produção em 24/10. Scanner ativo após retirar identificador público da documentação. README atualizado; 129 testes + dois de integração e build aprovados. Publicação concluída; validação visual/fluxos autenticados ainda pendentes. Contratos: 29%. |
 | 25/10/2026 | M3/K34 · PDF com revisão | Cinco campos sugeridos por regras locais, evidências preservadas e confirmação antes do cadastro. 146 testes do aplicativo, seis de integração, fluxo de navegador e Worker compilado aprovados. Sem publicação; integração inicial 75% (3/4), experimento 29%. Próximo: M4/OCR, com Alto. |
 | 25/10/2026 | M4/K34 · OCR de contratos | OCR local opcional, revisão obrigatória e origem preservada. 151 testes do aplicativo, seis de integração, fluxo de navegador e build aprovados; dois PDFs de desenvolvimento, 74 páginas processadas. Integração inicial 100% (4/4 marcos locais), sem medir precisão; experimento 29%. Próximo: publicação e teste autenticado, com Alto. |
+| 25/10/2026 | K07 · Publicação de contratos | Regras publicadas e verificadas; Netlify confirmou `7c5789e` em produção. Site, rota, recursos PDF/OCR e tela de entrada conferidos. README com status e limites atualizado. Publicação concluída; teste autenticado em produção permanece pendente. Integração inicial 100%; experimento 29%. |

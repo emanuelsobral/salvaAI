@@ -2,9 +2,9 @@
 
 Atualização do índice: **25/10/2026**, horário de São Paulo. Os guias históricos conservam suas datas e evidências originais.
 
-**Planejamento atual — 25/10/2026:** [Kanban](kanban.md) e [roteiro de contratos](contratos-mvp.md). Cadastro, compromissos fixos, PDF e OCR com revisão concluídos localmente: **100% dos quatro marcos da integração inicial**, ainda não publicados. Próximo: publicação e teste autenticado, com Alto. [Piloto OCR: 74 páginas](contratos-ocr-validacao.md). O [experimento de extração](../experiments/contracts/README.md) permanece na versão 0.1.25 e em 29% (2/7 etapas); avaliação independente pendente. O percentual da integração não mede acerto dos campos nem conclusão do projeto inteiro.
+**Planejamento atual — 25/10/2026:** [Kanban](kanban.md) e [roteiro de contratos](contratos-mvp.md). Cadastro, compromissos fixos, PDF e OCR com revisão implementados e publicados: **100% dos quatro marcos da integração inicial**. Próximo: teste autenticado em produção, com Alto. [Registro do deploy](deploy-2026-10-25.md) · [Piloto OCR: 74 páginas](contratos-ocr-validacao.md). O [experimento de extração](../experiments/contracts/README.md) permanece na versão 0.1.25 e em 29% (2/7 etapas); avaliação independente pendente. O percentual da integração não mede acerto dos campos nem conclusão do projeto inteiro.
 
-Esta documentação descreve o código disponível nesta pasta. O repositório Git fica em `salva-ai/`; os marcos históricos abaixo não equivalem, por si só, a versões publicadas. A última publicação está no [registro de deploy](deploy-2026-10-23.md).
+Esta documentação descreve o código disponível nesta pasta. O repositório Git fica em `salva-ai/`; os marcos históricos abaixo não equivalem, por si só, a versões publicadas. A última publicação está no [registro de deploy](deploy-2026-10-25.md).
 
 ## Etapas consideradas
 

@@ -4,20 +4,20 @@ Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Fire
 
 ## Estado atual — 25/10/2026
 
-Esta documentação descreve o código desta atualização. **Publicado em 24/10/2026:** interface e arquivos OCR confirmados pela API da Netlify, com regras Firestore publicadas previamente. Validação visual e teste autenticado em produção permanecem pendentes. Consulte [publicação de 23/10/2026](docs/deploy-2026-10-23.md).
+**Contratos publicados em 25/10/2026:** regras Firestore e interface confirmadas em produção. Site, rota `/contratos`, arquivos PDF/OCR e tela de entrada conferidos; navegação autenticada em produção ainda pendente. [Registro desta publicação](docs/deploy-2026-10-25.md).
 
-**Atualização local posterior ao deploy:** contratos em `/contratos`, com cadastro, edição, PDF com OCR opcional e revisão, além de compromissos de valor fixo após prévia e confirmação. Integração inicial em **100% dos quatro marcos locais**; isso não representa precisão de leitura nem conclusão do projeto inteiro. Ainda não publicado; exige publicar as novas regras Firestore antes da interface. [Roteiro e validação](docs/contratos-mvp.md) · [Piloto de OCR](docs/contratos-ocr-validacao.md).
+**Disponível no site:** contratos em `/contratos`, com cadastro, edição, PDF com OCR opcional e revisão, além de compromissos de valor fixo após prévia e confirmação. Integração inicial em **100% dos quatro marcos implementados e publicados**; isso não representa precisão de leitura nem conclusão do projeto inteiro. [Roteiro e validação](docs/contratos-mvp.md) · [Piloto de OCR](docs/contratos-ocr-validacao.md).
 
 ### Status da ferramenta de contratos
 
-**Implementação inicial: 100% (4/4 marcos). Publicação desta atualização: em andamento em 25/10/2026.** Este percentual mede as entregas implementadas, não a precisão da extração nem a conclusão de todo o SalvaAI.
+**Implementação inicial: 100% (4/4 marcos). Publicação concluída em 25/10/2026.** Este percentual mede as entregas implementadas, não a precisão da extração nem a conclusão de todo o SalvaAI. O teste autenticado no site continua pendente.
 
 | Função | Status e comportamento |
 |---|---|
 | Cadastro e edição | Concluídos. Dados por usuário, campos opcionais e proteção contra edição desatualizada. |
 | Compromissos financeiros | Concluídos para parcelas iguais, com prévia e confirmação. Salvar o contrato ou gerar compromissos não altera o saldo; o pagamento precisa ser registrado. |
 | Leitura de PDF | Concluída nos formatos suportados, com sugestões para valor, parcelas, vencimento, vigência e reajuste; trechos e páginas disponíveis para revisão. |
-| OCR de digitalizações | Concluído localmente, sem API paga ou envio do original. A transcrição pode conter erros e é identificada como OCR. |
+| OCR de digitalizações | Publicado, sem API paga ou envio do original. A transcrição pode conter erros e é identificada como OCR. |
 | Precisão e avaliação | Ainda não medidas com gabarito independente. Campos ausentes ou ambíguos ficam vazios, sem estimativas automáticas. |
 | Ainda pendente | Reajustes automáticos, alterações de planos contratuais, encerramento do cadastro e armazenamento do PDF original. |
 
@@ -39,13 +39,13 @@ Validações: **151 testes do aplicativo, seis de integração, testes no navega
 | OCR de extratos | Leitura opcional de uma página por vez no navegador, com motor e idioma servidos pelo próprio site. | Qualidade da imagem afeta o resultado; dados incertos exigem correção. Amostra BB validada, sem cobertura universal. |
 | Assistente e resumo | Consultas locais de saldo, fatura, gastos, categorias e projeção, sem consumo de Gemini. | Não é conversa aberta com IA. A rota antiga `/api/ai` retorna 410; leitura de recibos por IA foi retirada. |
 | Mobile | Interface responsiva e revisão de extratos conferida em larguras de 320 e 390 pixels. | Teste em celular físico foi adiado. Não há app nativo, PWA completa ou notificações com o app fechado. |
-| Cadastro de contratos | Tela local para listar, criar e editar título, valores, prazos e condições, com dados por usuário e proteção contra edição desatualizada. | Ainda não publicado. Salvar o cadastro não gera parcelas; encerramento do contrato pendente. |
+| Cadastro de contratos | Tela publicada para listar, criar e editar título, valores, prazos e condições, com dados por usuário e proteção contra edição desatualizada. | Salvar o cadastro não gera parcelas; encerramento do contrato pendente. |
 | Compromissos contratuais | Prévia e confirmação de parcelas iguais, vinculadas a vencimentos, pagamentos, estorno e projeção existentes. | Um plano fixo por contrato; sem interpretar cláusulas, calcular juros/reajustes ou identificar contas equivalentes já cadastradas. Geração não altera saldo. |
-| Extração de contratos | PDF com texto e OCR opcional de digitalizações, com sugestões para cinco campos, evidências por página, correção e confirmação antes de salvar. Regras locais 0.1.25; protótipo de terminal preservado. | Ainda não publicado. Até 10 MB/50 páginas, sem senha. Leitor inicial de cerca de 12 MB e recursos adicionais de OCR. Transcrições podem conter erros; sem garantia de identificação de todos os campos ou avaliação independente. |
+| Extração de contratos | PDF com texto e OCR opcional de digitalizações, com sugestões para cinco campos, evidências por página, correção e confirmação antes de salvar. Regras locais 0.1.25; protótipo de terminal preservado. | Até 10 MB/50 páginas, sem senha. Leitor inicial de cerca de 12 MB e recursos adicionais de OCR. Transcrições podem conter erros; sem garantia de identificação de todos os campos ou avaliação independente. |
 
 As conferências de PDF/OCR cobrem amostras específicas, não uma taxa geral de acerto. Transferências próprias, resgates e pagamentos de cartão presentes no extrato não são automaticamente vinculados às outras operações do aplicativo. Reveja o saldo inicial para não somar novamente um período já contabilizado.
 
-### Atualizações acumuladas para esta publicação
+### Histórico da publicação anterior — 24/10/2026
 
 Desde a base de código `2b26e97` (14/09/2026), esta entrega reúne:
 

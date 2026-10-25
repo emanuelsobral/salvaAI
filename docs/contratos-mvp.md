@@ -20,7 +20,7 @@ Reajustes programados e encerramento do contrato continuam em K11; consolidaçã
 - **Integração inicial: 100% (4/4 entregas concluídas no código).** Contagem dos quatro marcos deste roteiro, sem ponderar esforço ou prazo; não representa o projeto inteiro nem precisão de leitura. Publicação é separada.
 - **Entregas M1–M4: 100% cada (3/3 blocos):** implementar, validar fluxos, revisar/documentar.
 - **Experimento original: 29% (2/7 etapas).** Avalia protocolo, coleta, gabarito, protótipo e avaliação. Não mede disponibilidade no aplicativo.
-- **Publicação de M1–M4: pendente.** As telas e as regras novas de contratos ainda não foram publicadas.
+- **Publicação de M1–M4: concluída em 25/10/2026.** Regras, interface e recursos PDF/OCR publicados e conferidos. Teste autenticado no site pendente. [Registro do deploy](deploy-2026-10-25.md).
 
 Concluir uma entrega antes de ampliar formatos. Investigações que não impedem o critério atual entram no backlog. Desenvolvimento pode continuar sem anotador humano; referências assistidas por IA não equivalem a avaliação independente. Usar o Kanban e este roteiro como ponto de retomada, sem reabrir etapas concluídas sem falha ou requisito novo.
 
@@ -110,9 +110,11 @@ Para conferir os arquivos compilados, definir `CONTRACT_BUILD_DIR` com o diretó
 
 O piloto de OCR processou por completo os dois PDFs digitalizados de desenvolvimento: **74 páginas**. Valor, parcelas e vencimento permaneceram não identificados; vigência e reajuste, ambíguos. [Relatório do piloto e limites](contratos-ocr-validacao.md). Não foram abertas amostras reservadas para avaliação.
 
-**Próximo passo:** preparar a publicação das regras e da interface de contratos, seguida de teste autenticado no site (K07). GPT recomendado: **Alto**, pela conferência do fluxo financeiro e das permissões. A implementação local M1–M4 está concluída; reajustes e alterações contratuais continuam em K11, fora deste percentual.
+**Próximo passo:** teste autenticado no site (K07). GPT recomendado: **Alto**, pela conferência do fluxo financeiro e das permissões. M1–M4 foram implementados e publicados; reajustes e alterações contratuais continuam em K11, fora deste percentual.
 
-## Sequência da publicação pendente
+## Sequência de publicação e validação
+
+Etapas 1–3 concluídas em 25/10/2026; a conferência pública também passou. A etapa 4, com login, continua pendente.
 
 1. Conferir o conjunto de alterações e registrar a versão que será publicada. Os testes acima correspondem ao código local; caso ele mude, repetir as verificações afetadas.
 2. Publicar as regras Firestore que permitem contratos, planos vinculados e as origens `PDF_TEXT_REVIEW`/`PDF_OCR_REVIEW`.
@@ -120,4 +122,4 @@ O piloto de OCR processou por completo os dois PDFs digitalizados de desenvolvim
 4. Em sessão autenticada de teste, conferir cadastro e recarga, PDF/OCR com revisão e origem preservada, prévia de compromissos e ausência de mudança de saldo antes do pagamento. Usar dados fictícios em conta de teste.
 5. Registrar a versão, os resultados e eventuais limitações da publicação no README e em K07. A aprovação local não substitui essa verificação no site.
 
-A interrupção da revisão automática por limite de uso atrasou apenas o fechamento documental. Na retomada de 25/10/2026, os resultados salvos foram conferidos e a documentação concluída. Não houve nova publicação nessa retomada.
+O fechamento documental e a publicação estão registrados separadamente no [relatório de deploy](deploy-2026-10-25.md).

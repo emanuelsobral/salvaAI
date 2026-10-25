@@ -1,5 +1,12 @@
 # Registro de mudanças
 
+## 25/10/2026 — Publicação de contratos
+
+- Regras Firestore publicadas antes da interface e conferidas contra o arquivo local validado.
+- Cadastro, compromissos fixos, PDF e OCR publicados pelo deploy Netlify do commit `7c5789e`, confirmado como `ready`.
+- Site, rota de contratos, recursos PDF/OCR e tela de entrada conferidos; nenhuma movimentação real criada. Teste autenticado em produção ainda pendente.
+- README atualizado com o status dos contratos, instruções e limites. Integração inicial 100% (4/4 marcos implementados e publicados); precisão não medida. [Registro da publicação](deploy-2026-10-25.md).
+
 ## 25/10/2026 — OCR de contratos (local, ainda não publicado)
 
 - Leitura opcional de digitalizações, página por página, com Tesseract em português servido pelo próprio site. Reutiliza o leitor dos extratos; sem API ou upload do original.

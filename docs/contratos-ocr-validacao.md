@@ -27,7 +27,7 @@ As saídas ficam separadas do experimento original: texto OCR por página, resul
 
 Foram processadas **74 páginas**, sem falhas de leitura neste lote. Tempos locais: 179 segundos para `sau-04` e 177 segundos para `sau-05`, incluindo extração; não são previsão para outros aparelhos. As sugestões dos cinco campos ficaram vazias nos dois cadastros, com os estados e evidências disponíveis para revisão. O texto foi obtido, mas as regras não determinaram esses campos.
 
-Artefatos desta rodada: `contracts-ocr-development/summary.json`, `sau-04.ocr.json` e `sau-05.ocr.json`, na pasta de trabalho da unidade C usada nesta sessão. São resultados locais de desenvolvimento, sem alteração dos originais ou das saídas do CLI. M4 concluído no código local; publicação pendente.
+Artefatos desta rodada: `contracts-ocr-development/summary.json`, `sau-04.ocr.json` e `sau-05.ocr.json`, na pasta de trabalho da unidade C usada nesta sessão. São resultados locais de desenvolvimento, sem alteração dos originais ou das saídas do CLI. M4 concluído e [publicado em 25/10/2026](deploy-2026-10-25.md); teste autenticado em produção pendente.
 
 Os estados de extração não são medidas de acerto. Não há gabarito independente nem comparação sistemática da transcrição com cada imagem. O conjunto reservado e as saídas anteriores do CLI permanecem intactos. Estes documentos são condições gerais, não exemplos com todos os dados de contratação preenchidos.
 
