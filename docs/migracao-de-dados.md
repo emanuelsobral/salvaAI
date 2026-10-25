@@ -1,5 +1,13 @@
 # Modelo de dados e migração SQLite → Firestore
 
+**Origem OCR — 25/10/2026 (local):** `sourceReview.method` também aceita `PDF_OCR_REVIEW`, com os mesmos campos e proteção contra substituição da origem. Os trechos são transcrições automáticas de imagens, identificadas na interface. Cadastros com `PDF_TEXT_REVIEW` continuam válidos e não são migrados. Atualizar as regras antes de publicar a interface.
+
+**Origem de PDF — 25/10/2026 (local):** `contracts.sourceReview` é opcional e imutável após a criação. Contém `method: PDF_TEXT_REVIEW`, `pdfSha256`, `extractorVersion` e `resultJson` (cinco campos originais com estados/evidências, até 100.000 caracteres). Os campos do cadastro guardam os valores revisados e podem diferir das sugestões. Não há upload do arquivo PDF, migração dos cadastros manuais ou alteração de saldos. Publicar as novas regras antes da interface. [Detalhes](contratos-mvp.md).
+
+**Plano de contrato — 24/10/2026 (local):** `contracts.commitmentPlan` guarda a referência e as condições confirmadas. `subscriptions/contract_{contractId}` guarda a recorrência finita com `contractId` e `installmentCount`; pagamentos continuam no mapa existente. Não há migração de contratos sem plano. O vínculo é criado em uma transação e protegido nas duas coleções; editar o cadastro preserva o plano. Atualizar regras antes de publicar. [Campos e comportamento](contratos-mvp.md).
+
+**Contratos — 24/10/2026 (local):** nova coleção `users/{uid}/contracts` para cadastro manual, com campos opcionais, `schemaVersion: 1`, revisão e datas de criação/atualização. Não migra documentos antigos nem altera contas/transações/recorrências. Exige publicar as regras de contratos antes da nova interface; não há exclusão nesta etapa. [Esquema e validações](contratos-mvp.md).
+
 **Edição de recorrências — 12/10/2026:** `subscriptions.revisions` armazena condições sucessivas (`effectiveFrom`, `amount`, `frequency`, `startDate`, `endDate`), preservando os campos originais e o mapa de pagamentos. Cadastros sem versões continuam válidos. Veja [compatibilidade e cálculo por vigência](edicao-recorrencias.md).
 
 **Conciliação — 12/10/2026:** despesas importadas mantêm valor, conta, data, descrição e categoria. O vínculo altera apenas `kind`, `subscriptionId` e `dueDate`, e registra `source: IMPORT` no pagamento da recorrência. Desvincular preserva a despesa; estornar pelo histórico exclui a despesa e devolve o saldo. As regras Firestore locais foram atualizadas e precisam ser publicadas. Veja [conciliação de extratos](conciliacao-extratos.md).

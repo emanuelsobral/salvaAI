@@ -1,5 +1,38 @@
 # Registro de mudanças
 
+## 25/10/2026 — OCR de contratos (local, ainda não publicado)
+
+- Leitura opcional de digitalizações, página por página, com Tesseract em português servido pelo próprio site. Reutiliza o leitor dos extratos; sem API ou upload do original.
+- Até 10 MB/50 páginas, prazo total de dez minutos, cancelamento e recusa de leitura parcial. Os cinco campos seguem sujeitos a correção e confirmação; números incertos não são reparados automaticamente.
+- Origem `PDF_OCR_REVIEW` salva e protegida nas regras; interface distingue transcrição OCR da camada de texto do PDF.
+- 151 testes do aplicativo, seis de integração, fluxo visual e OCR compilado aprovados. Dois PDFs de desenvolvimento processados integralmente (74 páginas); ausências e ambiguidades preservadas. Nenhuma métrica de acerto ou amostra de teste reservado utilizada.
+- [Integração inicial em 100% (4/4 marcos locais)](contratos-mvp.md), sem equivaler a conclusão do projeto inteiro. Experimento independente permanece em 29%. Próximo: publicação e teste autenticado, com Alto. [Relatório do piloto](contratos-ocr-validacao.md).
+
+## 25/10/2026 — Contratos em PDF com revisão (local, ainda não publicado)
+
+- Botão Importar PDF na tela de contratos, com preenchimento dos cinco campos suportados e consulta dos trechos e páginas. Campos ambíguos ou ausentes permanecem vazios; correção e confirmação obrigatórias antes de salvar.
+- Regras Python 0.1.25 reutilizadas no navegador com Pyodide 0.29.2 e leitura PDF.js. Motor servido pelo próprio site, carregado sob demanda; sem chamadas de IA ou envio do PDF. Cerca de 12 MB no primeiro uso.
+- Limites de 10 MB/50 páginas, cancelamento, descarte da leitura anterior e bloqueio de arquivos inválidos, protegidos ou com páginas sem texto. OCR de contratos permanece pendente.
+- Evidências e identificação do arquivo salvas na conta junto com os campos revisados; origem preservada nas edições e protegida pelas regras. O arquivo original não é armazenado.
+- 146 testes do aplicativo e seis testes de integração aprovados. Navegador com documento fictício: cinco campos, revisão, edição, persistência, cancelamento e erros verificados, incluindo larguras 320/390 px. Build e Worker compilado também testados; nenhum acesso externo no teste do motor.
+- [Integração inicial em 75% (3/4 marcos)](contratos-mvp.md). Próximo: OCR, com Alto. Experimento independente permanece em 29%; não se mediu precisão real nem equivalência entre PDF.js e pypdf. Publicar regras antes da interface.
+
+## 24/10/2026 — Compromissos vinculados a contratos (local, ainda não publicado)
+
+- Planejamento de parcelas iguais com primeiro vencimento e frequência escolhidos; prévia completa, total e confirmação explícita antes de gravar.
+- Contrato e recorrência finita vinculados atomicamente; um plano por contrato, proteção contra duas confirmações e revisão desatualizada. Geração não altera saldo.
+- Acesso aos vencimentos filtrados por contrato, pagamento, estorno, encerramento da recorrência e projeção usando os fluxos existentes. Edição do cadastro preserva o plano; alteração genérica de suas condições fica bloqueada.
+- 141 testes do aplicativo, cinco testes no emulador e teste visual até confirmação/pagamento aprovados. Prévia verificada em 320/390 pixels. Build aprovado; aviso de lint preexistente em SubsList permanece.
+- [Integração inicial em 50% (2/4 entregas)](contratos-mvp.md). Próximo: preencher campos a partir de PDF com revisão; experimento independente permanece em 29%.
+
+## 24/10/2026 — Cadastro manual de contratos (local, ainda não publicado)
+
+- Nova rota e item de menu Contratos, com listagem, cadastro e edição dos campos conhecidos; dados ausentes não são inferidos.
+- Persistência por usuário, validações, repetição sem duplicar e proteção contra alterações de outra tela; nenhuma geração de cobranças ou mudança de saldo.
+- Novas regras Firestore para a coleção de contratos. Exigem publicação antes da interface.
+- 134 testes locais e quatro no emulador aprovados; teste visual com banco emulado passou em cadastro, recarga, edição e conflito entre telas, incluindo formulário em 320/390 pixels. Build aprovado; lint dos arquivos novos sem avisos.
+- [Roteiro de integração](contratos-mvp.md): M1 concluída; 25% (1/4 entregas). Experimento original permanece em 29%.
+
 ## 24/10/2026 — Publicação das atualizações acumuladas
 
 - Publicadas as regras Firestore validadas e a atualização de recorrências, conciliação, importação CSV/OFX/PDF, OCR local e operação sem IA na Netlify.

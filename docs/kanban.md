@@ -1,6 +1,6 @@
 # Kanban do SalvaAI
 
-Atualizado em **24/10/2026**. Quadro principal de acompanhamento do projeto.
+Atualizado em **25/10/2026**. Quadro principal de acompanhamento do projeto.
 
 Objetivo: gestão financeira na web e no celular, com dados em nuvem, extratos, contas programadas e planejamento baseado nos compromissos cadastrados. **Sem depender de IA ou de cotas de modelos.** Contratos serão cadastrados manualmente primeiro; interpretação automática não está prometida nesta etapa.
 
@@ -12,7 +12,7 @@ Prioridades e ordem são propostas de execução. As datas indicam registros, n�
 
 **23/10/2026: diagnóstico de cronogramas por fase concluído na 0.1.25.** O comando de extração salva condições de carência, amortização, ausência de carência e dia útil com evidências e dependências. Não gera calendário. 327 testes e 18 saídas validadas; 90/90 campos oficiais idênticos à versão anterior. **Entrega 100% (3/3); experimento original 29% (2/7).** [Relatório](../experiments/contracts/cronograma-fases-0125.md).
 
-**Próximo passo técnico: piloto de OCR local para contratos, com Alto.** Começar pelos dois documentos de desenvolvimento sem texto, preservando separadamente OCR, camada original e falhas. Quadros, calendários, planos escolhidos e reajustes por objeto continuam com limites. Desenvolvimento assistido autorizado; avaliação independente segue pendente e separada.
+**Atualização de 25/10/2026: integração inicial de contratos concluída localmente.** M1/K10a (cadastro), M2/K10b (compromissos fixos), M3/K34 (PDF com revisão) e M4/K34 (OCR) implementados e testados. [Roteiro e critérios](contratos-mvp.md): **100% dos quatro marcos locais**, ainda não publicados; não representa precisão de leitura ou conclusão do projeto inteiro. Próximo: K07, publicação e teste autenticado, com Alto. [Piloto OCR](contratos-ocr-validacao.md): 74 páginas processadas; ausências e ambiguidades preservadas. O experimento independente permanece em 29%.
 
 **Extratos:** C09/PDF e OCR concluídos no código local; rodada de qualidade concluída em 3/3 blocos, com revisão em 320/390 pixels e limitações registradas. O usuário adiou o teste em celular físico. Mais digitalizações e bancos continuam pendentes, sem bloquear os contratos. Isso não representa cobertura de todos os bancos. [Validação dos PDFs](validacao-extratos-pdf.md) · [Qualidade do OCR](validacao-ocr-qualidade.md).
 
@@ -22,7 +22,7 @@ Prioridades e ordem são propostas de execução. As datas indicam registros, n�
 |---|---|---|---|---|
 | E05–E07 · Experimento de contratos | — | **E03 · Anotação humana; E02 · Ampliação da coleta** | — | E01 · Protocolo; E04 · Protótipo 0.1.25; comparador sintético (apoio) |
 | K03–K06 · Preparação e validação ampliada | **K01 · Agenda de contas** | Nenhum cartão | K07 · Publicado; conferência de uso pendente | C01 · Regras financeiras |
-| K08–K12 · Planejamento e contratos | K02 · Backup e restauração | — | — | C02 · Configuração por ambiente |
+| K08/K09/K11/K12 · Planejamento | K07 · Publicar contratos; K02 · Backup | — | — | C02 · Configuração; **M1/M2/K10 · Cadastro e compromissos fixos; M3/M4/K34 · PDF e OCR com revisão** |
 | K13–K19 · Cartões, metas e importação | — | — | — | C03 · Interface mobile |
 | K20–K23 · Experiência e celular | — | — | — | C04 · Assistente sem IA |
 | K24–K32 · Qualidade, segurança e dados | — | — | — | C05 · Importação CSV/OFX |
@@ -100,9 +100,11 @@ Preparar código ou aprovar testes locais não comprova publicação. As funçõ
 |---|---|---|---|---|---|
 | K08 | P2 | Alto | Contas avulsas e boletos programados | Cadastrar valor e vencimento sem reduzir saldo antes do pagamento; mostrar na agenda; quitar, cancelar e estornar sem duplicidade. É controle interno, não pagamento bancário. | K01 |
 | K09 | P2 | Alto | Receitas futuras | Cadastrar recebimentos previstos, separar previsão de dinheiro disponível e confirmar recebimento uma vez; incluir na projeção sem somar novamente após confirmação. | Regras de confirmação de K08 |
-| K10 | P2 | Alto | Cadastro manual de contratos | Registrar título, contraparte, início, término, valor, parcelas, vencimentos e observações; revisar antes de gerar compromissos vinculados ao contrato. | K08, C08 |
+| K10 | P2 | Alto | Cadastro manual de contratos — concluído localmente | Título, contraparte, vigência, valor, parcelas, vencimento e observações; prévia e confirmação de compromissos de valor fixo vinculados. Publicação pendente. | C06, C08 |
 | K11 | P2 | Alto | Reajustes e encerramento de contratos | Programar valores ou percentuais informados pelo usuário, mostrar antes/depois e encerrar compromissos futuros preservando pagamentos e histórico. Nenhum índice externo será presumido. | K10 |
 | K12 | P2 | Alto | Planejamento consolidado | Reunir contas, contratos, parcelas e receitas previstas; separar realizado de previsto; indicar períodos de saldo insuficiente e permitir conferir a origem dos valores. Não estimar receitas desconhecidas. | K08–K11 |
+
+**K10 entregue localmente em 24/10/2026:** K10a/M1 cobre cadastro e persistência; K10b/M2 cobre prévia, confirmação e vínculo de parcelas iguais. A geração utiliza diretamente C06/C08, dispensando implementar contas avulsas gerais de K08 nesta etapa; K08 permanece pendente. Um plano por contrato, com frequência escolhida, sem juros/reajustes automáticos. Validação: 141 testes do app, cinco no emulador, build e fluxo visual até pagamento aprovados; publicação pendente.
 
 ## Cartões, metas e importação
 
@@ -146,7 +148,7 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 | ID | Prioridade | GPT-6 recomendado | Entrega | Quando estará concluída | Depende de |
 |---|---|---|---|---|---|
 | K33 | P3 | Alto | Orçamento por categoria | Limites mensais, comparação com gastos e saldo do orçamento, sem misturar transferências ou contar faturas duas vezes. | K18 |
-| K34 | P3 | Alto | Anexos e leitura local de documentos | Avaliar armazenamento privado de contratos e extração local de texto/PDF ou OCR; se adotado, revisar campos antes de cadastrar. Reconhecer texto não significa interpretar cláusulas automaticamente. | K10, K31 e avaliação de custo/precisão |
+| K34 | P1/P3 | Alto | Leitura local e anexos | M3/PDF e M4/OCR concluídos localmente, com revisão e evidências; publicação pendente. Armazenamento privado do arquivo original continua P3 e depende de K31. Não há promessa de interpretação completa das cláusulas. | K10; K31 apenas para armazenamento de anexos |
 | K35 | P3 | Alto | Notificações com app fechado | Escolher mecanismo e avaliar suporte/custos; depois implementar permissões, cancelamento e prevenção de avisos duplicados ou de contas pagas. | K21, K22 e decisão sobre infraestrutura |
 | K36 | P3 | Alto | Tipagem e fuso do perfil | Avaliar TypeScript gradual e necessidade de fuso por usuário; registrar decisões e, se adotadas, validar migração e datas entre dispositivos. | Necessidade comprovada e testes de calendário |
 
@@ -168,7 +170,7 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 ## Fora do compromisso atual
 
 - Reativação do Gemini ou outro modelo: contraria a decisão atual de evitar dependência de IA.
-- Interpretação automática de cláusulas: substituída nesta fase por cadastro/revisão manual em K10/K11; K34 é avaliação posterior.
+- Interpretação completa de cláusulas não é prometida: K10 mantém revisão manual; M3/M4/K34 oferecem sugestões locais para cinco campos, por texto ou OCR. Anexos e automação ampliada continuam posteriores.
 - Open Finance, pagamentos bancários reais e aplicativos nativos nas lojas: exigem planejamento próprio; não são entregas implícitas da agenda, dos boletos ou da PWA.
 
 ## Registro de movimentações
@@ -285,3 +287,5 @@ PWA permite instalar a versão web; não equivale a um aplicativo nativo nas loj
 | 23/10/2026 | E04 assistido | 0.1.25: diagnóstico de cronogramas por fase salvo pelo comando de extração, com eventos e dependências sem calendário. 24 testes novos; 327 totais; 18 saídas válidas e 90/90 campos oficiais idênticos. Próximo: piloto de OCR local para contratos, com Alto. Entrega 100%; experimento original 29%. |
 
 | 24/10/2026 | K07 · Publicação | Regras Firebase publicadas em 23/10; Netlify confirmou o commit funcional 3f58af4 em produção em 24/10. Scanner ativo após retirar identificador público da documentação. README atualizado; 129 testes + dois de integração e build aprovados. Publicação concluída; validação visual/fluxos autenticados ainda pendentes. Contratos: 29%. |
+| 25/10/2026 | M3/K34 · PDF com revisão | Cinco campos sugeridos por regras locais, evidências preservadas e confirmação antes do cadastro. 146 testes do aplicativo, seis de integração, fluxo de navegador e Worker compilado aprovados. Sem publicação; integração inicial 75% (3/4), experimento 29%. Próximo: M4/OCR, com Alto. |
+| 25/10/2026 | M4/K34 · OCR de contratos | OCR local opcional, revisão obrigatória e origem preservada. 151 testes do aplicativo, seis de integração, fluxo de navegador e build aprovados; dois PDFs de desenvolvimento, 74 páginas processadas. Integração inicial 100% (4/4 marcos locais), sem medir precisão; experimento 29%. Próximo: publicação e teste autenticado, com Alto. |

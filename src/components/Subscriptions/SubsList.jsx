@@ -1,4 +1,5 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { getSubscriptions, deleteSubscription, payRecurringBill } from '../../services/subscriptionService';
 import { formatBRL } from '../../utils/formatters';
 import { localDate, sumMoney } from '../../utils/finance';
@@ -12,10 +13,16 @@ const dateBR = value => value?.split('-').reverse().join('/') || 'Sem término';
 const labels = { PAID: 'Pago', OVERDUE: 'Atrasado', PENDING: 'Pendente' };
 
 export default function SubsList({ uid }) {
-  const [subs, setSubs] = useState([]);
+  const [allSubs, setSubs] = useState([]);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const contractFilter = searchParams.get('contrato');
+  const subs = contractFilter ? allSubs.filter(sub => sub.contractId === contractFilter) : allSubs;
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const [month, setMonth] = useState(() => localDate().slice(0, 7));
+  const [month, setMonth] = useState(() => {
+    const initial = searchParams.get('mes');
+    return /^(19[0-9]{2}|[2-9][0-9]{3})-(0[1-9]|1[0-2])$/.test(initial || '') ? initial : localDate().slice(0, 7);
+  });
   const [onlyOverdue, setOnlyOverdue] = useState(false);
   const [selected, setSelected] = useState(null);
   const [reconciling, setReconciling] = useState(null);
@@ -89,6 +96,7 @@ export default function SubsList({ uid }) {
   const pending = sumMoney(occurrences.filter(item => item.status !== 'PAID').map(item => item.amount));
 
   return <>
+    {contractFilter && <p>Exibindo apenas compromissos deste contrato. <button className="btn-outline" onClick={() => setSearchParams({})}>Ver todas as contas</button></p>}
     <p style={{ color: 'var(--text-muted)' }}>Registre os pagamentos feitos pela conta corrente. As assinaturas antigas continuam sendo pagas pela fatura do cartão.</p>
     {message && <p role="status">{message}</p>}
     <div className="card" style={{ marginTop: '1rem' }}>
@@ -102,6 +110,7 @@ export default function SubsList({ uid }) {
         {occurrences.map(item => <div key={item.subscriptionId + item.dueDate} style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', gap: '0.8rem', padding: '1rem 0', borderTop: '1px solid var(--border-color)' }}>
           <div style={{ flex: '1 1 160px', minWidth: 0, overflowWrap: 'anywhere' }}>
             <strong>{item.name}</strong>
+            {item.contractId && <p><a href="/contratos">Vinculado a um contrato</a></p>}
             <p>Vence em {dateBR(item.dueDate)} · {labels[item.status]}</p>
             {item.payment && <small style={{ color: 'var(--text-muted)' }}>Pago em {dateBR(item.payment.paidDate)}. Para estornar, exclua o pagamento no histórico.</small>}
           </div>
@@ -122,7 +131,7 @@ export default function SubsList({ uid }) {
           <p>Primeiro vencimento da regra atual: {dateBR(effectiveSchedule(sub, today).startDate)}. Término: {dateBR(effectiveSchedule(sub, today).endDate)}.</p>
           {sub.revisions?.some(item => item.effectiveFrom > today) && <p>Há alterações futuras agendadas.</p>}
           {!!sub.revisions?.length && <details style={{ marginTop: '0.75rem' }}><summary>Histórico de condições</summary>{recurringSchedules(sub).map((item, index) => <p key={index} style={{ marginTop: '0.5rem' }}>Desde {dateBR(item.effectiveFrom)}: {formatBRL(item.amount)} · {FREQUENCIES[item.frequency]}. Primeiro vencimento: {dateBR(item.startDate)}. Término: {dateBR(item.endDate)}.</p>)}</details>}
-          {sub.isActive && <button className="btn-outline" disabled={saving} style={{ marginTop: '1rem', width: '100%' }} onClick={() => setEditing(sub)}>Editar recorrência</button>}
+          {sub.contractId ? <p>Plano fixo de {sub.installmentCount} parcela(s), vinculado a um contrato. Reajustes e troca do calendário ainda não estão disponíveis.</p> : sub.isActive && <button className="btn-outline" disabled={saving} style={{ marginTop: '1rem', width: '100%' }} onClick={() => setEditing(sub)}>Editar recorrência</button>}
         </> : <p>Dia do vencimento: {sub.dueDay}</p>}
         {!sub.isActive ? <p>Encerrada{sub.cancelledOn ? ' em ' + dateBR(sub.cancelledOn) : ''}</p>
           : <button className="btn-outline" disabled={saving} style={{ marginTop: '1rem', width: '100%' }} onClick={() => handleDelete(sub)}>Encerrar recorrência</button>}

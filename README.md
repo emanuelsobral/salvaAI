@@ -2,11 +2,30 @@
 
 Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Firestore. Gerencia receitas, despesas, contas, caixinhas, cartões parcelados, assinaturas e importação CSV/OFX e PDF com revisão manual, com dashboard e consultas automáticas sem IA.
 
-## Estado atual — 24/10/2026
+## Estado atual — 25/10/2026
 
 Esta documentação descreve o código desta atualização. **Publicado em 24/10/2026:** interface e arquivos OCR confirmados pela API da Netlify, com regras Firestore publicadas previamente. Validação visual e teste autenticado em produção permanecem pendentes. Consulte [publicação de 23/10/2026](docs/deploy-2026-10-23.md).
 
-### O que funciona e quais são os limites
+**Atualização local posterior ao deploy:** contratos em `/contratos`, com cadastro, edição, PDF com OCR opcional e revisão, além de compromissos de valor fixo após prévia e confirmação. Integração inicial em **100% dos quatro marcos locais**; isso não representa precisão de leitura nem conclusão do projeto inteiro. Ainda não publicado; exige publicar as novas regras Firestore antes da interface. [Roteiro e validação](docs/contratos-mvp.md) · [Piloto de OCR](docs/contratos-ocr-validacao.md).
+
+### Status da ferramenta de contratos
+
+**Implementação inicial: 100% (4/4 marcos). Publicação desta atualização: em andamento em 25/10/2026.** Este percentual mede as entregas implementadas, não a precisão da extração nem a conclusão de todo o SalvaAI.
+
+| Função | Status e comportamento |
+|---|---|
+| Cadastro e edição | Concluídos. Dados por usuário, campos opcionais e proteção contra edição desatualizada. |
+| Compromissos financeiros | Concluídos para parcelas iguais, com prévia e confirmação. Salvar o contrato ou gerar compromissos não altera o saldo; o pagamento precisa ser registrado. |
+| Leitura de PDF | Concluída nos formatos suportados, com sugestões para valor, parcelas, vencimento, vigência e reajuste; trechos e páginas disponíveis para revisão. |
+| OCR de digitalizações | Concluído localmente, sem API paga ou envio do original. A transcrição pode conter erros e é identificada como OCR. |
+| Precisão e avaliação | Ainda não medidas com gabarito independente. Campos ausentes ou ambíguos ficam vazios, sem estimativas automáticas. |
+| Ainda pendente | Reajustes automáticos, alterações de planos contratuais, encerramento do cadastro e armazenamento do PDF original. |
+
+Para usar: **Contratos → Novo contrato** ou **Importar PDF**. Para digitalizações, marcar **Ler páginas digitalizadas (OCR)** antes de escolher o arquivo. Limites: **10 MB e 50 páginas**; conferir tudo no original antes de salvar. Depois, usar **Planejar compromissos** para revisar as datas e confirmar parcelas fixas.
+
+Validações: **151 testes do aplicativo, seis de integração, testes no navegador e build aprovados**. O piloto OCR processou 74 páginas de dois documentos de desenvolvimento; isso não representa acerto dos cinco campos. [Detalhes da integração](docs/contratos-mvp.md) · [Relatório do OCR](docs/contratos-ocr-validacao.md).
+
+### Demais funcionalidades e limites
 
 | Área | Disponível no código atual | Limites conhecidos |
 |---|---|---|
@@ -20,7 +39,9 @@ Esta documentação descreve o código desta atualização. **Publicado em 24/10
 | OCR de extratos | Leitura opcional de uma página por vez no navegador, com motor e idioma servidos pelo próprio site. | Qualidade da imagem afeta o resultado; dados incertos exigem correção. Amostra BB validada, sem cobertura universal. |
 | Assistente e resumo | Consultas locais de saldo, fatura, gastos, categorias e projeção, sem consumo de Gemini. | Não é conversa aberta com IA. A rota antiga `/api/ai` retorna 410; leitura de recibos por IA foi retirada. |
 | Mobile | Interface responsiva e revisão de extratos conferida em larguras de 320 e 390 pixels. | Teste em celular físico foi adiado. Não há app nativo, PWA completa ou notificações com o app fechado. |
-| Contratos | Protótipo local 0.1.25 para cinco campos, evidências e diagnóstico auxiliar de cronograma por fase. | Roda no terminal, separado do site; não cria pagamentos automaticamente. OCR de contratos e avaliação independente ainda pendentes. |
+| Cadastro de contratos | Tela local para listar, criar e editar título, valores, prazos e condições, com dados por usuário e proteção contra edição desatualizada. | Ainda não publicado. Salvar o cadastro não gera parcelas; encerramento do contrato pendente. |
+| Compromissos contratuais | Prévia e confirmação de parcelas iguais, vinculadas a vencimentos, pagamentos, estorno e projeção existentes. | Um plano fixo por contrato; sem interpretar cláusulas, calcular juros/reajustes ou identificar contas equivalentes já cadastradas. Geração não altera saldo. |
+| Extração de contratos | PDF com texto e OCR opcional de digitalizações, com sugestões para cinco campos, evidências por página, correção e confirmação antes de salvar. Regras locais 0.1.25; protótipo de terminal preservado. | Ainda não publicado. Até 10 MB/50 páginas, sem senha. Leitor inicial de cerca de 12 MB e recursos adicionais de OCR. Transcrições podem conter erros; sem garantia de identificação de todos os campos ou avaliação independente. |
 
 As conferências de PDF/OCR cobrem amostras específicas, não uma taxa geral de acerto. Transferências próprias, resgates e pagamentos de cartão presentes no extrato não são automaticamente vinculados às outras operações do aplicativo. Reveja o saldo inicial para não somar novamente um período já contabilizado.
 
@@ -40,12 +61,13 @@ A Netlify confirmou que a versão anterior em produção era o commit `45f3abb`,
 
 ### Ainda não disponível
 
-Open Finance/sincronização direta com bancos, pagamento real de contas/boletos, leitura universal de extratos, integração de contratos ao planejamento do app, OCR de contratos, migração automática do legado, backup/restauração completo, aplicativo nativo e uso offline completo. Os próximos passos estão no [Kanban](docs/kanban.md).
+Open Finance/sincronização direta com bancos, pagamento real de contas/boletos, leitura universal de extratos/contratos, reajustes contratuais automáticos, migração automática do legado, backup/restauração completo, aplicativo nativo e uso offline completo. Os próximos passos estão no [Kanban](docs/kanban.md).
 
 ## Documentação
 
 - [Índice completo](docs/README.md)
 - [Kanban — próximos passos e andamento](docs/kanban.md)
+- [Contratos — cadastro manual e roteiro de integração](docs/contratos-mvp.md)
 - [Experimento de contratos — protocolo e formato do JSON](experiments/contracts/README.md)
 - [Mudanças do antigo para o novo](docs/evolucao-antigo-novo.md)
 - [Arquitetura e funções](docs/arquitetura-salva-ai.md)
@@ -106,6 +128,8 @@ npm run test:firebase
 Os testes usam `demo-salva-ai`; o primeiro uso pode baixar o emulador. O [guia de operação](docs/operacao-e-testes.md) explica configuração e alternativa para npm com instalação quebrada no Windows.
 
 ## Validação desta atualização
+
+Contratos e compromissos, em 24/10/2026: **141 testes do aplicativo, cinco testes no emulador e teste visual com cadastro, edição, prévia, confirmação e pagamento aprovados**. Formulário e prévia conferidos em 320/390 pixels; build aprovado. Validação local, sem publicação destas funcionalidades. [Detalhes](docs/contratos-mvp.md).
 
 Em 23/10/2026: **129 testes do aplicativo e dois testes de integração no emulador Firestore aprovados**; build de produção aprovado; lint sem erros e com cinco avisos conhecidos. O build ainda emite aviso de tamanho de pacote. Os testes usam dados fictícios e não lançam operações em contas reais.
 

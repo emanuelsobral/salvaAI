@@ -4,6 +4,69 @@ service cloud.firestore {
     function owner(uid) { return request.auth != null && request.auth.uid == uid; }
     function positive(value) { return value is number && value > 0 && value <= 1000000000; }
     function text(value) { return value is string && value.size() > 0 && value.size() <= 600; }
+    function contractText(value, maximum) { return value is string && value.size() <= maximum; }
+    function contractDate(value) {
+      return value is string && (value == '' || value.matches('^[0-9]{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$'));
+    }
+    function validSourceReview(source) {
+      return source is map
+        && source.keys().hasAll(['method', 'pdfSha256', 'extractorVersion', 'resultJson'])
+        && source.keys().hasOnly(['method', 'pdfSha256', 'extractorVersion', 'resultJson'])
+        && source.method in ['PDF_TEXT_REVIEW', 'PDF_OCR_REVIEW'] && source.pdfSha256.matches('^[a-f0-9]{64}$')
+        && source.extractorVersion is string && source.extractorVersion.size() <= 30
+        && source.resultJson is string && source.resultJson.size() > 0 && source.resultJson.size() <= 100000;
+    }
+    function validContractPlan(plan) {
+      return plan is map
+        && plan.keys().hasAll(['subscriptionId', 'amount', 'count', 'frequency', 'firstDueDate', 'lastDueDate', 'contractRevision'])
+        && plan.keys().hasOnly(['subscriptionId', 'amount', 'count', 'frequency', 'firstDueDate', 'lastDueDate', 'contractRevision'])
+        && plan.subscriptionId is string && positive(plan.amount)
+        && plan.count is int && plan.count >= 1 && plan.count <= 1200
+        && plan.frequency in ['WEEKLY', 'MONTHLY', 'YEARLY']
+        && contractDate(plan.firstDueDate) && plan.firstDueDate != ''
+        && contractDate(plan.lastDueDate) && plan.lastDueDate >= plan.firstDueDate
+        && plan.contractRevision is int && plan.contractRevision >= 0;
+    }
+    function planMatchesSubscription(plan, sub) {
+      return sub.billingMode == 'ACCOUNT' && sub.amount == plan.amount
+        && sub.frequency == plan.frequency && sub.startDate == plan.firstDueDate
+        && sub.endDate == plan.lastDueDate && sub.installmentCount == plan.count;
+    }
+    function contractPlanUpdate(uid, id) {
+      let before = resource.data.get('commitmentPlan', null);
+      let after = request.resource.data.get('commitmentPlan', null);
+      return before != null ? after == before : (after == null || (
+        after.subscriptionId == 'contract_' + id && after.contractRevision == resource.data.revision
+        && getAfter(/databases/$(database)/documents/users/$(uid)/subscriptions/$(after.subscriptionId)).data.contractId == id
+        && planMatchesSubscription(after, getAfter(/databases/$(database)/documents/users/$(uid)/subscriptions/$(after.subscriptionId)).data)
+      ));
+    }
+    function validContract(data) {
+      return data.keys().hasAll(['title', 'counterparty', 'amount', 'installments', 'startDate', 'endDate', 'dueRule', 'adjustmentRule', 'notes', 'schemaVersion', 'revision', 'createdAt', 'updatedAt'])
+        && data.keys().hasOnly(['title', 'counterparty', 'amount', 'installments', 'startDate', 'endDate', 'dueRule', 'adjustmentRule', 'notes', 'schemaVersion', 'revision', 'createdAt', 'updatedAt', 'commitmentPlan', 'sourceReview'])
+        && (!data.keys().hasAny(['commitmentPlan']) || validContractPlan(data.commitmentPlan))
+        && (!data.keys().hasAny(['sourceReview']) || validSourceReview(data.sourceReview))
+        && text(data.title) && data.title.size() <= 500 && data.title.matches('.*[^\\s].*')
+        && contractText(data.counterparty, 500) && contractText(data.dueRule, 600)
+        && contractText(data.adjustmentRule, 600) && contractText(data.notes, 3000)
+        && (data.amount == null || positive(data.amount))
+        && (data.installments == null || (data.installments is int && data.installments >= 1 && data.installments <= 1200))
+        && contractDate(data.startDate) && contractDate(data.endDate)
+        && (data.startDate == '' || data.endDate == '' || data.endDate >= data.startDate)
+        && data.schemaVersion == 1 && data.revision is int && data.revision >= 0
+        && data.createdAt is timestamp && data.updatedAt == request.time;
+    }
+    match /users/{uid}/contracts/{id} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && validContract(request.resource.data)
+        && !request.resource.data.keys().hasAny(['commitmentPlan'])
+        && request.resource.data.revision == 0 && request.resource.data.createdAt == request.time;
+      allow update: if owner(uid) && validContract(request.resource.data)
+        && contractPlanUpdate(uid, id)
+        && request.resource.data.get('sourceReview', null) == resource.data.get('sourceReview', null)
+        && request.resource.data.createdAt == resource.data.createdAt
+        && request.resource.data.revision == resource.data.revision + 1;
+    }
     match /users/{uid}/accounts/{id} {
       allow read: if owner(uid);
       allow create, update: if owner(uid)
@@ -51,10 +114,29 @@ service cloud.firestore {
         && request.resource.data.dueDay is int && request.resource.data.dueDay >= 1 && request.resource.data.dueDay <= 31;
     }
     match /users/{uid}/subscriptions/{id} {
+      function basicSubscription() {
+        return positive(request.resource.data.amount) && text(request.resource.data.name)
+          && request.resource.data.isActive is bool && request.resource.data.dueDay is int
+          && request.resource.data.dueDay >= 1 && request.resource.data.dueDay <= 31;
+      }
+      function linkedContractCreation() {
+        let data = request.resource.data;
+        let contract = getAfter(/databases/$(database)/documents/users/$(uid)/contracts/$(data.contractId)).data;
+        return id == 'contract_' + data.contractId && contract.commitmentPlan.subscriptionId == id
+          && planMatchesSubscription(contract.commitmentPlan, data)
+          && data.name == contract.title && data.isActive == true
+          && data.payments is map && data.payments.size() == 0 && data.createdAt == request.time
+          && data.keys().hasOnly(['name', 'amount', 'billingMode', 'frequency', 'startDate', 'endDate', 'dueDay', 'category', 'isActive', 'payments', 'contractId', 'installmentCount', 'createdAt']);
+      }
       allow read: if owner(uid);
-      allow create, update: if owner(uid) && positive(request.resource.data.amount)
-        && text(request.resource.data.name) && request.resource.data.isActive is bool
-        && request.resource.data.dueDay is int && request.resource.data.dueDay >= 1 && request.resource.data.dueDay <= 31;
+      allow create: if owner(uid) && basicSubscription()
+        && (!request.resource.data.keys().hasAny(['contractId']) || linkedContractCreation());
+      allow update: if owner(uid) && basicSubscription()
+        && (resource.data.keys().hasAny(['contractId'])
+          ? (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['payments', 'isActive', 'cancelledOn', 'cancelledAt'])
+            && request.resource.data.payments is map
+            && (request.resource.data.isActive == resource.data.isActive || request.resource.data.isActive == false))
+          : !request.resource.data.keys().hasAny(['contractId']));
     }
     match /users/{uid}/invoices/{id} {
       allow read: if owner(uid);

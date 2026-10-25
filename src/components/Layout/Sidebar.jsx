@@ -101,6 +101,9 @@ export default function Sidebar() {
           >
             📦 Contas recorrentes
           </NavLink>
+          <NavLink to="/contratos" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMobile}>
+            📄 Contratos
+          </NavLink>
         </nav>
 
         <div className="sidebar-footer">

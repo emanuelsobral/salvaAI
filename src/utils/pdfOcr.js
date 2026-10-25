@@ -2,7 +2,7 @@ import { createWorker } from 'tesseract.js';
 import { recognizeOcrImage } from './ocrTask.js';
 import { ocrStatementLines } from './ocrStatement.js';
 
-export async function readStatementPageImage(document, number, { signal, onProgress = () => {} } = {}) {
+export async function readPdfPageImage(document, number, { signal, onProgress = () => {} } = {}) {
   if (signal?.aborted) throw Error('Leitura da imagem cancelada.');
   const page = await document.getPage(number);
   const original = page.getViewport({ scale: 1 });
@@ -27,7 +27,7 @@ export async function readStatementPageImage(document, number, { signal, onProgr
         workerBlobURL: false, cacheMethod: 'none' },
       onProgress: message => onProgress(message.status === 'recognizing text' ? `Lendo imagem: ${Math.round(message.progress * 100)}%` : 'Carregando leitor local…')
     });
-    return ocrStatementLines(data, number);
+    return data;
   } catch (error) {
     if (signal?.aborted) throw Error('Leitura da imagem cancelada.');
     if (/^(A leitura|Não foi possível preparar|Texto da imagem)/.test(error.message || '')) throw error;
@@ -36,4 +36,8 @@ export async function readStatementPageImage(document, number, { signal, onProgr
     signal?.removeEventListener('abort', abort);
     canvas.width = 0; canvas.height = 0;
   }
+}
+
+export async function readStatementPageImage(document, number, options) {
+  return ocrStatementLines(await readPdfPageImage(document, number, options), number);
 }

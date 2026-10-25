@@ -1,10 +1,10 @@
 # Documentação do AgentFinanceiro / SalvaAI
 
-Atualização do índice: **13/10/2026**, horário de São Paulo. Os guias históricos conservam suas datas e evidências originais.
+Atualização do índice: **25/10/2026**, horário de São Paulo. Os guias históricos conservam suas datas e evidências originais.
 
-**Planejamento atual:** [Kanban do SalvaAI](kanban.md), com prioridades, dependências e níveis recomendados do GPT-6. O [experimento de contratos](../experiments/contracts/README.md) tem piloto original de 26 PDFs e protótipo 0.1.0 validado tecnicamente, com baixa cobertura inicial. Após a identificação de modelos em branco, foram selecionados [dois contratos institucionais preenchidos](../experiments/contracts/coleta-preenchidos.md) como complemento de desenvolvimento. Próximo passo: [anotação humana E03](../experiments/contracts/guia-anotacao.md) do `pub-alu-03`, com Alto para apoio técnico. Gabarito, precisão e coleta de contratos pessoais preenchidos continuam pendentes. Agenda de contas na sequência. O produto continua sem chamadas de IA.
+**Planejamento atual — 25/10/2026:** [Kanban](kanban.md) e [roteiro de contratos](contratos-mvp.md). Cadastro, compromissos fixos, PDF e OCR com revisão concluídos localmente: **100% dos quatro marcos da integração inicial**, ainda não publicados. Próximo: publicação e teste autenticado, com Alto. [Piloto OCR: 74 páginas](contratos-ocr-validacao.md). O [experimento de extração](../experiments/contracts/README.md) permanece na versão 0.1.25 e em 29% (2/7 etapas); avaliação independente pendente. O percentual da integração não mede acerto dos campos nem conclusão do projeto inteiro.
 
-Esta documentação descreve o código disponível nesta pasta. Não há histórico Git na raiz nesta revisão; portanto, as etapas abaixo são marcos de comparação, não versões publicadas ou tags de releases.
+Esta documentação descreve o código disponível nesta pasta. O repositório Git fica em `salva-ai/`; os marcos históricos abaixo não equivalem, por si só, a versões publicadas. A última publicação está no [registro de deploy](deploy-2026-10-23.md).
 
 ## Etapas consideradas
 
@@ -26,9 +26,9 @@ Esta documentação descreve o código disponível nesta pasta. Não há histór
 | [README da aplicação](../salva-ai/README.md) | Guia rápido de desenvolvimento |
 | [Arquitetura histórica](project_architecture.md) | Proposta anterior preservada; não é o inventário do sistema atual |
 
-## Evidência mais recente — 12/10/2026
+## Evidência mais recente — 24/10/2026
 
-O [registro de edição de recorrências](edicao-recorrencias.md) documenta 79 testes locais, dois testes no emulador, build aprovado e verificação de navegador em 320/390/1280 pixels. As alterações recentes permanecem locais, com publicação pendente. A criação do Kanban não executou novamente esses testes.
+O [cadastro e planejamento de contratos](contratos-mvp.md) registra 141 testes locais, cinco testes no emulador, build e teste de navegador aprovados. Cadastro, recarga, edição, conflito entre telas, prévia, confirmação e pagamento foram verificados com dados fictícios. Estas funcionalidades ainda não foram publicadas.
 
 ## Estado verificado na revisão inicial — 13/09/2026
 

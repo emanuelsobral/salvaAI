@@ -1,0 +1,15 @@
+<!doctype html><html lang="pt-BR"><head><meta charset="UTF-8"><title>Validação local de OCR</title></head><body><p>Validação local — sem banco de dados.</p><script type="module">
+import { readContractPdf, extractContractPages } from '/src/utils/contractPdf.js';
+import { contractDraft, prepareSourceReview } from '/src/utils/contractExtraction.js';
+import { CONTRACT_OCR_TIMEOUT_MS } from '/src/utils/contractOcr.js';
+if (!import.meta.env.DEV || !['localhost', '127.0.0.1'].includes(location.hostname)) throw Error('Somente teste local.');
+window.readOcrContract = async (bytes, name) => {
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), CONTRACT_OCR_TIMEOUT_MS);
+  try {
+    const result = await readContractPdf(new File([new Uint8Array(bytes)], name), { useOcr: true, signal: controller.signal, onProgress: message => window.ocrProgress?.(message) });
+    const extraction = await extractContractPages(result.pages, { signal: controller.signal });
+    return { ...result, extraction, draft: contractDraft(extraction, result.pages), sourceReview: prepareSourceReview(extraction, result.pages, result.pdfSha256, { useOcr: true }) };
+  } finally { clearTimeout(timer); }
+};
+</script></body></html>
