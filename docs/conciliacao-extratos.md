@@ -1,49 +1,45 @@
-# Conciliação de extratos e recorrências — 12/10/2026
+# Conciliar extratos e contas recorrentes
 
-A conciliação liga uma despesa do extrato a um vencimento de uma conta recorrente. As sugestões são calculadas localmente, sem IA, e nenhuma correspondência é confirmada automaticamente.
+A conciliação liga uma despesa importada ao vencimento de uma conta recorrente. O aplicativo sugere correspondências por regras locais, sem IA. Você escolhe e confirma cada vínculo.
 
 ## Durante a importação
 
-1. Selecione a conta corrente, carregue CSV ou OFX e clique em **Buscar correspondências**.
-2. Para cada linha sugerida, escolha o vencimento ou **É outra despesa: importar separadamente**. Nada vem selecionado.
-3. Confira se o vencimento está pendente ou se já tem um pagamento registrado.
-4. Confirme a importação. Alterar o conteúdo, formato ou destino exige nova revisão das sugestões.
+1. Selecione a conta corrente e carregue o extrato. Para PDF, conclua primeiro a revisão das linhas.
+2. Use Buscar correspondências.
+3. Em cada sugestão, escolha o vencimento ou É outra despesa: importar separadamente. Nenhuma opção vem selecionada.
+4. Confira se o vencimento está pendente ou já tem pagamento registrado.
+5. Confirme a importação. Alterar o conteúdo, o formato ou a conta de destino exige nova revisão.
 
-| Situação confirmada | Efeito |
+| Situação | Resultado após confirmar |
 |---|---|
-| Vencimento pendente e linha nova | Cria a despesa, desconta o saldo uma vez e marca o vencimento como pago. |
-| Vencimento já pago | Aproveita o pagamento existente e registra o identificador da importação, sem novo débito. |
-| Linha já importada e vencimento pendente | Vincula o lançamento existente, sem novo débito. |
-| Extrato e vencimento já possuem pagamentos diferentes | Bloqueia a conciliação para revisão no histórico; não funde ou exclui registros automaticamente. |
-| Escolha de importar separadamente | Trata a linha como outra despesa e mantém o vencimento independente. |
+| Vencimento pendente e despesa nova | Cria a despesa, desconta o saldo uma vez e marca o vencimento como pago. |
+| Vencimento já pago | Aproveita o pagamento existente e registra a importação, sem outro débito. |
+| Despesa já importada e vencimento pendente | Vincula o lançamento existente, sem outro débito. |
+| Extrato e vencimento já têm pagamentos diferentes | Bloqueia o vínculo para revisão no histórico. Não une nem exclui registros automaticamente. |
+| Importar separadamente | Trata o lançamento como outra despesa e mantém o vencimento independente. |
 
-A deduplicação CSV/OFX anterior continua funcionando. Fora dos vínculos confirmados, não há deduplicação geral entre formatos ou entre importação e lançamentos manuais.
+As regras de [duplicidade da importação](importacao-extratos.md) continuam valendo. Fora dos vínculos confirmados, não há deduplicação geral entre formatos ou entre importação e lançamentos manuais.
 
-## Depois da importação
+## Depois de importar
 
-Em **Contas recorrentes**, use **Vincular extrato** ao lado de um vencimento em aberto. Escolha um lançamento compatível e confirme. O lançamento permanece no histórico, o saldo é preservado e o vencimento deixa de ser descontado na projeção.
+Em Contas recorrentes, use Vincular extrato ao lado do vencimento em aberto. Escolha um lançamento compatível e confirme. O histórico e o saldo permanecem iguais, e o vencimento deixa de ser descontado na projeção.
 
-Se o vínculo estiver errado, use **Desvincular extrato**. A despesa importada e o saldo continuam iguais, mas o vencimento volta a ficar em aberto. Para remover a própria despesa e devolver seu valor ao saldo, exclua o lançamento no histórico; isso também remove o vínculo.
+Se o vínculo estiver errado, escolha Desvincular extrato. A despesa continua registrada e o saldo não muda, mas o vencimento volta a ficar em aberto. Para remover a despesa e devolver o valor ao saldo, exclua o lançamento no histórico; isso também remove o vínculo.
 
-Pagamentos manuais aproveitados durante a importação continuam sendo pagamentos manuais. A opção de desvincular extrato se aplica a despesas originadas de importação. Excluir um lançamento não remove o marcador de importação: reimportar o mesmo registro não o recria automaticamente.
+Pagamentos manuais aproveitados durante a importação continuam manuais. A opção de desvincular extrato vale para despesas originadas de importação. Excluir um lançamento não apaga o marcador de importação: reimportar o mesmo registro não o recria automaticamente.
 
 ## Critérios e limites
 
-- Somente despesas da conta corrente e recorrências com `billingMode: ACCOUNT`. Assinaturas antigas cobradas na fatura ficam fora.
-- Valor exato em centavos e data bancária até sete dias antes ou depois do vencimento. Para pagamentos já registrados, também se compara a data do pagamento.
-- Palavras da descrição semelhantes ao nome da conta priorizam sugestões. Isso não comprova a correspondência; valores iguais podem gerar várias opções.
-- Datas bancárias futuras não são conciliadas. Pagamentos parciais, juros, descontos e valores divergentes exigem revisão manual.
-- Até dez vínculos por importação; o limite geral continua em 200 linhas. Para mais vínculos, importe separadamente e concilie depois na tela de recorrências, ou divida o arquivo sem repetir linhas.
-- Não reutiliza um lançamento em dois vencimentos nem duas linhas em um vencimento.
-- Duplicidades já gravadas em duas despesas não são corrigidas automaticamente. Revise e estorne o registro incorreto antes de vincular o registro restante.
-- A categoria, descrição, valor, conta e data do extrato são preservados. As consultas ainda leem as coleções completas; paginação permanece uma melhoria futura.
+As sugestões consideram despesas da conta corrente e recorrências pagas por essa conta. Assinaturas antigas da fatura ficam fora.
 
-## Persistência e segurança
+O valor precisa coincidir em centavos, e a data bancária deve estar até sete dias antes ou depois do vencimento. Quando já existe pagamento, sua data também entra na comparação. Palavras semelhantes entre descrição e nome da conta priorizam opções, mas não comprovam o vínculo; despesas iguais podem gerar várias sugestões.
 
-O vínculo converte somente os campos `kind`, `subscriptionId` e `dueDate` da transação importada, de `REGULAR` para `RECURRING_PAYMENT`. O mapa `subscriptions.payments` guarda a transação, data, valor e `source: IMPORT`. Saldo, vínculo, histórico e marcadores são escritos atomicamente quando aplicáveis. A confirmação revalida os documentos para lidar com alterações feitas desde a prévia e tentativas simultâneas.
+Datas bancárias futuras não são conciliadas. Pagamentos parciais, juros, descontos e valores diferentes exigem revisão manual.
 
-`reconciliationService.js` fornece `getReconciliationCandidates`, `reconcileTransaction` e `undoReconciliation`. `importStatement` aceita a opção `reconciliations`, com itens `{ rowIndex, subscriptionId, dueDate }`; os índices começam em zero nas linhas válidas do arquivo.
+Cada importação permite até dez vínculos, com limite geral de 200 linhas. Para mais vínculos, importe e concilie depois na tela de recorrências, ou divida o arquivo sem repetir linhas. Um lançamento não pode pagar dois vencimentos, nem duas linhas podem ser usadas no mesmo vencimento.
 
-**Publicação necessária:** esta etapa altera `firestore.rules` para permitir mudanças restritas no vínculo de transações importadas. Publique as regras no projeto Firebase correto antes de disponibilizar a interface atualizada. As regras mantêm valor, conta, data e descrição imutáveis nessas alterações e exigem o vínculo correspondente no documento da recorrência. O código e as regras foram preparados localmente; não há deploy automático.
+Duplicidades já gravadas não são corrigidas automaticamente. Revise e estorne o registro incorreto antes de vincular o restante. Categoria, descrição, valor, conta e data do extrato são preservados.
 
-Os testes em `tests/reconciliation.test.js` cobrem sugestões, importação, reaproveitamento, concorrência, rollback, estorno e recusa de combinações inválidas. `tests/firebase.integration.js` valida os serviços e as permissões reais no emulador, sem acessar produção.
+A confirmação confere novamente os registros antes de gravar, para lidar com mudanças feitas após a prévia e tentativas simultâneas.
+
+[Voltar aos guias](README.md)

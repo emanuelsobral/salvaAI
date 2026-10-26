@@ -49,3 +49,19 @@ docs/word-build/
 .statement-qa/
 .netlify/
 .contract-qa/
+
+# Documentação pública: somente guias de uso. O restante fica local.
+/docs/*
+!/docs/README.md
+!/docs/financas.md
+!/docs/contratos.md
+!/docs/importacao-extratos.md
+!/docs/contas-recorrentes.md
+!/docs/edicao-recorrencias.md
+!/docs/conciliacao-extratos.md
+
+# Relatórios de desenvolvimento do extrator; manter instruções e protocolo.
+/experiments/contracts/*.md
+!/experiments/contracts/README.md
+!/experiments/contracts/protocolo.md
+!/experiments/contracts/guia-anotacao.md

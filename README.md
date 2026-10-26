@@ -1,115 +1,76 @@
 # SalvaAI
 
-Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Firestore. Gerencia receitas, despesas, contas, caixinhas, cartões parcelados, assinaturas e importação CSV/OFX e PDF com revisão manual, com dashboard e consultas automáticas sem IA.
+O SalvaAI é um projeto pessoal de gestão financeira, desenvolvido com React, Vite e Firebase. Permite registrar receitas e despesas, acompanhar cartões e contas recorrentes, importar extratos e organizar compromissos de contratos.
 
-## Estado atual — 25/10/2026
+[Acessar o SalvaAI](https://salvaaifinc.netlify.app)
 
-**Contratos publicados em 25/10/2026:** regras Firestore e interface confirmadas em produção. Site, rota `/contratos`, arquivos PDF/OCR e tela de entrada conferidos; navegação autenticada em produção ainda pendente. [Registro desta publicação](docs/deploy-2026-10-25.md).
+## O que está disponível
 
-**Disponível no site:** contratos em `/contratos`, com cadastro, edição, PDF com OCR opcional e revisão, além de compromissos de valor fixo após prévia e confirmação. Integração inicial em **100% dos quatro marcos implementados e publicados**; isso não representa precisão de leitura nem conclusão do projeto inteiro. [Roteiro e validação](docs/contratos-mvp.md) · [Piloto de OCR](docs/contratos-ocr-validacao.md).
-
-### Status da ferramenta de contratos
-
-**Implementação inicial: 100% (4/4 marcos). Publicação concluída em 25/10/2026.** Este percentual mede as entregas implementadas, não a precisão da extração nem a conclusão de todo o SalvaAI. O teste autenticado no site continua pendente.
-
-| Função | Status e comportamento |
+| Recurso | Como funciona |
 |---|---|
-| Cadastro e edição | Concluídos. Dados por usuário, campos opcionais e proteção contra edição desatualizada. |
-| Compromissos financeiros | Concluídos para parcelas iguais, com prévia e confirmação. Salvar o contrato ou gerar compromissos não altera o saldo; o pagamento precisa ser registrado. |
-| Leitura de PDF | Concluída nos formatos suportados, com sugestões para valor, parcelas, vencimento, vigência e reajuste; trechos e páginas disponíveis para revisão. |
-| OCR de digitalizações | Publicado, sem API paga ou envio do original. A transcrição pode conter erros e é identificada como OCR. |
-| Precisão e avaliação | Ainda não medidas com gabarito independente. Campos ausentes ou ambíguos ficam vazios, sem estimativas automáticas. |
-| Ainda pendente | Reajustes automáticos, alterações de planos contratuais, encerramento do cadastro e armazenamento do PDF original. |
+| Contas e caixinhas | Registra saldos, receitas, despesas, aportes e estornos. |
+| Cartões | Organiza compras parceladas, faturas e pagamentos registrados pelo usuário. |
+| Contas recorrentes | Calcula vencimentos semanais, mensais e anuais, com edição a partir de uma data e histórico preservado. |
+| Extratos | Importa CSV, OFX bancário em reais e PDF. Você escolhe a conta e confere os lançamentos antes de confirmar. |
+| Conciliação | Liga despesas importadas a vencimentos, com confirmação, para evitar registrar o mesmo pagamento duas vezes. |
+| Contratos | Cadastra valores e condições, sugere cinco campos a partir de PDF ou OCR e gera parcelas iguais após revisão. |
+| Dashboard e assistente | Consulta saldo, fatura, gastos, categorias e projeção de 12 meses com cálculos locais. |
 
-Para usar: **Contratos → Novo contrato** ou **Importar PDF**. Para digitalizações, marcar **Ler páginas digitalizadas (OCR)** antes de escolher o arquivo. Limites: **10 MB e 50 páginas**; conferir tudo no original antes de salvar. Depois, usar **Planejar compromissos** para revisar as datas e confirmar parcelas fixas.
+Login e dados em nuvem usam Firebase Authentication e Firestore. O assistente e a leitura de documentos funcionam sem APIs de IA ou chave Gemini. O aplicativo registra as operações informadas pelo usuário; não movimenta dinheiro em bancos nem paga boletos.
 
-Validações: **151 testes do aplicativo, seis de integração, testes no navegador e build aprovados**. O piloto OCR processou 74 páginas de dois documentos de desenvolvimento; isso não representa acerto dos cinco campos. [Detalhes da integração](docs/contratos-mvp.md) · [Relatório do OCR](docs/contratos-ocr-validacao.md).
+## Guias de uso
 
-### Demais funcionalidades e limites
+- [Documentação](docs/README.md)
+- [Saldos, cartões e projeções](docs/financas.md)
+- [Importação de extratos](docs/importacao-extratos.md)
+- [Contas recorrentes](docs/contas-recorrentes.md)
+- [Edição de recorrências](docs/edicao-recorrencias.md)
+- [Conciliação com extratos](docs/conciliacao-extratos.md)
+- [Cadastro e leitura de contratos](docs/contratos.md)
 
-| Área | Disponível no código atual | Limites conhecidos |
-|---|---|---|
-| Login e nuvem | Firebase Authentication e dados por usuário no Firestore. | Exige configuração do projeto, provedores/domínios autorizados e regras publicadas; não há modo offline completo. |
-| Finanças | Receitas, despesas, transferências, caixinhas, compras parceladas, registros de pagamento/estorno e dashboard. | Não movimenta dinheiro no banco. Migração do SQLite antigo não é automática. |
-| Recorrências | Contas semanais, mensais e anuais; vencimentos, atrasos, pagamento, encerramento e projeção de 12 meses. | Agendar uma conta não paga um boleto. Assinaturas antigas do cartão têm tratamento próprio. |
-| Edição de recorrências | Altera valor, frequência e término a partir de uma data, com prévia e preservação do histórico. | Alterações que conflitam com pagamentos futuros são recusadas. |
-| Conciliação | Sugere vínculos entre despesas do extrato e vencimentos, com confirmação; permite vincular/desvincular sem novo débito. | Não resolve automaticamente duplicidades já gravadas, pagamentos parciais ou valores divergentes. |
-| CSV e OFX | Upload, escolha da conta, prévia, importação atômica e prevenção de duplicidades nos formatos suportados. | OFX bancário em reais; não cobre qualquer variante ou produto financeiro. Linhas CSV idênticas podem ser ambíguas. |
-| PDF bancário | Leitura genérica, revisão de linhas e regras verificadas em amostras de Itaú e Nubank. | Não há garantia para todos os bancos/layouts. Data, valor, tipo e conta precisam de conferência. |
-| OCR de extratos | Leitura opcional de uma página por vez no navegador, com motor e idioma servidos pelo próprio site. | Qualidade da imagem afeta o resultado; dados incertos exigem correção. Amostra BB validada, sem cobertura universal. |
-| Assistente e resumo | Consultas locais de saldo, fatura, gastos, categorias e projeção, sem consumo de Gemini. | Não é conversa aberta com IA. A rota antiga `/api/ai` retorna 410; leitura de recibos por IA foi retirada. |
-| Mobile | Interface responsiva e revisão de extratos conferida em larguras de 320 e 390 pixels. | Teste em celular físico foi adiado. Não há app nativo, PWA completa ou notificações com o app fechado. |
-| Cadastro de contratos | Tela publicada para listar, criar e editar título, valores, prazos e condições, com dados por usuário e proteção contra edição desatualizada. | Salvar o cadastro não gera parcelas; encerramento do contrato pendente. |
-| Compromissos contratuais | Prévia e confirmação de parcelas iguais, vinculadas a vencimentos, pagamentos, estorno e projeção existentes. | Um plano fixo por contrato; sem interpretar cláusulas, calcular juros/reajustes ou identificar contas equivalentes já cadastradas. Geração não altera saldo. |
-| Extração de contratos | PDF com texto e OCR opcional de digitalizações, com sugestões para cinco campos, evidências por página, correção e confirmação antes de salvar. Regras locais 0.1.25; protótipo de terminal preservado. | Até 10 MB/50 páginas, sem senha. Leitor inicial de cerca de 12 MB e recursos adicionais de OCR. Transcrições podem conter erros; sem garantia de identificação de todos os campos ou avaliação independente. |
+## Limitações atuais
 
-As conferências de PDF/OCR cobrem amostras específicas, não uma taxa geral de acerto. Transferências próprias, resgates e pagamentos de cartão presentes no extrato não são automaticamente vinculados às outras operações do aplicativo. Reveja o saldo inicial para não somar novamente um período já contabilizado.
+A importação de PDF oferece leitura genérica e revisão manual. Foram conferidas amostras de Itaú, Nubank e Banco do Brasil, mas outros layouts podem exigir correções. Não há garantia de leitura automática de todos os bancos.
 
-### Histórico da publicação anterior — 24/10/2026
+Contratos aceitam PDF sem senha de até 10 MB e 50 páginas. A extração sugere valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste. Campos ausentes ou ambíguos ficam vazios. O OCR pode errar caracteres, valores e datas; confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
 
-Desde a base de código `2b26e97` (14/09/2026), esta entrega reúne:
+Cada contrato pode ter um plano de parcelas iguais. Reajustes automáticos, alteração do plano confirmado, exclusão ou encerramento do cadastro e armazenamento do PDF original ainda não estão disponíveis.
 
-- Substituição do chat e insights Gemini por consultas locais; bloqueio do endpoint antigo sem chamada ao provedor.
-- Importação CSV/OFX com escolha da conta, conferência, atomicidade e prevenção de duplicidades.
-- Recorrências por calendário, edição com data de vigência e conciliação de pagamentos com extratos.
-- Importação PDF com revisão manual, reconhecimento dos layouts amostrados e OCR local opcional.
-- Melhorias na revisão em telas pequenas, cancelamento e descarte de resultados de arquivos anteriores.
-- Experimento de contratos, protocolo, comparador e regras até 0.1.25, separados do aplicativo publicado.
-- Guias de uso, limitações, validações e Kanban. Os documentos recebidos no GitHub até `45f3abb` foram preservados.
+A interface se adapta a telas pequenas, mas o teste em celular físico permanece pendente. Também faltam aplicativo nativo, PWA completa, notificações com o app fechado e modo offline completo. Não há Open Finance, sincronização direta com bancos, migração automática do SQLite antigo ou backup e restauração completos.
 
-A Netlify confirmou que a versão anterior em produção era o commit `45f3abb`, publicado em 21/09/2026. A comparação com `2b26e97` inclui a mesma base funcional e a documentação remota acrescentada depois. O histórico detalhado está no [changelog](docs/CHANGELOG.md).
+## Executar localmente
 
-### Ainda não disponível
+O ambiente foi validado com Node.js 24.11.1. Para os testes do emulador, foi usado Java 25.0.1.
 
-Open Finance/sincronização direta com bancos, pagamento real de contas/boletos, leitura universal de extratos/contratos, reajustes contratuais automáticos, migração automática do legado, backup/restauração completo, aplicativo nativo e uso offline completo. Os próximos passos estão no [Kanban](docs/kanban.md).
-
-## Documentação
-
-- [Índice completo](docs/README.md)
-- [Kanban — próximos passos e andamento](docs/kanban.md)
-- [Contratos — cadastro manual e roteiro de integração](docs/contratos-mvp.md)
-- [Experimento de contratos — protocolo e formato do JSON](experiments/contracts/README.md)
-- [Mudanças do antigo para o novo](docs/evolucao-antigo-novo.md)
-- [Arquitetura e funções](docs/arquitetura-salva-ai.md)
-- [Regras financeiras](docs/regras-financeiras.md)
-- [Dados e migração](docs/migracao-de-dados.md)
-- [Operação e testes](docs/operacao-e-testes.md)
-- [Changelog](docs/CHANGELOG.md) e [pendências](docs/pendencias.md)
-
-## Importação de extratos
-
-Upload de CSV, OFX bancário em reais e PDF com revisão obrigatória, prévia e escolha da conta de destino. Para páginas sem texto legível, há OCR local opcional. Veja os formatos, limites e regras contra duplicidades no [guia de importação](docs/importacao-extratos.md).
-
-## Contas recorrentes
-
-Use **Editar recorrência** para ajustar valor, frequência e término a partir de uma data, com prévia antes/depois e histórico preservado. Veja [edição de recorrências](docs/edicao-recorrencias.md).
-
-Durante a importação, revise as correspondências com contas recorrentes para evitar repetir pagamentos já registrados. Lançamentos já importados podem ser vinculados pela tela de recorrências sem alterar o saldo. Consulte [conciliação de extratos](docs/conciliacao-extratos.md), incluindo a atualização necessária das regras Firestore antes do deploy.
-
-Cadastre contas semanais, mensais ou anuais com primeiro vencimento e término opcional. Acompanhe pendências e atrasos, registre pagamentos na conta corrente e consulte a projeção de 12 meses. As assinaturas antigas continuam na fatura do cartão. Veja [como usar e as regras de pagamento](docs/contas-recorrentes.md).
-
-## Desenvolvimento local
-
-Ambiente validado: Node.js 24.11.1 e Java 25.0.1 para o emulador. Dentro de `salva-ai/`:
+Na raiz do repositório:
 
 ```powershell
 npm ci
 Copy-Item .env.example .env.local
-# Preencha as variáveis Firebase antes de iniciar. Não sobrescreva um .env.local existente.
+```
+
+Não sobrescreva um `.env.local` já preenchido. Complete o arquivo com a configuração Web do seu projeto Firebase:
+
+| Variável | Uso |
+|---|---|
+| `VITE_FIREBASE_API_KEY` | Chave pública do aplicativo Web |
+| `VITE_FIREBASE_AUTH_DOMAIN` | Domínio de autenticação |
+| `VITE_FIREBASE_PROJECT_ID` | Identificador do projeto |
+| `VITE_FIREBASE_APP_ID` | Identificador do aplicativo Web |
+| `VITE_FIREBASE_STORAGE_BUCKET` | Opcional para os serviços atuais |
+| `VITE_FIREBASE_MESSAGING_SENDER_ID` | Opcional para os serviços atuais |
+
+Habilite os provedores de login desejados, autorize o domínio e configure o Firestore com as regras da aplicação. As variáveis `VITE_*` ficam visíveis no navegador; não use esse prefixo para credenciais privadas. O acesso aos dados depende da autenticação e das regras publicadas.
+
+```powershell
 npm run dev
 ```
 
-Abrir o endereço informado pelo Vite. A interface usa a configuração Firebase das variáveis `VITE_FIREBASE_*` em `.env.local`; iniciar desenvolvimento não conecta o app automaticamente ao emulador. Habilitar provedores de login e domínios no projeto Firebase correspondente.
+Abra o endereço informado pelo Vite. Abrir `index.html` diretamente pelo sistema de arquivos não funciona. Reinicie o Vite depois de mudar as variáveis.
 
-O inicializador `Run_AgentFinanceiro.bat` da raiz pertence ao sistema antigo.
+O servidor de desenvolvimento usa o Firebase de `.env.local`; ele não conecta a interface automaticamente ao emulador. O inicializador `Run_AgentFinanceiro.bat` pertence à versão antiga, que fica fora deste repositório.
 
-## Operação sem IA — 09/10/2026
-
-O resumo financeiro e o assistente usam cálculos e respostas locais. Não há consumo da API Gemini. O assistente consulta saldo, fatura, gastos do período, maior categoria e projeção; saudações e ajuda não consultam o banco. Perguntas fora dessas consultas recebem uma explicação dos limites.
-
-A leitura de recibos por IA foi retirada da interface; o preenchimento manual e o CSV continuam disponíveis. A rota `/api/ai` retorna HTTP 410 sem chamar o provedor, tanto no Vite quanto na Netlify. Não é necessário configurar `GEMINI_API_KEY`. As variáveis Firebase continuam necessárias para login e dados em nuvem. Consulte [operação sem IA](docs/sem-ia.md).
-
-## Verificar e compilar
+## Testar e compilar
 
 ```powershell
 npm test
@@ -118,33 +79,32 @@ npm run build
 npm run preview
 ```
 
-Integração com Java instalado e porta 8080 disponível:
+Para os testes de integração, instale o Java e deixe a porta 8080 livre:
 
 ```powershell
 $env:FIREBASE_EMULATORS_PATH = Join-Path (Get-Location).Path '.firebase-emulators'
 npm run test:firebase
 ```
 
-Os testes usam `demo-salva-ai`; o primeiro uso pode baixar o emulador. O [guia de operação](docs/operacao-e-testes.md) explica configuração e alternativa para npm com instalação quebrada no Windows.
+Esses testes usam o projeto fictício `demo-salva-ai`. O emulador pode ser baixado na primeira execução. `npm run preview` serve o build localmente, sem publicar o site.
 
-## Validação desta atualização
+Na validação da integração de contratos, passaram 151 testes do aplicativo, seis de integração, o build e os testes no navegador. Em 26/10/2026, cadastro, edição, PDF/OCR e prévia também passaram em produção com uma conta temporária, removida depois. Confirmação de planos, pagamento e estorno foram verificados no emulador. Esses testes funcionais não medem a precisão da extração em contratos reais.
 
-Contratos e compromissos, em 24/10/2026: **141 testes do aplicativo, cinco testes no emulador e teste visual com cadastro, edição, prévia, confirmação e pagamento aprovados**. Formulário e prévia conferidos em 320/390 pixels; build aprovado. Validação local, sem publicação destas funcionalidades. [Detalhes](docs/contratos-mvp.md).
+## Publicar na Netlify
 
-Em 23/10/2026: **129 testes do aplicativo e dois testes de integração no emulador Firestore aprovados**; build de produção aprovado; lint sem erros e com cinco avisos conhecidos. O build ainda emite aviso de tamanho de pacote. Os testes usam dados fictícios e não lançam operações em contas reais.
+O arquivo `netlify.toml` configura Node 24, o build `npm run build`, a pasta de saída `dist` e o fallback das rotas da interface.
 
-O experimento separado de contratos tem **327 testes aprovados** na última rodada (300 Python e 27 Node), com 18 saídas verificadas. Duas leituras de PDF continuam falhando por ausência de texto. Isso não mede precisão em contratos reais nem integra a extração à interface.
+1. Configure as variáveis `VITE_FIREBASE_*` no ambiente de build.
+2. Autorize o domínio publicado no Firebase Authentication.
+3. Autentique a CLI Firebase e publique as regras de `firestore.rules` no projeto correto antes da interface.
+4. Publique o build e confira o resultado na Netlify. O envio ao GitHub só aciona o deploy se o repositório estiver conectado à hospedagem.
 
-Progresso do experimento original: **29% (2/7 etapas formais)**; entrega técnica 0.1.25 concluída. Esse percentual não representa a conclusão global do SalvaAI. A anotação e a avaliação independentes permanecem pendentes.
+Variáveis alteradas depois do build exigem nova compilação. A rota antiga `/api/ai` retorna HTTP 410 no Vite e na Netlify, sem consultar o provedor; as variáveis Gemini são dispensáveis.
 
-## Configuração e Git
+## Extrator de terminal
 
-Consulte [configuração por ambiente e preparação para Git](docs/configuracao-e-git.md). A configuração anterior foi preservada em `.env.local`, ignorado pelo Git. Em novas cópias, preencha o exemplo antes de iniciar ou compilar.
+O repositório também contém o [extrator local de contratos](experiments/contracts/README.md), com saída JSON e execução pelo terminal. O aplicativo reutiliza suas regras, mas usa um leitor de PDF diferente; os resultados podem variar.
 
-## Publicação
+## Arquivos locais
 
-A configuração de hospedagem está em `netlify.toml`: Node 24, build `npm run build`, pasta `dist`, função `/api/ai` desativada e fallback para as rotas da interface. Configure as variáveis `VITE_FIREBASE_*` no ambiente de build da Netlify; não é necessário fornecer chave Gemini.
-
-As alterações de conciliação incluem novas regras em `firestore.rules`. Antes de publicar a interface, autentique a CLI Firebase e publique somente as regras no projeto correto. O envio do código ao GitHub só publica o site automaticamente se o repositório estiver conectado ao deploy da Netlify; confirme o resultado no registro de publicação.
-
-Arquivos `.env.local`, credenciais, extratos/contratos reais, saídas de processamento e backups ficam fora do Git. O diretório `experiments/contracts/` contém o protótipo e a documentação; seus dados privados e rodadas são ignorados.
+Credenciais, `.env.local`, extratos e contratos reais, saídas de processamento e backups ficam fora do Git. A documentação interna de planejamento e acompanhamento também é ignorada. Os guias públicos estão no [índice da documentação](docs/README.md).

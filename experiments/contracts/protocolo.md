@@ -1,10 +1,10 @@
-# Protocolo de extração de contratos — 1.0.0
+# Protocolo de extração de contratos 1.0.0
 
-Definido em **13/10/2026**, antes da implementação e da avaliação. Etapa E01; GPT-6 recomendado: **Alto**. As decisões abaixo são o ponto de partida do experimento, não afirmações sobre precisão já alcançada.
+Definido em 13/10/2026, antes da implementação e da avaliação. Este protocolo especifica os campos extraídos e como avaliar os resultados. A precisão alcançada precisa ser medida separadamente.
 
 ## 1. Pergunta e limites
 
-Verificar se regras locais conseguem extrair cinco campos financeiros de contratos em português com evidência suficiente para auxiliar um preenchimento revisado por uma pessoa.
+O experimento verifica se regras locais conseguem extrair cinco campos financeiros de contratos em português, com evidências que permitam a uma pessoa conferir o preenchimento.
 
 - Entrada inicial: PDF com camada de texto, obrigações em reais. Categorias: financiamento, aluguel, mensalidade escolar e plano de saúde.
 - Saída: JSON com metadados e exatamente cinco campos financeiros. Cada campo tem valor estruturado, estado, evidências, confiança e identificação da regra.
@@ -42,22 +42,24 @@ Estados não respondidos usam confiança `nao_aplicavel`. Gabarito usa confianç
 
 ## 4. Confiança antes de observar o teste
 
-Confiança é uma classificação por regras, **não uma probabilidade calibrada**. Nunca preencher “95%” sem calibração independente.
+As regras classificam a confiança da resposta. Essa classificação não é uma probabilidade calibrada; informar "95%" exige calibração independente.
 
-- **Alta:** informação explícita na cláusula/linha pertinente; resposta única ou ocorrências equivalentes; objeto completo quanto aos dados explícitos relevantes; normalização direta válida; evidências para os componentes; nenhuma condição relevante omitida, conflito ou lacuna de leitura nas páginas pertinentes.
-- **Média:** existe um candidato sustentado por evidência, mas sua associação à obrigação depende de contexto ou há dúvida de completude. Registrar a limitação no motivo.
-- **Baixa:** candidato plausível sem associação suficiente; é uma previsão avaliada normalmente, não uma exclusão de erros. Valores sem evidência nunca podem ser retornados nem mesmo nesta faixa.
-- **Abstenção:** conflito sem resolução, texto ilegível ou nenhum candidato defensável → valor nulo e estado apropriado, não uma previsão de baixa confiança.
+| Classificação | Critérios |
+|---|---|
+| Alta | Informação explícita na cláusula ou linha pertinente, com resposta única ou ocorrências equivalentes. O objeto inclui todos os dados explícitos relevantes, normalização direta válida e evidências dos componentes. Não há condição relevante omitida, conflito ou lacuna de leitura nas páginas pertinentes. |
+| Média | Há um candidato sustentado por evidência, mas a associação à obrigação depende do contexto ou existe dúvida de completude. A limitação precisa constar no motivo. |
+| Baixa | O candidato é plausível, mas a associação é insuficiente. A previsão continua sujeita à avaliação de erros. Valores sem evidência não podem ser retornados, mesmo nesta faixa. |
+| Abstenção | Há conflito sem resolução, texto ilegível ou nenhum candidato defensável. Retornar valor nulo e o estado apropriado, sem preencher uma previsão de baixa confiança. |
 
 Repetição do mesmo valor não cria confiança por si só. Uma falha em ler outra página pode esconder uma alteração contratual; não atribuir alta confiança enquanto houver essa incerteza. Fixar as regras de classificação antes do lote reservado.
 
 ## 5. Amostra e separação dos documentos
 
-Meta exploratória: **40 documentos, dez por categoria**. Isso não é amostra suficiente para alegar confiabilidade geral ou ausência de erros raros.
+A meta exploratória é de 40 documentos, dez por categoria. Essa amostra não basta para demonstrar confiabilidade geral ou ausência de erros raros.
 
 - Inventário por documento: ID anônimo, SHA-256 do PDF, categoria, origem pública/real, fonte e data de obtenção, família do modelo, tipo texto/digitalizado/misto, páginas e divisão desenvolvimento/teste.
 - Buscar diversidade de origem, redação, tabelas e casos ausentes/ambíguos. Modelos em branco são identificados no inventário; não substituem todos os exemplos preenchidos.
-- Destinar aproximadamente 60% ao desenvolvimento e 40% ao teste, buscando ambas as divisões em cada categoria. **Famílias do mesmo modelo ficam juntas**, inclusive cópias com nomes/valores diferentes. Ajustar contagens à divisão por família e relatar números reais.
+- Destinar aproximadamente 60% ao desenvolvimento e 40% ao teste, buscando ambas as divisões em cada categoria. Famílias do mesmo modelo ficam juntas, inclusive cópias com nomes/valores diferentes. Ajustar contagens à divisão por família e relatar números reais.
 - Congelar manifesto da divisão e seus hashes antes de implementar regras. Duplicatas exatas não contam como documentos independentes.
 - Usar desenvolvimento para ajustar regras e casos sintéticos para testar formato. O conjunto reservado só é aberto ao extrator após congelar código, regras e protocolo.
 - Documento de teste usado depois para corrigir regras deixa de ser teste inédito; registrar nova rodada e obter novos documentos/famílias para nova avaliação final.
@@ -72,14 +74,14 @@ Documentos reais, gabaritos, trechos e saídas ficam fora do Git em `data/` e `r
 3. Divergências ficam registradas e são resolvidas antes da pontuação. As que persistirem ficam como ambíguas; nunca substituir automaticamente pelo resultado do programa.
 4. Congelar versão e hash dos gabaritos antes da execução final. Correção posterior exige motivo, nova versão e recálculo integral, preservando arquivos anteriores.
 
-GPT pode auxiliar na organização e na validação estrutural; não é o anotador de referência. Os exemplos sintéticos desta pasta foram criados para especificar o formato e **não constituem gabarito humano nem evidência de desempenho**.
+GPT pode ajudar a organizar arquivos e validar a estrutura, mas a referência deve vir da anotação humana independente. Os exemplos sintéticos especificam o formato; não servem como gabarito humano ou evidência de desempenho.
 
 ## 7. Comparação e tolerâncias fixadas
 
-Comparar o objeto `valor` inteiro de cada campo, e não apenas uma palavra ou número que coincida. Metadados, confiança, motivo e evidências não entram na igualdade do valor; verificar evidências separadamente por revisão humana. A ordem das chaves JSON não importa.
+Compare o objeto `valor` inteiro de cada campo. Uma palavra ou um número coincidente não basta. Metadados, confiança, motivo e evidências ficam fora dessa comparação; as evidências exigem revisão humana separada. A ordem das chaves JSON não importa.
 
-- Dinheiro: string decimal com duas casas, comparação em centavos; acerto exato exige diferença zero. Medida tolerante adicional permite **até R$ 0,01**, mantendo moeda, tipo e todos os demais componentes iguais. Essa tolerância é analítica e não autoriza lançamento financeiro divergente.
-- Datas: `AAAA-MM-DD`, data real; **tolerância zero dias**. Dia mensal, quantidade de parcelas, duração e periodicidade exigem igualdade inteira. Não converter formatos ambíguos por suposição.
+- Dinheiro: string decimal com duas casas, comparação em centavos; acerto exato exige diferença zero. Medida tolerante adicional permite até R$ 0,01, mantendo moeda, tipo e todos os demais componentes iguais. Essa tolerância é analítica e não autoriza lançamento financeiro divergente.
+- Datas: `AAAA-MM-DD`, data real; tolerância zero dias. Dia mensal, quantidade de parcelas, duração e periodicidade exigem igualdade inteira. Não converter formatos ambíguos por suposição.
 - Percentuais: duas casas decimais, comparação exata; `5%` normaliza para `5.00`. Mais precisão explícita fica preservada em `outra_regra`, sem arredondar para inventar correspondência.
 - Índices: normalizar os aliases da tabela abaixo; outros nomes passam por normalização textual. Ordenar a lista e remover repetições para comparar, preservando condições na cláusula. A correspondência é por nome completo, nunca por substring (IPCA-E não vira IPCA).
 - Texto literal em `regra`: Unicode NFC, minúsculas e espaços consecutivos/quebras reduzidos a um espaço. Preservar números, sinais e pontuação. Sem comparação semântica, remoção de negações ou aceitação por “parece equivalente”.
@@ -97,7 +99,7 @@ Aplicar NFC e normalização de espaços antes da consulta à tabela. Novos alia
 
 ## 8. Métricas e denominadores
 
-Unidade: **um documento × um dos cinco campos**. Calcular por campo, categoria, formato do PDF e conjunto. Resultado de desenvolvimento nunca se mistura ao teste final.
+A unidade de avaliação é um documento × um dos cinco campos. Calcule os resultados por campo, categoria, formato do PDF e conjunto. Mantenha os resultados de desenvolvimento separados do teste final.
 
 Para cada campo, universo decidível `D` = documentos cujo gabarito é presente ou ausente. `G` = presentes no gabarito. `P` = previsões com `encontrado` e valor estruturalmente válido dentro de `D`.
 
@@ -106,7 +108,7 @@ Para cada campo, universo decidível `D` = documentos cujo gabarito é presente 
 - `FN`: campo presente no gabarito não extraído corretamente, inclusive resposta errada, abstenção ou falha de leitura.
 - `A`: gabarito ausente e extrator `nao_identificado`, sem falha de leitura.
 
-Uma resposta errada para um campo presente soma **um FP e um FN**. Uma falha de leitura em campo ausente não recebe acerto de ausência.
+Uma resposta errada para um campo presente soma um FP e um FN. Uma falha de leitura em campo ausente não recebe acerto de ausência.
 
 | Medida | Fórmula | Interpretação |
 |---|---|---|
@@ -117,21 +119,21 @@ Uma resposta errada para um campo presente soma **um FP e um FN**. Uma falha de 
 | Não identificados | Presentes no gabarito com abstenção, omissão ou erro de leitura `/ G` | Respostas preenchidas erradas ficam fora deste numerador, pois já são erro de extração. |
 | Erro com alta confiança | Previsões erradas de confiança alta `/` previsões de confiança alta em `D` | Avaliar por campo; usar correspondência exata mesmo quando existir resultado tolerante. |
 
-Todo percentual deve apresentar numerador/denominador. Denominador zero → `null` e rótulo **não aplicável**, nunca 0%. Mostrar também quantidade e cobertura das previsões de alta confiança; não chamar uma faixa segura apenas porque retornou poucas respostas.
+Apresente numerador e denominador junto de cada percentual. Quando o denominador for zero, use `null` e o rótulo "não aplicável", nunca 0%. Mostre também a quantidade e a cobertura das previsões de alta confiança. Poucas respostas não bastam para considerar uma faixa segura.
 
-Gabaritos ambíguos/ilegíveis não entram em `D` por falta de resposta única. **Continuam no relatório**, com contagem por estado, total excluído da pontuação de conteúdo e quantidade de respostas assertivas/alta confiança sobre esses casos. Alta confiança nesses casos é sinal de risco, não erro exato mensurável sem gabarito resolvido.
+Gabaritos ambíguos ou ilegíveis ficam fora de `D` por não terem resposta única. Eles continuam no relatório, com contagem por estado, total excluído da pontuação de conteúdo e quantidade de respostas assertivas ou de alta confiança. A alta confiança nesses casos sinaliza risco; sem gabarito resolvido, não permite medir um erro exato.
 
 Falhas completas do script permanecem no denominador dos campos presentes/ausentes conhecidos: registrar abstenção por erro nos cinco campos para a avaliação, mantendo a saída bruta original. JSON inválido é falha de contrato de saída: não aproveitar seletivamente partes corretas; avaliar como cinco abstenções e contabilizar o erro de formato. Esse registro derivado não substitui a saída bruta.
 
 Publicar número de PDFs processados, falhas completas, parciais e JSONs inválidos, e duração por documento. Para resumo global, somar contagens (micro); não tirar média simples de percentuais de grupos de tamanhos diferentes. Resultados por campo continuam obrigatórios.
 
-Exemplo de conferência: quatro gabaritos presentes e um ausente; duas respostas corretas, uma errada, uma omitida e uma ausência correta → TP=2, FP=1, FN=2, A=1; acerto=3/5; precisão=2/3; revocação=2/4; omissão=1/4. Se uma correta e a errada forem alta confiança, erro nessa faixa=1/2. Os [casos sintéticos](examples/casos-avaliacao.json) guardam essas contagens para E06.
+Exemplo: com quatro gabaritos presentes e um ausente, duas respostas corretas, uma errada, uma omitida e uma ausência correta produzem TP=2, FP=1, FN=2 e A=1. O acerto é 3/5; a precisão, 2/3; a revocação, 2/4; e a omissão, 1/4. Se uma resposta correta e a errada tiverem alta confiança, o erro nessa faixa será 1/2. Os [casos sintéticos](examples/casos-avaliacao.json) registram essas contagens para conferir o avaliador.
 
 Referência conceitual para precisão/revocação em extração: [avaliação de documentos](https://docs.cloud.google.com/document-ai/docs/evaluate). Não usaremos esse serviço para executar o experimento.
 
 ## 9. Execução reproduzível e arquivos
 
-Cada rodada futura terá diretório próprio em `runs/`, com manifesto, versões/hashes de código, regras, protocolo, esquema, PDFs e gabarito; parâmetros de execução, ambiente e horário com fuso; texto por página; stdout/JSON bruto, stderr e código de saída; duração e registro derivado para avaliação. Cada PDF terá um resultado, mesmo em falha.
+Cada rodada deve ter um diretório próprio em `runs/`. Guarde manifesto, versões e hashes do código, regras, protocolo, esquema, PDFs e gabarito. Registre também parâmetros, ambiente, horário com fuso, texto por página, stdout/JSON bruto, stderr, código de saída, duração e resultado derivado para avaliação. Cada PDF deve ter um resultado, inclusive quando a leitura falhar.
 
 Nunca sobrescrever rodada anterior. Erros usam códigos estáveis (por exemplo, `PDF_PROTEGIDO`, `SEM_CAMADA_TEXTO`, `PDF_INVALIDO`, `FALHA_PARCIAL`, `JSON_INVALIDO`) e mensagens sem informações pessoais desnecessárias.
 
@@ -140,13 +142,7 @@ O [esquema](registro.schema.json) verifica estrutura e combinações básicas. V
 ## 10. Decisão após o piloto e controle de mudanças
 
 - Nesta versão, nenhum resultado pode criar obrigação financeira automaticamente, independentemente das métricas.
-- E07 decidirá por campo entre: continuar pesquisa; oferecer apenas sugestão revisável; ou avaliar OCR em novo experimento.
+- A conclusão do piloto decidirá por campo entre continuar a pesquisa, oferecer apenas sugestão revisável ou avaliar OCR em novo experimento.
 - Sem meta artificial de aprovação: reportar desempenho com contagens, diversidade da amostra e limitações. Zero erros observados não prova ausência de risco.
 - Erros de alta confiança precisam de inspeção individual e podem motivar rebaixamento da regra em nova versão, sempre antes de uma nova avaliação reservada.
 - Alterar campos, tolerâncias, divisão, critérios de confiança ou contagem de métricas exige nova versão deste protocolo e registro da razão. Preservar a 1.0.0 usada em cada rodada.
-
-## Entrega E01
-
-Conclui quando protocolo, esquema, exemplos sintéticos e casos esperados estiverem coerentes, com validação do formato e atualização do Kanban. Coleta real (E02), gabarito humano (E03), extrator (E04), execução (E05), métricas observadas (E06) e conclusão experimental (E07) continuam pendentes.
-
-**Verificação em 13/10/2026:** esquema compilado com AJV e validação de formatos; 18 cenários estruturais aprovados, incluindo exemplos válidos, campos ausentes/extras, data impossível, valor sem evidência, ausência com valor e falha completa. Quatro casos de contagens esperadas foram recalculados e os trechos dos exemplos conferidos contra o texto fictício. Não foram executados testes da aplicação nem extração de contratos.
