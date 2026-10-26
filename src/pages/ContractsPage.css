@@ -38,6 +38,11 @@
 .contract-plan-table th, .contract-plan-table td { text-align: left; padding: .5rem; border-bottom: 1px solid var(--border-color); font-size: .85rem; }
 .contract-plan-confirm { display: flex; gap: .75rem; align-items: flex-start; line-height: 1.5; }
 .contract-plan-confirm input { width: auto; margin-top: .3rem; flex-shrink: 0; }
+.contract-adjustment-history { margin-block: 1rem; }
+.contract-adjustment-history summary { cursor: pointer; padding-block: .5rem; }
+.contract-adjustment-history ul { padding-left: 1.5rem; }
+.contract-adjustment-history li { margin-block: .5rem; overflow-wrap: anywhere; }
+.contract-closure-reason { white-space: pre-wrap; overflow-wrap: anywhere; }
 .contract-evidence { margin-block: 1rem; overflow-wrap: anywhere; }
 .contract-evidence summary { cursor: pointer; padding-block: .5rem; }
 .contract-evidence section { margin-block: 1rem; padding-block: .75rem; border-top: 1px solid var(--border-color); }

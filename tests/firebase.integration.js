@@ -6,6 +6,9 @@ import path from 'node:path';
 import { registerHooks } from 'node:module';
 import { initializeTestEnvironment, assertFails, assertSucceeds } from '@firebase/rules-unit-testing';
 import * as firestore from 'firebase/firestore';
+import { contractPlanSnapshot, previewContractAdjustment } from '../src/utils/contractAdjustment.js';
+import { previewContractPlan } from '../src/utils/contractPlan.js';
+import { localDate } from '../src/utils/finance.js';
 
 let environment;
 before(async () => {
@@ -164,6 +167,61 @@ test('plano de contrato: vínculo atômico, isolamento, imutabilidade e pagament
   await assertFails(firestore.updateDoc(subRef, { isActive: true }));
 });
 
+test('reajustes de contrato: confirmação atômica, histórico imutável e pagamentos sob as regras', async () => {
+  await environment.clearFirestore();
+  const database = environment.authenticatedContext('alice').firestore();
+  const service = await services(database);
+  const contracts = await service('contractService'), subs = await service('subscriptionService'), txns = await service('transactionService');
+  const today = localDate();
+  const { id } = await contracts.saveContract('alice', { title: 'Contrato reajustável' }, { operationId: 'adjust-contract' });
+  const plan = previewContractPlan({ amount: 100.25, count: 4, frequency: 'MONTHLY', firstDueDate: today });
+  const created = await contracts.createContractPlan('alice', id, plan, { expectedRevision: 0, operationId: 'adjust-plan' });
+  const subRef = firestore.doc(database, 'users/alice/subscriptions/' + created.commitmentPlan.subscriptionId);
+  const contractRef = firestore.doc(database, 'users/alice/contracts/' + id);
+  const initial = (await firestore.getDoc(subRef)).data();
+  const input = { type: 'PERCENT', value: 10, effectiveFrom: plan.rows[1].dueDate };
+  const preview = previewContractAdjustment(initial, input);
+  await assertFails(firestore.updateDoc(subRef, { revisions: [preview.revision], updatedAt: firestore.serverTimestamp() }));
+  const options = { expectedRevision: 1, expectedSnapshot: contractPlanSnapshot(initial), operationId: 'adjust-once' };
+  const attempts = await Promise.allSettled([contracts.adjustContractPlan('alice', id, input, options), contracts.adjustContractPlan('alice', id, input, options)]);
+  assert.ok(attempts.some(attempt => attempt.status === 'fulfilled'));
+  // O emulador pode avaliar as regras da segunda escrita após o primeiro commit
+  // e recusá-la antes de repetir a transação. A recusa continua sendo um erro.
+  for (const attempt of attempts.filter(item => item.status === 'rejected')) assert.equal(attempt.reason.code, 'permission-denied');
+  // Repetição posterior consulta a operação confirmada, sem uma segunda escrita.
+  const repeated = await contracts.adjustContractPlan('alice', id, input, options);
+  assert.equal(repeated.revision, 2);
+  const saved = (await firestore.getDoc(subRef)).data();
+  assert.equal(saved.revisions.length, 1);
+  assert.equal(saved.revisions[0].amount, 110.28);
+  assert.equal((await firestore.getDoc(contractRef)).data().revision, 2);
+  const rejectBatch = async (subChange, contractChange = {}) => {
+    const batch = firestore.writeBatch(database);
+    batch.update(subRef, { ...subChange, updatedAt: firestore.serverTimestamp() });
+    batch.update(contractRef, { revision: 3, updatedAt: firestore.serverTimestamp(), ...contractChange });
+    await assertFails(batch.commit());
+  };
+  const second = previewContractAdjustment(saved, { type: 'AMOUNT', value: 120, effectiveFrom: plan.rows[2].dueDate }).revision;
+  await rejectBatch({ revisions: [{ ...saved.revisions[0], amount: 1 }, second] });
+  await rejectBatch({ revisions: [] });
+  await rejectBatch({ revisions: [...saved.revisions, { ...second, startDate: second.effectiveFrom }] });
+  await rejectBatch({ revisions: [...saved.revisions, { ...second, effectiveFrom: '2000-01-01' }] });
+  await rejectBatch({ revisions: [...saved.revisions, { ...second, amount: 0 }] });
+  await rejectBatch({ revisions: [...saved.revisions, { ...second, previousAmount: 999 }] });
+  await rejectBatch({ revisions: [...saved.revisions, second], payments: { [today]: { amount: 1 } } });
+  await rejectBatch({ revisions: [...saved.revisions, second] }, { title: 'Cadastro alterado junto' });
+  await assertFails(firestore.updateDoc(firestore.doc(environment.authenticatedContext('bob').firestore(), subRef.path), { revisions: [second] }));
+  assert.equal((await firestore.getDoc(subRef)).data().revisions.length, 1);
+  await contracts.adjustContractPlan('alice', id, { type: 'AMOUNT', value: 120, effectiveFrom: plan.rows[2].dueDate }, { expectedRevision: 2, expectedSnapshot: contractPlanSnapshot(saved), operationId: 'second-adjustment' });
+  await txns.createTransaction('alice', { transaction_type: 'INCOME', amount: 1000, date: today, source_account: 'GENERAL', description: 'Saldo fictício', category: 'OUTROS', operation_id: 'adjust-income' });
+  await assert.rejects(subs.payRecurringBill('alice', subRef.id, plan.rows[1].dueDate, today, 'stale-adjust-payment', 100.25), /valor.*mudou/);
+  const payment = await subs.payRecurringBill('alice', subRef.id, plan.rows[1].dueDate, today, 'adjust-payment', 110.28);
+  assert.equal((await firestore.getDoc(firestore.doc(database, 'users/alice/accounts/GENERAL'))).data().balance, 889.72);
+  await txns.deleteTransaction('alice', 'txn_' + payment.transaction_id);
+  assert.equal((await firestore.getDoc(firestore.doc(database, 'users/alice/accounts/GENERAL'))).data().balance, 1000);
+  assert.equal((await firestore.getDoc(subRef)).data().revisions.length, 2);
+});
+
 test('serviços reais: concorrência, importação, pagamento e estorno sob as regras', async () => {
   await environment.clearFirestore();
   const database = environment.authenticatedContext('alice').firestore();
@@ -254,4 +312,58 @@ test('serviços reais: concorrência, importação, pagamento e estorno sob as r
   assert.equal((await firestore.getDoc(generalRef)).data().balance, 887);
   await txns.deleteTransaction('alice', 'txn_' + pdfTxn.id);
   assert.equal((await firestore.getDoc(generalRef)).data().balance, 899.5);
+});
+
+test('encerramento: vínculo atômico, cadastro imutável e pagamentos preservados nas regras', async () => {
+  await environment.clearFirestore();
+  const database = environment.authenticatedContext('alice').firestore();
+  const service = await services(database);
+  const contracts = await service('contractService'), subs = await service('subscriptionService'), txns = await service('transactionService');
+  const today = localDate();
+  const { id } = await contracts.saveContract('alice', { title: 'Contrato encerrável' }, { operationId: 'closure-create' });
+  const plan = previewContractPlan({ amount: 100, count: 4, frequency: 'MONTHLY', firstDueDate: today });
+  const result = await contracts.createContractPlan('alice', id, plan, { expectedRevision: 0, operationId: 'closure-plan' });
+  const contractRef = firestore.doc(database, 'users/alice/contracts/' + id);
+  const subRef = firestore.doc(database, 'users/alice/subscriptions/' + result.commitmentPlan.subscriptionId);
+  const closure = { closedOn: today, reason: 'Fim do serviço', subscriptionId: subRef.id };
+  await assertFails(firestore.updateDoc(contractRef, { closure, revision: 2, updatedAt: firestore.serverTimestamp() }));
+  const badBatch = firestore.writeBatch(database);
+  badBatch.update(contractRef, { closure, revision: 2, updatedAt: firestore.serverTimestamp() });
+  badBatch.update(subRef, { isActive: false, cancelledOn: '2000-01-01', cancelledAt: firestore.serverTimestamp() });
+  await assertFails(badBatch.commit());
+  assert.equal((await firestore.getDoc(contractRef)).data().closure, undefined);
+  assert.equal((await firestore.getDoc(subRef)).data().isActive, true);
+  await txns.createTransaction('alice', { transaction_type: 'INCOME', amount: 1000, date: today, source_account: 'GENERAL', description: 'Saldo fictício', category: 'OUTROS', operation_id: 'closure-income' });
+  const anticipated = await subs.payRecurringBill('alice', subRef.id, plan.rows[1].dueDate, today, 'closure-advance', 100);
+  const before = (await firestore.getDoc(subRef)).data();
+  const options = { expectedRevision: 1, expectedSnapshot: contractPlanSnapshot(before), operationId: 'closure-confirm' };
+  const input = { closedOn: today, reason: closure.reason };
+  await contracts.closeContract('alice', id, input, options);
+  await contracts.closeContract('alice', id, input, options);
+  const closed = (await firestore.getDoc(contractRef)).data();
+  assert.deepEqual(closed.closure, closure);
+  assert.equal(closed.revision, 2);
+  assert.deepEqual((await firestore.getDoc(subRef)).data().payments, before.payments);
+  for (const change of [{ closure: firestore.deleteField() }, { title: 'Reabrir' }, { closure: { ...closure, reason: 'Outro' } }]) {
+    await assertFails(firestore.updateDoc(contractRef, { ...change, revision: 3, updatedAt: firestore.serverTimestamp() }));
+  }
+  for (const change of [{ isActive: true }, { cancelledOn: plan.lastDueDate }, { cancelledAt: firestore.serverTimestamp() }, { revisions: [] }]) await assertFails(firestore.updateDoc(subRef, change));
+  await assertFails(firestore.updateDoc(firestore.doc(environment.authenticatedContext('bob').firestore(), contractRef.path), { closure, revision: 3, updatedAt: firestore.serverTimestamp() }));
+  await assert.rejects(subs.payRecurringBill('alice', subRef.id, plan.rows[2].dueDate, today, 'closure-cancelled', 100), /cancelado/);
+  await txns.deleteTransaction('alice', 'txn_' + anticipated.transaction_id);
+  const todayPayment = await subs.payRecurringBill('alice', subRef.id, plan.firstDueDate, today, 'closure-today', 100);
+  await txns.deleteTransaction('alice', 'txn_' + todayPayment.transaction_id);
+  assert.equal((await firestore.getDoc(firestore.doc(database, 'users/alice/accounts/GENERAL'))).data().balance, 1000);
+  assert.deepEqual((await firestore.getDoc(subRef)).data().payments, {});
+  assert.deepEqual((await firestore.getDoc(contractRef)).data(), closed);
+
+  const manual = await contracts.saveContract('alice', { title: 'Sem plano' }, { operationId: 'manual-close-create' });
+  await contracts.closeContract('alice', manual.id, input, { expectedRevision: 0, expectedSnapshot: null, operationId: 'manual-close' });
+  await assert.rejects(contracts.createContractPlan('alice', manual.id, plan, { expectedRevision: 1, operationId: 'manual-late-plan' }), /encerrado/);
+  const legacy = await contracts.saveContract('alice', { title: 'Recorrência encerrada' }, { operationId: 'legacy-close-create' });
+  const legacyPlan = await contracts.createContractPlan('alice', legacy.id, plan, { expectedRevision: 0, operationId: 'legacy-plan' });
+  await subs.deleteSubscription('alice', legacyPlan.commitmentPlan.subscriptionId);
+  const legacySub = await contracts.getContractSubscription('alice', legacy.id);
+  await contracts.closeContract('alice', legacy.id, input, { expectedRevision: 1, expectedSnapshot: contractPlanSnapshot(legacySub), operationId: 'legacy-close' });
+  assert.deepEqual(await contracts.getContractSubscription('alice', legacy.id), legacySub);
 });

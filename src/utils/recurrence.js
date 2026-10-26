@@ -83,7 +83,7 @@ export function recurringOccurrences(sub, from, to, today = localDate()) {
 
 // Somente acrescenta versões: os campos originais e os pagamentos não são reescritos.
 export function prepareRecurringRevision(sub, payload, today = localDate()) {
-  if (sub.contractId) throw new Error('O plano deste contrato é fixo. Alterações de compromissos contratuais ainda não estão disponíveis.');
+  if (sub.contractId) throw new Error('Use Reajustar parcelas na tela Contratos para alterar o valor deste plano.');
   if (!isRecurringAccount(sub) || !sub.isActive) throw new Error('Só é possível editar contas recorrentes ativas da conta corrente.');
   const revisions = sub.revisions || [];
   if (!Number.isInteger(payload.expected_revision) || payload.expected_revision !== revisions.length) throw new Error('A recorrência foi alterada em outra tela. Feche e atualize a lista antes de editar.');

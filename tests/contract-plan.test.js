@@ -69,7 +69,7 @@ test('editar cadastro preserva plano e edição genérica de recorrência é rec
   assert.deepEqual(h.all('contracts')[0].commitmentPlan, structuredClone(saved.commitmentPlan));
   assert.equal(h.all('subscriptions')[0].amount, input.amount);
   const subscriptions = await h.service('subscriptionService');
-  await assert.rejects(subscriptions.editRecurringSubscription('test', saved.commitmentPlan.subscriptionId, { effective_from: localDate(), start_date: localDate(), frequency: 'MONTHLY', amount: 800, expected_revision: 0, operation_id: 'unsafe-edit' }), /plano deste contrato é fixo/);
+  await assert.rejects(subscriptions.editRecurringSubscription('test', saved.commitmentPlan.subscriptionId, { effective_from: localDate(), start_date: localDate(), frequency: 'MONTHLY', amount: 800, expected_revision: 0, operation_id: 'unsafe-edit' }), /Reajustar parcelas/);
 });
 
 test('plano integra projeção, pagamento único, estorno e encerramento sem cobrar duas vezes', async () => {

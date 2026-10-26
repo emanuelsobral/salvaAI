@@ -32,6 +32,37 @@ service cloud.firestore {
         && sub.frequency == plan.frequency && sub.startDate == plan.firstDueDate
         && sub.endDate == plan.lastDueDate && sub.installmentCount == plan.count;
     }
+    function validClosure(closure) {
+      let date = closure.closedOn.split('-');
+      let midnight = timestamp.date(int(date[0]), int(date[1]), int(date[2]));
+      return closure is map && closure.keys().hasAll(['closedOn', 'reason', 'subscriptionId'])
+        && closure.keys().hasOnly(['closedOn', 'reason', 'subscriptionId'])
+        && contractDate(closure.closedOn) && closure.closedOn != ''
+        && contractText(closure.reason, 600)
+        && (closure.subscriptionId == null || closure.subscriptionId is string)
+        // Aceita a data corrente nos fusos locais; a prévia também confere o dia no dispositivo.
+        && midnight - duration.value(14, 'h') <= request.time
+        && midnight + duration.value(38, 'h') > request.time;
+    }
+    function closureSubscription(uid, id, closure) {
+      let subPath = /databases/$(database)/documents/users/$(uid)/subscriptions/$(closure.subscriptionId);
+      let before = get(subPath).data;
+      let after = getAfter(subPath).data;
+      return closure.subscriptionId == 'contract_' + id
+        && resource.data.commitmentPlan.subscriptionId == closure.subscriptionId
+        && before.contractId == id && after.isActive == false
+        && (before.isActive == false ? after == before : (
+          after.cancelledOn == closure.closedOn && after.cancelledAt == request.time
+          && after.diff(before).affectedKeys().hasOnly(['isActive', 'cancelledOn', 'cancelledAt'])));
+    }
+    function contractClosureUpdate(uid, id) {
+      let closure = request.resource.data.get('closure', null);
+      return resource.data.get('closure', null) == null && (closure == null || (
+        validClosure(closure)
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['closure', 'revision', 'updatedAt'])
+        && (resource.data.get('commitmentPlan', null) == null
+          ? closure.subscriptionId == null : closureSubscription(uid, id, closure))));
+    }
     function contractPlanUpdate(uid, id) {
       let before = resource.data.get('commitmentPlan', null);
       let after = request.resource.data.get('commitmentPlan', null);
@@ -43,7 +74,7 @@ service cloud.firestore {
     }
     function validContract(data) {
       return data.keys().hasAll(['title', 'counterparty', 'amount', 'installments', 'startDate', 'endDate', 'dueRule', 'adjustmentRule', 'notes', 'schemaVersion', 'revision', 'createdAt', 'updatedAt'])
-        && data.keys().hasOnly(['title', 'counterparty', 'amount', 'installments', 'startDate', 'endDate', 'dueRule', 'adjustmentRule', 'notes', 'schemaVersion', 'revision', 'createdAt', 'updatedAt', 'commitmentPlan', 'sourceReview'])
+        && data.keys().hasOnly(['title', 'counterparty', 'amount', 'installments', 'startDate', 'endDate', 'dueRule', 'adjustmentRule', 'notes', 'schemaVersion', 'revision', 'createdAt', 'updatedAt', 'commitmentPlan', 'sourceReview', 'closure'])
         && (!data.keys().hasAny(['commitmentPlan']) || validContractPlan(data.commitmentPlan))
         && (!data.keys().hasAny(['sourceReview']) || validSourceReview(data.sourceReview))
         && text(data.title) && data.title.size() <= 500 && data.title.matches('.*[^\\s].*')
@@ -59,10 +90,11 @@ service cloud.firestore {
     match /users/{uid}/contracts/{id} {
       allow read: if owner(uid);
       allow create: if owner(uid) && validContract(request.resource.data)
-        && !request.resource.data.keys().hasAny(['commitmentPlan'])
+        && !request.resource.data.keys().hasAny(['commitmentPlan', 'closure'])
         && request.resource.data.revision == 0 && request.resource.data.createdAt == request.time;
       allow update: if owner(uid) && validContract(request.resource.data)
         && contractPlanUpdate(uid, id)
+        && contractClosureUpdate(uid, id)
         && request.resource.data.get('sourceReview', null) == resource.data.get('sourceReview', null)
         && request.resource.data.createdAt == resource.data.createdAt
         && request.resource.data.revision == resource.data.revision + 1;
@@ -128,6 +160,59 @@ service cloud.firestore {
           && data.payments is map && data.payments.size() == 0 && data.createdAt == request.time
           && data.keys().hasOnly(['name', 'amount', 'billingMode', 'frequency', 'startDate', 'endDate', 'dueDay', 'category', 'isActive', 'payments', 'contractId', 'installmentCount', 'createdAt']);
       }
+      function validAdjustment(revision, before) {
+        let previousAmount = before.size() == 0 ? resource.data.amount : before[before.size() - 1].amount;
+        let date = revision.effectiveFrom.split('-');
+        return revision.keys().hasAll(['effectiveFrom', 'amount', 'startDate', 'endDate', 'frequency', 'adjustmentType', 'adjustmentValue', 'previousAmount'])
+          && revision.keys().hasOnly(['effectiveFrom', 'amount', 'startDate', 'endDate', 'frequency', 'adjustmentType', 'adjustmentValue', 'previousAmount'])
+          && positive(revision.amount) && revision.amount != previousAmount
+          && math.abs(revision.amount * 100 - math.round(revision.amount * 100)) < 0.000001
+          && revision.previousAmount == previousAmount
+          && revision.startDate == resource.data.startDate && revision.endDate == resource.data.endDate
+          && revision.frequency == resource.data.frequency
+          && contractDate(revision.effectiveFrom) && revision.effectiveFrom != ''
+          && revision.effectiveFrom >= resource.data.startDate && revision.effectiveFrom <= resource.data.endDate
+          && (before.size() == 0 || revision.effectiveFrom > before[before.size() - 1].effectiveFrom)
+          && timestamp.date(int(date[0]), int(date[1]), int(date[2])) + duration.value(14, 'h') > request.time
+          && ((revision.adjustmentType == 'AMOUNT' && revision.adjustmentValue == revision.amount)
+            || (revision.adjustmentType == 'PERCENT' && revision.adjustmentValue is number
+              && revision.adjustmentValue > -100 && revision.adjustmentValue <= 10000
+              && math.abs(revision.adjustmentValue * 100 - math.round(revision.adjustmentValue * 100)) < 0.000001
+              && math.abs(revision.amount * 100 - (previousAmount * 100 * (1 + revision.adjustmentValue / 100.0))) <= 0.50001));
+      }
+      function linkedContractAdjustment() {
+        let before = resource.data.get('revisions', []);
+        let after = request.resource.data.revisions;
+        let contractPath = /databases/$(database)/documents/users/$(uid)/contracts/$(resource.data.contractId);
+        let contractBefore = get(contractPath).data;
+        let contractAfter = getAfter(contractPath).data;
+        return resource.data.isActive == true && before.size() < 100
+          && contractBefore.get('closure', null) == null && contractAfter.get('closure', null) == null
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['revisions', 'updatedAt'])
+          && request.resource.data.updatedAt == request.time
+          && after is list && after.size() == before.size() + 1
+          && after == before.concat([after[before.size()]])
+          && validAdjustment(after[before.size()], before)
+          && contractBefore.commitmentPlan.subscriptionId == id
+          && contractAfter.revision == contractBefore.revision + 1
+          && contractAfter.diff(contractBefore).affectedKeys().hasOnly(['revision', 'updatedAt']);
+      }
+      function closedContractPaymentsOnly() {
+        let contract = getAfter(/databases/$(database)/documents/users/$(uid)/contracts/$(resource.data.contractId)).data;
+        return contract.get('closure', null) == null
+          || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['payments']);
+      }
+      function linkedContractClosure() {
+        let contractPath = /databases/$(database)/documents/users/$(uid)/contracts/$(resource.data.contractId);
+        let before = get(contractPath).data;
+        let after = getAfter(contractPath).data;
+        return before.get('closure', null) == null && after.get('closure', null) != null
+          && after.closure.subscriptionId == id && after.revision == before.revision + 1
+          && resource.data.isActive == true && request.resource.data.isActive == false
+          && request.resource.data.cancelledOn == after.closure.closedOn
+          && request.resource.data.cancelledAt == request.time
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isActive', 'cancelledOn', 'cancelledAt']);
+      }
       allow read: if owner(uid);
       allow create: if owner(uid) && basicSubscription()
         && (!request.resource.data.keys().hasAny(['contractId']) || linkedContractCreation());
@@ -135,7 +220,9 @@ service cloud.firestore {
         && (resource.data.keys().hasAny(['contractId'])
           ? (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['payments', 'isActive', 'cancelledOn', 'cancelledAt'])
             && request.resource.data.payments is map
-            && (request.resource.data.isActive == resource.data.isActive || request.resource.data.isActive == false))
+            && closedContractPaymentsOnly()
+            && (request.resource.data.isActive == resource.data.isActive || request.resource.data.isActive == false)
+            || linkedContractAdjustment() || linkedContractClosure())
           : !request.resource.data.keys().hasAny(['contractId']));
     }
     match /users/{uid}/invoices/{id} {

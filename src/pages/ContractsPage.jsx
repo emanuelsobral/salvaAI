@@ -4,6 +4,8 @@ import { useOperationKey } from '../hooks/useOperationKey';
 import * as contractService from '../services/contractService';
 import { contractError } from '../utils/contracts';
 import ContractPlanForm from '../components/Contracts/ContractPlanForm';
+import ContractAdjustmentForm from '../components/Contracts/ContractAdjustmentForm';
+import ContractClosureForm from '../components/Contracts/ContractClosureForm';
 import ExtractionEvidence from '../components/Contracts/ExtractionEvidence';
 import './ContractsPage.css';
 
@@ -92,9 +94,9 @@ export function ContractsWorkspace({ uid, service = contractService }) {
   }, [uid, service, refresh]);
   function refreshList() { setLoading(true); setLoadError(''); setRefresh(value => value + 1); }
   function closeEditor() { setEditor(null); requestAnimationFrame(() => heading.current?.focus()); }
-  function saved(contract, planned = false) {
+  function saved(contract, planned = false, adjusted = false, closed = false) {
     setContracts(previous => [...previous.filter(item => item.id !== contract.id), contract].sort((a, b) => a.title.localeCompare(b.title, 'pt-BR')));
-    setMessage(planned ? 'Compromissos confirmados. Consulte os vencimentos nas contas recorrentes; nenhum pagamento foi registrado.' : 'Contrato salvo. Nenhuma cobrança foi gerada.');
+    setMessage(closed ? 'Contrato encerrado. Pagamentos, pendências até hoje e saldo foram preservados.' : adjusted ? 'Reajuste programado. Os pagamentos e o saldo foram preservados.' : planned ? 'Compromissos confirmados. Consulte os vencimentos nas contas recorrentes; nenhum pagamento foi registrado.' : 'Contrato salvo. Nenhuma cobrança foi gerada.');
     closeEditor();
   }
   return (
@@ -105,7 +107,7 @@ export function ContractsWorkspace({ uid, service = contractService }) {
       </header>
       <p className="contract-notice">Cadastre manualmente ou revise as sugestões de um PDF, com OCR opcional para digitalizações. Salvar um contrato não gera parcelas na agenda nem altera seu saldo.</p>
       <p className="contract-status" role="status">{message}</p>
-      {editor ? editor.importing ? <Suspense fallback={<p role="status">Preparando importação…</p>}><PdfContractImport onPrepared={result => setEditor(result)} onCancel={closeEditor} /></Suspense> : editor.plan ? <ContractPlanForm contract={editor.contract} uid={uid} service={service} onSaved={contract => saved(contract, true)} onCancel={closeEditor} /> : <ContractForm key={editor.contract?.id || editor.sourceReview?.pdfSha256 || 'new'} contract={editor.contract} draft={editor.draft} sourceReview={editor.sourceReview} uid={uid} service={service} onSaved={saved} onCancel={closeEditor} /> : (
+      {editor ? editor.importing ? <Suspense fallback={<p role="status">Preparando importação…</p>}><PdfContractImport onPrepared={result => setEditor(result)} onCancel={closeEditor} /></Suspense> : editor.close ? <ContractClosureForm contract={editor.contract} uid={uid} service={service} onSaved={contract => saved(contract, false, false, true)} onCancel={() => { closeEditor(); refreshList(); }} /> : editor.adjust ? <ContractAdjustmentForm contract={editor.contract} uid={uid} service={service} onSaved={contract => saved(contract, false, true)} onCancel={() => { closeEditor(); refreshList(); }} /> : editor.plan ? <ContractPlanForm contract={editor.contract} uid={uid} service={service} onSaved={contract => saved(contract, true)} onCancel={closeEditor} /> : <ContractForm key={editor.contract?.id || editor.sourceReview?.pdfSha256 || 'new'} contract={editor.contract} draft={editor.draft} sourceReview={editor.sourceReview} uid={uid} service={service} onSaved={saved} onCancel={closeEditor} /> : (
         <section aria-label="Contratos cadastrados" aria-busy={loading}>
           {loading ? <p role="status">Carregando contratos…</p> : loadError ? <div className="contract-error" role="alert"><p>{loadError}</p><button className="contract-secondary" onClick={refreshList}>Tentar novamente</button></div> : contracts.length === 0 ? (
             <div className="contract-empty"><h2>Seus contratos começam aqui</h2><p>Cadastre um aluguel, financiamento ou serviço para consultar suas condições quando precisar.</p></div>
@@ -113,7 +115,8 @@ export function ContractsWorkspace({ uid, service = contractService }) {
             <div className="contract-list-heading"><p>{contracts.length} contrato(s) cadastrado(s)</p><button className="contract-secondary" onClick={refreshList}>Atualizar lista</button></div>
             <div className="contract-list">{contracts.map(contract => (
               <article className="contract-item" key={contract.id}>
-                <div className="contract-item-heading"><div><h2>{contract.title}</h2><p>{contract.counterparty || 'Pessoa ou empresa não informada'}</p></div><button className="contract-secondary" aria-label={`Editar ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract }); }}>Editar</button></div>
+                <div className="contract-item-heading"><div><h2>{contract.title}</h2><p>{contract.counterparty || 'Pessoa ou empresa não informada'}</p></div>{!contract.closure && <button className="contract-secondary" aria-label={`Editar ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract }); }}>Editar</button>}</div>
+                {contract.closure ? <p className="contract-notice contract-closure-reason">Encerrado em {dateLabel(contract.closure.closedOn)}.{contract.closure.reason ? ` Motivo: ${contract.closure.reason}` : ''} Cadastro disponível para consulta.</p> : null}
                 <dl className="contract-details">
                   <div><dt>Valor da parcela</dt><dd>{contract.amount == null ? 'Não informado' : money.format(contract.amount)}</dd></div>
                   <div><dt>Parcelas</dt><dd>{contract.installments ?? 'Não informado'}</dd></div>
@@ -127,9 +130,11 @@ export function ContractsWorkspace({ uid, service = contractService }) {
                 </dl></details>
                 {contract.sourceReview ? <ExtractionEvidence sourceReview={contract.sourceReview} /> : null}
                 <div className="contract-plan-actions">{contract.commitmentPlan ? <>
-                  <p><strong>Plano confirmado:</strong> {contract.commitmentPlan.count} parcela(s) de {money.format(contract.commitmentPlan.amount)}, de {dateLabel(contract.commitmentPlan.firstDueDate)} até {dateLabel(contract.commitmentPlan.lastDueDate)}. Consulte pagamentos e encerramento nos vencimentos.</p>
+                  <p><strong>Plano original:</strong> {contract.commitmentPlan.count} parcela(s) de {money.format(contract.commitmentPlan.amount)}, de {dateLabel(contract.commitmentPlan.firstDueDate)} até {dateLabel(contract.commitmentPlan.lastDueDate)}. Consulte os valores atualizados, pagamentos e encerramento nos vencimentos.</p>
+                  {!contract.closure && <button className="contract-secondary" aria-label={`Reajustar parcelas de ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract, adjust: true }); }}>Reajustar parcelas</button>}
                   <a className="contract-secondary" href={`/assinaturas?contrato=${encodeURIComponent(contract.id)}&mes=${contract.commitmentPlan.firstDueDate.slice(0, 7)}`}>Ver vencimentos</a>
-                </> : <button className="contract-secondary" aria-label={`Planejar compromissos de ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract, plan: true }); }}>Planejar compromissos</button>}</div>
+                </> : !contract.closure && <button className="contract-secondary" aria-label={`Planejar compromissos de ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract, plan: true }); }}>Planejar compromissos</button>}
+                {!contract.closure && <button className="contract-secondary" aria-label={`Encerrar contrato ${contract.title}`} onClick={() => { setMessage(''); setEditor({ contract, close: true }); }}>Encerrar contrato</button>}</div>
               </article>
             ))}</div>
           </>}

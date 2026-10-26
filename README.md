@@ -13,7 +13,7 @@ O SalvaAI é um projeto pessoal de gestão financeira, desenvolvido com React, V
 | Contas recorrentes | Calcula vencimentos semanais, mensais e anuais, com edição a partir de uma data e histórico preservado. |
 | Extratos | Importa CSV, OFX bancário em reais e PDF. Você escolhe a conta e confere os lançamentos antes de confirmar. |
 | Conciliação | Liga despesas importadas a vencimentos, com confirmação, para evitar registrar o mesmo pagamento duas vezes. |
-| Contratos | Cadastra valores e condições, sugere cinco campos a partir de PDF ou OCR e gera parcelas iguais após revisão. |
+| Contratos | Cadastra valores e condições, sugere cinco campos a partir de PDF ou OCR e gera parcelas iguais após revisão. Permite reajustar valores e encerrar o cadastro com prévia e confirmação. |
 | Dashboard e assistente | Consulta saldo, fatura, gastos, categorias e projeção de 12 meses com cálculos locais. |
 
 Login e dados em nuvem usam Firebase Authentication e Firestore. O assistente e a leitura de documentos funcionam sem APIs de IA ou chave Gemini. O aplicativo registra as operações informadas pelo usuário; não movimenta dinheiro em bancos nem paga boletos.
@@ -34,7 +34,7 @@ A importação de PDF oferece leitura genérica e revisão manual. Foram conferi
 
 Contratos aceitam PDF sem senha de até 10 MB e 50 páginas. A extração sugere valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste. Campos ausentes ou ambíguos ficam vazios. O OCR pode errar caracteres, valores e datas; confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
 
-Cada contrato pode ter um plano de parcelas iguais. Reajustes automáticos, alteração do plano confirmado, exclusão ou encerramento do cadastro e armazenamento do PDF original ainda não estão disponíveis.
+Cada contrato pode ter um plano de parcelas inicialmente iguais. O [reajuste manual com prévia](docs/contratos.md#reajustar-parcelas) aplica um valor ou percentual às parcelas futuras. O [encerramento do cadastro](docs/contratos.md#encerrar-o-cadastro-de-contrato) cancela as parcelas futuras sem pagamento e preserva o histórico. Consulta automática de índices, mudanças no calendário do plano, exclusão, reabertura e armazenamento do PDF original continuam pendentes.
 
 A interface se adapta a telas pequenas, mas o teste em celular físico permanece pendente. Também faltam aplicativo nativo, PWA completa, notificações com o app fechado e modo offline completo. Não há Open Finance, sincronização direta com bancos, migração automática do SQLite antigo ou backup e restauração completos.
 
@@ -89,6 +89,10 @@ npm run test:firebase
 Esses testes usam o projeto fictício `demo-salva-ai`. O emulador pode ser baixado na primeira execução. `npm run preview` serve o build localmente, sem publicar o site.
 
 Na validação da integração de contratos, passaram 151 testes do aplicativo, seis de integração, o build e os testes no navegador. Em 26/10/2026, cadastro, edição, PDF/OCR e prévia também passaram em produção com uma conta temporária, removida depois. Confirmação de planos, pagamento e estorno foram verificados no emulador. Esses testes funcionais não medem a precisão da extração em contratos reais.
+
+A atualização de reajustes passou em 159 testes do aplicativo e sete de integração com o Firestore. No navegador, foram conferidos reajustes por valor e percentual, conflito entre telas, histórico após recarga e pagamento com o valor atualizado, em larguras de 320, 390 e 1280 pixels. Essa rodada usou dados fictícios no emulador local.
+
+Com o encerramento, a suíte passou a 167 testes do aplicativo e oito de integração, todos aprovados, além do build. O fluxo no navegador foi conferido nas mesmas larguras: contratos com e sem plano, prévia, cancelamento sem salvar, preservação de pagamento antecipado, bloqueio de edição do contrato encerrado e pagamento de pendência preservada. Os testes usaram o emulador local, sem alterar dados de produção.
 
 ## Publicar na Netlify
 
