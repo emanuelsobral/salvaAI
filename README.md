@@ -94,7 +94,9 @@ A atualização de reajustes passou em 159 testes do aplicativo e sete de integr
 
 Com o encerramento, a suíte passou a 167 testes do aplicativo e oito de integração, todos aprovados, além do build. O fluxo no navegador foi conferido nas mesmas larguras: contratos com e sem plano, prévia, cancelamento sem salvar, preservação de pagamento antecipado, bloqueio de edição do contrato encerrado e pagamento de pendência preservada. Os testes usaram o emulador local, sem alterar dados de produção.
 
-Em 27/10/2026, foi corrigido um falso aviso de alteração em outra tela que bloqueava reajustes seguintes e podia impedir o encerramento. A comparação agora reconhece os mesmos dados mesmo quando o Firebase devolve os campos em outra ordem. Alterações reais continuam exigindo uma nova conferência. A correção passou nos 170 testes do aplicativo, nos oito de integração e no build; a conferência dessa correção no site publicado ainda está pendente.
+Em 27/10/2026, foi corrigido um falso aviso de alteração em outra tela que bloqueava reajustes seguintes e podia impedir o encerramento. A comparação agora reconhece os mesmos dados mesmo quando o Firebase devolve os campos em outra ordem. Alterações reais continuam exigindo uma nova conferência. A correção passou nos 170 testes do aplicativo, nos oito de integração e no build.
+
+No site publicado, foram confirmados um plano, dois reajustes seguidos e o encerramento de contratos com e sem plano. O pagamento antecipado foi preservado, as parcelas futuras sem pagamento foram canceladas e a parcela do dia continuou disponível para pagamento após o encerramento. A tentativa de editar o contrato encerrado por outra aba foi bloqueada. A prévia foi conferida em larguras de 320, 390 e 1280 pixels, sem teste em celular físico. Não houve erros JavaScript; a conta temporária e seus 15 registros fictícios foram removidos, com ausência verificada.
 
 ## Publicar na Netlify
 
