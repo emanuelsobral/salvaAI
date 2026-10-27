@@ -4,7 +4,11 @@ import { recurringOccurrences } from './recurrence.js';
 // Inclui pagamentos para invalidar uma prévia quando houver pagamento ou estorno.
 export function contractPlanSnapshot(sub) {
   return JSON.stringify({
-    revisions: sub.revisions || [], isActive: sub.isActive, cancelledOn: sub.cancelledOn || null,
+    // Maps do Firestore não garantem a ordem das chaves entre leituras.
+    // Cada revisão tem campos escalares; ordenar as chaves conserva os valores
+    // e a ordem cronológica das revisões sem produzir conflitos falsos.
+    revisions: (sub.revisions || []).map(revision => Object.fromEntries(Object.keys(revision).sort().map(key => [key, revision[key]]))),
+    isActive: sub.isActive, cancelledOn: sub.cancelledOn || null,
     payments: Object.entries(sub.payments || {}).sort(([a], [b]) => a.localeCompare(b))
       .map(([date, payment]) => [date, payment.transactionId, payment.paidDate, payment.amount]),
   });

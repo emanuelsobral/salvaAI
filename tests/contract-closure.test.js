@@ -120,3 +120,15 @@ test('duas confirmações não duplicam encerramento e repetição usa a operaç
   assert.equal(h.all('contracts')[0].revision, 2);
   await assert.rejects(service.adjustContractPlan('test', id, { type: 'AMOUNT', value: 120, effectiveFrom: plan.rows[1].dueDate }, { ...options(), operationId: 'late-adjust' }), /encerrado/);
 });
+
+test('encerramento aceita reajustes idênticos com ordem de campos diferente após a prévia', async () => {
+  const { h, service, id, options, input, plan } = await setup();
+  await service.adjustContractPlan('test', id, { type: 'AMOUNT', value: 120, effectiveFrom: plan.rows[1].dueDate }, { ...options(), operationId: 'adjust' });
+  const reviewed = options();
+  const sub = h.all('subscriptions')[0];
+  h.seed('subscriptions', sub.id, { ...sub, revisions: sub.revisions.map(revision => Object.fromEntries(Object.entries(revision).reverse())) });
+  await service.closeContract('test', id, input, reviewed);
+  assert.equal(h.all('contracts')[0].closure.closedOn, localDate());
+  assert.equal(h.all('subscriptions')[0].isActive, false);
+  assert.equal(h.all('subscriptions')[0].revisions[0].amount, 120);
+});

@@ -11,6 +11,19 @@ const fixedSub = { id: 'contract_a', contractId: 'a', billingMode: 'ACCOUNT', is
 const input = { type: 'PERCENT', value: 10, effectiveFrom: '2027-02-01' };
 const today = '2027-01-01';
 
+test('snapshot ignora ordem das chaves do Firestore e detecta alterações reais', () => {
+  const revision = previewContractAdjustment(fixedSub, input, today).revision;
+  const payments = { '2027-01-31': { transactionId: 'a', paidDate: today, amount: 100.25 }, '2027-02-28': { transactionId: 'b', paidDate: today, amount: 110.28 } };
+  const original = { ...fixedSub, revisions: [revision], payments };
+  const reordered = { ...original, revisions: [Object.fromEntries(Object.entries(revision).reverse())], payments: Object.fromEntries(Object.entries(payments).reverse().map(([date, value]) => [date, Object.fromEntries(Object.entries(value).reverse())])) };
+  assert.equal(contractPlanSnapshot(original), contractPlanSnapshot(reordered));
+  for (const change of [{ amount: 120 }, { effectiveFrom: '2027-03-01' }, { adjustmentValue: 20 }, { frequency: 'YEARLY' }]) {
+    assert.notEqual(contractPlanSnapshot(original), contractPlanSnapshot({ ...original, revisions: [{ ...revision, ...change }] }));
+  }
+  assert.notEqual(contractPlanSnapshot(original), contractPlanSnapshot({ ...original, payments: {} }));
+  assert.notEqual(contractPlanSnapshot(original), contractPlanSnapshot({ ...original, isActive: false }));
+});
+
 test('reajuste preserva dia 31, mostra antes/depois e calcula percentuais em centavos', () => {
   const preview = previewContractAdjustment(fixedSub, input, today);
   assert.equal(preview.revision.amount, 110.28);
@@ -81,6 +94,16 @@ test('duas confirmações diferentes, prévia antiga e edição concorrente não
   assert.equal(h.all('subscriptions')[0].revisions.length, 1);
   await assert.rejects(service.saveContract('test', { title: 'Antigo' }, { id: contract.id, expectedRevision: 1, operationId: 'stale' }), /outra tela/);
   await assert.rejects(service.adjustContractPlan('test', contract.id, { ...change, value: 20 }, { ...options, operationId: 'other' }), /outra tela/);
+});
+
+test('segundo reajuste aceita plano idêntico retornado com campos em outra ordem', async () => {
+  const { h, service, contract, change, options, plan } = await setup();
+  await service.adjustContractPlan('test', contract.id, change, options);
+  const sub = h.all('subscriptions')[0];
+  const expectedSnapshot = contractPlanSnapshot(sub);
+  h.seed('subscriptions', sub.id, { ...sub, revisions: sub.revisions.map(revision => Object.fromEntries(Object.entries(revision).reverse())) });
+  await service.adjustContractPlan('test', contract.id, { type: 'AMOUNT', value: 120, effectiveFrom: plan.rows[2].dueDate }, { expectedRevision: 2, expectedSnapshot, operationId: 'second' });
+  assert.deepEqual(recurringOccurrences(h.all('subscriptions')[0], plan.firstDueDate, plan.lastDueDate).map(row => row.amount), [100, 110, 120, 120]);
 });
 
 test('pagamento ou encerramento durante a revisão invalida a confirmação', async () => {

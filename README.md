@@ -94,6 +94,8 @@ A atualização de reajustes passou em 159 testes do aplicativo e sete de integr
 
 Com o encerramento, a suíte passou a 167 testes do aplicativo e oito de integração, todos aprovados, além do build. O fluxo no navegador foi conferido nas mesmas larguras: contratos com e sem plano, prévia, cancelamento sem salvar, preservação de pagamento antecipado, bloqueio de edição do contrato encerrado e pagamento de pendência preservada. Os testes usaram o emulador local, sem alterar dados de produção.
 
+Em 27/10/2026, foi corrigido um falso aviso de alteração em outra tela que bloqueava reajustes seguintes e podia impedir o encerramento. A comparação agora reconhece os mesmos dados mesmo quando o Firebase devolve os campos em outra ordem. Alterações reais continuam exigindo uma nova conferência. A correção passou nos 170 testes do aplicativo, nos oito de integração e no build; a conferência dessa correção no site publicado ainda está pendente.
+
 ## Publicar na Netlify
 
 O arquivo `netlify.toml` configura Node 24, o build `npm run build`, a pasta de saída `dist` e o fallback das rotas da interface.
