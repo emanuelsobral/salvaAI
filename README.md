@@ -19,7 +19,7 @@ O SalvaAI é um projeto pessoal de gestão financeira, desenvolvido com React, V
 
 Login e dados em nuvem usam Firebase Authentication e Firestore. A integração opcional com DeepSeek acrescenta OCR de contratos, ajuda na leitura de extratos incompletos e chat de análises financeiras. As consultas locais continuam disponíveis. O aplicativo registra as operações informadas pelo usuário; não movimenta dinheiro em bancos nem paga boletos.
 
-A integração DeepSeek desta versão ainda precisa ser publicada. Em 29/10/2026, chat, OCR de contrato e leitura de extrato responderam com sucesso em chamadas reais à API, usando dados fictícios. Esses testes confirmam a conexão e os exemplos conferidos; não medem a precisão em documentos reais.
+A integração DeepSeek foi publicada em 29/10/2026. Chat, OCR de contrato e ajuda na leitura de extrato responderam pelo site com uma conta temporária e dados fictícios. No extrato, data e valor foram lidos, mas a indicação de entrada ou saída ficou em branco para revisão. Esses testes confirmam a conexão e os exemplos conferidos; não medem a precisão em documentos reais.
 
 ## Guias de uso
 
@@ -104,7 +104,9 @@ No site publicado, foram confirmados um plano, dois reajustes seguidos e o encer
 
 Em 29/10/2026, a integração DeepSeek passou nos 197 testes locais do aplicativo, nos oito de integração com Firestore e nos fluxos de navegador com respostas simuladas. Foram conferidos chat, origem da transcrição de contratos, ajuda em extratos incompletos, preservação das linhas locais e cancelamento. Após a liberação dos créditos, os três fluxos também responderam em chamadas reais à API com exemplos fictícios. O contrato retornou aluguel de R$ 120,00 e vencimento no dia 10; os demais campos permaneceram vazios. O extrato retornou uma saída de R$ 25,50 em 01/10/2026 e excluiu o saldo final. O chat recebeu definições dos totais do painel para distinguir saldo atual, compromissos e gastos por competência; a resposta conferida respeitou essa distinção. A suíte de 197 testes passou novamente após esse ajuste.
 
-Na preparação do deploy de 29/10/2026, a agenda passou a recusar resultados vindos apenas do cache quando precisa confirmar os vencimentos no servidor. Isso evita mostrar zero contas após uma falha de conexão. Os 199 testes do aplicativo, o build e o teste de recuperação da agenda no navegador passaram. As regras do Firestore para registrar a origem DeepSeek foram publicadas; a interface ainda aguarda a configuração de produção na Netlify.
+Na publicação de 29/10/2026, a agenda passou a recusar resultados vindos apenas do cache quando precisa confirmar os vencimentos no servidor. Isso evita mostrar zero contas após uma falha de conexão. Os 199 testes do aplicativo, o build e o teste de recuperação da agenda no navegador passaram. As regras do Firestore e a interface foram publicadas, e as variáveis de produção foram configuradas na Netlify.
+
+Na conferência do site, a rota de IA recusou chamadas sem autenticação e respondeu às três chamadas autenticadas. O chat respondeu à pergunta; o OCR transcreveu o aluguel de R$ 120,00 e o vencimento no dia 10. A ajuda de extrato retornou uma movimentação de R$ 25,50 em 01/10/2026, sem importar o saldo final, mas não identificou a direção da movimentação. A linha permanece desmarcada e exige revisão antes de confirmar. A conta temporária foi removida; nenhum lançamento financeiro foi gravado nesse teste.
 
 ## Publicar na Netlify
 
