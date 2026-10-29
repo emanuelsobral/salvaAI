@@ -10,7 +10,7 @@ async function reader(pages, imageReader) {
   let destroyed = 0;
   const context = vm.createContext({ TextDecoder, Uint8Array, crypto: webcrypto });
   const stub = values => new vm.SyntheticModule(Object.keys(values), function () { for (const [key, value] of Object.entries(values)) this.setExport(key, value); }, { context });
-  const image = stub({ readPdfPageImage: imageReader });
+  const image = stub({ readPdfPageImage: imageReader, readPdfPageWithAI: imageReader });
   await image.link(() => {}); await image.evaluate();
   const source = await readFile(new URL('../src/utils/contractPdf.js', import.meta.url), 'utf8');
   const module = new vm.SourceTextModule(source, { context, importModuleDynamically: () => image });
@@ -58,4 +58,16 @@ test('origem OCR é distinta, preserva evidências e rejeita métodos desconheci
   const source = prepareSourceReview({ version: '0.1.25', fields }, ['Texto'], 'a'.repeat(64), { useOcr: true });
   assert.equal(source.method, 'PDF_OCR_REVIEW'); assert.deepEqual(JSON.parse(source.resultJson), fields);
   assert.throws(() => validateSourceReview({ ...source, method: 'API' }));
+});
+
+test('DeepSeek lê páginas em ordem, limita dez antes de consumir e não devolve transcrição parcial', async () => {
+  let calls = 0;
+  const limited = await reader(Array(11).fill(''), async () => { calls++; });
+  await assert.rejects(limited.read({ useAi: true }), /Limite de 10/);
+  assert.equal(calls, 0);
+  const complete = await reader(['', ''], async (_, page) => { calls++; return { text: `Página ${page}` }; });
+  assert.deepEqual(Array.from((await complete.read({ useAi: true })).pages), ['Página 1', 'Página 2']);
+  const failed = await reader(['', ''], async (_, page) => { if (page === 2) throw Error('DeepSeek indisponível'); return { text: 'Primeira' }; });
+  await assert.rejects(failed.read({ useAi: true }), /DeepSeek indisponível/);
+  assert.equal(failed.destroyed(), 1);
 });

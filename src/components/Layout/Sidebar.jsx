@@ -104,6 +104,9 @@ export default function Sidebar() {
           <NavLink to="/contratos" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMobile}>
             📄 Contratos
           </NavLink>
+          <NavLink to="/agenda" className={({ isActive }) => isActive ? 'active' : ''} onClick={closeMobile}>
+            📅 Agenda de contas
+          </NavLink>
         </nav>
 
         <div className="sidebar-footer">

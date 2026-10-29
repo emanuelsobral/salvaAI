@@ -4,7 +4,7 @@ import { contractOcrText, CONTRACT_OCR_MAX_PAGES } from './contractOcr.js';
 
 GlobalWorkerOptions.workerSrc = workerURL;
 
-export async function readContractPdf(file, { signal, onProgress = () => {}, useOcr = false } = {}) {
+export async function readContractPdf(file, { signal, onProgress = () => {}, useOcr = false, useAi = false } = {}) {
   if (!file.name.toLowerCase().endsWith('.pdf') || !file.size || file.size > 10000000) throw Error('Escolha um PDF não vazio de até 10 MB.');
   const data = new Uint8Array(await file.arrayBuffer());
   if (signal?.aborted) throw Error('Leitura cancelada.');
@@ -17,9 +17,9 @@ export async function readContractPdf(file, { signal, onProgress = () => {}, use
   signal?.addEventListener('abort', abort, { once: true });
   try {
     const document = await task.promise;
-    const maxPages = useOcr ? CONTRACT_OCR_MAX_PAGES : 50;
+    const maxPages = useAi ? 10 : useOcr ? CONTRACT_OCR_MAX_PAGES : 50;
     if (document.numPages > maxPages) throw Error(`Limite de ${maxPages} páginas por contrato${useOcr ? ' com OCR' : ''}.`);
-    const imageReader = useOcr ? (await import('./pdfOcr.js')).readPdfPageImage : null;
+    const imageReader = useAi ? (await import('./pdfAi.js')).readPdfPageWithAI : useOcr ? (await import('./pdfOcr.js')).readPdfPageImage : null;
     const pages = [];
     let length = 0;
     for (let number = 1; number <= document.numPages; number++) {
@@ -27,7 +27,7 @@ export async function readContractPdf(file, { signal, onProgress = () => {}, use
       onProgress(`Lendo página ${number} de ${document.numPages}…`);
       const page = await document.getPage(number);
       let content;
-      if (useOcr) {
+      if (useOcr || useAi) {
         content = contractOcrText(await imageReader(document, number, { signal,
           onProgress: message => onProgress(`Página ${number} de ${document.numPages} — ${message}`),
         }), number);
@@ -47,7 +47,7 @@ export async function readContractPdf(file, { signal, onProgress = () => {}, use
   } catch (error) {
     if (signal?.aborted) throw Error('Leitura cancelada.');
     if (error.name === 'PasswordException') throw Error('O PDF está protegido por senha. Use uma cópia desbloqueada ou cadastre manualmente.');
-    if (/^(Limite|Página|O texto|A página|A leitura|Leitura|Não foi possível ler a imagem)/.test(error.message)) throw error;
+    if (useAi || /^(Limite|Página|O texto|A página|A leitura|Leitura|Não foi possível ler a imagem)/.test(error.message)) throw error;
     throw Error('Não foi possível ler todas as páginas deste PDF. Nenhum campo foi preenchido.');
   } finally {
     signal?.removeEventListener('abort', abort);

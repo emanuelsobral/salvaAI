@@ -12,7 +12,7 @@ service cloud.firestore {
       return source is map
         && source.keys().hasAll(['method', 'pdfSha256', 'extractorVersion', 'resultJson'])
         && source.keys().hasOnly(['method', 'pdfSha256', 'extractorVersion', 'resultJson'])
-        && source.method in ['PDF_TEXT_REVIEW', 'PDF_OCR_REVIEW'] && source.pdfSha256.matches('^[a-f0-9]{64}$')
+        && source.method in ['PDF_TEXT_REVIEW', 'PDF_OCR_REVIEW', 'PDF_DEEPSEEK_OCR_REVIEW'] && source.pdfSha256.matches('^[a-f0-9]{64}$')
         && source.extractorVersion is string && source.extractorVersion.size() <= 30
         && source.resultJson is string && source.resultJson.size() > 0 && source.resultJson.size() <= 100000;
     }

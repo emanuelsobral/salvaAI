@@ -18,7 +18,7 @@ test('função inicia com require de ESM desativado como no Lambda', () => {
     const response = await handler(new Request('http://localhost/api/ai', {
       method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}'
     }));
-    if (response.status !== 410) throw new Error('Esperado 410; recebido ' + response.status);
+    if (response.status !== 401) throw new Error('Esperado 401; recebido ' + response.status);
   `], { timeout: 10000, stdio: 'pipe' });
 });
 

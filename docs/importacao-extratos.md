@@ -30,7 +30,7 @@ Escolha manualmente entre Conta corrente, Vale Refeição e Vale Alimentação. 
 
 A prévia mostra as dez primeiras linhas e o total antes de retirar duplicidades. O valor efetivamente aplicado aparece após a confirmação. O saldo de fechamento do OFX não substitui o saldo do aplicativo: somente as movimentações incluídas são somadas. Confira se o saldo inicial já contém o período que pretende importar.
 
-O arquivo é lido no navegador. Somente os lançamentos e os marcadores de importação são gravados no Firestore; não há sincronização direta com bancos nem envio a uma IA.
+A leitura inicial acontece no navegador. Somente os lançamentos e os marcadores de importação são gravados no Firestore; não há sincronização direta com bancos. Se você pedir ajuda à IA, a imagem da página escolhida será enviada à DeepSeek pelo servidor.
 
 ## Revisar um PDF
 
@@ -44,6 +44,14 @@ O arquivo é lido no navegador. Somente os lançamentos e os marcadores de impor
 Voltar à revisão invalida a prévia anterior. Cada importação aceita de 1 a 200 lançamentos selecionados. O leitor sugere datas DD/MM/AAAA, DD/MM e AAAA-MM-DD e valores brasileiros, como 1.234,56. Outros formatos podem ser preenchidos manualmente.
 
 No campo de valor, use 1234,56 ou 1234.56, sem sinal nem separador de milhar. Selecione entrada ou saída no campo próprio. Links e anexos embutidos no PDF não são usados como fontes de lançamentos.
+
+## Ajuda da IA quando a leitura falhar
+
+A DeepSeek só é consultada quando você pede ajuda em uma página sem lançamentos reconhecidos, com campos incompletos ou com informações que você indicou que faltaram. Não há chamada automática ao importar um arquivo.
+
+Selecione a página, confira o resultado local e, se necessário, marque que o leitor deixou informações sem ler. O botão Pedir ajuda à IA envia a imagem dessa página para a API e consome créditos do administrador. A senha do PDF não é enviada.
+
+As sugestões aparecem desmarcadas e não sobrescrevem linhas locais. Compare com o original e selecione apenas lançamentos corretos que ainda não estejam na lista. Diferenças de descrição podem impedir que uma duplicata seja reconhecida. Datas sem ano, valores ilegíveis e direções incertas podem continuar em branco. Uma falha da IA preserva o trabalho já revisado.
 
 ## Páginas digitalizadas
 

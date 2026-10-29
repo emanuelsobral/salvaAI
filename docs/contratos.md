@@ -12,15 +12,15 @@ Use Editar para corrigir os dados. Se outra tela já tiver alterado o contrato, 
 
 ## Importar um PDF
 
-1. Escolha Importar PDF. Para documentos digitalizados ou com texto parcial, marque Ler páginas digitalizadas (OCR) antes de selecionar o arquivo.
-2. Aguarde a leitura no dispositivo. O limite é de 10 MB e 50 páginas, sem senha.
+1. Escolha Importar PDF. Para documentos digitalizados, escolha OCR local ou OCR com DeepSeek antes de selecionar o arquivo. A opção DeepSeek envia as imagens das páginas para a API e usa créditos do administrador.
+2. Aguarde a leitura. O limite é de 10 MB, sem senha: 50 páginas localmente ou 10 com DeepSeek.
 3. Confira as sugestões de valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste.
 4. Abra Conferir evidências da leitura do PDF para consultar os trechos e as páginas usados.
 5. Informe o título, corrija os campos com base no original e marque a conferência antes de salvar.
 
 Editar qualquer campo desmarca a confirmação. Cancelar descarta o preenchimento; escolher outro arquivo descarta a leitura anterior. Campos ausentes ou ambíguos ficam vazios, sem datas ou valores estimados.
 
-O PDF é lido localmente, sem envio a uma IA ou armazenamento do original no servidor. Ao salvar, os campos revisados e as evidências vão para sua conta no Firestore. As evidências conservam a sugestão original, mesmo quando você corrige o valor, e continuam disponíveis após recarregar ou editar o cadastro.
+Na leitura local, o PDF permanece no aparelho. Ao escolher DeepSeek, imagens das páginas são enviadas pelo servidor à API para transcrição. O aplicativo não armazena o PDF original no servidor. Ao salvar, os campos revisados e as evidências vão para sua conta no Firestore. As evidências conservam a sugestão original, mesmo quando você corrige o valor, e continuam disponíveis após recarregar ou editar o cadastro.
 
 ## OCR e limites da leitura
 
@@ -30,7 +30,9 @@ O modo normal lê a camada de texto do PDF. Se alguma página não tiver texto u
 
 A leitura normal tem limite total de dois minutos. Para OCR, são dez minutos no total, até 90 segundos por página e até 90 segundos para as regras de extração. Esses limites encerram a tentativa; aparelhos mais lentos podem excedê-los.
 
-A indicação Origem: OCR identifica transcrições automáticas. O aplicativo não corrige dígitos incertos por conta própria. Nitidez, rotação, manuscritos, tabelas e ordem das colunas afetam o resultado. Confira sempre valores e datas no original. A precisão dos cinco campos em contratos reais ainda não foi medida com avaliação independente.
+O OCR com DeepSeek faz uma consulta por página, em sequência, sem repetição automática. Cada consulta tem limite de 45 segundos no servidor. Depois da transcrição, o leitor local aplica as mesmas regras dos cinco campos. Isso não resolve, por si só, ambiguidades de interpretação ou regras ausentes no documento. Uma falha impede o preenchimento parcial; o cadastro manual e o OCR local continuam disponíveis.
+
+A indicação Origem: OCR ou Origem: OCR com DeepSeek identifica transcrições automáticas. O aplicativo não corrige dígitos incertos por conta própria. Nitidez, rotação, manuscritos, tabelas e ordem das colunas afetam o resultado. Confira sempre valores e datas no original. A precisão dos cinco campos em contratos reais ainda não foi medida com avaliação independente.
 
 ## Planejar parcelas
 

@@ -1,7 +1,9 @@
 import { Readable } from 'node:stream';
-import handler from './disabled-ai.js';
+import { createAiHandler } from './ai-handler.js';
+import { verifyToken } from './firebase-auth.js';
 
-export function aiDevPlugin() {
+export function aiDevPlugin(env) {
+  const handler = createAiHandler({ verifyToken, env });
   const install = server => { server.middlewares.use(async (req, res, next) => {
     if (req.url?.split('?')[0] !== '/api/ai') return next();
     try {

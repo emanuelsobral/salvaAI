@@ -86,8 +86,9 @@ export async function getActiveSubscriptions(uid) {
   };
 }
 
-export async function getSubscriptions(uid) {
+export async function getSubscriptions(uid, { requireFresh = false } = {}) {
   const snap = await getDocs(subsRef(uid));
+  if (requireFresh && snap.metadata?.fromCache) throw new Error('Não foi possível confirmar as contas no servidor. Confira a conexão e tente novamente.');
   return { subs: snap.docs.map(item => ({ id: item.id, ...item.data() })) };
 }
 

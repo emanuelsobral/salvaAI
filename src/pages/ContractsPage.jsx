@@ -50,7 +50,7 @@ function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, on
       <h2 id="contract-editor-title">{contract ? 'Editar contrato' : 'Novo contrato'}</h2>
       <p>Informe o que consta no contrato. Apenas o título é obrigatório; deixe em branco o que não souber.</p>
       {contract?.commitmentPlan ? <p className="contract-notice">Editar este cadastro não altera o plano de compromissos já confirmado.</p> : null}
-      {sourceReview ? <p className="contract-notice">Campos sugeridos a partir do PDF: confira o documento original. Ao salvar, os campos e os trechos de evidência serão guardados na sua conta. O arquivo PDF permanece neste dispositivo.</p> : null}
+      {sourceReview ? <p className="contract-notice">Campos sugeridos a partir do PDF: confira o documento original. Ao salvar, os campos e os trechos de evidência serão guardados na sua conta. {sourceReview.method === 'PDF_DEEPSEEK_OCR_REVIEW' ? 'Imagens das páginas foram enviadas à DeepSeek para leitura.' : 'O arquivo PDF permanece neste dispositivo.'}</p> : null}
       {(sourceReview || contract?.sourceReview) ? <ExtractionEvidence sourceReview={sourceReview || contract.sourceReview} /> : null}
       <form onSubmit={submit}>
         <fieldset disabled={saving} className="contract-fields">

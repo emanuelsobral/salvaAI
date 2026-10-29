@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { openStatementPdf } from '../../utils/pdfDocument';
 import { pdfDate, pdfDraft, reviewedPdfCSV, suggestPdfRows } from '../../utils/pdfStatement';
+import { canRecoverStatement, statementRecoveryDrafts } from '../../utils/aiDocuments';
 import './PdfStatementReview.css';
 
 function PdfPage({ document, number }) {
@@ -43,6 +44,8 @@ export default function PdfStatementReview({ file, disabled, onReady, onInvalida
   const [approved, setApproved] = useState(false);
   const [ocrStatus, setOcrStatus] = useState('');
   const [ocrPages, setOcrPages] = useState([]);
+  const [aiPages, setAiPages] = useState([]);
+  const [missingPages, setMissingPages] = useState([]);
   const ocrController = useRef(null);
   const counter = useRef(0);
   useEffect(() => {
@@ -52,6 +55,7 @@ export default function PdfStatementReview({ file, disabled, onReady, onInvalida
     // oxlint-disable-next-line react/set-state-in-effect
     setLoaded(null); setRows([]); setPage(1); setError(''); setProgress('Lendo PDF…');
     setChecked(false); setApproved(false); setYear(''); setOcrStatus(''); setOcrPages([]);
+    setAiPages([]); setMissingPages([]);
     openStatementPdf(file, { password: credentials.password, signal: controller.signal,
       onProgress: (current, total) => { if (active) setProgress(`Lendo página ${current} de ${total}…`); }
     }).then(value => {
@@ -91,8 +95,28 @@ export default function PdfStatementReview({ file, disabled, onReady, onInvalida
       if (ocrController.current === controller) { ocrController.current = null; setOcrStatus(''); }
     }
   };
+  const recoverWithAI = async () => {
+    if (!loaded || disabled || ocrController.current || aiPages.includes(page) || !canRecoverStatement(rows, page, missingPages.includes(page))) return;
+    const controller = new AbortController();
+    ocrController.current = controller;
+    setOcrStatus('Preparando ajuda da DeepSeek…'); setError(''); setChecked(false); setApproved(false); onInvalidate();
+    try {
+      const { readPdfPageWithAI } = await import('../../utils/pdfAi');
+      const data = await readPdfPageWithAI(loaded.document, page, { action: 'statement-recovery', signal: controller.signal,
+        onProgress: message => { if (ocrController.current === controller) setOcrStatus(message); } });
+      if (controller.signal.aborted || ocrController.current !== controller) return;
+      const proposals = statementRecoveryDrafts(data, rows, page);
+      change([...rows, ...proposals]);
+      setAiPages(value => [...value, page]);
+      if (!proposals.length) setError('A IA não trouxe novas sugestões. Confira o original e complete os campos manualmente.');
+    } catch (failure) {
+      if (ocrController.current === controller) setError(controller.signal.aborted ? 'Leitura cancelada.' : failure.message);
+    } finally {
+      if (ocrController.current === controller) { ocrController.current = null; setOcrStatus(''); }
+    }
+  };
   return <section className="pdf-review" aria-label="Revisão do PDF">
-    <p>Leitura local. Confira todas as páginas: linhas quebradas, colunas e saldos podem não ser reconhecidos corretamente. Valores em reais.</p>
+    <p>A leitura começa neste aparelho. Confira todas as páginas: linhas quebradas, colunas e saldos podem não ser reconhecidos corretamente. Valores em reais.</p>
     {progress && <p role="status">{progress}</p>}
     {error && <p role="alert" className="pdf-error">{error}</p>}
     {!loaded && !progress && <div className="form-group">
@@ -114,6 +138,14 @@ export default function PdfStatementReview({ file, disabled, onReady, onInvalida
       </div>}
       {ocrStatus && <><p role="status">{ocrStatus}</p><button type="button" className="btn-outline" onClick={() => ocrController.current?.abort()}>Cancelar leitura da imagem</button></>}
       {ocrPages.includes(page) && <p role="status">Imagem da página {page} lida. Confira os campos reconhecidos; não execute outra importação do mesmo período.</p>}
+      {!approved && !aiPages.includes(page) && <div>
+        <label><input type="checkbox" disabled={disabled || !!ocrStatus} checked={missingPages.includes(page)} onChange={event => setMissingPages(value => event.target.checked ? [...value, page] : value.filter(number => number !== page))} />O leitor local deixou informações sem ler nesta página.</label>
+        {canRecoverStatement(rows, page, missingPages.includes(page)) && <>
+          <p>Se a leitura local ficou incompleta, a DeepSeek pode sugerir lançamentos. Ao clicar, você envia a imagem desta página para a API. Há consumo de créditos. As sugestões vêm desmarcadas; confira possíveis duplicatas antes de incluí-las.</p>
+          <button type="button" className="btn-outline" disabled={disabled || !!ocrStatus} onClick={recoverWithAI}>Pedir ajuda à IA na página {page}</button>
+        </>}
+      </div>}
+      {aiPages.includes(page) && <p role="status">DeepSeek consultada nesta página. As sugestões não substituem os campos locais e precisam ser selecionadas após conferência.</p>}
       {approved ? <>
         <p role="status">PDF revisado. Continue a conferência da conta e das recorrências abaixo.</p>
         <button type="button" className="btn-outline" disabled={disabled} onClick={() => change(rows)}>Voltar à revisão do PDF</button>
@@ -133,6 +165,7 @@ export default function PdfStatementReview({ file, disabled, onReady, onInvalida
           {rows.map((row, index) => <article key={row.id} className="pdf-draft">
             <label><input type="checkbox" checked={row.include} onChange={event => update(index, { include: event.target.checked })} /> Incluir lançamento {index + 1} · página {row.page}</label>
             {row.source && <p className="pdf-source">{row.source}</p>}
+            {row.ai && <p>Sugestão da DeepSeek. Confira no PDF e mantenha desmarcada se já existir um lançamento correspondente.</p>}
             {row.include && row.dateCandidates.length > 1 && <p>Há mais de uma data nesta linha ({row.dateCandidates.join(' e ')}). Informe a data correta do lançamento; o ano em lote não resolve essa escolha.</p>}
             {row.include && row.columnBased && <p>{row.signedValueColumn ? 'Coluna única de valor: negativos como saídas; positivos ou sem sinal como entradas.' : 'Valor e entrada/saída sugeridos pelas colunas do extrato.'}{row.inheritedDate ? ' Dia repetido do grupo anterior desta página.' : ''} Confira no original.</p>}
             {row.include && row.sectionBased && <p>Data e entrada/saída vêm do cabeçalho do grupo nesta página. O total do grupo não é um lançamento. Confira no original.</p>}

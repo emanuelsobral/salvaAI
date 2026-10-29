@@ -12,6 +12,8 @@ Cadastre contas semanais, mensais ou anuais para acompanhar vencimentos e pagame
 
 O cadastro e a passagem do vencimento não alteram o saldo. O SalvaAI não paga boletos, agenda débitos no banco ou envia notificações fora da aplicação.
 
+A [Agenda de contas](agenda.md) reúne os vencimentos em visões semanal e mensal. Nela você pode filtrar atrasadas, de hoje, próximas e pagas, registrar pagamentos ou vincular extratos. Os totais consideram o período escolhido; Todos os atrasados nesta tela continua reunindo pendências de vários meses.
+
 Se o pagamento já foi importado, use Vincular extrato para evitar uma segunda despesa. Durante a importação também é possível aproveitar pagamentos registrados anteriormente. Consulte a [conciliação de extratos](conciliacao-extratos.md).
 
 ## Calendário

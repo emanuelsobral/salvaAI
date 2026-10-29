@@ -13,6 +13,7 @@ import DashboardPage from './pages/DashboardPage';
 import HistoryPage from './pages/HistoryPage';
 import SubscriptionsPage from './pages/SubscriptionsPage';
 import ContractsPage from './pages/ContractsPage';
+import AgendaPage from './pages/AgendaPage';
 import AIChatWidget from './components/Chat/AIChatWidget';
 
 import './styles/global.css';
@@ -31,6 +32,7 @@ function AuthenticatedLayout() {
           <Route path="/historico" element={<HistoryPage />} />
           <Route path="/assinaturas" element={<SubscriptionsPage />} />
           <Route path="/contratos" element={<ContractsPage />} />
+          <Route path="/agenda" element={<AgendaPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </main>

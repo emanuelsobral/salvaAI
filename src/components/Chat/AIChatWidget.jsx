@@ -2,13 +2,23 @@ import { useState, useEffect, useRef } from 'react';
 import { useAuth } from '../../hooks/useAuth';
 import { localReply } from '../../utils/localAssistant';
 import { getDashboardData } from '../../services/dashboardService';
+import { chatWithAI } from '../../services/aiService';
+import { aiHistory } from '../../utils/aiHistory';
 
 export default function AIChatWidget() {
   const { user } = useAuth();
+  return user ? <ChatSession key={user.uid} user={user} /> : null;
+}
+
+function ChatSession({ user }) {
   const [isOpen, setIsOpen] = useState(false);
   const [history, setHistory] = useState([]);
   const [input, setInput] = useState('');
   const [loading, setLoading] = useState(false);
+  const [useAi, setUseAi] = useState(true);
+  const busy = useRef(false);
+  const activeRequest = useRef(null);
+  useEffect(() => () => { activeRequest.current?.abort(); }, []);
 
   const messagesEndRef = useRef(null);
 
@@ -21,7 +31,10 @@ export default function AIChatWidget() {
 
   const handleSend = async (e) => {
     e.preventDefault();
-    if (!input.trim() || loading) return;
+    if (!input.trim() || busy.current) return;
+    busy.current = true;
+    const controller = new AbortController();
+    activeRequest.current = controller;
 
 
     const userMessage = input.trim();
@@ -30,12 +43,17 @@ export default function AIChatWidget() {
     setLoading(true);
 
     try {
-      let reply = localReply(userMessage);
-      if (reply === null) reply = localReply(userMessage, await getDashboardData(user.uid));
-      setHistory(prev => [...prev, { role: 'model', parts: [{ text: reply }] }]);
+      let reply;
+      if (useAi) reply = await chatWithAI(aiHistory(history), userMessage, await getDashboardData(user.uid), { signal: controller.signal, uid: user.uid });
+      else {
+        reply = localReply(userMessage);
+        if (reply === null) reply = localReply(userMessage, await getDashboardData(user.uid));
+      }
+      if (!controller.signal.aborted) setHistory(prev => [...prev, { role: 'model', parts: [{ text: reply }] }]);
     } catch (error) {
-      setHistory(prev => [...prev, { role: 'model', isError: true, parts: [{ text: `🚨 Ops! Ocorreu um erro: ${error.message}` }] }]);
+      if (!controller.signal.aborted) setHistory(prev => [...prev, { role: 'model', isError: true, parts: [{ text: `🚨 Ops! Ocorreu um erro: ${error.message}` }] }]);
     } finally {
+      busy.current = false;
       setLoading(false);
     }
   };
@@ -79,7 +97,7 @@ export default function AIChatWidget() {
             <div>
               <h3 style={{ color: 'var(--accent-primary)', margin: 0 }}>Assistente SalvaAI</h3>
               <p style={{ margin: 0, fontSize: '0.85rem', color: 'var(--text-muted)' }}>
-                Consultas automáticas, sem IA
+                {useAi ? 'Análises com DeepSeek' : 'Consultas locais, sem IA'}
               </p>
             </div>
             <button className="btn-close" aria-label="Fechar assistente" onClick={() => setIsOpen(false)}>&times;</button>
@@ -89,8 +107,8 @@ export default function AIChatWidget() {
           <div className="chat-messages" style={{ flex: 1, minHeight: 0, overflowY: 'auto', padding: '1.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {history.length === 0 && (
               <div style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
-                <p>Consulte os dados do seu painel.</p>
-                <p style={{ fontSize: '0.85rem' }}>Digite: saldo, fatura, gastos, maior categoria ou projeção.</p>
+                <p>{useAi ? 'Pergunte sobre suas finanças ou conceitos de economia.' : 'Consulte os dados do seu painel.'}</p>
+                <p style={{ fontSize: '0.85rem' }}>{useAi ? 'Suas perguntas e um resumo do painel serão enviados à DeepSeek. As respostas podem conter erros e não consultam notícias ou cotações atuais.' : 'Digite: saldo, fatura, gastos, maior categoria ou projeção.'}</p>
               </div>
             )}
 
@@ -127,9 +145,11 @@ export default function AIChatWidget() {
 
           {/* Input Area */}
           <div className="chat-composer" style={{ padding: '1rem', borderTop: '1px solid var(--border-color)', background: 'var(--bg-sidebar)' }}>
+            <label><input type="checkbox" checked={useAi} disabled={loading} onChange={event => { setUseAi(event.target.checked); setHistory([]); }} /> Usar DeepSeek para analisar</label>
             <form onSubmit={handleSend} style={{ display: 'flex', gap: '10px' }}>
               <input
                 type="text"
+                maxLength={4000}
                 value={input}
                 onChange={e => setInput(e.target.value)}
                 placeholder="Ex.: qual meu saldo?"

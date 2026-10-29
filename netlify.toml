@@ -6,8 +6,8 @@
 [build.environment]
   NODE_VERSION = "24"
   # Nomes públicos de modelos; inclui a variável legada ainda presente no painel.
-  # GEMINI_API_KEY deve continuar sendo verificada como segredo.
-  SECRETS_SCAN_OMIT_KEYS = "VITE_GEMINI_MODEL,GEMINI_MODEL"
+  # Chaves de API continuam sendo verificadas como segredos.
+  SECRETS_SCAN_OMIT_KEYS = "VITE_GEMINI_MODEL,GEMINI_MODEL,DEEPSEEK_MODEL,DEEPSEEK_VISION_MODEL"
 
 [functions]
   node_bundler = "esbuild"

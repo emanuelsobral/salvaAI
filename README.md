@@ -11,12 +11,15 @@ O SalvaAI é um projeto pessoal de gestão financeira, desenvolvido com React, V
 | Contas e caixinhas | Registra saldos, receitas, despesas, aportes e estornos. |
 | Cartões | Organiza compras parceladas, faturas e pagamentos registrados pelo usuário. |
 | Contas recorrentes | Calcula vencimentos semanais, mensais e anuais, com edição a partir de uma data e histórico preservado. |
+| Agenda de contas | Reúne vencimentos por semana ou mês, com filtros, total pendente e registro de pagamento ou vínculo com extrato. Usa as recorrências e parcelas de contratos existentes. |
 | Extratos | Importa CSV, OFX bancário em reais e PDF. Você escolhe a conta e confere os lançamentos antes de confirmar. |
 | Conciliação | Liga despesas importadas a vencimentos, com confirmação, para evitar registrar o mesmo pagamento duas vezes. |
 | Contratos | Cadastra valores e condições, sugere cinco campos a partir de PDF ou OCR e gera parcelas iguais após revisão. Permite reajustar valores e encerrar o cadastro com prévia e confirmação. |
-| Dashboard e assistente | Consulta saldo, fatura, gastos, categorias e projeção de 12 meses com cálculos locais. |
+| Dashboard e assistente | Mantém as consultas locais e oferece perguntas livres com DeepSeek, usando um resumo do painel. Sem notícias ou cotações em tempo real. |
 
-Login e dados em nuvem usam Firebase Authentication e Firestore. O assistente e a leitura de documentos funcionam sem APIs de IA ou chave Gemini. O aplicativo registra as operações informadas pelo usuário; não movimenta dinheiro em bancos nem paga boletos.
+Login e dados em nuvem usam Firebase Authentication e Firestore. A integração opcional com DeepSeek acrescenta OCR de contratos, ajuda na leitura de extratos incompletos e chat de análises financeiras. As consultas locais continuam disponíveis. O aplicativo registra as operações informadas pelo usuário; não movimenta dinheiro em bancos nem paga boletos.
+
+A integração DeepSeek desta versão ainda precisa ser publicada. Em 29/10/2026, chat, OCR de contrato e leitura de extrato responderam com sucesso em chamadas reais à API, usando dados fictícios. Esses testes confirmam a conexão e os exemplos conferidos; não medem a precisão em documentos reais.
 
 ## Guias de uso
 
@@ -24,6 +27,7 @@ Login e dados em nuvem usam Firebase Authentication e Firestore. O assistente e 
 - [Saldos, cartões e projeções](docs/financas.md)
 - [Importação de extratos](docs/importacao-extratos.md)
 - [Contas recorrentes](docs/contas-recorrentes.md)
+- [Agenda de contas](docs/agenda.md)
 - [Edição de recorrências](docs/edicao-recorrencias.md)
 - [Conciliação com extratos](docs/conciliacao-extratos.md)
 - [Cadastro e leitura de contratos](docs/contratos.md)
@@ -32,11 +36,11 @@ Login e dados em nuvem usam Firebase Authentication e Firestore. O assistente e 
 
 A importação de PDF oferece leitura genérica e revisão manual. Foram conferidas amostras de Itaú, Nubank e Banco do Brasil, mas outros layouts podem exigir correções. Não há garantia de leitura automática de todos os bancos.
 
-Contratos aceitam PDF sem senha de até 10 MB e 50 páginas. A extração sugere valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste. Campos ausentes ou ambíguos ficam vazios. O OCR pode errar caracteres, valores e datas; confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
+Contratos aceitam PDF sem senha de até 10 MB: 50 páginas na leitura local ou 10 no OCR com DeepSeek. A extração sugere valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste. Campos ausentes ou ambíguos ficam vazios. O OCR pode errar caracteres, valores e datas; confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
 
 Cada contrato pode ter um plano de parcelas inicialmente iguais. O [reajuste manual com prévia](docs/contratos.md#reajustar-parcelas) aplica um valor ou percentual às parcelas futuras. O [encerramento do cadastro](docs/contratos.md#encerrar-o-cadastro-de-contrato) cancela as parcelas futuras sem pagamento e preserva o histórico. Consulta automática de índices, mudanças no calendário do plano, exclusão, reabertura e armazenamento do PDF original continuam pendentes.
 
-A interface se adapta a telas pequenas, mas o teste em celular físico permanece pendente. Também faltam aplicativo nativo, PWA completa, notificações com o app fechado e modo offline completo. Não há Open Finance, sincronização direta com bancos, migração automática do SQLite antigo ou backup e restauração completos.
+A interface se adapta a telas pequenas, mas o teste em celular físico permanece pendente. Também faltam aplicativo nativo, PWA completa, notificações com o app fechado e modo offline completo. Não há Open Finance, sincronização direta com bancos ou migração automática do SQLite antigo. O [backup de documentos do Firestore](scripts/backup/README.md) pode ser exportado com criptografia e restaurado para conferência em um emulador local. Recuperação de logins, armazenamento externo, agendamento e restauração em produção continuam pendentes.
 
 ## Executar localmente
 
@@ -98,7 +102,13 @@ Em 27/10/2026, foi corrigido um falso aviso de alteração em outra tela que blo
 
 No site publicado, foram confirmados um plano, dois reajustes seguidos e o encerramento de contratos com e sem plano. O pagamento antecipado foi preservado, as parcelas futuras sem pagamento foram canceladas e a parcela do dia continuou disponível para pagamento após o encerramento. A tentativa de editar o contrato encerrado por outra aba foi bloqueada. A prévia foi conferida em larguras de 320, 390 e 1280 pixels, sem teste em celular físico. Não houve erros JavaScript; a conta temporária e seus 15 registros fictícios foram removidos, com ausência verificada.
 
+Em 29/10/2026, a integração DeepSeek passou nos 197 testes locais do aplicativo, nos oito de integração com Firestore e nos fluxos de navegador com respostas simuladas. Foram conferidos chat, origem da transcrição de contratos, ajuda em extratos incompletos, preservação das linhas locais e cancelamento. Após a liberação dos créditos, os três fluxos também responderam em chamadas reais à API com exemplos fictícios. O contrato retornou aluguel de R$ 120,00 e vencimento no dia 10; os demais campos permaneceram vazios. O extrato retornou uma saída de R$ 25,50 em 01/10/2026 e excluiu o saldo final. O chat recebeu definições dos totais do painel para distinguir saldo atual, compromissos e gastos por competência; a resposta conferida respeitou essa distinção. A suíte de 197 testes passou novamente após esse ajuste.
+
+Na preparação do deploy de 29/10/2026, a agenda passou a recusar resultados vindos apenas do cache quando precisa confirmar os vencimentos no servidor. Isso evita mostrar zero contas após uma falha de conexão. Os 199 testes do aplicativo, o build e o teste de recuperação da agenda no navegador passaram. As regras do Firestore para registrar a origem DeepSeek foram publicadas; a interface ainda aguarda a configuração de produção na Netlify.
+
 ## Publicar na Netlify
+
+Para cópias dos dados antes de uma manutenção, consulte o [guia de backup do Firestore](scripts/backup/README.md). A ferramenta passou em onze testes específicos e em um ensaio com o emulador, incluindo contratos, pagamentos, saldos, tipos de dados e documentos sem pai cadastrado. Na rodada do backup, a suíte do aplicativo tinha 181 testes aprovados. A recuperação completa de contas de acesso e do ambiente de produção ainda exige procedimentos separados.
 
 O arquivo `netlify.toml` configura Node 24, o build `npm run build`, a pasta de saída `dist` e o fallback das rotas da interface.
 
@@ -107,7 +117,11 @@ O arquivo `netlify.toml` configura Node 24, o build `npm run build`, a pasta de 
 3. Autentique a CLI Firebase e publique as regras de `firestore.rules` no projeto correto antes da interface.
 4. Publique o build e confira o resultado na Netlify. O envio ao GitHub só aciona o deploy se o repositório estiver conectado à hospedagem.
 
-Variáveis alteradas depois do build exigem nova compilação. A rota antiga `/api/ai` retorna HTTP 410 no Vite e na Netlify, sem consultar o provedor; as variáveis Gemini são dispensáveis.
+Variáveis alteradas depois do build exigem nova compilação. Para habilitar a IA, configure `DEEPSEEK_API_KEY`, `DEEPSEEK_MODEL=deepseek-flash`, `DEEPSEEK_VISION_MODEL=deepseek-flash` e `FIREBASE_PROJECT_ID` no contexto de produção da Netlify. Prefira o escopo Functions quando o plano permitir. No escopo padrão, essas variáveis também ficam acessíveis aos processos de build e pós-processamento; mantenha o acesso à hospedagem restrito. A chave nunca deve usar o prefixo `VITE_`. As variáveis Gemini não são usadas.
+
+A rota `/api/ai` exige um token Firebase válido e limita as chamadas. Cada solicitação faz uma única tentativa, com prazo de 45 segundos no servidor. O limite em memória é de dez chamadas por usuário e sessenta por processo a cada minuto; a Netlify também limita chamadas por IP. Esses limites não equivalem a um orçamento diário global. Acompanhe os créditos na DeepSeek.
+
+Publique as regras atualizadas do Firestore antes da interface: elas reconhecem a origem `PDF_DEEPSEEK_OCR_REVIEW`. Os trechos lidos pela IA ficam identificados como transcrição automática. Os campos e lançamentos continuam exigindo revisão. Consulte os detalhes de uso e envio de dados nos [contratos](docs/contratos.md) e na [importação de extratos](docs/importacao-extratos.md).
 
 ## Extrator de terminal
 

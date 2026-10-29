@@ -8,7 +8,7 @@ import { fileURLToPath } from 'node:url';
 export async function harness() {
   const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../src');
   const records = new Map(), versions = new Map();
-  let serial = 0, fail = false;
+  let serial = 0, fail = false, fromCache = false;
   const ref = (base, parts) => {
     const value = [base?.path, ...parts].filter(Boolean).join('/');
     return { path: value, id: value.split('/').at(-1) };
@@ -30,7 +30,7 @@ export async function harness() {
         if (filter.order) docs.sort((a, b) => String(a.data()[filter.order]).localeCompare(String(b.data()[filter.order])) * (filter.direction === 'desc' ? -1 : 1));
         if (filter.count) docs = docs.slice(0, filter.count);
       }
-      return { docs, empty: !docs.length };
+      return { docs, empty: !docs.length, metadata: { fromCache } };
     },
     runTransaction: async (_, execute) => {
       for (let attempt = 0; attempt < 10; attempt++) {
@@ -93,6 +93,7 @@ export async function harness() {
     seed: (collection, id, data, uid = 'test') => { const key = 'users/' + uid + '/' + collection + '/' + id; records.set(key, structuredClone(data)); versions.set(key, (versions.get(key) || 0) + 1); },
     all: collection => [...records].filter(([key]) => key.startsWith('users/test/' + collection + '/')).map(([key, data]) => ({ id: key.split('/').at(-1), ...structuredClone(data) })),
     failNextCommit: () => { fail = true; },
+    cachedReads: value => { fromCache = value; },
     service: async name => { const module = await load(path.join(root, 'services', name + '.js')); if (module.status !== 'evaluated') await module.evaluate(); return module.namespace; }
   };
 }

@@ -1,163 +1,119 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createAiHandler, buildGeminiRequest, createBurstLimiter } from '../server/ai-handler.js';
-const env = { GEMINI_API_KEY: 'server-secret-test', FIREBASE_PROJECT_ID: 'demo-project' };
+import { createAiHandler, buildDeepSeekRequest, createBurstLimiter } from '../server/ai-handler.js';
+const env = { DEEPSEEK_API_KEY: 'server-secret-test', FIREBASE_PROJECT_ID: 'demo-project' };
 const request = (body, token = 'valid') => new Request('http://localhost/api/ai', {
-  method: 'POST', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) },
-  body: JSON.stringify(body),
+  method: 'POST', headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify(body),
 });
 const body = { action: 'chat', message: 'Qual meu saldo?', context: { balances: { GENERAL: 100 } } };
-test('IA exige token e rejeita token inválido antes de chamar Gemini', async () => {
+const answer = text => ({ choices: [{ finish_reason: 'stop', message: { content: text } }] });
+const handler = (fetchImpl, extra = {}) => createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl, ...extra });
+const image = { mimeType: 'image/png', image: 'aGVsbG8=', page: 1 };
+
+test('autenticação precede chamadas e leitura; método e mídia são limitados', async () => {
   let calls = 0;
-  const handler = createAiHandler({ env, verifyToken: async () => { throw Error('invalid'); }, fetchImpl: async () => { calls++; } });
-  assert.equal((await handler(request(body, ''))).status, 401);
-  assert.equal((await handler(request(body, 'invalid'))).status, 401);
+  const h = handler(async () => { calls++; }, { verifyToken: async () => { throw Error('invalid'); } });
+  assert.equal((await h(request(body, ''))).status, 401);
+  assert.equal((await h(request(body))).status, 401);
+  assert.equal((await h(new Request('http://localhost/api/ai'))).status, 405);
+  assert.equal((await h(new Request('http://localhost/api/ai', { method: 'POST' }))).status, 415);
   assert.equal(calls, 0);
 });
-test('chave ausente gera erro de configuração sem pedir chave ao usuário', async () => {
-  const handler = createAiHandler({ env: {}, verifyToken: async () => ({ uid: 'user' }) });
-  const response = await handler(request(body));
-  assert.equal(response.status, 503);
-  assert.match((await response.json()).error, /administrador/);
+test('sem chave DeepSeek não tenta usar configuração Gemini legada', async () => {
+  const response = await handler(() => assert.fail(), { env: { GEMINI_API_KEY: 'old' } })(request(body));
+  assert.equal(response.status, 503); assert.match((await response.json()).error, /administrador/);
 });
-test('chat e insight usam chave somente no servidor e limitam saída', async () => {
+test('chat e insight usam endpoint fixo, chave no cabeçalho e contexto como dados', async () => {
   for (const action of ['chat', 'insight']) {
-    const handler = createAiHandler({ env, verifyToken: async (token, project) => {
-      assert.equal(token, 'valid'); assert.equal(project, 'demo-project'); return { uid: 'user' };
-    }, fetchImpl: async (url, options) => {
-      assert.ok(!url.includes(env.GEMINI_API_KEY));
-      assert.equal(options.headers['x-goog-api-key'], env.GEMINI_API_KEY);
+    const h = handler(async (url, options) => {
+      assert.equal(url, 'https://api.deepseek.com/chat/completions');
+      assert.equal(options.headers.Authorization, 'Bearer ' + env.DEEPSEEK_API_KEY);
       const payload = JSON.parse(options.body);
-      assert.equal(payload.generationConfig.maxOutputTokens, 2048);
-      assert.ok(payload.systemInstruction.parts[0].text.includes('100'));
-      return Response.json({ candidates: [{ content: { parts: [{ text: 'Seu saldo é R$ 100.' }] } }] });
+      assert.equal(payload.model, 'deepseek-flash'); assert.equal(payload.max_tokens, 2048);
+      assert.deepEqual(payload.thinking, { type: 'disabled' });
+      assert.ok(!payload.messages[0].content.includes('100'));
+      assert.ok(payload.messages[0].content.includes('Não representam apenas dinheiro já pago'));
+      assert.ok(payload.messages[0].content.includes('não desconte novamente os mesmos compromissos'));
+      assert.ok(payload.messages[1].content.includes('100'));
+      assert.equal(payload.messages[1].role, 'user');
+      return Response.json(answer('Seu saldo é R$ 100.'));
+    }, { verifyToken: async (token, project) => {
+      assert.equal(token, 'valid'); assert.equal(project, 'demo-project'); return { uid: 'user' };
     } });
-    const response = await handler(request({ ...body, action }));
-    assert.equal(response.status, 200);
-    assert.deepEqual(await response.json(), { text: 'Seu saldo é R$ 100.' });
+    const response = await h(request({ ...body, action }));
+    assert.equal(response.status, 200); assert.deepEqual(await response.json(), { text: 'Seu saldo é R$ 100.' });
   }
 });
-test('recibo retorna dados validados e rejeita extração inválida', async () => {
-  const receipt = { action: 'receipt', mimeType: 'image/png', image: 'aGVsbG8=' };
+test('OCR usa modelo visual, formato JSON e uma imagem; não aceita URLs arbitrárias', async () => {
+  const h = handler(async (_url, options) => {
+    const payload = JSON.parse(options.body);
+    assert.equal(payload.model, 'vision-configured');
+    assert.equal(payload.max_tokens, 8192);
+    assert.deepEqual(payload.response_format, { type: 'json_object' });
+    assert.equal(payload.messages[1].content[1].image_url.url, 'data:image/png;base64,aGVsbG8=');
+    return Response.json(answer('{"text":"Aluguel: R$ 100,00"}'));
+  }, { env: { ...env, DEEPSEEK_VISION_MODEL: 'vision-configured' } });
+  const response = await h(request({ action: 'contract-ocr', ...image }));
+  assert.equal(response.status, 200); assert.deepEqual(await response.json(), { data: { text: 'Aluguel: R$ 100,00' } });
+  for (const invalid of [{ image: 'https://example.com' }, { mimeType: 'text/html' }, { page: 0 }, { page: 51 }]) {
+    assert.throws(() => buildDeepSeekRequest({ action: 'contract-ocr', ...image, ...invalid }));
+  }
+});
+test('extratos exigem indicação de falha local e resposta estruturada válida', async () => {
+  assert.throws(() => buildDeepSeekRequest({ action: 'statement-recovery', ...image }), /leitura local/);
+  const h = handler(async () => Response.json(answer('{"transactions":[]}')));
+  assert.equal((await h(request({ action: 'statement-recovery', localReadFailed: true, ...image }))).status, 200);
+  for (const text of ['{}', '{"transactions":[{"amount":-10}]}', '{"text":123}', 'not JSON']) {
+    const bad = handler(async () => Response.json(answer(text)));
+    assert.equal((await bad(request({ action: 'contract-ocr', ...image }))).status, 502);
+  }
+});
+test('recibos legados continuam validados', async () => {
   for (const [amount, expected] of [[25.5, 200], [-1, 502]]) {
-    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
-      Response.json({ candidates: [{ content: { parts: [{ text: JSON.stringify({ amount, date: '2026-09-14', description: 'Loja', category: 'OUTROS' }) }] } }] }) });
-    assert.equal((await handler(request(receipt))).status, expected);
-  }
-  assert.throws(() => buildGeminiRequest({ ...receipt, image: '@@@' }));
-  assert.throws(() => buildGeminiRequest({ ...receipt, mimeType: 'text/html' }));
-});
-test('validação rejeita ações, históricos, mensagens e corpos excessivos', async () => {
-  assert.throws(() => buildGeminiRequest({ action: 'admin' }));
-  assert.throws(() => buildGeminiRequest({ ...body, history: [{ role: 'model', parts: [{ text: 'fake' }] }] }));
-  assert.throws(() => buildGeminiRequest({ ...body, message: 'a'.repeat(4001) }));
-  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }) });
-  assert.equal((await handler(request({ ...body, message: 'a'.repeat(5 * 1024 * 1024) }))).status, 413);
-});
-test('erros do provedor não expõem segredo e cota retorna 429', async () => {
-  for (const status of [400, 500]) {
-    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
-      new Response('sensitive ' + env.GEMINI_API_KEY, { status }) });
-    const response = await handler(request(body));
-    assert.equal(response.status, 502);
-    assert.ok(!(await response.text()).includes(env.GEMINI_API_KEY));
-  }
-  // 429 e 503 agora leem o corpo como JSON; testar com corpo JSON.
-  for (const status of [429, 503]) {
-    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
-      Response.json({ error: { message: 'quota', status: 'RESOURCE_EXHAUSTED' } }, { status }) });
-    const response = await handler(request(body));
-    assert.equal(response.status, status);
-    assert.ok(!(await response.text()).includes(env.GEMINI_API_KEY));
+    const h = handler(async () => Response.json(answer(JSON.stringify({ amount, date: '2026-09-14', description: 'Loja', category: 'OUTROS' }))));
+    assert.equal((await h(request({ action: 'receipt', ...image }))).status, expected);
   }
 });
-test('limite local restringe rajadas por usuário', () => {
+test('ações, históricos, modelo e entradas excessivas não chegam ao provedor', async () => {
+  for (const data of [{ action: 'admin' }, { ...body, message: '' }, { ...body, message: 'a'.repeat(4001) },
+    { ...body, history: [{ role: 'model', parts: [{ text: 'fake' }] }] }, { ...body, context: 'x'.repeat(30001) }]) assert.throws(() => buildDeepSeekRequest(data));
+  const h = handler(() => assert.fail());
+  assert.equal((await h(request({ ...body, message: 'a'.repeat(5 * 1024 * 1024) }))).status, 413);
+  const invalidModel = handler(() => assert.fail(), { env: { ...env, DEEPSEEK_MODEL: 'https://arbitrary' } });
+  assert.equal((await invalidModel(request(body))).status, 503);
+});
+test('erros nunca expõem corpo do provedor e nenhuma falha gera repetição automática', async () => {
+  for (const [upstream, expected] of [[400, 502], [401, 502], [402, 503], [403, 502], [404, 502], [429, 429], [500, 502], [503, 503]]) {
+    let calls = 0;
+    const h = handler(async () => { calls++; return new Response('sensitive ' + env.DEEPSEEK_API_KEY, { status: upstream }); });
+    const response = await h(request(body));
+    assert.equal(response.status, expected); assert.equal(calls, 1);
+    assert.ok(!(await response.text()).includes(env.DEEPSEEK_API_KEY));
+  }
+});
+test('429 propaga espera e limiter local bloqueia rajadas', async () => {
+  const h = handler(async () => new Response('', { status: 429, headers: { 'retry-after': '45' } }));
+  assert.equal((await (await h(request(body))).json()).retryAfterSeconds, 45);
   const limit = createBurstLimiter();
   for (let i = 0; i < 10; i++) limit('user');
   assert.throws(() => limit('user'), error => error.status === 429);
   assert.doesNotThrow(() => limit('other-user'));
 });
-
-test('Gemini 3.8 usa raciocínio low sem enviar configuração incompatível ao 2.5', async () => {
-  for (const model of ['gemini-3.8-flash', 'gemini-2.5-flash']) {
-    const handler = createAiHandler({ env: { ...env, GEMINI_MODEL: model },
-      verifyToken: async () => ({ uid: 'user' }), fetchImpl: async (_url, options) => {
-        const config = JSON.parse(options.body).generationConfig;
-        assert.deepEqual(config.thinkingConfig, model === 'gemini-3.8-flash' ? { thinkingLevel: 'low' } : undefined);
-        return Response.json({ candidates: [{ content: { parts: [{ text: 'Resposta' }] } }] });
-      } });
-    assert.equal((await handler(request(body))).status, 200);
+test('timeout e cancelamento interrompem sem repetir', async () => {
+  for (const [name, status] of [['TimeoutError', 504], ['AbortError', 499]]) {
+    let calls = 0;
+    const response = await handler(async () => { calls++; throw new DOMException('private', name); })(request(body));
+    assert.equal(response.status, status); assert.equal(calls, 1);
   }
 });
-
-test('timeout do Gemini retorna 504 com mensagem específica e não repete consumo', async () => {
-  let calls = 0;
-  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
-    calls++;
-    throw new DOMException('internal details', 'TimeoutError');
-  } });
-  const response = await handler(request(body));
-  assert.equal(response.status, 504);
-  assert.match((await response.json()).error, /45 segundos/);
-  assert.equal(calls, 1);
-});
-
-test('falhas Gemini distinguem acesso, modelo, bloqueio e limite de geração', async () => {
-  const cases = [
-    [400, { error: { message: 'private key server-secret-test' } }, 502, /HTTP 400/],
-    [403, { error: { message: 'private key server-secret-test' } }, 502, /HTTP 403/],
-    [404, {}, 502, /HTTP 404/],
-    [200, { promptFeedback: { blockReason: 'SAFETY' } }, 422, /bloqueou/],
-    [200, { candidates: [{ finishReason: 'SAFETY' }] }, 422, /restrição/],
-    [200, { candidates: [{ finishReason: 'MAX_TOKENS', content: { parts: [{ text: 'partial' }] } }] }, 502, /limite de geração/],
-    [200, { candidates: [{ finishReason: 'STOP', content: { parts: [{ thought: true, text: 'internal' }] } }] }, 502, /não retornou/],
-  ];
-  for (const [upstream, result, status, message] of cases) {
-    const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }),
-      fetchImpl: async () => Response.json(result, { status: upstream }) });
-    const response = await handler(request(body));
-    assert.equal(response.status, status);
-    const text = await response.text();
-    assert.match(text, message);
-    assert.ok(!text.includes('server-secret-test'));
-    assert.ok(!text.includes('partial'));
+test('saídas truncadas, vazias, malformadas ou filtradas não viram resultado útil', async () => {
+  for (const [result, expected] of [
+    [{ choices: [{ finish_reason: 'length', message: { content: 'partial' } }] }, 502],
+    [{ choices: [{ finish_reason: 'content_filter' }] }, 422],
+    [answer(''), 502], [answer(null), 502], [{ choices: [{ finish_reason: 'stop', message: { reasoning_content: 'internal' } }] }, 502],
+  ]) {
+    const response = await handler(async () => Response.json(result))(request(body));
+    assert.equal(response.status, expected);
+    assert.ok(!(await response.text()).includes('partial'));
   }
-});
-
-test('503 faz até 3 tentativas, 429 e sucesso não repetem', async () => {
-  // 503: 1 tentativa original + 2 retries = 3 chamadas ao Gemini
-  let calls503 = 0;
-  const handler503 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
-    calls503++;
-    return Response.json({ error: { message: 'unavailable' } }, { status: 503 });
-  } });
-  assert.equal((await handler503(request(body))).status, 503);
-  assert.equal(calls503, 3);
-  // 429: sem retry (1 chamada)
-  let calls429 = 0;
-  const handler429 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
-    calls429++;
-    return Response.json({ error: { message: 'quota' } }, { status: 429 });
-  } });
-  assert.equal((await handler429(request(body))).status, 429);
-  assert.equal(calls429, 1);
-  // 200: sem retry (1 chamada)
-  let calls200 = 0;
-  const handler200 = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () => {
-    calls200++;
-    return Response.json({ candidates: [{ content: { parts: [{ text: 'OK' }] } }] });
-  } });
-  assert.equal((await handler200(request(body))).status, 200);
-  assert.equal(calls200, 1);
-});
-
-test('429 propaga retryAfterSeconds do header retry-after do Gemini', async () => {
-  const handler = createAiHandler({ env, verifyToken: async () => ({ uid: 'user' }), fetchImpl: async () =>
-    new Response(JSON.stringify({ error: { message: 'quota', details: [{ metadata: { quota_limit: 'GenerateContentRequestsPerMinutePerProject', quota_limit_value: '10' } }] } }),
-      { status: 429, headers: { 'Content-Type': 'application/json', 'retry-after': '45' } }) });
-  const response = await handler(request(body));
-  assert.equal(response.status, 429);
-  const data = await response.json();
-  assert.equal(data.retryAfterSeconds, 45);
-  assert.ok(data.error);
 });

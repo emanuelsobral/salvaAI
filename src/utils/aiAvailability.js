@@ -1,5 +1,5 @@
 // Uma pausa por aba, compartilhada por todas as ações de IA.
-// Usa o retryAfterSeconds informado pelo backend (que reflete o retry-after do Google).
+// Usa o retryAfterSeconds informado pelo backend (que reflete o retry-after do provedor).
 export function createAiAvailability(now = Date.now) {
   let blockedUntil = 0;
   let pending = false;

@@ -1,7 +1,7 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { localReply, financialSummary } from '../src/utils/localAssistant.js';
-import disabledAI from '../netlify/functions/ai.js';
+import publishedAI from '../netlify/functions/ai.js';
 
 const data = { balances: { GENERAL: 0 }, curr_invoice: 200,
   lighthouse: { value: -200, total_expenses: 500 }, period: '2026-10',
@@ -26,10 +26,10 @@ test('consultas locais preservam zero, saldo negativo e significado dos totais',
   assert.match(localReply('maior categoria', {}), /Não há gastos/);
   assert.match(financialSummary(null), /dados suficientes/);
 });
-test('endpoint publicado desativado não consulta provedor mesmo com autorização', async () => {
-  const response = await disabledAI(new Request('http://localhost/api/ai', {
-    method: 'POST', headers: { Authorization: 'Bearer any-token', 'Content-Type': 'application/json' }, body: '{}'
+test('endpoint publicado exige autenticação antes de consultar IA', async () => {
+  const response = await publishedAI(new Request('http://localhost/api/ai', {
+    method: 'POST', headers: { 'Content-Type': 'application/json' }, body: '{}'
   }));
-  assert.equal(response.status, 410);
-  assert.match((await response.json()).error, /desativada/);
+  assert.equal(response.status, 401);
+  assert.match((await response.json()).error, /Entre/);
 });

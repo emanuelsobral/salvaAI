@@ -54,6 +54,16 @@ Nas compras de cartão, o mês da compra reúne o valor das parcelas, pagas ou n
 
 Os gastos incluem movimentações de benefícios; o farol usa apenas a Conta corrente. Pagamentos antigos sem detalhamento de assinaturas podem exigir conciliação dos números históricos.
 
+## Perguntas ao assistente
+
+Abra o assistente pelo botão no canto da tela. Com Usar DeepSeek para analisar marcado, suas perguntas e um resumo do painel são enviados à API pelo servidor. Você pode pedir explicações sobre os gastos, comparar categorias e discutir como organizar o orçamento. As respostas não alteram saldos nem registram pagamentos.
+
+O resumo inclui saldos, fatura pendente, gastos por categoria, indicador de compromissos e avisos do painel. Gastos do mês podem incluir compras de cartão ou contas ainda não pagas; o saldo após compromissos já desconta as pendências consideradas pelo painel. Confira os números antes de tomar uma decisão.
+
+Desmarque a opção para usar consultas locais, sem chamadas à IA: saldo, fatura, gastos, maior categoria, resumo ou projeção. Mudar o modo limpa a conversa da tela.
+
+A DeepSeek depende dos créditos configurados pelo administrador. O chat não consulta notícias, cotações ou indicadores econômicos em tempo real. A conversa usa até dez trocas anteriores concluídas; respostas com erro não entram nesse histórico.
+
 ## Datas e correções
 
 As datas seguem o calendário local do navegador. O aplicativo não fixa globalmente o fuso de São Paulo. Confira as datas ao registrar operações ou importar arquivos.

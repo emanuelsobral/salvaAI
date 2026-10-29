@@ -33,6 +33,7 @@ dist-ssr
 
 # Backups podem conter configurações antigas; não publicar dados locais.
 backups/
+*.salvaai-backup
 *.db
 *.db-shm
 *.db-wal
@@ -49,12 +50,15 @@ docs/word-build/
 .statement-qa/
 .netlify/
 .contract-qa/
+.agenda-qa/
+.ai-qa/
 
 # Documentação pública: somente guias de uso. O restante fica local.
 /docs/*
 !/docs/README.md
 !/docs/financas.md
 !/docs/contratos.md
+!/docs/agenda.md
 !/docs/importacao-extratos.md
 !/docs/contas-recorrentes.md
 !/docs/edicao-recorrencias.md

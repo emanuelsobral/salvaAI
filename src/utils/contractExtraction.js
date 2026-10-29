@@ -35,13 +35,13 @@ export function contractDraft(extraction, pages) {
   return draft;
 }
 
-export function prepareSourceReview(extraction, pages, pdfSha256, { useOcr = false } = {}) {
+export function prepareSourceReview(extraction, pages, pdfSha256, { useOcr = false, useAi = false } = {}) {
   contractDraft(extraction, pages); // Valida evidências antes de oferecer qualquer preenchimento.
-  return validateSourceReview({ method: useOcr ? 'PDF_OCR_REVIEW' : 'PDF_TEXT_REVIEW', pdfSha256, extractorVersion: extraction.version, resultJson: JSON.stringify(extraction.fields) });
+  return validateSourceReview({ method: useAi ? 'PDF_DEEPSEEK_OCR_REVIEW' : useOcr ? 'PDF_OCR_REVIEW' : 'PDF_TEXT_REVIEW', pdfSha256, extractorVersion: extraction.version, resultJson: JSON.stringify(extraction.fields) });
 }
 
 export function validateSourceReview(value) {
-  if (!value || !['PDF_TEXT_REVIEW', 'PDF_OCR_REVIEW'].includes(value.method) || !/^[a-f0-9]{64}$/.test(value.pdfSha256 || '') || !/^\d+\.\d+\.\d+$/.test(value.extractorVersion || '') || typeof value.resultJson !== 'string' || value.resultJson.length > 100000) throw Error('As evidências excedem os limites ou são inválidas. Use o cadastro manual.');
+  if (!value || !['PDF_TEXT_REVIEW', 'PDF_OCR_REVIEW', 'PDF_DEEPSEEK_OCR_REVIEW'].includes(value.method) || !/^[a-f0-9]{64}$/.test(value.pdfSha256 || '') || !/^\d+\.\d+\.\d+$/.test(value.extractorVersion || '') || typeof value.resultJson !== 'string' || value.resultJson.length > 100000) throw Error('As evidências excedem os limites ou são inválidas. Use o cadastro manual.');
   let fields;
   try { fields = JSON.parse(value.resultJson); } catch { throw Error('Evidências inválidas.'); }
   if (!fields || Object.keys(fields).length !== 5) throw Error('Evidências inválidas.');

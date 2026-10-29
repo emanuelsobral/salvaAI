@@ -5,6 +5,7 @@ export default function ExtractionEvidence({ sourceReview }) {
   try { fields = JSON.parse(validateSourceReview(sourceReview).resultJson); } catch { return <p role="alert">Não foi possível mostrar as evidências.</p>; }
   return <details className="contract-evidence">
     <summary>Conferir evidências da leitura do PDF</summary>
+    {sourceReview.method === 'PDF_DEEPSEEK_OCR_REVIEW' ? <p className="contract-notice">Origem: OCR com DeepSeek. As páginas foram enviadas à API para transcrição. Os campos foram extraídos dessa transcrição e exigem conferência com o PDF original.</p> : null}
     {sourceReview.method === 'PDF_OCR_REVIEW' ? <p className="contract-notice">Origem: OCR. Os trechos abaixo são transcrições automáticas de imagens e podem conter erros, inclusive em valores e datas. Confira o PDF original antes de usar os campos.</p> : null}
     <p>Estes são os resultados originais da leitura. Campos editados por você podem diferir das sugestões. A leitura não comprova que o contrato foi interpretado por completo.</p>
     {Object.entries(CONTRACT_FIELDS).map(([key, label]) => {

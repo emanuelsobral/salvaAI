@@ -9,7 +9,9 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "node --experimental-vm-modules --test tests/*.test.js",
-    "test:firebase": "firebase emulators:exec --only firestore --project demo-salva-ai \"node --experimental-vm-modules --test tests/firebase.integration.js\""
+    "test:firebase": "firebase emulators:exec --only firestore --project demo-salva-ai \"node --experimental-vm-modules --test tests/firebase.integration.js\"",
+    "backup": "node scripts/backup/firestore-backup.mjs",
+    "test:backup": "firebase emulators:exec --only firestore --project demo-salva-ai \"node --test tests/backup.integration.js\""
   },
   "dependencies": {
     "@tesseract.js-data/por": "1.0.0",
