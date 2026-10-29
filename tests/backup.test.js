@@ -48,7 +48,7 @@ test('backup recusa versão, checksum, caminhos, duplicatas e tamanho inválidos
 
 test('destino de restauração exige projeto demo dedicado e endereço local literal', () => {
   assert.equal(emulatorTarget(target, host), 'http://127.0.0.1:8080/v1/');
-  for (const bad of ['salvaai-ff2a1', 'demo-salva-ai', '../demo-salvaai-restore-x']) assert.throws(() => emulatorTarget(bad, host));
+  for (const bad of ['production-project-example', 'demo-salva-ai', '../demo-salvaai-restore-x']) assert.throws(() => emulatorTarget(bad, host));
   for (const bad of ['', 'localhost:8080', '127.0.0.1.evil:8080', 'https://firestore.googleapis.com', '127.0.0.1:99999']) assert.throws(() => emulatorTarget(target, bad));
   assert.throws(() => localRequest('https://firestore.googleapis.com/v1/'));
 });
