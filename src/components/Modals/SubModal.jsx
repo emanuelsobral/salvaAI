@@ -1,8 +1,11 @@
+import ModalFrame from '../UI/ModalFrame';
+import { useModal } from '../../hooks/useModal';
 import { useOperationKey } from '../../hooks/useOperationKey';
 import { useState } from 'react';
 import { createSubscription } from '../../services/subscriptionService';
 
 export default function SubModal({ uid, isOpen, onClose, onRefresh }) {
+  const { showAlert } = useModal();
   const operation = useOperationKey();
   const [formData, setFormData] = useState({
     name: '',
@@ -35,16 +38,16 @@ export default function SubModal({ uid, isOpen, onClose, onRefresh }) {
       onRefresh();
       onClose();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="modal-overlay active">
+    <ModalFrame onClose={loading ? undefined : onClose}>
       <div className="modal-content" style={{ position: 'relative' }}>
-        <button className="btn-close" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
+        <button className="btn-close" aria-label="Fechar modal" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
         <h2>Novo Custo Recorrente 📦</h2>
         
         <form onSubmit={handleSubmit}>
@@ -81,6 +84,6 @@ export default function SubModal({ uid, isOpen, onClose, onRefresh }) {
           </button>
         </form>
       </div>
-    </div>
+    </ModalFrame>
   );
 }

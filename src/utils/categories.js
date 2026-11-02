@@ -4,6 +4,7 @@
  */
 
 export const EXPENSE_CATEGORIES = [
+  { value: 'INVESTIMENTO', label: '📈 Investimentos / Aplicações' },
   { value: 'ALIMENTACAO', label: '🛒 Supermercado & Alimentação' },
   { value: 'REFEICAO', label: '🍔 Restaurante / Delivery' },
   { value: 'MORADIA', label: '🏠 Moradia (Aluguel, Luz, Água)' },
@@ -46,12 +47,13 @@ export const SUB_CATEGORIES = [
  * Mapeamento de padrões regex para inferência automática de categoria (Import CSV).
  */
 export const CATEGORY_PATTERNS = [
+  { pattern: /\bAPLICA[CÇ][AÃ]O\b|\bINVESTIMENTO\b|\bAPORTE\b/i, category: 'INVESTIMENTO' },
   { pattern: /MCDONALD|IFOOD|BURGER|PIZZA|REST|ASSAI|CARREFOUR|MERCADO|ATACADAO|EXTRA/i, category: 'ALIMENTACAO' },
   { pattern: /UBER|99|POSTO|COMBUSTIVEL|SHELL|IPIRANGA|METRO|BILHETE/i, category: 'TRANSPORTE' },
   { pattern: /NETFLIX|AMAZON|PRIME|SPOTIFY|DISNEY|HBO|MAX|YOUTUBE|GLOBO/i, category: 'ASSINATURAS' },
   { pattern: /FARMACIA|RAIA|DROGASIL|CLINICA|HOSPITAL|SULAMERICA|UNIMED|MEDICAMENTO/i, category: 'SAUDE' },
   { pattern: /STEAM|XBOX|PLAYSTATION|CINEMA|EVENTOS|SYMPLA|NINTENDO|BLIZZARD/i, category: 'LAZER' },
-  { pattern: /ENEL|SABESP|LUZ|AGUA|CONDOMINIO|ALUGUEL|INTERNET|VIVO|CLARO|TIM/i, category: 'MORADIA' },
+  { pattern: /\b(?:ENEL|SABESP|LUZ|AGUA|CONDOMINIO|ALUGUEL|INTERNET|VIVO|CLARO|TIM)\b/i, category: 'MORADIA' },
   { pattern: /SALARIO|PAGAMENTO|PIX RECEBIDO|TED RECEBIDO|HONORARIOS|FREELA/i, category: 'SALARIO' },
 ];
 
@@ -74,3 +76,21 @@ export const inferCategory = (description) => {
 export const getCategoriesByType = (type) => {
   return type === 'INCOME' ? INCOME_CATEGORIES : EXPENSE_CATEGORIES;
 };
+
+export function getHistoryCategories(type) {
+  if (type === 'INCOME') return INCOME_CATEGORIES;
+  return [...new Map([...EXPENSE_CATEGORIES, ...CARD_CATEGORIES].map(item => [item.value, item])).values()];
+}
+
+export function suggestCategory(description, type) {
+  const text = description.normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+  if (type === 'INCOME') {
+    if (/\bSALARIO\b|\bFOLHA\b/i.test(text)) return 'SALARIO';
+    if (/\bFREELA|\bHONORARIOS\b/i.test(text)) return 'FREELANCE';
+    if (/RENDIMENTO|JUROS/i.test(text)) return 'RENDIMENTO';
+    if (/CASHBACK|REEMBOLSO|ESTORNO/i.test(text)) return 'CASHBACK';
+    return 'OUTROS_ENTRADA';
+  }
+  const inferred = inferCategory(text);
+  return getHistoryCategories('EXPENSE').some(item => item.value === inferred) ? inferred : 'OUTROS_SAIDA';
+}

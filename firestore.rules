@@ -4,6 +4,41 @@ service cloud.firestore {
     function owner(uid) { return request.auth != null && request.auth.uid == uid; }
     function positive(value) { return value is number && value > 0 && value <= 1000000000; }
     function text(value) { return value is string && value.size() > 0 && value.size() <= 600; }
+    function validCategory(type, category) {
+      return type == 'INCOME'
+        ? category in ['SALARIO', 'FREELANCE', 'BENEFICIO', 'RENDIMENTO', 'CASHBACK', 'OUTROS_ENTRADA']
+        : category in ['INVESTIMENTO', 'ALIMENTACAO', 'REFEICAO', 'MORADIA', 'TRANSPORTE', 'LAZER', 'SAUDE', 'ASSINATURAS', 'OUTROS_SAIDA', 'ELETRONICOS', 'ROUPAS', 'OUTROS'];
+    }
+    function validScheduledTransition(uid) {
+      let old = resource.data;
+      let next = request.resource.data;
+      let accountPath = /databases/$(database)/documents/users/$(uid)/accounts/$(old.accountId);
+      return old.status == 'PENDING' && old.get('kind', '') == 'REGULAR'
+        && old.type in ['INCOME', 'EXPENSE'] && positive(old.amount)
+        && next.diff(old).affectedKeys().hasOnly(['status', 'completedAt', 'revision', 'updatedAt'])
+        && next.updatedAt == request.time && next.revision == old.get('revision', 0) + 1
+        && ((next.status == 'COMPLETED' && next.completedAt == request.time
+          && math.round(getAfter(accountPath).data.balance * 100) == math.round(get(accountPath).data.balance * 100) + (old.type == 'INCOME' ? math.round(old.amount * 100) : -math.round(old.amount * 100)))
+        || (next.status == 'CANCELLED' && old.get('recurrenceId', '') != ''
+          && getAfter(/databases/$(database)/documents/users/$(uid)/recurrences/$(old.recurrenceId)).data.isActive == false));
+    }
+    // Edição de lançamentos comuns: conta, tipo, data, estado e vínculos são imutáveis.
+    function validTransactionEdit(uid) {
+      let old = resource.data;
+      let next = request.resource.data;
+      let accountPath = /databases/$(database)/documents/users/$(uid)/accounts/$(old.accountId);
+      return next.diff(old).affectedKeys().hasOnly(['description', 'amount', 'category', 'paymentMethod', 'originalDescription', 'revision', 'updatedAt'])
+        && old.get('kind', 'REGULAR') == 'REGULAR'
+        && !old.description.matches('^\\[CAIXINHA\\].*')
+        && !old.description.matches('^\\[CARTAO\\] Fatura Paga .*')
+        && old.type in ['INCOME', 'EXPENSE'] && old.status in ['PENDING', 'COMPLETED']
+        && positive(next.amount) && text(next.description) && validCategory(old.type, next.category)
+        && next.paymentMethod in ['PIX', 'BOLETO', 'DEBIT_CARD', 'CREDIT_CARD', 'OTHER']
+        && next.revision is int && next.revision == old.get('revision', 0) + 1
+        && next.originalDescription == old.get('originalDescription', old.description)
+        && next.updatedAt == request.time
+        && (old.status != 'COMPLETED' || math.round(getAfter(accountPath).data.balance * 100) == math.round(get(accountPath).data.balance * 100) + (old.type == 'INCOME' ? math.round(next.amount * 100) - math.round(old.amount * 100) : math.round(old.amount * 100) - math.round(next.amount * 100)));
+    }
     match /users/{uid}/accounts/{id} {
       allow read: if owner(uid);
       allow create, update: if owner(uid)
@@ -14,6 +49,7 @@ service cloud.firestore {
     }
     match /users/{uid}/transactions/{id} {
       allow read, delete: if owner(uid);
+      allow update: if owner(uid) && (validTransactionEdit(uid) || validScheduledTransition(uid));
       allow create: if owner(uid) && positive(request.resource.data.amount)
         && request.resource.data.type in ['INCOME', 'EXPENSE']
         && request.resource.data.status in ['COMPLETED', 'PENDING']
@@ -53,6 +89,27 @@ service cloud.firestore {
     match /users/{uid}/importRows/{id} {
       allow read: if owner(uid);
       allow create: if owner(uid) && request.resource.data.transactionId is string;
+    }
+    match /users/{uid}/categoryPreferences/{id} {
+      allow read: if owner(uid);
+      allow create, update: if owner(uid) && request.resource.data.keys().hasOnly(['type', 'category', 'updatedAt'])
+        && request.resource.data.type in ['INCOME', 'EXPENSE']
+        && validCategory(request.resource.data.type, request.resource.data.category)
+        && request.resource.data.updatedAt == request.time;
+    }
+    match /users/{uid}/recurrences/{id} {
+      allow read: if owner(uid);
+      allow create: if owner(uid) && request.resource.data.keys().hasOnly(['amount', 'description', 'category', 'type', 'accountId', 'accountType', 'startDate', 'count', 'isActive', 'createdAt'])
+        && positive(request.resource.data.amount) && text(request.resource.data.description)
+        && request.resource.data.type in ['INCOME', 'EXPENSE']
+        && validCategory(request.resource.data.type, request.resource.data.category)
+        && request.resource.data.count is int && request.resource.data.count >= 2 && request.resource.data.count <= 60
+        && request.resource.data.isActive == true
+        && request.resource.data.startDate.matches('^[0-9]{4}-[0-9]{2}-[0-9]{2}$')
+        && request.resource.data.accountType in ['GENERAL', 'VR', 'VA']
+        && getAfter(/databases/$(database)/documents/users/$(uid)/accounts/$(request.resource.data.accountId)).data.type == request.resource.data.accountType;
+      allow update: if owner(uid) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['isActive', 'updatedAt'])
+        && request.resource.data.isActive == false && request.resource.data.updatedAt == request.time;
     }
   }
 }

@@ -10,6 +10,8 @@ import { useAuth } from '../../hooks/useAuth';
 export default function Sidebar() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const { displayName, logout } = useAuth();
+  const userName = displayName.includes('@') ? displayName.split('@')[0] : displayName.trim().split(/\s+/)[0];
+  const userBadge = <span className="brand-user" title={displayName} aria-label={`Usuário: ${displayName}`}>{userName}</span>;
   const menuRef = useRef(null);
   const triggerRef = useRef(null);
 
@@ -52,7 +54,7 @@ export default function Sidebar() {
     <>
       {/* Botão Hamburger Mobile */}
       <header className="mobile-topbar">
-      <span className="mobile-brand">Salva<span>AI</span></span>
+      <div className="brand-identity"><span className="mobile-brand">Salva<span>AI</span></span>{userBadge}</div>
       <button
         ref={triggerRef}
         className="mobile-menu-btn"
@@ -74,7 +76,7 @@ export default function Sidebar() {
       {/* Sidebar */}
       <aside id="app-sidebar" ref={menuRef} className={`sidebar ${mobileOpen ? 'open' : ''}`} aria-label="Menu principal">
         <div className="logo">
-          <h2>Salva<span>AI</span></h2>
+          <div className="brand-identity"><h2>Salva<span>AI</span></h2>{userBadge}</div>
           <button className="btn-close mobile-menu-close" onClick={closeMobile} aria-label="Fechar menu">&times;</button>
         </div>
 
@@ -104,13 +106,6 @@ export default function Sidebar() {
         </nav>
 
         <div className="sidebar-footer">
-          <div className="sidebar-user-info" style={{ marginBottom: '1rem', padding: '0.6rem', borderRadius: 10, background: 'var(--bg-app)' }}>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginBottom: 4 }}>Logado como</p>
-            <p style={{ fontSize: '0.9rem', fontWeight: 600, color: 'var(--text-main)', overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>
-              {displayName}
-            </p>
-          </div>
-
           <p>Modo de Exibição</p>
           <button className="theme-toggle" onClick={toggleTheme}>
             <span className="icon">🌓</span> Trocar Tema

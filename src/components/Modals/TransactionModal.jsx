@@ -1,17 +1,23 @@
+import ModalFrame from '../UI/ModalFrame';
+import { useModal } from '../../hooks/useModal';
 import { useOperationKey } from '../../hooks/useOperationKey';
 import { localDate } from '../../utils/finance';
 import { useState, useRef } from 'react';
 import { createTransaction } from '../../services/transactionService';
 import { extractReceiptData } from '../../services/aiService';
+import { getHistoryCategories } from '../../utils/categories';
 
 export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
+  const { showAlert } = useModal();
   const operation = useOperationKey();
   const [formData, setFormData] = useState({
     transaction_type: 'EXPENSE',
     amount: '',
     date: localDate(),
     source_account: 'GENERAL',
-    category: 'OUTROS',
+    category: 'OUTROS_SAIDA',
+    scheduled: false,
+    recurrence_count: 1,
     description: ''
   });
   const [loading, setLoading] = useState(false);
@@ -23,7 +29,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData(prev => ({ ...prev, [name]: value, ...(name === 'transaction_type' ? { category: value === 'INCOME' ? 'OUTROS_ENTRADA' : 'OUTROS_SAIDA' } : {}) }));
   };
 
   const handleSubmit = async (e) => {
@@ -40,7 +46,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
       onRefresh();
       onClose();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -50,7 +56,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
     const file = e.target.files[0];
     if (!file) return;
     if (!['image/jpeg', 'image/png', 'image/webp'].includes(file.type) || file.size > 3 * 1024 * 1024) {
-      alert('Use uma imagem JPG, PNG ou WebP de até 3 MB.');
+      showAlert('Use uma imagem JPG, PNG ou WebP de até 3 MB.');
       e.target.value = '';
       return;
     }
@@ -59,7 +65,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
     setScanning(true);
     try {
       const reader = new FileReader();
-      reader.onerror = () => { setScanning(false); alert('Não foi possível ler a imagem.'); };
+      reader.onerror = () => { setScanning(false); showAlert('Não foi possível ler a imagem.'); };
       reader.onload = async () => {
         const base64Data = reader.result.split(',')[1];
         try {
@@ -74,7 +80,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
             category: aiData.category || 'OUTROS'
           }));
         } catch (err) {
-          alert(err.message);
+          showAlert(err.message);
         } finally {
           setScanning(false);
           // reset file input
@@ -83,15 +89,15 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
       };
       reader.readAsDataURL(file);
     } catch {
-      alert('Erro ao ler a imagem localmente.');
+      showAlert('Erro ao ler a imagem localmente.');
       setScanning(false);
     }
   };
 
   return (
-    <div className="modal-overlay active">
+    <ModalFrame onClose={loading || scanning ? undefined : onClose}>
       <div className="modal-content" style={{ position: 'relative' }}>
-        <button className="btn-close" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>&times;</button>
+        <button className="btn-close" aria-label="Fechar modal" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>&times;</button>
         <h2>Nova Movimentação Dinheiro</h2>
         
         <div style={{ marginBottom: '1.5rem', textAlign: 'center' }}>
@@ -142,6 +148,8 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
             <label>Data</label>
             <input type="date" name="date" required value={formData.date} onChange={handleChange} />
           </div>
+          <div className="form-group"><label><input type="checkbox" checked={formData.scheduled} onChange={event => setFormData(current => ({ ...current, scheduled: event.target.checked }))} /> Agendar sem alterar o saldo agora</label><small>Datas futuras são agendadas automaticamente. Confirme o pagamento ou recebimento no histórico.</small></div>
+          <div className="form-group"><label htmlFor="recurrence-count">Repetição mensal</label><input id="recurrence-count" type="number" name="recurrence_count" min="1" max="60" required value={formData.recurrence_count} onChange={handleChange} /><small>1 para lançamento único; de 2 a 60 para criar ocorrências mensais independentes, todas pendentes.</small></div>
 
           <div className="form-group">
             <label>Origem / Destino</label>
@@ -155,23 +163,7 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
           <div className="form-group">
             <label>Categoria</label>
             <select name="category" value={formData.category} onChange={handleChange}>
-              {formData.transaction_type === 'EXPENSE' ? (
-                <>
-                  <option value="MORADIA">Moradia</option>
-                  <option value="ALIMENTACAO">Alimentação</option>
-                  <option value="TRANSPORTE">Transporte</option>
-                  <option value="SAUDE">Saúde</option>
-                  <option value="LAZER">Lazer</option>
-                  <option value="OUTROS">Outros Gastos</option>
-                </>
-              ) : (
-                <>
-                  <option value="SALARIO">Salário</option>
-                  <option value="FREELANCE">Freelance</option>
-                  <option value="RENDIMENTO">Rendimento / Juros</option>
-                  <option value="OUTROS">Outras Entradas</option>
-                </>
-              )}
+              {getHistoryCategories(formData.transaction_type).map(item => <option key={item.value} value={item.value}>{item.label}</option>)}
             </select>
           </div>
 
@@ -185,6 +177,6 @@ export default function TransactionModal({ uid, isOpen, onClose, onRefresh }) {
           </button>
         </form>
       </div>
-    </div>
+    </ModalFrame>
   );
 }

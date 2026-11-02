@@ -4,6 +4,8 @@ Versão atual do AgentFinanceiro, com React, Vite, Firebase Authentication, Fire
 
 ## Documentação
 
+- [Melhorias de importação, histórico, agendamentos e segurança (15/10/2026)](docs/melhorias-produto-20261015.md)
+
 - [Índice completo](docs/README.md)
 - [Mudanças do antigo para o novo](docs/evolucao-antigo-novo.md)
 - [Arquitetura e funções](docs/arquitetura-salva-ai.md)

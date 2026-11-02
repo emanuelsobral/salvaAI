@@ -9,7 +9,7 @@
     "lint": "oxlint",
     "preview": "vite preview",
     "test": "node --experimental-vm-modules --test tests/*.test.js",
-    "test:firebase": "firebase emulators:exec --only firestore --project demo-salva-ai \"node --experimental-vm-modules --test tests/firebase.integration.js\""
+    "test:firebase": "node scripts/test-firestore.mjs"
   },
   "dependencies": {
     "chart.js": "^4.5.1",

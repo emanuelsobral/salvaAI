@@ -1,8 +1,11 @@
+import ModalFrame from '../UI/ModalFrame';
+import { useModal } from '../../hooks/useModal';
 import { useOperationKey } from '../../hooks/useOperationKey';
 import { useState } from 'react';
 import { createGoal, depositToGoal } from '../../services/goalService';
 
 export default function GoalModal({ uid, goals, isOpen, onClose, onRefresh }) {
+  const { showAlert } = useModal();
   const operation = useOperationKey();
   const [activeTab, setActiveTab] = useState('DEPOSIT'); // 'DEPOSIT' | 'CREATE'
   
@@ -30,7 +33,7 @@ export default function GoalModal({ uid, goals, isOpen, onClose, onRefresh }) {
       onRefresh();
       onClose();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
     }
@@ -43,23 +46,23 @@ export default function GoalModal({ uid, goals, isOpen, onClose, onRefresh }) {
     try {
       const res = await depositToGoal(uid, depositData.goal_id, parseFloat(depositData.amount), operation.keyFor(depositData));
       if (res.status === 'error') {
-        alert(res.message);
+        showAlert(res.message);
       } else {
         operation.complete();
       onRefresh();
         onClose();
       }
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="modal-overlay active">
+    <ModalFrame onClose={loading ? undefined : onClose}>
       <div className="modal-content" style={{ position: 'relative' }}>
-        <button className="btn-close" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
+        <button className="btn-close" aria-label="Fechar modal" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
         <h2>Cofres & Caixinhas 🗃️</h2>
         
         <div className="form-group toggle-group" style={{ marginBottom: '1.5rem' }}>
@@ -113,6 +116,6 @@ export default function GoalModal({ uid, goals, isOpen, onClose, onRefresh }) {
           </form>
         )}
       </div>
-    </div>
+    </ModalFrame>
   );
 }

@@ -1,8 +1,10 @@
+import { useModal } from '../../hooks/useModal';
 import { useState, useEffect, useCallback } from 'react';
 import { getActiveSubscriptions, deleteSubscription } from '../../services/subscriptionService';
 import { formatBRL } from '../../utils/formatters';
 
 export default function SubsList({ uid }) {
+  const { showAlert, showConfirm } = useModal();
   const [subs, setSubs] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
@@ -26,13 +28,13 @@ export default function SubsList({ uid }) {
   }, [uid, loadData]);
 
   const handleDelete = async (subId) => {
-    if (!window.confirm('Tem certeza que deseja cancelar (deletar) esta assinatura?')) return;
+    if (!await showConfirm('Tem certeza que deseja cancelar (deletar) esta assinatura?')) return;
     try {
       const res = await deleteSubscription(uid, subId);
-      alert(res.message);
+      showAlert(res.message);
       loadData();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     }
   };
 

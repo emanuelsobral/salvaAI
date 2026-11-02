@@ -55,10 +55,24 @@ export function parseCSV(text) {
       else if (!quoted && char in counts) counts[char]++;
     }
     const delimiter = counts['\t'] >= 2 ? '\t' : counts[';'] >= 2 ? ';' : ',';
+    let columns = null;
+    const normalizeHeader = value => value.normalize('NFD').replace(/[\u0300-\u036f]/g, '').trim().toLowerCase();
     for (const { values: raw, line } of fields(text, delimiter)) {
-      if (raw[0].toLowerCase() === 'data') continue;
+      if (!columns && normalizeHeader(raw[0]) === 'data') {
+        const header = raw.map(normalizeHeader);
+        const date = header.indexOf('data'), description = header.indexOf('descricao'), amount = header.indexOf('valor');
+        if ([date, description, amount].some(index => index < 0) || new Set(header).size !== header.length) {
+          throw new Error('Cabeçalho inválido. São necessárias as colunas Data, Descrição e Valor, sem nomes repetidos.');
+        }
+        columns = { date, description, amount, length: raw.length };
+        continue;
+      }
       try {
-        const row = [...raw];
+        let row = [...raw];
+        if (columns) {
+          if (raw.length !== columns.length) throw new Error('Quantidade de colunas diferente do cabeçalho. Use aspas em descrições com separadores.');
+          row = [raw[columns.date], raw[columns.description], raw[columns.amount]];
+        }
         // Formato legado documentado: Data, Descrição, -25,50.
         if (delimiter === ',' && row.length === 4 && /^(R\$\s*)?[+-]?\d+$/.test(row[2]) && /^\d{1,2}$/.test(row[3])) row.splice(2, 2, row[2] + ',' + row[3]);
         if (row.length !== 3) throw new Error('Esperadas 3 colunas. Use aspas em descrições com separadores.');

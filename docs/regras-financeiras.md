@@ -121,3 +121,11 @@ No recibo, a imagem deve ser JPG, PNG ou WebP de até 5 MB. Campos não identifi
 Novas datas padrão usam o calendário local do navegador, evitando a troca prematura de dia causada por UTC à noite. Datas fornecidas devem existir no calendário. Vencimentos 29–31 são limitados ao último dia do mês para avisos; a janela de cinco dias também considera o próximo mês.
 
 O fuso não é fixado globalmente em São Paulo: o comportamento segue o dispositivo. A padronização por perfil permanece uma decisão futura.
+
+## 12. Histórico, edição e meios de pagamento
+
+O histórico mostra categoria e meio de pagamento em colunas próprias. O prefixo legado de categoria é ocultado no título, mas continua disponível como fallback. Pix, NuPay, TED, DOC, boleto, cartão de débito e transferência são sugeridos por padrões explícitos da descrição; textos desconhecidos permanecem como não identificados. Isso não determina a categoria financeira, nem identifica automaticamente uma transferência entre contas do próprio usuário.
+
+O formulário permite corrigir título, valor, categoria e meio. A descrição original é preservada. Para lançamentos comuns concluídos, a edição atualiza o lançamento e aplica apenas a diferença em centavos ao saldo, na mesma transação. Lançamentos pendentes não alteram saldo. Uma revisão crescente bloqueia formulários antigos e requisições repetidas após uma edição concluída.
+
+Transferências de caixinhas e pagamentos vinculados de fatura exigem estorno antes de qualquer edição. Parcelas pagas também ficam bloqueadas; editar uma parcela pendente altera apenas aquela parcela, sem redistribuir o valor original da compra. Identificadores de importação são preservados, de modo que reimportar o arquivo original não desfaz a correção manual.

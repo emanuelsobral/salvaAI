@@ -1,6 +1,6 @@
 import { formatBRL } from '../../utils/formatters';
 
-export default function Lighthouse({ lighthouse }) {
+export default function Lighthouse({ lighthouse, investments = 0 }) {
   if (!lighthouse) return null;
 
   const { status, value, total_income, total_expenses, message } = lighthouse;
@@ -52,6 +52,7 @@ export default function Lighthouse({ lighthouse }) {
             {formatBRL(value)}
           </h2>
           <p>{formatMessage(message)}</p>
+          <p style={{ marginTop: '.75rem', fontSize: '.85rem' }}>Aplicações no mês: {formatBRL(investments)}. Reduzem o saldo livre e ficam separadas dos gastos de consumo.</p>
         </div>
         <div className="lighthouse-chart-mock">
           <div className="bar-container">

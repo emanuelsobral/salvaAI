@@ -73,3 +73,14 @@ test('importação é atômica e repetição/arquivo sobreposto não duplica reg
   await assert.rejects(service.importCSV('test', '30/02/2026;Loja;100'), /Data inválida/);
   assert.equal(h.all('accounts')[0].balance, 174.5);
 });
+
+test('CSV Nubank identifica colunas pelo cabeçalho e preserva descrições entre aspas', () => {
+  const parsed = parseCSV('Data,Valor,Identificador,Descrição\n01/09/2026,-46.45,exemplo,"Compra, loja"\n02/09/2026,100.00,outro,Transferência recebida');
+  assert.deepEqual(parsed.errors, []);
+  assert.equal(parsed.rows.length, 2);
+  assert.equal(parsed.rows[0].description, 'Compra, loja');
+  assert.equal(parsed.rows[0].amount, 46.45);
+  assert.equal(parsed.total, 53.55);
+  assert.ok(parseCSV('Data,Valor,Identificador\n01/09/2026,10,id').errors.length);
+  assert.ok(parseCSV('Data,Valor,Identificador,Descrição\n01/09/2026,10,id').errors.length);
+});

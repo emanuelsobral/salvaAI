@@ -1,4 +1,4 @@
-import { addMoney, sumMoney, invoiceKey, localDate, unpaidSubscriptions, isTransfer, isInvoicePayment, legacyInvoiceKey } from './finance.js';
+import { addMoney, sumMoney, invoiceKey, localDate, unpaidSubscriptions, isTransfer, isInvoicePayment, isInvestment, legacyInvoiceKey } from './finance.js';
 import { MESES_NOMES } from './formatters.js';
 
 export function calculateDashboard({ accounts, transactions, cards, subscriptions, invoices }, now = new Date()) {
@@ -24,7 +24,7 @@ export function calculateDashboard({ accounts, transactions, cards, subscription
   const income = sumMoney(regular.filter(item => item.type === 'INCOME').map(item => item.amount));
   const charges = transactions.filter(item => item.kind === 'INVOICE_PAYMENT' && item.invoiceKey === currentKey && item.status === 'COMPLETED').flatMap(item => item.subscriptionCharges || []);
   const expenses = [
-    ...regular.filter(item => item.type === 'EXPENSE'),
+    ...regular.filter(item => item.type === 'EXPENSE' && !isInvestment(item)),
     ...cards.filter(item => item.purchaseDate?.slice(0, 7) === currentKey),
     ...charges,
     ...currentSubs
@@ -43,7 +43,8 @@ export function calculateDashboard({ accounts, transactions, cards, subscription
     const subs = unpaidSubscriptions(subscriptions, ledger[key], date.getMonth() + 1, date.getFullYear());
     const invoice = sumMoney([...pendingCards.filter(item => keyOfCard(item) === key).map(item => item.amount), ...subs.map(item => item.amount)]);
     const regularDue = sumMoney(pendingRegular.filter(item => i === 0 ? item.transactionDate?.slice(0, 7) <= key : item.transactionDate?.slice(0, 7) === key).map(item => item.amount));
-    simulated = sumMoney([simulated, -invoice, -regularDue]);
+    const expectedIncome = sumMoney(transactions.filter(item => item.type === 'INCOME' && item.status === 'PENDING' && (item.accountType || 'GENERAL') === 'GENERAL' && (i === 0 ? item.transactionDate?.slice(0, 7) <= key : item.transactionDate?.slice(0, 7) === key)).map(item => item.amount));
+    simulated = sumMoney([simulated, -invoice, -regularDue, expectedIncome]);
     projection.push({ v: simulated, c: simulated < 0 ? 'red' : simulated <= 500 ? 'orange' : 'green', label: MESES_NOMES[date.getMonth()] + '/' + String(date.getFullYear()).slice(2), fatura_prevista: invoice, despesas_previstas: regularDue });
   }
   const recent = [
@@ -68,6 +69,7 @@ export function calculateDashboard({ accounts, transactions, cards, subscription
   }
   return {
     status: 'success', balances, recent_transactions: recent,
+    investments_this_month: sumMoney(regular.filter(item => item.type === 'EXPENSE' && isInvestment(item)).map(item => item.amount)),
     lighthouse: { status: available < 0 ? 'RED' : available <= 500 ? 'ORANGE' : 'GREEN', value: available, total_income: income, total_expenses: sumMoney(expenses.map(item => item.amount)), message: 'Saldo após descontar a fatura atual, parcelas atrasadas e despesas pendentes até este mês. As barras mostram receitas e gastos de ' + currentKey + '.' },
     projection_12m: projection, charts: { donut, radar: donut, line: { labels: projection.map(item => item.label), series: projection.map(item => item.v) } },
     goals: accounts.filter(item => item.type === 'CAIXINHA').map(item => ({ id: item.id, name: item.name, balance: item.balance || 0, target: item.goalAmount || 0, progress_percent: item.goalAmount > 0 ? Math.max(0, Math.min(100, item.balance / item.goalAmount * 100)) : 0 })),

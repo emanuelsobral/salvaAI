@@ -45,6 +45,22 @@ test('regras isolam usuários, bloqueiam anônimos e valores negativos', async (
   await assertFails(firestore.setDoc(firestore.doc(alice, 'users/alice/subscriptions/invalid'), { name: 'Teste', amount: 10, isActive: true, dueDay: 32 }));
 });
 
+test('edição permite campos autorizados com saldo consistente e bloqueia troca de conta e edição isolada', async () => {
+  await environment.clearFirestore();
+  const db = environment.authenticatedContext('alice').firestore();
+  const service = await services(db);
+  const txns = await service('transactionService');
+  const created = await txns.createTransaction('alice', { transaction_type: 'EXPENSE', amount: 0.1, date: '2026-09-13', source_account: 'GENERAL', description: 'Loja', category: 'OUTROS', operation_id: 'edit-initial' });
+  const id = 'txn_' + created.transaction_id;
+  const ref = firestore.doc(db, 'users/alice/transactions/' + created.transaction_id);
+  await assertSucceeds(txns.editTransaction('alice', id, { description: 'Mercado', amount: 0.3, category: 'ALIMENTACAO', paymentMethod: 'PIX', revision: 0 }));
+  assert.equal((await firestore.getDoc(firestore.doc(db, 'users/alice/accounts/GENERAL'))).data().balance, -0.3);
+  await assertFails(firestore.updateDoc(ref, { amount: 10, revision: 2, updatedAt: firestore.serverTimestamp() }));
+  await assertFails(firestore.updateDoc(ref, { accountId: 'outra', revision: 2, updatedAt: firestore.serverTimestamp() }));
+  const bob = environment.authenticatedContext('bob').firestore();
+  await assertFails(firestore.updateDoc(firestore.doc(bob, ref.path), { description: 'Invadido' }));
+});
+
 test('serviços reais: concorrência, importação, pagamento e estorno sob as regras', async () => {
   await environment.clearFirestore();
   const database = environment.authenticatedContext('alice').firestore();
@@ -74,4 +90,25 @@ test('serviços reais: concorrência, importação, pagamento e estorno sob as r
   const marker = firestore.doc(database, 'users/alice/operations/initial');
   await assertFails(firestore.deleteDoc(marker));
   await assertFails(firestore.setDoc(marker, { fingerprint: 'tamper', result: {} }));
+});
+
+test('agendamentos, recorrências e preferências isolam usuários e exigem ajuste atômico do saldo', async () => {
+  await environment.clearFirestore();
+  const database = environment.authenticatedContext('alice').firestore();
+  const service = await services(database), txns = await service('transactionService'), schedules = await service('scheduleService');
+  const created = await txns.createTransaction('alice', { transaction_type: 'EXPENSE', amount: 10, date: '2099-01-31', source_account: 'GENERAL', category: 'MORADIA', description: 'Aluguel', operation_id: 'schedule-test', recurrence_count: 3 });
+  const firstRef = firestore.doc(database, 'users/alice/transactions/schedule-test_0');
+  await assertFails(firestore.updateDoc(firstRef, { status: 'COMPLETED', completedAt: firestore.serverTimestamp(), updatedAt: firestore.serverTimestamp(), revision: 1 }));
+  await schedules.completeScheduled('alice', 'txn_schedule-test_0');
+  await schedules.completeScheduled('alice', 'txn_schedule-test_0');
+  assert.equal((await firestore.getDoc(firestore.doc(database, 'users/alice/accounts/GENERAL'))).data().balance, -10);
+  await txns.editTransaction('alice', 'txn_schedule-test_0', { description: 'Aluguel corrigido', amount: 12, category: 'MORADIA', paymentMethod: 'PIX', revision: 1, rememberCategory: true });
+  await schedules.cancelRecurrence('alice', created.recurrence_id);
+  assert.equal((await firestore.getDoc(firstRef)).data().status, 'COMPLETED');
+  assert.equal((await firestore.getDoc(firestore.doc(database, 'users/alice/transactions/schedule-test_1'))).data().status, 'CANCELLED');
+  const bob = environment.authenticatedContext('bob').firestore();
+  await assertFails(firestore.getDocs(firestore.collection(bob, 'users/alice/recurrences')));
+  await assertFails(firestore.getDocs(firestore.collection(bob, 'users/alice/categoryPreferences')));
+  await assertFails(firestore.setDoc(firestore.doc(database, 'users/alice/categoryPreferences/bad'), { type: 'INCOME', category: 'MORADIA', updatedAt: firestore.serverTimestamp() }));
+  await assertFails(firestore.updateDoc(firstRef, { category: 'SALARIO', paymentMethod: 'PIX', revision: 3, updatedAt: firestore.serverTimestamp() }));
 });

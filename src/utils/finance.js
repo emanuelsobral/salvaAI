@@ -56,6 +56,7 @@ export function splitInstallments(amount, count) {
 
 export const isTransfer = (txn) => txn.kind === 'TRANSFER' || /^\[CAIXINHA\]/.test(txn.description || '');
 export const isInvoicePayment = (txn) => txn.kind === 'INVOICE_PAYMENT' || /^\[CARTAO\] Fatura Paga /.test(txn.description || '');
+export const isInvestment = txn => txn.category === 'INVESTIMENTO' || /^\[INVESTIMENTO\]/.test(txn.description || '');
 export function legacyInvoiceKey(txn) {
   if (txn.kind === 'INVOICE_PAYMENT') return null;
   const match = /^\[CARTAO\] Fatura Paga (\d{2})\/(\d{4})/.exec(txn.description || '');

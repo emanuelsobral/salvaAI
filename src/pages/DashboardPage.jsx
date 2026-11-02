@@ -1,3 +1,4 @@
+import { useModal } from '../hooks/useModal';
 import { useState, useEffect, useCallback, useRef, lazy, Suspense } from 'react';
 import { useOperationKey } from '../hooks/useOperationKey';
 import { useAuth } from '../hooks/useAuth';
@@ -25,6 +26,7 @@ import ImportModal from '../components/Modals/ImportModal';
 import YearProjectionDrawer from '../components/Drawers/YearProjectionDrawer';
 
 export default function DashboardPage() {
+  const { showAlert, showConfirm } = useModal();
   const { user, displayName } = useAuth();
   
   // Estado de Dados
@@ -63,17 +65,17 @@ export default function DashboardPage() {
 
   const handlePayInvoice = async () => {
     if (!data || paymentLock.current || data.invoice_requires_reconciliation) return;
-    if (!window.confirm(`Confirma o pagamento unificado da fatura corrente no valor de R$ ${data.curr_invoice.toFixed(2)}? O valor será debitado do seu Saldo Livre.`)) return;
+    if (!await showConfirm(`Confirma o pagamento unificado da fatura corrente no valor de R$ ${data.curr_invoice.toFixed(2)}? O valor será debitado do seu Saldo Livre.`)) return;
     
     paymentLock.current = true;
     setPaying(true);
     try {
       const res = await payInvoice(user.uid, data.curr_month, data.curr_year, operation.keyFor([data.curr_month, data.curr_year]));
       operation.complete();
-      alert(res.message);
+      showAlert(res.message);
       loadData();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       paymentLock.current = false;
       setPaying(false);
@@ -100,7 +102,7 @@ export default function DashboardPage() {
         </div>
         <div className="actions dashboard-actions">
           <button className="btn-outline" style={{ borderColor: '#00f5d4', color: '#00f5d4' }} onClick={() => setImportModalOpen(true)}>
-            📥 Importar CSV
+            📥 Importar extrato
           </button>
           <button className="btn-purple" onClick={() => setCardModalOpen(true)}>
             💳 Compra no cartão
@@ -115,6 +117,7 @@ export default function DashboardPage() {
       
       <BalanceCards balances={data.balances} />
 
+
       <InvoiceCard 
         total={data.curr_invoice} 
         month={data.curr_month} 
@@ -126,7 +129,7 @@ export default function DashboardPage() {
       />
 
       <div className="dashboard-grid" style={{ marginTop: '1.8rem' }}>
-        <Lighthouse lighthouse={data.lighthouse} />
+        <Lighthouse lighthouse={data.lighthouse} investments={data.investments_this_month} />
         <GoalsList goals={data.goals} onOpenGoalModal={() => setGoalModalOpen(true)} />
       </div>
 

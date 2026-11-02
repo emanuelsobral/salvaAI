@@ -1,0 +1,32 @@
+{
+  "score": 4,
+  "summary": "Isolamento por UID e novos fluxos validados no emulador. A integridade contábil contra o próprio cliente modificado ainda não é garantida integralmente pelas regras existentes. Revisão de protótipo, não certificação de produção.",
+  "findings": [
+    {
+      "check": "Business Logic vs. Rules",
+      "severity": "minor",
+      "issue": "O proprietário pode atualizar diretamente o saldo de suas contas; criação e exclusão de lançamentos comuns não exigem universalmente uma contrapartida contábil. Não permite alterar os dados de outro UID, mas permite corromper os próprios totais.",
+      "recommendation": "Centralizar operações de saldo em backend autenticado e transacional ou definir um protocolo completo de ledger verificável com getAfter, incluindo criação, exclusão, importação e estorno."
+    },
+    {
+      "check": "The Update Bypass",
+      "severity": "minor",
+      "issue": "Regras legadas de cardTransactions ainda permitem ao proprietário alterar campos de compras/faturas sem todo o protocolo de quitação; o serviço restringe parcelas pagas, mas um cliente modificado pode ignorá-lo.",
+      "recommendation": "Migrar quitação e estorno para backend e limitar edições de parcelas aos campos e estados permitidos."
+    },
+    {
+      "check": "Storage Abuse / Type Safety",
+      "severity": "minor",
+      "issue": "Coleções legadas de operações, importRows, faturas e contas não possuem validação completa com hasOnly e limites para cada estrutura. Campos novos de preferências e séries têm esquema restrito.",
+      "recommendation": "Versionar o esquema, conciliar dados antigos e adicionar validação de campos e limites sem romper operações existentes."
+    }
+  ],
+  "validated": [
+    "Leitura e gravação entre usuários negadas; anônimos negados",
+    "Valores negativos e alterações de conta em edição rejeitados",
+    "Confirmação de agendamento exige atualização atômica do saldo",
+    "Preferências não aceitam categoria incompatível com direção",
+    "Recorrências e preferências são privadas por UID",
+    "Marcadores de operação não podem ser alterados ou removidos pelo cliente"
+  ]
+}

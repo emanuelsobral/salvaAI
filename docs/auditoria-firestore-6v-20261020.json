@@ -1,0 +1,10 @@
+{
+  "score": 4,
+  "summary": "Revisão estática da correspondência entre a V6 e as regras locais. Isolamento por UID presente; permissões sobre os próprios dados ainda permitem inconsistências contábeis. A V6 subestima as relações já validadas com getAfter e generaliza a cobertura de formato. Não é certificação de produção.",
+  "findings": [
+    {"check":"Business Logic vs. Rules","severity":"minor","issue":"Atualização direta do próprio saldo e exclusão de transações sem contrapartida obrigatória continuam permitidas.","recommendation":"Definir protocolo contábil completo ou backend confiável para operações críticas; documentar garantias por fluxo."},
+    {"check":"The Update Bypass","severity":"minor","issue":"cardTransactions admite atualização pelo titular sem restringir a transição a todo o protocolo de quitação.","recommendation":"Restringir campos/transições e vincular pagamento e estorno ao protocolo financeiro."},
+    {"check":"Storage Abuse / Type Safety","severity":"minor","issue":"Coleções legadas têm validação parcial e não impõem esquema estrito para todos os campos e tamanhos.","recommendation":"Versionar o esquema e validar tipos, campos e limites com testes compatíveis com dados existentes."},
+    {"check":"Business Logic vs. Rules","severity":"minor","issue":"O RNF22 prevê eliminar todos os dados e a conta, mas várias coleções não permitem delete pelo cliente e não foi localizado fluxo equivalente de servidor.","recommendation":"Implementar exclusão autenticada das coleções e do usuário, considerando reautenticação e retentativas."}
+  ]
+}

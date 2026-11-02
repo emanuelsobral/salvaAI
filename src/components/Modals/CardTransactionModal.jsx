@@ -1,9 +1,12 @@
+import ModalFrame from '../UI/ModalFrame';
+import { useModal } from '../../hooks/useModal';
 import { useOperationKey } from '../../hooks/useOperationKey';
 import { localDate } from '../../utils/finance';
 import { useState } from 'react';
 import { createCardTransaction } from '../../services/cardService';
 
 export default function CardTransactionModal({ uid, isOpen, onClose, onRefresh }) {
+  const { showAlert } = useModal();
   const operation = useOperationKey();
   const [formData, setFormData] = useState({
     amount_total: '',
@@ -37,21 +40,21 @@ export default function CardTransactionModal({ uid, isOpen, onClose, onRefresh }
         amount_total: parseFloat(formData.amount_total),
         installments: parseInt(formData.installments, 10)
       });
-      alert(res.message);
+      showAlert(res.message);
       operation.complete();
       onRefresh();
       onClose();
     } catch (error) {
-      alert(`Erro: ${error.message}`);
+      showAlert(`Erro: ${error.message}`);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="modal-overlay active">
+    <ModalFrame onClose={loading ? undefined : onClose}>
       <div className="modal-content" style={{ border: '1px solid rgba(181, 23, 158, 0.3)', position: 'relative' }}>
-        <button className="btn-close" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
+        <button className="btn-close" aria-label="Fechar modal" style={{ position: 'absolute', right: '1.5rem', top: '1.5rem' }} onClick={onClose}>×</button>
         <h2 style={{ color: 'var(--accent-purple)' }}>Nova Compra no Cartão 💳</h2>
         
         <form onSubmit={handleSubmit}>
@@ -97,6 +100,6 @@ export default function CardTransactionModal({ uid, isOpen, onClose, onRefresh }
           </button>
         </form>
       </div>
-    </div>
+    </ModalFrame>
   );
 }

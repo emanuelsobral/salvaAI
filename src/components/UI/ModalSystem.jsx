@@ -8,9 +8,10 @@
  *   const confirmed = await showConfirm('Tem certeza?');
  */
 
-import { useState, createContext, useContext, useCallback, useRef } from 'react';
+import { useState, useCallback, useRef } from 'react';
+import { ModalContext } from '../../hooks/useModal';
+import ModalFrame from './ModalFrame';
 
-const ModalContext = createContext(null);
 
 export function ModalProvider({ children }) {
   const [alertState, setAlertState] = useState({ open: false, message: '', title: 'Aviso', icon: '🔔' });
@@ -54,10 +55,10 @@ export function ModalProvider({ children }) {
       {children}
 
       {/* Custom Alert Modal */}
-      <div className={`modal-overlay ${alertState.open ? 'active' : ''}`} style={{ zIndex: 9999 }}>
-        <div className="modal-content" style={{ borderTop: '5px solid var(--accent-primary)', maxWidth: 400, textAlign: 'center', padding: '2rem' }}>
+      {alertState.open && <ModalFrame onClose={closeAlert} style={{ zIndex: 9999 }}>
+        <div className="modal-content" role="alertdialog" aria-modal="true" aria-labelledby="system-alert-title" style={{ borderTop: '5px solid var(--accent-primary)', maxWidth: 400, textAlign: 'center', padding: '2rem' }}>
           <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{alertState.icon}</div>
-          <h2 style={{ marginBottom: '1rem' }}>{alertState.title}</h2>
+          <h2 id="system-alert-title" style={{ marginBottom: '1rem' }}>{alertState.title}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
             {alertState.message}
           </p>
@@ -65,16 +66,16 @@ export function ModalProvider({ children }) {
             Entendido
           </button>
         </div>
-      </div>
+      </ModalFrame>}
 
       {/* Custom Confirm Modal */}
-      <div className={`modal-overlay ${confirmState.open ? 'active' : ''}`} style={{ zIndex: 9999 }}>
-        <div className="modal-content" style={{ borderTop: '5px solid var(--accent-red)', maxWidth: 450, padding: '2.5rem' }}>
-          <h2 style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>{confirmState.title}</h2>
+      {confirmState.open && <ModalFrame onClose={() => closeConfirm(false)} style={{ zIndex: 9999 }}>
+        <div className="modal-content" role="alertdialog" aria-modal="true" aria-labelledby="system-confirm-title" style={{ borderTop: '5px solid var(--accent-red)', maxWidth: 450, padding: '2.5rem' }}>
+          <h2 id="system-confirm-title" style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>{confirmState.title}</h2>
           <p style={{ color: 'var(--text-muted)', fontSize: '1rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
             {confirmState.message}
           </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div className="history-edit-actions">
             <button
               onClick={() => closeConfirm(false)}
               style={{ flex: 1, padding: '1rem', borderRadius: 8, border: '1px solid var(--border-color)', background: 'transparent', color: 'var(--text-muted)', fontWeight: 600, cursor: 'pointer' }}
@@ -89,7 +90,7 @@ export function ModalProvider({ children }) {
             </button>
           </div>
         </div>
-      </div>
+      </ModalFrame>}
     </ModalContext.Provider>
   );
 }
@@ -97,10 +98,3 @@ export function ModalProvider({ children }) {
 /**
  * Hook para usar os modais de alerta e confirmação.
  */
-export function useModal() {
-  const context = useContext(ModalContext);
-  if (!context) {
-    throw new Error('useModal deve ser usado dentro de um <ModalProvider>');
-  }
-  return context;
-}
