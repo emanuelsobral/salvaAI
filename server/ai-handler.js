@@ -3,6 +3,7 @@ import { validateDocumentAnswer } from '../src/utils/aiDocuments.js';
 import { financialContextInstruction } from './financial-context.js';
 import { validateContractPages, validateContractAi } from '../src/utils/contractAi.js';
 import { contractAiPrompt } from './contract-ai-prompt.js';
+import { parseModelJson } from '../src/utils/modelJson.js';
 
 const MAX_BODY = 4.5 * 1024 * 1024;
 const fail = (status, message, extra) => Object.assign(new Error(message), { status, ...extra });
@@ -128,7 +129,8 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
       if (choice?.finish_reason !== 'stop' || typeof text !== 'string' || !text.trim() || text.length > 100000) throw fail(502, 'A IA não retornou uma resposta completa. Tente novamente.');
       if (vision || body.action === 'contract-extract') {
         try {
-          const data = JSON.parse(text);
+          // Only raw control characters inside strings are recovered; all validators still run.
+          const { data } = parseModelJson(text);
           if (body.action === 'contract-extract') return json({ data: validateContractAi(data, body.pages) });
           return json({ data: body.action === 'receipt' ? validateReceipt(data) : validateDocumentAnswer(body.action, data) });
         } catch { throw fail(502, 'A IA retornou uma leitura inválida. Nenhum dado foi aplicado. Confira o documento ou use a leitura local.'); }

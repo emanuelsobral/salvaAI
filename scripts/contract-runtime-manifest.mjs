@@ -10,7 +10,7 @@ const paths = [
   'server/contract-ai-prompt.js', 'src/utils/contractAi.js', 'src/components/Contracts/PdfContractImport.jsx',
   'scripts/contract-runtime-manifest.mjs', 'scripts/contract-run-record.mjs',
   'scripts/verify-contract-deepseek-development.mjs',
-  'package.json', 'package-lock.json', 'server/ai-handler.js',
+  'package.json', 'package-lock.json', 'server/ai-handler.js', 'src/utils/modelJson.js',
   'server/vite-contract-runtime.js', 'server/vite-pdf-assets.js', 'vite.config.js',
   'src/utils/contractPdf.js', 'src/utils/pdfDocument.js', 'src/utils/contractOcr.js',
   'src/utils/contractExtraction.js', 'src/services/aiService.js',
@@ -29,7 +29,7 @@ console.log(JSON.stringify({
   commit: git(['rev-parse', 'HEAD']), workingTreeDirty: Boolean(git(['status', '--porcelain'])),
   extractorVersion: version, nodeVersion: process.version,
   pipeline: ['Leitura do PDF ou transcrição opcional por OCR', 'Extração por regras locais', 'Validação de evidências', 'Revisão do formulário'],
-  provider: { name: 'DeepSeek', role: 'Transcrição de páginas',
+  provider: { name: 'DeepSeek', role: 'Transcrição de páginas (OCR) e extração direta opcional dos cinco campos',
     effectiveModel: null, note: 'Modelo efetivo deve ser registrado na execução; não inferir do padrão do código ou de um alias.' },
   files,
 }, null, 2));

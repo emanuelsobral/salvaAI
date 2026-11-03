@@ -52,6 +52,7 @@ docs/word-build/
 .contract-qa/
 .agenda-qa/
 .ai-qa/
+.agents/
 
 # Documentação pública: somente guias de uso. O restante fica local.
 /docs/*
