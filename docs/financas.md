@@ -58,7 +58,9 @@ Os gastos incluem movimentações de benefícios; o farol usa apenas a Conta cor
 
 Abra o assistente pelo botão no canto da tela. Com Usar DeepSeek para analisar marcado, suas perguntas e um resumo do painel são enviados à API pelo servidor. Você pode pedir explicações sobre os gastos, comparar categorias e discutir como organizar o orçamento. As respostas não alteram saldos nem registram pagamentos.
 
-O resumo inclui saldos, fatura pendente, gastos por categoria, indicador de compromissos e avisos do painel. Gastos do mês podem incluir compras de cartão ou contas ainda não pagas; o saldo após compromissos já desconta as pendências consideradas pelo painel. Confira os números antes de tomar uma decisão.
+O resumo inclui saldos, fatura pendente, gastos por categoria, indicador de compromissos e tipos de alerta do painel. Os textos dos alertas, que podem conter nomes de contas e cobranças, ficam fora desse resumo. Informações pessoais digitadas nas perguntas ou presentes nos documentos enviados continuam fazendo parte dessas solicitações.
+
+Gastos do mês podem incluir compras de cartão ou contas ainda não pagas; o saldo após compromissos já desconta as pendências consideradas pelo painel. As respostas da IA não constituem aconselhamento financeiro. Confira os números antes de tomar uma decisão.
 
 Desmarque a opção para usar consultas locais, sem chamadas à IA: saldo, fatura, gastos, maior categoria, resumo ou projeção. Mudar o modo limpa a conversa da tela.
 

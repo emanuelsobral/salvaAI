@@ -8,7 +8,7 @@ import unicodedata
 from extenso import conferir_extenso
 from pagamentos_escolares import analisar_opcoes
 
-VERSAO = '0.1.25'
+VERSAO = '0.1.27'
 CAMPOS = ('valor_parcela', 'numero_parcelas', 'data_vencimento', 'vigencia', 'regra_reajuste')
 MOEDA = r'r\$\s*(?P<quantia>(?:\d{1,3}(?:\.\d{3})+|\d+)(?:,\d{2})?)(?!\d|[.,]\d)'
 # RS só é candidato monetário com centavos e indicação textual de reais.
@@ -694,11 +694,16 @@ def extrair_campos(paginas):
         if condicao_pendente:
             condicoes_vencimento.append(trecho)
             pendente('data_vencimento', trecho)
-        pagamento_mensal = bool(re.search(r'\bpag[ao]s?\s+mensalmente\s+(?:ate|em|no|todo)\b', s))
-        pagamento = pagamento_mensal or bool(re.search(r'\b(?:vencimento|vencem|vencera)\b|\bpag[ao]s?\s+(?:ate|em|no|todo)\b', s))
+        pagamento_mensal = bool(re.search(
+            r'\b(?:pag[ao]s?|pagamentos?\s+(?:sera(?:o)?\s+)?(?:realizad[oa]s?|efetuad[oa]s?))'
+            r'\s+mensalmente\s*,?\s*(?:ate|em|no|todo)\b', s))
+        ordinal_util = r'\bate o (?:primeiro|segundo|terceiro|quarto|quinto|sexto|setimo|oitavo|nono|decimo) dia util (?:de cada|do) mes\b'
+        pagamento_integral = bool(re.search(
+            r'\bpagamento integral(?: dos valores a que se refere esta clausula)?\s*,?\s*' + ordinal_util, s))
+        pagamento = pagamento_mensal or pagamento_integral or bool(re.search(r'\b(?:vencimento|vencem|vencera)\b|\bpag[ao]s?\s+(?:ate|em|no|todo)\b', s))
         termino = bool(re.search(r'vencimento (?:d[oa] (?:presente )?(?:contrato|locacao)|antecipado)', s))
         # Não transformar uma obrigação mensal explicitamente negada em vencimento.
-        pagamento_negado = pagamento_mensal and bool(re.search(r'\bnao\b', s))
+        pagamento_negado = (pagamento_mensal or pagamento_integral) and bool(re.search(r'\bnao\b', s))
         inicio_prazo = (r'\b(?:pagamentos?(?: devidos)?(?: sera(?:o)?)? '
                         r'(?:efetuad[oa]s?|realizad[oa]s?)|pag[ao]s?) '
                         r'(?:no prazo de|em) ')
@@ -739,9 +744,9 @@ def extrair_campos(paginas):
             dias_expressos = re.findall(r'\bdia\s+(\d+)(?![\d/])', s)
             dias_expressos += re.findall(r'\b(\d+)[oºª®]' + EXTENSO + r'\s+dia\b', s)
             dia_invalido = any(not 1 <= int(d) <= 31 for d in dias_expressos)
-            if lacuna or dia_invalido:
+            if lacuna or dia_invalido or (pagamento_integral and re.search(r'\b(?:opcao|opcoes|alternativamente|caso)\b', s)):
                 pendente('data_vencimento', trecho)
-            elif especial and (dias_expressos or re.search(
+            elif especial and (dias_expressos or re.search(ordinal_util, s) or re.search(
                     r'(?:vencimento\s*(?:em|:|no dia)?\s*|pag[ao]s?\s+(?:ate|em|no dia)\s*)' + DATA, s)):
                 try:
                     for d in datas:

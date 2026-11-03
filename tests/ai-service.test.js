@@ -33,3 +33,24 @@ test('chat envia resumo sem coleção de transações, identidade ou chave de AP
   await client.chatWithAI([], 'Saldo?', { balances: { GENERAL: 100 }, transactions: [{ secret: 'private' }], email: 'private', apiKey: 'private' }, { uid: 'alice' });
   assert.deepEqual(sent.context, { balances: { GENERAL: 100 } });
 });
+
+for (const action of ['chat', 'insight']) {
+  test(`${action} envia somente tipos conhecidos dos alertas, sem texto pessoal`, async () => {
+    let sent;
+    const client = await service({ currentUser: { uid: 'alice', getIdToken: async () => 'token' } }, async (url, options) => {
+      sent = JSON.parse(options.body);
+      return Response.json({ text: 'Resposta' });
+    });
+    const data = { notifications: [
+      { type: 'DANGER', message: 'Aluguel de Maria, Rua Particular, R$ 2200', name: 'Maria' },
+      { type: 'WARNING', message: 'Cobrança de João' }, null,
+      { type: 'Texto pessoal inesperado' },
+    ] };
+    if (action === 'chat') await client.chatWithAI([], 'Saldo?', data);
+    else await client.generateFinancialInsight(data);
+    assert.equal(sent.action, action);
+    assert.deepEqual(sent.context.notifications, [{ type: 'DANGER' }, { type: 'WARNING' }]);
+    assert.equal(JSON.stringify(sent).includes('Maria'), false);
+    assert.equal(data.notifications[0].name, 'Maria');
+  });
+}

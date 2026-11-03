@@ -21,6 +21,14 @@ Login e dados em nuvem usam Firebase Authentication e Firestore. A integração 
 
 A integração DeepSeek foi publicada em 29/10/2026. Chat, OCR de contrato e ajuda na leitura de extrato responderam pelo site com uma conta temporária e dados fictícios. No extrato, data e valor foram lidos, mas a indicação de entrada ou saída ficou em branco para revisão. Esses testes confirmam a conexão e os exemplos conferidos; não medem a precisão em documentos reais.
 
+### Atualização de contratos — 03/11/2026
+
+A importação ganhou a opção **Preencher os cinco campos com DeepSeek**. Ela interpreta o texto do contrato e sugere valor, parcelas, vencimento, vigência e reajuste, com evidências por página. PDFs com texto dispensam OCR; documentos digitalizados podem usar OCR local ou DeepSeek antes da extração. O cadastro continua exigindo revisão antes de salvar.
+
+Também foram corrigidos os recursos de decodificação que deixavam algumas páginas digitalizadas quase vazias e duas formas de vencimento no leitor local. O resumo financeiro enviado à IA passou a omitir os textos dos alertas, e o chat informa que suas respostas não constituem aconselhamento financeiro.
+
+Um contrato público foi testado com uma chamada real: quatro campos foram sugeridos e parcelas permaneceram vazias. O reajuste incluiu índice, periodicidade e condições. A resposta foi conferida no formulário, sem nova chamada, junto com cancelamento e rejeição de evidências inválidas. Passaram 209 testes do aplicativo, oito testes de integração do banco e o build. Esse piloto demonstra funcionamento no caso examinado; não mede precisão geral.
+
 ## Guias de uso
 
 - [Documentação](docs/README.md)
@@ -36,7 +44,7 @@ A integração DeepSeek foi publicada em 29/10/2026. Chat, OCR de contrato e aju
 
 A importação de PDF oferece leitura genérica e revisão manual. Foram conferidas amostras de Itaú, Nubank e Banco do Brasil, mas outros layouts podem exigir correções. Não há garantia de leitura automática de todos os bancos.
 
-Contratos aceitam PDF sem senha de até 10 MB: 50 páginas na leitura local ou 10 no OCR com DeepSeek. A extração sugere valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste. Campos ausentes ou ambíguos ficam vazios. O OCR pode errar caracteres, valores e datas; confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
+Contratos aceitam PDF sem senha de até 10 MB: 50 páginas na leitura local ou 10 com DeepSeek. A extração direta aceita até 60 mil caracteres por página e 120 mil no total. Campos ausentes ou ambíguos ficam vazios; nesta versão, a IA só sugere vigência com datas explícitas de início e fim. OCR e interpretação podem errar: confira o documento original antes de salvar. A precisão em contratos reais ainda não foi medida com gabarito independente.
 
 Cada contrato pode ter um plano de parcelas inicialmente iguais. O [reajuste manual com prévia](docs/contratos.md#reajustar-parcelas) aplica um valor ou percentual às parcelas futuras. O [encerramento do cadastro](docs/contratos.md#encerrar-o-cadastro-de-contrato) cancela as parcelas futuras sem pagamento e preserva o histórico. Consulta automática de índices, mudanças no calendário do plano, exclusão, reabertura e armazenamento do PDF original continuam pendentes.
 

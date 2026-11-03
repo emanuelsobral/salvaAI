@@ -9,7 +9,7 @@ export async function openStatementPdf(file, { password = '', signal, onProgress
   const data = new Uint8Array(await file.arrayBuffer());
   if (signal?.aborted) throw Error('Leitura cancelada.');
   const task = getDocument({ data, password, isEvalSupported: false, stopAtErrors: true, useSystemFonts: true,
-    maxImageSize: 16000000, canvasMaxAreaInBytes: 64000000 });
+    maxImageSize: 16000000, canvasMaxAreaInBytes: 64000000, wasmUrl: `${import.meta.env?.BASE_URL || '/'}pdf-runtime/` });
   const abort = () => { void task.destroy(); };
   signal?.addEventListener('abort', abort, { once: true });
   try {

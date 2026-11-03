@@ -12,6 +12,18 @@ Use Editar para corrigir os dados. Se outra tela já tiver alterado o contrato, 
 
 ## Importar um PDF
 
+### Extração dos campos com DeepSeek
+
+A opção **Preencher os cinco campos com DeepSeek** envia o texto das páginas em uma consulta para sugerir valor da parcela, número de parcelas, vencimento, vigência e reajuste. Para PDFs com texto, não é preciso ativar OCR. Em documentos digitalizados, combine essa opção com OCR local ou OCR com DeepSeek.
+
+A extração aceita até dez páginas, 60 mil caracteres por página e 120 mil no total. O texto pode conter dados pessoais; marcar a opção autoriza seu envio ao provedor e o consumo de créditos do administrador. O OCR com DeepSeek, quando selecionado, acrescenta uma consulta por página. Não há repetição automática.
+
+O aplicativo verifica o formato dos campos, os limites e a correspondência literal dos trechos com as páginas. Isso não comprova que a interpretação da IA esteja correta. Confira cada sugestão no PDF antes de salvar. Informações ausentes ou ambíguas ficam vazias. Nesta versão, vigência só é sugerida quando início e término têm datas explícitas; outros casos exigem preenchimento manual. Vencimentos relativos, como quinto dia útil, permanecem descritos como regras, sem gerar datas automaticamente.
+
+A implementação passou nos testes automatizados, nas regras do banco emulado e no fluxo de navegador com respostas simuladas. Foram conferidos os cinco campos, as evidências, a revisão obrigatória, a rejeição de evidência inválida e o cancelamento. Um piloto real com contrato público produziu sugestões para quatro campos e manteve parcelas vazias. A resposta exigiu um ajuste na validação de espaços dos trechos; a evidência guardada continua sendo o texto original da página. Essa resposta também foi reproduzida com sucesso no formulário, sem outra chamada à IA. Um único exemplo não mede precisão geral; a ampliação da avaliação ainda está pendente.
+
+### Leitura e revisão
+
 1. Escolha Importar PDF. Para documentos digitalizados, escolha OCR local ou OCR com DeepSeek antes de selecionar o arquivo. A opção DeepSeek envia as imagens das páginas para a API e usa créditos do administrador.
 2. Aguarde a leitura. O limite é de 10 MB, sem senha: 50 páginas localmente ou 10 com DeepSeek.
 3. Confira as sugestões de valor da parcela, quantidade de parcelas, vencimento, vigência e reajuste.
@@ -19,6 +31,8 @@ Use Editar para corrigir os dados. Se outra tela já tiver alterado o contrato, 
 5. Informe o título, corrija os campos com base no original e marque a conferência antes de salvar.
 
 Editar qualquer campo desmarca a confirmação. Cancelar descarta o preenchimento; escolher outro arquivo descarta a leitura anterior. Campos ausentes ou ambíguos ficam vazios, sem datas ou valores estimados.
+
+O OCR transcreve a página, mas o leitor de campos pode deixar de reunir condições escritas em parágrafos separados. Isso pode acontecer com o índice e a periodicidade do reajuste. Se o campo ficar vazio, confira as evidências e preencha com base no original. Regras com mais de 600 caracteres também exigem um resumo manual no formulário; o trecho completo permanece nas evidências.
 
 Na leitura local, o PDF permanece no aparelho. Ao escolher DeepSeek, imagens das páginas são enviadas pelo servidor à API para transcrição. O aplicativo não armazena o PDF original no servidor. Ao salvar, os campos revisados e as evidências vão para sua conta no Firestore. As evidências conservam a sugestão original, mesmo quando você corrige o valor, e continuam disponíveis após recarregar ou editar o cadastro.
 

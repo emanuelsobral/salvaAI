@@ -4,6 +4,7 @@ import { getFirebaseConfig } from './src/config/firebaseConfig.js'
 import { aiDevPlugin } from './server/vite-ai.js'
 import { ocrAssetsPlugin } from './server/vite-ocr.js'
 import { contractRuntimePlugin } from './server/vite-contract-runtime.js'
+import { pdfAssetsPlugin } from './server/vite-pdf-assets.js'
 
 // https://vite.dev/config/
 export default defineConfig(({ command, mode }) => {
@@ -12,5 +13,5 @@ export default defineConfig(({ command, mode }) => {
   if (command === 'build') {
     getFirebaseConfig({ ...loadEnv(mode, process.cwd(), 'VITE_'), ...process.env })
   }
-  return { plugins: [react(), aiDevPlugin(env), ocrAssetsPlugin(), contractRuntimePlugin()] }
+  return { plugins: [react(), aiDevPlugin(env), ocrAssetsPlugin(), contractRuntimePlugin(), pdfAssetsPlugin()] }
 })

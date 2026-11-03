@@ -108,7 +108,7 @@ function ChatSession({ user }) {
             {history.length === 0 && (
               <div style={{ textAlign: 'center', color: 'var(--text-muted)', marginTop: '2rem' }}>
                 <p>{useAi ? 'Pergunte sobre suas finanças ou conceitos de economia.' : 'Consulte os dados do seu painel.'}</p>
-                <p style={{ fontSize: '0.85rem' }}>{useAi ? 'Suas perguntas e um resumo do painel serão enviados à DeepSeek. As respostas podem conter erros e não consultam notícias ou cotações atuais.' : 'Digite: saldo, fatura, gastos, maior categoria ou projeção.'}</p>
+                <p style={{ fontSize: '0.85rem' }}>{useAi ? 'Suas perguntas e um resumo do painel serão enviados à DeepSeek. As respostas podem conter erros, não constituem aconselhamento financeiro e não consultam notícias ou cotações atuais.' : 'Digite: saldo, fatura, gastos, maior categoria ou projeção.'}</p>
               </div>
             )}
 

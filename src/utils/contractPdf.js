@@ -12,7 +12,8 @@ export async function readContractPdf(file, { signal, onProgress = () => {}, use
   const hash = new Uint8Array(await crypto.subtle.digest('SHA-256', data));
   const pdfSha256 = Array.from(hash, byte => byte.toString(16).padStart(2, '0')).join('');
   if (signal?.aborted) throw Error('Leitura cancelada.');
-  const task = getDocument({ data, isEvalSupported: false, stopAtErrors: true, useSystemFonts: true, maxImageSize: 16000000 });
+  const task = getDocument({ data, isEvalSupported: false, stopAtErrors: true, useSystemFonts: true, maxImageSize: 16000000,
+    wasmUrl: `${import.meta.env?.BASE_URL || '/'}pdf-runtime/` });
   const abort = () => { void task.destroy(); };
   signal?.addEventListener('abort', abort, { once: true });
   try {

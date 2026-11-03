@@ -1,6 +1,8 @@
 import { validateReceipt } from '../src/utils/receipt.js';
 import { validateDocumentAnswer } from '../src/utils/aiDocuments.js';
 import { financialContextInstruction } from './financial-context.js';
+import { validateContractPages, validateContractAi } from '../src/utils/contractAi.js';
+import { contractAiPrompt } from './contract-ai-prompt.js';
 
 const MAX_BODY = 4.5 * 1024 * 1024;
 const fail = (status, message, extra) => Object.assign(new Error(message), { status, ...extra });
@@ -31,8 +33,16 @@ function imagePart(body) {
 }
 
 export function buildDeepSeekRequest(body) {
-  if (!body || !['chat', 'insight', 'receipt', 'contract-ocr', 'statement-recovery'].includes(body.action)) throw fail(400, 'Ação de IA inválida.');
+  if (!body || !['chat', 'insight', 'receipt', 'contract-ocr', 'contract-extract', 'statement-recovery'].includes(body.action)) throw fail(400, 'Ação de IA inválida.');
   const payload = { max_tokens: 2048, thinking: { type: 'disabled' }, messages: [{ role: 'system', content: instruction }] };
+  if (body.action === 'contract-extract') {
+    try { validateContractPages(body.pages); } catch (error) { throw fail(400, error.message); }
+    payload.max_tokens = 8192;
+    payload.response_format = { type: 'json_object' };
+    payload.messages[0].content += '\n' + contractAiPrompt;
+    payload.messages.push({ role: 'user', content: JSON.stringify({ pages: body.pages.map((text, i) => ({ page: i + 1, text })) }) });
+    return payload;
+  }
   if (['receipt', 'contract-ocr', 'statement-recovery'].includes(body.action)) {
     if (body.action !== 'receipt' && (!Number.isInteger(body.page) || body.page < 1 || body.page > 50)) throw fail(400, 'Página inválida.');
     if (body.action === 'statement-recovery' && body.localReadFailed !== true) throw fail(400, 'Use a IA apenas quando a leitura local estiver incompleta.');
@@ -116,9 +126,10 @@ export function createAiHandler({ verifyToken, env = process.env, fetchImpl = fe
       if (choice?.finish_reason === 'content_filter') throw fail(422, 'A IA interrompeu a resposta por uma restrição de conteúdo.');
       const text = choice?.message?.content;
       if (choice?.finish_reason !== 'stop' || typeof text !== 'string' || !text.trim() || text.length > 100000) throw fail(502, 'A IA não retornou uma resposta completa. Tente novamente.');
-      if (vision) {
+      if (vision || body.action === 'contract-extract') {
         try {
           const data = JSON.parse(text);
+          if (body.action === 'contract-extract') return json({ data: validateContractAi(data, body.pages) });
           return json({ data: body.action === 'receipt' ? validateReceipt(data) : validateDocumentAnswer(body.action, data) });
         } catch { throw fail(502, 'A IA retornou uma leitura inválida. Nenhum dado foi aplicado. Confira o documento ou use a leitura local.'); }
       }

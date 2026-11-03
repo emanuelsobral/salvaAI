@@ -36,6 +36,7 @@ try {
   });
   const page = await context.newPage();
   await page.goto(`http://127.0.0.1:${server.address().port}`);
+  for (const lines of [contractLines, ['O pagamento será realizado mensalmente, até o dia 12 (doze), mediante boleto bancário.'], ['O contratante fica responsável pelo pagamento integral dos valores a que se refere esta cláusula, até o quinto dia útil de cada mês.']]) {
   const result = await page.evaluate(({ worker, lines }) => new Promise((resolve, reject) => {
     const reader = new Worker(`/assets/${worker}`, { type: 'module' });
     const timeout = setTimeout(() => { reader.terminate(); reject(Error('Timeout do leitor compilado.')); }, 90000);
@@ -43,11 +44,22 @@ try {
     reader.onerror = () => finish('Falha no worker compilado.');
     reader.onmessage = ({ data }) => { if (data.error) finish(data.error); else if (data.result) finish(null, data.result); };
     reader.postMessage({ pages: [lines.join('\n')] });
-  }), { worker, lines: contractLines });
-  assert.equal(result.version, '0.1.25');
+  }), { worker, lines });
+  assert.equal(result.version, '0.1.27');
+  if (lines !== contractLines) {
+    assert.equal(result.fields.data_vencimento.estado, 'encontrado');
+    if (lines[0].includes('quinto')) {
+      assert.equal(result.fields.data_vencimento.valor.tipo, 'outra_regra');
+      assert.equal(result.fields.data_vencimento.valor.dia, null);
+      assert.equal(result.fields.data_vencimento.valor.regra, lines[0]);
+    } else assert.equal(result.fields.data_vencimento.valor.dia, 12);
+    assert.equal(result.fields.data_vencimento.evidencias[0].trecho, lines[0]);
+    continue;
+  }
   assert.equal(result.fields.valor_parcela.valor.quantia, '1200.00');
   assert.equal(result.fields.numero_parcelas.valor.quantidade, 12);
   for (const field of Object.values(result.fields)) assert.equal(field.estado, 'encontrado');
+  }
   const ocrModule = files.find(name => /^pdfOcr-.*\.js$/.test(name));
   assert.ok(ocrModule, 'Módulo OCR ausente no build.');
   const ocrText = await page.evaluate(async ({ file, lines }) => {

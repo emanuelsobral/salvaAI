@@ -88,6 +88,11 @@ test('PDF de contrato: origem persiste sob as regras e não pode ser substituíd
   const sourceReview = { method: 'PDF_TEXT_REVIEW', pdfSha256: 'a'.repeat(64), extractorVersion: '0.1.25', resultJson: JSON.stringify(fields) };
   const ocrSource = { ...sourceReview, method: 'PDF_OCR_REVIEW' };
   const aiSource = { ...sourceReview, method: 'PDF_DEEPSEEK_OCR_REVIEW' };
+  const fieldSource = { ...sourceReview, method: 'PDF_DEEPSEEK_FIELDS_REVIEW', extractorVersion: '1.0.0' };
+  const fieldCreated = await contracts.saveContract('alice', { title: 'Campos IA revisados', sourceReview: fieldSource }, { operationId: 'field-ai-contract' });
+  const fieldRef = firestore.doc(database, 'users/alice/contracts/' + fieldCreated.id);
+  assert.deepEqual((await firestore.getDoc(fieldRef)).data().sourceReview, fieldSource);
+  await assertFails(firestore.updateDoc(fieldRef, { sourceReview, revision: 1, updatedAt: firestore.serverTimestamp() }));
   const aiCreated = await contracts.saveContract('alice', { title: 'OCR DeepSeek fictício', sourceReview: aiSource }, { operationId: 'ai-contract' });
   const aiRef = firestore.doc(database, 'users/alice/contracts/' + aiCreated.id);
   assert.deepEqual((await firestore.getDoc(aiRef)).data().sourceReview, aiSource);

@@ -16,7 +16,10 @@ clearLegacyKeys();
 
 function summarize(data) {
   return { balances: data?.balances, curr_invoice: data?.curr_invoice, period: data?.period,
-    categories: data?.charts?.donut, lighthouse: data?.lighthouse, notifications: data?.notifications };
+    categories: data?.charts?.donut, lighthouse: data?.lighthouse,
+    notifications: Array.isArray(data?.notifications)
+      ? data.notifications.filter(item => ['DANGER', 'WARNING'].includes(item?.type)).map(item => ({ type: item.type }))
+      : undefined };
 }
 async function sendAI(payload, signal, expectedUid) {
   const user = auth.currentUser;
@@ -43,6 +46,9 @@ async function requestAI(payload, signal, expectedUid) {
 }
 export async function generateFinancialInsight(data) {
   return (await requestAI({ action: 'insight', context: summarize(data) })).text;
+}
+export async function extractContractWithAI(pages, { signal } = {}) {
+  return (await requestAI({ action: 'contract-extract', pages }, signal)).data;
 }
 export async function chatWithAI(history, message, financialContext, { signal, uid } = {}) {
   return (await requestAI({ action: 'chat', history, message, context: summarize(financialContext) }, signal, uid)).text;
