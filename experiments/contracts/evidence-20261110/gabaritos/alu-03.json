@@ -1,0 +1,91 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "alu-03",
+    "pdf_sha256": "790d41c61877bdd74e7c6112bebcd5af94db9dd8efeecd32b6b6042a2025af47",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "Valor Mensal do Aluguel: R$ _______________ (___________________________________)"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo de contrato de locação em branco: a Cláusula 4ª traz apenas a lacuna 'Valor Mensal do Aluguel: R$ _______________'."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "Data de Início: Data de Término: Duração (meses):"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo em branco sem campo ou cláusula de quantidade de parcelas (há apenas lacuna 'Duração (meses):' em branco na Cláusula 3ª)."
+      },
+      "data_vencimento": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "Vencimento / Forma de Pagamento: Dia _____ · ☐ PIX ☐ TED ☐ Boleto ☐ Depósito"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo em branco: a Cláusula 4ª traz apenas 'Vencimento / Forma de Pagamento: Dia _____'."
+      },
+      "vigencia": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "CLÁUSULA 3ª — DO PRAZO DA LOCAÇÃO Data de Início: Data de Término: Duração (meses): § 1º — Findo o prazo, sem oposição das partes, a locação prorroga-se automaticamente por prazo indeterminado (art. 47, Lei 8.245/91)."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo em branco: datas de início, término e duração em meses estão em branco na Cláusula 3ª."
+      },
+      "regra_reajuste": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "§ 2º — Reajuste anual pelo índice: ☐ IGP-M/FGV ☐ IPCA/IBGE ☐ Outro: ___________."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A Cláusula 4ª, § 2º prevê reajuste anual, mas o índice depende de caixa de seleção não assinalada no modelo em branco (☐ IGP-M/FGV ☐ IPCA/IBGE ☐ Outro: ___________)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "ded5221d69a5f18199e05da3dd3cd13e84a20b71489413f39c90838668e8c88a",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

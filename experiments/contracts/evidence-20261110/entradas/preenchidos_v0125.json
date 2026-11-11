@@ -1,0 +1,305 @@
+{
+  "natureza": "sintetica",
+  "protocolo_versao": "1.0.0",
+  "documentos": [
+    {
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 478,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "pub-alu-02",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-10-18"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "fixo",
+              "moeda": "BRL",
+              "quantia": "8825.50",
+              "regra": null
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA QUINTA: DO VALOR O LOCATÁRIO pagará pela locação do imóvel o valor mensal de R$8.825,50 (Oito mil, oitocentos e vinte e cinco e cinquenta centavos), não podendo este ser alterado durante a vigência do contrato, salvo os casos de reajustes anuais previstos neste instrumento."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Anotação fornecida pelo usuário nesta conversa em 18/10/2026; normalização monetária e transcrição técnica. Valor mensal com ressalva de reajustes anuais preservada na evidência. Conferência final do procedimento e revisão pendentes."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Usuário informou em 18/10/2026 que não encontrou outro trecho com quantidade explícita de pagamentos. A proposta de 12 decorre da combinação de aluguel mensal com vigência de 12 meses; preservada como inferência fora do valor extraído, conforme protocolo 1.0.0. Ausente significa quantidade não expressa, não ausência de obrigação de pagar. Confirmação final de leitura e revisão permanecem pendentes."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO Os pagamentos devidos serão efetuados, conforme a entrega do objeto licitado, sendo os pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal, devidamente ATESTADA pelo encarregado do recebimento de tal objeto."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO Os pagamentos devidos serão efetuados, conforme a entrega do objeto licitado, sendo os pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal, devidamente ATESTADA pelo encarregado do recebimento de tal objeto."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Resposta do usuário em 18/10/2026. Prazo relativo ao protocolo da nota fiscal; preservadas as condições de entrega e ateste. Não convertido em dia fixo do mês ou data calculada. Revisão final pendente."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": 12,
+              "regra": "CLÁUSULA OITAVA: DA VIGÊNCIA O presente instrumento terá vigência por 12 (doze) meses, a partir da data de assinatura, podendo o presente instrumento ser prorrogado e alterado mediante termo aditivo próprio, com justificativa do interesse público na renovação, bem como respeitando a legislação vigente. PARÁGRAFO ÚNICO Durante a vigência do contrato, a empresa fica obrigada a entregar/prestar os bens/serviços de acordo com o valor proposto, nas quantidades solicitadas e em conformidade com as especificações técnicas, prazos e horários estipulados neste instrumento e no termo de referência;"
+            },
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "CLÁUSULA OITAVA: DA VIGÊNCIA O presente instrumento terá vigência por 12 (doze) meses, a partir da data de assinatura, podendo o presente instrumento ser prorrogado e alterado mediante termo aditivo próprio, com justificativa do interesse público na renovação, bem como respeitando a legislação vigente. PARÁGRAFO ÚNICO Durante a vigência do contrato, a empresa fica obrigada a entregar/prestar os bens/serviços de acordo com o valor proposto, nas quantidades solicitadas e em conformidade com as especificações técnicas, prazos e horários estipulados neste instrumento e no termo de referência;"
+              },
+              {
+                "pagina": 11,
+                "trecho": "Assim, justo e de acordo, as partes assinam o presente Contrato, que servirá de instrumentos para fins de contratação. Mafra/SC, 13 de Março de 2024."
+              },
+              {
+                "pagina": 12,
+                "trecho": "Este documento foi assinado digitalmente pelos seguintes signatários nas datas indicadas:"
+              },
+              {
+                "pagina": 12,
+                "trecho": "em 13/03/2024 16:32:02 (GMT-03:00)"
+              },
+              {
+                "pagina": 12,
+                "trecho": "em 14/03/2024 08:25:06 (GMT-03:00)"
+              },
+              {
+                "pagina": 12,
+                "trecho": "em 14/03/2024 15:50:59 (GMT-03:00)"
+              },
+              {
+                "pagina": 12,
+                "trecho": "em 15/03/2024 15:16:43 (GMT-03:00)"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Cláusula integral e datas transcritas da resposta do usuário em 18/10/2026. Duração expressa de 12 meses a partir da assinatura, com condições de prorrogação/alteração e execução preservadas. Página 11 data o instrumento em 13/03/2024; página 12 registra assinaturas entre 13 e 15/03/2024. Início e fim continuam nulos: não escolhida uma das assinaturas como marco nem calculado término. Evidências de assinatura limitadas aos fragmentos literais das datas, sem nomes ou CPF. Confirmar esta representação na revisão humana final; nenhuma interpretação jurídica realizada."
+          },
+          "regra_reajuste": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "indice",
+              "indices": [
+                "IVAR"
+              ],
+              "percentual": null,
+              "periodicidade_meses": 12,
+              "regra": "CLÁUSULA SÉTIMA: DO REAJUSTE Será admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou superior a doze meses, mediante a aplicação do Índice de Variação de Aluguéis Residenciais - IVAR, desde que seja observado o interregno mínimo de 1 (um) ano, contado da data da assinatura do contrato, para o primeiro reajuste, ou da data do último reajuste, para os subsequentes. PARAGRAFO PRIMEIRO Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceitará negociar a adoção de preço compatível ao mercado de locação do município em que se situa o imóvel. PARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo.\n\nCLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS Os preços contratados somente poderão ser alterados durante a vigência do contrato em casos excepcionais, desde que atendido o disposto na Lei n.º 14.133/2021, sendo considerado o IVAR como índice referencial de correção, devendo para tanto CONTRATADO requerer expressamente junto à Prefeitura Municipal, anexando ao requerimento documento comprobatório da situação que enseja a revisão de preços."
+            },
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "CLÁUSULA SÉTIMA: DO REAJUSTE Será admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou superior a doze meses, mediante a aplicação do Índice de Variação de Aluguéis Residenciais - IVAR, desde que seja observado o interregno mínimo de 1 (um) ano, contado da data da assinatura do contrato, para o primeiro reajuste, ou da data do último reajuste, para os subsequentes. PARAGRAFO PRIMEIRO Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceitará negociar a adoção de preço compatível ao mercado de locação do município em que se situa o imóvel. PARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo."
+              },
+              {
+                "pagina": 4,
+                "trecho": "CLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS Os preços contratados somente poderão ser alterados durante a vigência do contrato em casos excepcionais, desde que atendido o disposto na Lei n.º 14.133/2021, sendo considerado o IVAR como índice referencial de correção, devendo para tanto CONTRATADO requerer expressamente junto à Prefeitura Municipal, anexando ao requerimento documento comprobatório da situação que enseja a revisão de preços."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Transcrição da resposta do usuário em 18/10/2026. Periodicidade de 12 meses representa o interregno mínimo da Cláusula Sétima, não reajuste automático nem prazo imposto à revisão excepcional da Cláusula Nona. Preservadas as condições de vigência mínima, marco da assinatura/último reajuste, negociação, aditivo, requerimento e comprovação. INPC relatado para atraso não incluído como índice de reajuste do aluguel. Revisão final pendente."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"pub-alu-02\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"CLÁUSULA QUINTA: DO VALOR\\nO LOCATÁRIO pagará pela locação do imóvel o valor mensal de R$8.825,50 (Oito mil,\\noitocentos e vinte e cinco e cinquenta centavos) , não podendo este ser alterado\\ndurante a vigência do contrato, salvo os casos de reajustes anua is previstos neste\\ninstrumento.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Valor por extenso incompleto ou fora das formas suportadas; a correspondência com o número não foi confirmada. Isso não comprova divergência.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"outra_regra\", \"data\": null, \"dia\": null, \"regra\": \"CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO\\nOs pagamentos devidos serão efetuados, conforme a entrega do o bjeto licitado, sendo\\nos pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal,\\ndevidamente ATESTADA pelo encarregado do recebimento de tal o bjeto.\\na) A Nota Fiscal deverá ser emitida em nome do MUNICIPIO DE MAFRA , incluindo\\nexpressamente no corpo do documento fiscal a seguinte descriçã o:\\nI. o número da Inexibilidade; e,\\nII. o número da ordem de compra.\\nAssinado por 4 pessoas:  [NOME SUPRIMIDO], [NOME SUPRIMIDO], [NOME SUPRIMIDO] e [NOME SUPRIMIDO]\\nPara verificar a validade das assinaturas, acesse https://mafra.1doc.com.br/verificacao/[CODIGO SUPRIMIDO] e informe o código [CODIGO SUPRIMIDO]\\nCONTRATO DE LOCAÇÃO DE IMÓVEL Nº054/2024 Página 3 de 11\\nIII. os dados bancários da empresa (Agência, C.C e Banco).\\nb) A locadora deverá apresentar os dados bancários vinculados ao C PF, conforme\\ninformados na declaração bancária apresentada no momento da ass inatura da\\nAta/Contrato;\\nc) A LOCADORA deverá possuir conta corrente no Banco do Brasil ou Ca ixa Econômica\\nFederal (dependendo do banco onde se encontram os recursos financ eiros vinculados a\\ndespesa orçamentária) atrelada ao seu CNPJ ou CPF, conforme co mprovação\\napresentada mediante cabeçalho do extrato da conta bancária ou outro documento que\\nconste os dados bancários, ou em caso de a conta corrente ser de ou tro banco, o\\nfornecedor arcará com o pagamento das despesas de tarifas banc árias das transações\\nque ocorrerem.\\nd) A nota fiscal que não contiver as informações descritas nos sub itens anteriores será\\ndevolvida sem o seu pagamento, até que seja regularizada a situ ação.\\ne) Nenhum pagamento será efetuado ao contrato enquanto pendent e de liquidação\\nqualquer obrigação contratual, sem que isso gere direito a reaju stamento ou correção\\nmonetária;\\nf) No caso de atraso pelo LOCATÁRIO, os valores devidos serão atua lizados\\nmonetariamente entre o término final do prazo de pagamento até a d ata de sua efetiva\\nrealização, pelo índice INPC de correção monetária.\\nPARÁGRAFO ÚNICO – O LOCATÁRIO reserva-se o direito de não efetuar o\\npagamento se os dados constantes da nota fiscal estiverem em d esacordo com os\\ndados da empresa vencedora do certame ou os objetos fornecidos nã o estiverem em\\nconformidade com a especificação apresentada.\"}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO\\nOs pagamentos devidos serão efetuados, conforme a entrega do o bjeto licitado, sendo\\nos pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal,\\ndevidamente ATESTADA pelo encarregado do recebimento de tal o bjeto.\\na) A Nota Fiscal deverá ser emitida em nome do MUNICIPIO DE MAFRA , incluindo\\nexpressamente no corpo do documento fiscal a seguinte descriçã o:\\nI. o número da Inexibilidade; e,\\nII. o número da ordem de compra.\\nAssinado por 4 pessoas:  [NOME SUPRIMIDO], [NOME SUPRIMIDO], [NOME SUPRIMIDO] e [NOME SUPRIMIDO]\\nPara verificar a validade das assinaturas, acesse https://mafra.1doc.com.br/verificacao/[CODIGO SUPRIMIDO] e informe o código [CODIGO SUPRIMIDO]\"}, {\"pagina\": 3, \"trecho\": \"CONTRATO DE LOCAÇÃO DE IMÓVEL Nº054/2024 Página 3 de 11\\nIII. os dados bancários da empresa (Agência, C.C e Banco).\\nb) A locadora deverá apresentar os dados bancários vinculados ao C PF, conforme\\ninformados na declaração bancária apresentada no momento da ass inatura da\\nAta/Contrato;\\nc) A LOCADORA deverá possuir conta corrente no Banco do Brasil ou Ca ixa Econômica\\nFederal (dependendo do banco onde se encontram os recursos financ eiros vinculados a\\ndespesa orçamentária) atrelada ao seu CNPJ ou CPF, conforme co mprovação\\napresentada mediante cabeçalho do extrato da conta bancária ou outro documento que\\nconste os dados bancários, ou em caso de a conta corrente ser de ou tro banco, o\\nfornecedor arcará com o pagamento das despesas de tarifas banc árias das transações\\nque ocorrerem.\\nd) A nota fiscal que não contiver as informações descritas nos sub itens anteriores será\\ndevolvida sem o seu pagamento, até que seja regularizada a situ ação.\\ne) Nenhum pagamento será efetuado ao contrato enquanto pendent e de liquidação\\nqualquer obrigação contratual, sem que isso gere direito a reaju stamento ou correção\\nmonetária;\\nf) No caso de atraso pelo LOCATÁRIO, os valores devidos serão atua lizados\\nmonetariamente entre o término final do prazo de pagamento até a d ata de sua efetiva\\nrealização, pelo índice INPC de correção monetária.\\nPARÁGRAFO ÚNICO – O LOCATÁRIO reserva-se o direito de não efetuar o\\npagamento se os dados constantes da nota fiscal estiverem em d esacordo com os\\ndados da empresa vencedora do certame ou os objetos fornecidos nã o estiverem em\\nconformidade com a especificação apresentada.\"}], \"confianca\": \"media\", \"regra_id\": \"vencimento-documental-paginado-v1\", \"motivo\": \"Prazo por nota fiscal e requisitos documentais reconhecidos na mesma cláusula; texto integral por página preservado, incluindo condições e correção por atraso. Não foi calculada data nem transferido encargo para o prazo-base. Reconhecimento limitado às formas suportadas, sem garantia de completude semântica.\"}, \"vigencia\": {\"estado\": \"encontrado\", \"valor\": {\"prazo\": \"determinado\", \"inicio\": null, \"fim\": null, \"duracao_meses\": 12, \"regra\": \"CLÁUSULA OITAVA: DA VIGÊNCIA\\nO presente instrumento terá vigência por 12 (doze) meses , a partir da data de\\nassinatura, podendo o presente instrumento ser prorrogado e alte rado mediante termo\\naditivo próprio, com justificativa do interesse público na ren ovação, bem como\\nrespeitando a legislação vigente.\\nPARÁGRAFO ÚNICO - Durante a vigência do contrato, a empresa fica obrigada a\\nentregar/prestar os bens/serviços de acordo com o valor propost o, nas quantidades\\nsolicitadas e em conformidade com as especificações técnic as, prazos e horários\\nestipulados neste instrumento e no termo de referência;\\nPARÁGRAFO SEXTO – No caso de incêndio parcial, obrigando a obras de\\nreconstrução, o presente contrato ficará com sua vigência susp ensa e reduzida a renda\\ndo imóvel durante o período da reconstrução à metade do que na épo ca for o aluguel, e\\nsendo após a reconstrução, devolvido ao LOCATÁRIO pelo prazo re stante do contrato,\\nque ficará prorrogado pelo mesmo tempo de duração das obras de reco nstrução.\\nf) Em caso de descumprimento das obrigações da LGPD pela CONTRATA DA, o\\nCONTRATANTE poderá rescindir o presente contrato, sem prejuíz o da\\nresponsabilização civil da CONTRATADA.\"}, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA OITAVA: DA VIGÊNCIA\\nO presente instrumento terá vigência por 12 (doze) meses , a partir da data de\\nassinatura, podendo o presente instrumento ser prorrogado e alte rado mediante termo\\naditivo próprio, com justificativa do interesse público na ren ovação, bem como\\nrespeitando a legislação vigente.\\nPARÁGRAFO ÚNICO - Durante a vigência do contrato, a empresa fica obrigada a\\nentregar/prestar os bens/serviços de acordo com o valor propost o, nas quantidades\\nsolicitadas e em conformidade com as especificações técnic as, prazos e horários\\nestipulados neste instrumento e no termo de referência;\"}, {\"pagina\": 10, \"trecho\": \"PARÁGRAFO SEXTO – No caso de incêndio parcial, obrigando a obras de\\nreconstrução, o presente contrato ficará com sua vigência susp ensa e reduzida a renda\\ndo imóvel durante o período da reconstrução à metade do que na épo ca for o aluguel, e\\nsendo após a reconstrução, devolvido ao LOCATÁRIO pelo prazo re stante do contrato,\\nque ficará prorrogado pelo mesmo tempo de duração das obras de reco nstrução.\"}, {\"pagina\": 10, \"trecho\": \"f) Em caso de descumprimento das obrigações da LGPD pela CONTRATA DA, o\\nCONTRATANTE poderá rescindir o presente contrato, sem prejuíz o da\\nresponsabilização civil da CONTRATADA.\"}], \"confianca\": \"media\", \"regra_id\": \"vigencia-explicita-v2\", \"motivo\": \"Datas e condições explícitas reunidas sem calcular início, fim ou duração ausentes; requer revisão humana.\"}, \"regra_reajuste\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"outra_regra\", \"indices\": [], \"percentual\": null, \"periodicidade_meses\": null, \"regra\": \"CLÁUSULA SÉTIMA: DO REAJUSTE\\nSerá admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou\\nsuperior a doze meses, mediante a aplicação do Índice de Variaç ão de Aluguéis\\nResidenciais – IVAR, desde que seja observado o interregno míni mo de 1 (um) ano,\\ncontado da data da assinatura do contrato, para o primeiro reajust e, ou da data do último\\nreajuste, para os subsequentes.\\nPARAGRAFO PRIMEIRO - Se a variação do indexador adotado implicar em reajuste\\ndesproporcional ao preço médio de mercado para a presente locação , o LOCADOR\\naceitará negociar a adoção de preço compatível ao mercado de lo cação do município\\nem que se situa o imóvel.\\nPARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo.\\nCLÁUSULA QUINTA: DO VALOR\\nO LOCATÁRIO pagará pela locação do imóvel o valor mensal de R$8.825,50 (Oito mil,\\noitocentos e vinte e cinco e cinquenta centavos) , não podendo este ser alterado\\ndurante a vigência do contrato, salvo os casos de reajustes anua is previstos neste\\ninstrumento.\\nCLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS\\nOs preços contratados somente poderão ser alterados durante a vi gência do contrato\\nem casos excepcionais, desde que atendido o disposto na Lei n .º 14.133/2021, sendo\\nconsiderado o IVAR como índice referencial de correção, devendo p ara tanto o\\nCONTRATADO requerer expressamente junto à Prefeitura Municipal , anexando ao\\nrequerimento documento comprobatório da situação que enseja a re visão de preços.\"}, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA SÉTIMA: DO REAJUSTE\\nSerá admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou\\nsuperior a doze meses, mediante a aplicação do Índice de Variaç ão de Aluguéis\\nResidenciais – IVAR, desde que seja observado o interregno míni mo de 1 (um) ano,\\ncontado da data da assinatura do contrato, para o primeiro reajust e, ou da data do último\\nreajuste, para os subsequentes.\\nPARAGRAFO PRIMEIRO - Se a variação do indexador adotado implicar em reajuste\\ndesproporcional ao preço médio de mercado para a presente locação , o LOCADOR\\naceitará negociar a adoção de preço compatível ao mercado de lo cação do município\\nem que se situa o imóvel.\\nPARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo.\"}, {\"pagina\": 2, \"trecho\": \"CLÁUSULA QUINTA: DO VALOR\\nO LOCATÁRIO pagará pela locação do imóvel o valor mensal de R$8.825,50 (Oito mil,\\noitocentos e vinte e cinco e cinquenta centavos) , não podendo este ser alterado\\ndurante a vigência do contrato, salvo os casos de reajustes anua is previstos neste\\ninstrumento.\"}, {\"pagina\": 4, \"trecho\": \"CLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS\\nOs preços contratados somente poderão ser alterados durante a vi gência do contrato\\nem casos excepcionais, desde que atendido o disposto na Lei n .º 14.133/2021, sendo\\nconsiderado o IVAR como índice referencial de correção, devendo p ara tanto o\\nCONTRATADO requerer expressamente junto à Prefeitura Municipal , anexando ao\\nrequerimento documento comprobatório da situação que enseja a re visão de preços.\"}], \"confianca\": \"media\", \"regra_id\": \"reajuste-revisao-distintos-v1\", \"motivo\": \"Reajuste periódico e revisão excepcional reconhecidos em cláusulas distintas. Critérios e requisitos preservados na regra literal; não há índice ou periodicidade global que represente ambas as modalidades. Não foram calculados reajustes nem verificado o atendimento de condições jurídicas.\"}}}"
+    },
+    {
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 135,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "pub-alu-03",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-10-13"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "fixo",
+              "moeda": "BRL",
+              "quantia": "2200.00",
+              "regra": null
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "7.1 O valor global deste contrato é de R$ 26.400,00 (vinte e seis mil e quatrocentos reais), referente ao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de R$ 2.200,00 (dois mil e duzentos reais)."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": null
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "7.1 O valor global deste contrato é de R$ 26.400,00 (vinte e seis mil e quatrocentos reais), referente ao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de R$ 2.200,00 (dois mil e duzentos reais)."
+              },
+              {
+                "pagina": 2,
+                "trecho": "6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está previsto para o dia 01 de abril de 2023."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O usuário informou que o contrato não expressa o número de parcelas. As cláusulas 7.1 e 6.2 fornecidas como contexto indicam valor global, aluguel mensal e prazo de locação, sem quantidade explícita. Não foi calculada quantidade a partir dos valores ou da vigência."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "8.1 O aluguel será pago mensalmente até o 20º (vigésimo) dia do mês subsequente ao mês de referência, através de Ordem Bancária, na Conta da Locatária."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "8.1 O aluguel será pago mensalmente até o 20º (vigésimo) dia do mês subsequente ao mês de referência, através de Ordem Bancária, na Conta da Locatária."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": null
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": "2022-04-01",
+              "fim": "2023-04-01",
+              "duracao_meses": null,
+              "regra": "Início em 01/04/2022, considerada a efetiva posse do imóvel (6.1), e início da locação na assinatura (6.2), datada de 01/04/2022. Término previsto em 01/04/2023. A cláusula 6.3 permite prorrogação sucessiva, desde que comprovadas a adequação do imóvel à satisfação dos interesses estatais e a compatibilidade com o valor de mercado, segundo os requisitos do art. 24, X, da Lei n° 8.666/93. A cláusula 6.4 prevê iguais e sucessivos períodos mediante Termo Aditivo, interesse das partes e verificação da vantajosidade da proposta em confronto com outras opções, nos termos do art. 3° da Lei no 8.666/1993. A cláusula 11.1 permite permanência por 30 dias após o vencimento para modificações, pinturas ou restauração, para devolver o status quo ante; nesse período, não há pagamento do aluguel acordado, apenas das taxas de água e energia. A cláusula 14.2 prevê rescisão pelo locatário no interesse do serviço público ou por motivos supervenientes, sem ônus, mediante aviso prévio de 30 dias. Não foi calculada duração nem prorrogada a data final."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "6.1 O presente contrato terá início 01 de abril de 2022, considerada a efetiva posse do imóvel pelo Locatário."
+              },
+              {
+                "pagina": 2,
+                "trecho": "6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está previsto para o dia 01 de abril de 2023."
+              },
+              {
+                "pagina": 2,
+                "trecho": "6.3 O presente contrato poderá ser prorrogado sucessivamente, desde que comprovada a adequação do imóvel para a satisfação dos interesses estatais e a compatibilidade com o valor de mercado, segundo os requisitos exigidos pelo art. 24, X, da Lei n° 8.666/93"
+              },
+              {
+                "pagina": 2,
+                "trecho": "6.4 O prazo da locação poderá ser prorrogado por iguais e sucessivos períodos mediante Termo Aditivo a este Contrato, uma vez existente o interesse das partes em manter o contrato e a verificação da vantajosidade da proposta em confronto com outras opções, nos termos do art. 3° da Lei no 8.666/1993."
+              },
+              {
+                "pagina": 3,
+                "trecho": "11.1 O LOCATÁRIO poderá permanecer no imóvel após o vencimento do presente Contrato, pelo período de 30 (trinta) dias para realizar as modificações, pinturas, ou obras de restauração, de forma a devolver o status quo ante. Neste período, não pagará o aluguel acordado, apenas as taxas de água e energia."
+              },
+              {
+                "pagina": 4,
+                "trecho": "14.2 Ao LOCATÁRIO reserva-se o direito de, no interesse do serviço público ou em decorrência de motivos supervenientes, rescindir o presente contrato, sem qualquer ônus, mediante aviso prévio de 30 (trinta) dias."
+              },
+              {
+                "pagina": 5,
+                "trecho": "Cruz das Almas, 01 de abril de 2022."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Transcrição estruturada de respostas geradas por IA externa, conforme confirmação do usuário. Cláusulas 6.3, 6.4 e 11.1 completadas na mensagem posterior. Usuário confirmou conferência humana em 13/10/2026. Referência de desenvolvimento revisada, sem caracterizar anotação humana independente; mantida fora da avaliação do protocolo atual."
+          },
+          "regra_reajuste": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "indice",
+              "indices": [
+                "IGP-M"
+              ],
+              "percentual": null,
+              "periodicidade_meses": 12,
+              "regra": "7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do IGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo.\n7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da vigência deste contrato ou da data do último reajuste.\n7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao mercado de locação no município em que se situa o imóvel."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do IGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo."
+              },
+              {
+                "pagina": 2,
+                "trecho": "7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da vigência deste contrato ou da data do último reajuste."
+              },
+              {
+                "pagina": 2,
+                "trecho": "7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao mercado de locação no município em que se situa o imóvel."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": null
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"pub-alu-03\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"fixo\", \"moeda\": \"BRL\", \"quantia\": \"2200.00\", \"regra\": null}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"7.1 O valor global deste contrato é de RS 26.400,00 (vinte e seis mil e quatrocentos reais), referente\\nao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de\\nRS 2.200,00 (dois mil e duzentos reais).\"}], \"confianca\": \"media\", \"regra_id\": \"valor-direto-v2\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"outra_regra\", \"data\": null, \"dia\": null, \"regra\": \"CLÁUSULA OITAVA - DO PAGAMENTO DO ALUGUEL\\n8.1 O aluguel será pago mensalmente até o 20® (vigésimo) dia do mês subsequente ao mês de\\nreferência, através de Ordem Bancária, na Conta da Locatária.\"}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"CLÁUSULA OITAVA - DO PAGAMENTO DO ALUGUEL\\n8.1 O aluguel será pago mensalmente até o 20® (vigésimo) dia do mês subsequente ao mês de\\nreferência, através de Ordem Bancária, na Conta da Locatária.\"}], \"confianca\": \"media\", \"regra_id\": \"vencimento-condicional-v2\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}, \"vigencia\": {\"estado\": \"encontrado\", \"valor\": {\"prazo\": \"determinado\", \"inicio\": \"2022-04-01\", \"fim\": \"2023-04-01\", \"duracao_meses\": null, \"regra\": \"6.1 O presente contrato terá início 01 de abril de 2022, considerada a efetiva posse do imóvel pelo\\nLocatário.\\n6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está\\nprevisto para o dia 01 de abril de 2023.\\n6.3 O presente contrato poderá ser prorrogado sucessivamente, desde que comprovada a adequação\\ndo imóvel para a satisfação dos interesses estatais e a compatibilidade com o valor de mercado,\\nsegundo os requisitos exigidos pelo art. 24, X, da Lei n° 8.666/93\\n6.4 O prazo da locação poderá ser prorrogado por iguais e sucessivos períodos mediante Termo\\nAditivo a este Contrato, uma vez existente o interesse das partes em manter o contrato e a verificação\\nda vantajosidade da proposta em confronto com outras opções, nos termos do art. 3® da Lei no\\n8.666/1993.\\n11.10 LOCATÁRIO poderá permanecer no imóvel após o vencimento do presente Contrato, pelo\\nperíodo de 30 (trinta) dias para realizar as modificações, pinturas, ou obras de restauração, de forma\\na devolver o status quo ante. Neste período, não pagará o aluguel acordado, apenas as taxas de água e\\nenergia.\\n11.3 Caso uma das partes resolva entregar o imóvel antes do final do prazo contratual, deverá\\ncomunicar por escrito à outra parte com antecedência de 30 (trinta) dias, sem direito a possíveis\\nindenizações por quebra de contrato.\\n13.1 O LOCATÁRIO declara que recebeu o imóvel, bem como todos os acessórios, em estado de\\nhabilidade, conservação e funcionamento, para assim restituí-lo, nas mesmas condições, nos termos\\nda cláusula quando findo ou rescindido o contrato.\\n14.2 Ao LOCATÁRIO reserva-se o direito de, no interesse do serviço público ou em decorrência de\\nmotivos supervenientes, rescindir o presente contrato, sem qualquer ônus, mediante aviso prévio de\\n30 (trinta) dias.\\n14.3 O LOCADOR reconhece os direitos da administração em caso de rescisão administrativa prevista\\nno art. 77 da Lei n®. 8.666/93.\"}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"6.1 O presente contrato terá início 01 de abril de 2022, considerada a efetiva posse do imóvel pelo\\nLocatário.\"}, {\"pagina\": 2, \"trecho\": \"6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está\\nprevisto para o dia 01 de abril de 2023.\"}, {\"pagina\": 2, \"trecho\": \"6.3 O presente contrato poderá ser prorrogado sucessivamente, desde que comprovada a adequação\\ndo imóvel para a satisfação dos interesses estatais e a compatibilidade com o valor de mercado,\\nsegundo os requisitos exigidos pelo art. 24, X, da Lei n° 8.666/93\"}, {\"pagina\": 2, \"trecho\": \"6.4 O prazo da locação poderá ser prorrogado por iguais e sucessivos períodos mediante Termo\\nAditivo a este Contrato, uma vez existente o interesse das partes em manter o contrato e a verificação\\nda vantajosidade da proposta em confronto com outras opções, nos termos do art. 3® da Lei no\\n8.666/1993.\"}, {\"pagina\": 3, \"trecho\": \"11.10 LOCATÁRIO poderá permanecer no imóvel após o vencimento do presente Contrato, pelo\\nperíodo de 30 (trinta) dias para realizar as modificações, pinturas, ou obras de restauração, de forma\\na devolver o status quo ante. Neste período, não pagará o aluguel acordado, apenas as taxas de água e\\nenergia.\"}, {\"pagina\": 4, \"trecho\": \"11.3 Caso uma das partes resolva entregar o imóvel antes do final do prazo contratual, deverá\\ncomunicar por escrito à outra parte com antecedência de 30 (trinta) dias, sem direito a possíveis\\nindenizações por quebra de contrato.\"}, {\"pagina\": 4, \"trecho\": \"13.1 O LOCATÁRIO declara que recebeu o imóvel, bem como todos os acessórios, em estado de\\nhabilidade, conservação e funcionamento, para assim restituí-lo, nas mesmas condições, nos termos\\nda cláusula quando findo ou rescindido o contrato.\"}, {\"pagina\": 4, \"trecho\": \"14.2 Ao LOCATÁRIO reserva-se o direito de, no interesse do serviço público ou em decorrência de\\nmotivos supervenientes, rescindir o presente contrato, sem qualquer ônus, mediante aviso prévio de\\n30 (trinta) dias.\"}, {\"pagina\": 4, \"trecho\": \"14.3 O LOCADOR reconhece os direitos da administração em caso de rescisão administrativa prevista\\nno art. 77 da Lei n®. 8.666/93.\"}], \"confianca\": \"media\", \"regra_id\": \"vigencia-explicita-v2\", \"motivo\": \"Datas e condições explícitas reunidas sem calcular início, fim ou duração ausentes; requer revisão humana.\"}, \"regra_reajuste\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"indice\", \"indices\": [\"IGP-M\"], \"percentual\": null, \"periodicidade_meses\": 12, \"regra\": \"CLÁUSULA SÉTIMA - DO PREÇO E REAJUSTE\\n7.1 O valor global deste contrato é de RS 26.400,00 (vinte e seis mil e quatrocentos reais), referente\\nao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de\\nRS 2.200,00 (dois mil e duzentos reais).\\n7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do\\nIGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo.\\n7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da\\nvigência deste contrato ou da data do último reajuste.\\n7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de\\nmercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao\\nmercado de locação no município em que se situa o imóvel.\"}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"CLÁUSULA SÉTIMA - DO PREÇO E REAJUSTE\\n7.1 O valor global deste contrato é de RS 26.400,00 (vinte e seis mil e quatrocentos reais), referente\\nao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de\\nRS 2.200,00 (dois mil e duzentos reais).\\n7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do\\nIGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo.\\n7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da\\nvigência deste contrato ou da data do último reajuste.\\n7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de\\nmercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao\\nmercado de locação no município em que se situa o imóvel.\"}], \"confianca\": \"media\", \"regra_id\": \"reajuste-clausula-v2\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}}}"
+    }
+  ]
+}

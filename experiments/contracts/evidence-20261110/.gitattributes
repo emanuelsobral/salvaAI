@@ -1,0 +1,2 @@
+# Preserve bytes and accept CRLF in the archived evidence.
+* -text whitespace=cr-at-eol

@@ -1,0 +1,91 @@
+{
+  "id": "sint-s1-alu01-03",
+  "categoria": "aluguel",
+  "paginas": [
+    "CONTRATO DE LOCAÇÃO RESIDENCIAL \n \nLOCADOR (PROPRIETÁRIO DO IMÓVEL): \n- Nome:    \n- Nacionalidade: _   \n- Estado civil:    \n- Profissão:    \n- R.G. nº:    \n- CPF nº:    \n- Endereço:    \n \n- Telefone: (   )   \nLOCATÁRIO: \n- Nome:    \n- Nacionalidade: _   \n- Estado civil:    \n- Profissão:    \n- R.G. nº:    \n- CPF nº:    \n- Endereço:    \n \n- Telefone: (   )   \nO LOCADOR e o LOCATÁRIO acima qualificados, celebram este “Instrumento Particular de Contrato de \nLocação” e se comprometem a cumprir as cláusulas abaixo discriminadas: \nCLÁUSULA PRIMEIRA - DO OBJETO \nPor meio deste Contrato, o LOCADOR entrega ao LOCATÁRIO a posse e o uso do imóvel situado na \n, \nfazendo jus, em contrapartida, ao pagamento pelo LOCATÁRIO dos valores de aluguel e encargos (quando \nhouver). \nCLÁUSULA SEGUNDA – DO PRAZO DE LOCAÇÃO \nEste Contrato vigorará pelo prazo disposto de 12 (doze) meses, tendo início em 01/02/2026, término previsto \npara o dia 01/02/2027 e, após finalizado, deverá o LOCATÁRIO restituir o Imóvel ao LOCADOR, no estado \nem que recebeu, salvo as deteriorações decorrentes do uso normal. \nApós o fim do prazo ajustado, se o LOCATÁRIO continuar na posse do imóvel alugado por mais de 30 (trinta) \ndias sem oposição do LOCADOR, considera-se a locação prorrogada, por prazo indeterminado, mantendo-se \nas demais cláusulas e condições do contrato \nCLÁUSULA TERCEIRA – DO VALOR DO ALUGUEL \nPagará o LOCATÁRIO ao LOCADOR, título de aluguel, o valor mensal de R$ 2.450,00 (dois mil e quatrocentos e cinquenta reais).\nOs aluguéis serão pagos todo dia 15 (quinze) de cada mês, efetivando-se por seguintes dados: \nTITULAR DA CONTA:                                                                                                                                                       \nBANCO:   \nAGÊNCIA:    ",
+    "CONTA/PIX:    \nCLÁUSULA QUARTA – DOS ENCARGOS DA LOCAÇÃO \nAlém do aluguel, o LOCATÁRIO deverá pagar os seguintes encargos da locação: \n(  ) Imposto Predial Territorial Urbano (IPTU); \n( ) As taxas de luz e força, de incêndio, de água e esgoto, de limpeza urbana e outras que venham a ser \ncobradas e que recaiam sobre o Imóvel; \n(  ) As contribuições para as despesas ordinárias do Condomínio, se for o caso. \n(  ) Outro:    \n( ) Nenhum dos itens acima. \nCLÁUSULA QUINTA: DO ATRASO NO PAGAMENTO \nO atraso no pagamento do aluguel e/ou dos encargos da locação implicará a incidência de multa de 2,00% \n(dois por cento) sobre o valor total de débito e juros de 1,00% (um por cento) ao mês. \nCLÁUSULA SEXTA – DO USO DA LOCAÇÃO \nEventuais reformas que o LOCATÁRIO pretender executar no imóvel, só poderão ser realizadas mediante \nautorização prévia e expressa do LOCADOR. \nCLÁUSULA SÉTIMA - DA RESCISÃO POR INADIMPLEMENTO E OU DESOCUPAÇÃO ANTECIPADA \nO LOCATÁRIO poderá devolver o Imóvel ao LOCADOR antecipadamente, desde que comunique ao LOCADOR \nsobre a sua intenção com, no mínimo, 30 (trinta) dias de antecedência da data da pretendida devolução. \nCLÁUSULA OITAVA - DAS DISPOSIÇÕES GERAIS \nEste contrato é celebrado em caráter intransferível e irrevogável, obrigando as partes e seus sucessores, \nsendo vedada a transmissão parcial ou total dos direitos contratuais sem anuência escrita da outra parte. \n \n  , de de 202 _. \n(cidade)          (dia)                        (mês)                            (ano) \n \n \nLOCADOR (a) \n \n \n \nLOCATÁRIO (a) \nTestemunhas: \n \n1.    \nNome: \nRG: \n \n2.    \nNome: \nRG: "
+  ],
+  "campos_gabarito": {
+    "valor_parcela": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "2450.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Pagará o LOCATÁRIO ao LOCADOR, título de aluguel, o valor mensal de R$ 2.450,00 (dois mil e quatrocentos e cinquenta reais)."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "numero_parcelas": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Modelo alu-01 define prazo em meses sem número de parcelas."
+    },
+    "data_vencimento": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 15,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Os aluguéis serão pagos todo dia 15 (quinze) de cada mês, efetivando-se por seguintes dados:"
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "vigencia": {
+      "estado": "presente",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2026-02-01",
+        "fim": "2027-02-01",
+        "duracao_meses": 12,
+        "regra": "Este Contrato vigorará pelo prazo disposto de 12 (doze) meses, tendo início em 01/02/2026, término previsto para o dia 01/02/2027"
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Este Contrato vigorará pelo prazo disposto de 12 (doze) meses, tendo início em 01/02/2026, término previsto para o dia 01/02/2027"
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "regra_reajuste": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Modelo alu-01 não possui cláusula de reajuste."
+    }
+  },
+  "parametros": {
+    "estrato": "S1",
+    "modelo_base": "alu-01",
+    "modo": "preenchido_estrito",
+    "valor_parcela": "2450.00",
+    "dia_vencimento": 15,
+    "duracao_meses": 12,
+    "inicio": "2026-02-01",
+    "fim": "2027-02-01"
+  }
+}

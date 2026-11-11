@@ -1,0 +1,151 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "pub-alu-03",
+    "pdf_sha256": "f5f51b72c9daa71553eeea00f8cce74c20ec197cdfb45320193150e980793736",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-10-13"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "fixo",
+          "moeda": "BRL",
+          "quantia": "2200.00",
+          "regra": null
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "7.1 O valor global deste contrato é de R$ 26.400,00 (vinte e seis mil e quatrocentos reais), referente ao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de R$ 2.200,00 (dois mil e duzentos reais)."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": null
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "7.1 O valor global deste contrato é de R$ 26.400,00 (vinte e seis mil e quatrocentos reais), referente ao período de vigência fixado neste Contrato, importando em aluguel mensal do imóvel no valor de R$ 2.200,00 (dois mil e duzentos reais)."
+          },
+          {
+            "pagina": 2,
+            "trecho": "6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está previsto para o dia 01 de abril de 2023."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O usuário informou que o contrato não expressa o número de parcelas. As cláusulas 7.1 e 6.2 fornecidas como contexto indicam valor global, aluguel mensal e prazo de locação, sem quantidade explícita. Não foi calculada quantidade a partir dos valores ou da vigência."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "8.1 O aluguel será pago mensalmente até o 20º (vigésimo) dia do mês subsequente ao mês de referência, através de Ordem Bancária, na Conta da Locatária."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "8.1 O aluguel será pago mensalmente até o 20º (vigésimo) dia do mês subsequente ao mês de referência, através de Ordem Bancária, na Conta da Locatária."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": null
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": "2022-04-01",
+          "fim": "2023-04-01",
+          "duracao_meses": null,
+          "regra": "Início em 01/04/2022, considerada a efetiva posse do imóvel (6.1), e início da locação na assinatura (6.2), datada de 01/04/2022. Término previsto em 01/04/2023. A cláusula 6.3 permite prorrogação sucessiva, desde que comprovadas a adequação do imóvel à satisfação dos interesses estatais e a compatibilidade com o valor de mercado, segundo os requisitos do art. 24, X, da Lei n° 8.666/93. A cláusula 6.4 prevê iguais e sucessivos períodos mediante Termo Aditivo, interesse das partes e verificação da vantajosidade da proposta em confronto com outras opções, nos termos do art. 3° da Lei no 8.666/1993. A cláusula 11.1 permite permanência por 30 dias após o vencimento para modificações, pinturas ou restauração, para devolver o status quo ante; nesse período, não há pagamento do aluguel acordado, apenas das taxas de água e energia. A cláusula 14.2 prevê rescisão pelo locatário no interesse do serviço público ou por motivos supervenientes, sem ônus, mediante aviso prévio de 30 dias. Não foi calculada duração nem prorrogada a data final."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "6.1 O presente contrato terá início 01 de abril de 2022, considerada a efetiva posse do imóvel pelo Locatário."
+          },
+          {
+            "pagina": 2,
+            "trecho": "6.2 O prazo de locação do imóvel se inicia na data da assinatura deste Contrato e o término está previsto para o dia 01 de abril de 2023."
+          },
+          {
+            "pagina": 2,
+            "trecho": "6.3 O presente contrato poderá ser prorrogado sucessivamente, desde que comprovada a adequação do imóvel para a satisfação dos interesses estatais e a compatibilidade com o valor de mercado, segundo os requisitos exigidos pelo art. 24, X, da Lei n° 8.666/93"
+          },
+          {
+            "pagina": 2,
+            "trecho": "6.4 O prazo da locação poderá ser prorrogado por iguais e sucessivos períodos mediante Termo Aditivo a este Contrato, uma vez existente o interesse das partes em manter o contrato e a verificação da vantajosidade da proposta em confronto com outras opções, nos termos do art. 3° da Lei no 8.666/1993."
+          },
+          {
+            "pagina": 3,
+            "trecho": "11.1 O LOCATÁRIO poderá permanecer no imóvel após o vencimento do presente Contrato, pelo período de 30 (trinta) dias para realizar as modificações, pinturas, ou obras de restauração, de forma a devolver o status quo ante. Neste período, não pagará o aluguel acordado, apenas as taxas de água e energia."
+          },
+          {
+            "pagina": 4,
+            "trecho": "14.2 Ao LOCATÁRIO reserva-se o direito de, no interesse do serviço público ou em decorrência de motivos supervenientes, rescindir o presente contrato, sem qualquer ônus, mediante aviso prévio de 30 (trinta) dias."
+          },
+          {
+            "pagina": 5,
+            "trecho": "Cruz das Almas, 01 de abril de 2022."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Transcrição estruturada de respostas geradas por IA externa, conforme confirmação do usuário. Cláusulas 6.3, 6.4 e 11.1 completadas na mensagem posterior. Usuário confirmou conferência humana em 13/10/2026. Referência de desenvolvimento revisada, sem caracterizar anotação humana independente; mantida fora da avaliação do protocolo atual."
+      },
+      "regra_reajuste": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "indice",
+          "indices": [
+            "IGP-M"
+          ],
+          "percentual": null,
+          "periodicidade_meses": 12,
+          "regra": "7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do IGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo.\n7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da vigência deste contrato ou da data do último reajuste.\n7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao mercado de locação no município em que se situa o imóvel."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "7.2 Poderá ser feito o reajuste do aluguel fixado nesta cláusula através de apostilamento, por meio do IGP-M ou, na insubsistência deste, por outro índice que vier a substituí-lo."
+          },
+          {
+            "pagina": 2,
+            "trecho": "7.3 Será permitido o reajuste desde que observado o interregno mínimo de 01 (um) ano, a contar da vigência deste contrato ou da data do último reajuste."
+          },
+          {
+            "pagina": 2,
+            "trecho": "7.4 Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceita negociar a adoção de preço compatível ao mercado de locação no município em que se situa o imóvel."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": null
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "f12e0ca4ceb38a2a655c83880247209039652977a32c8355542976bf35305e84",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

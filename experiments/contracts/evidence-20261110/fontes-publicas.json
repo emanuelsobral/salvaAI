@@ -1,0 +1,155 @@
+[
+  {
+    "id": "alu-01",
+    "titulo": "AGEHAB — modelo de locação residencial",
+    "url": "https://goias.gov.br/agehab/wp-content/uploads/sites/18/2022/03/contrato.de_.locacao.006-7a4.pdf",
+    "sha256": "cabb00d319616e0185e1ba1d73f8e97dcbdbd983edb5a7fd9622d72382d9eb57",
+    "paginas": 2,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "alu-02",
+    "titulo": "Rodovalho — modelo de locação",
+    "url": "https://rodovalhoempreendimentos.com.br/img/modelo-contrato-locacao.pdf",
+    "sha256": "0799f89b49c683f50edb31c4f06323c6cbc261bd577732ae0e188a1200984102",
+    "paginas": 7,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "alu-03",
+    "titulo": "Wondershare — modelo de aluguel",
+    "url": "https://pdf.wondershare.com.br/modelo/contrato/aluguel_para_imprimir.pdf",
+    "sha256": "790d41c61877bdd74e7c6112bebcd5af94db9dd8efeecd32b6b6042a2025af47",
+    "paginas": 2,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "alu-04",
+    "titulo": "PontoXP — modelo de locação residencial",
+    "url": "https://www.pontoxp.com/wp-content/uploads/2013/03/MODELO-DE-CONTRATO-DE-ALUGUEL-RESIDENCIAL.pdf",
+    "sha256": "c47f08bdf399040398f0f17776990ecdddaa9ecf3bff959f6c7d364792a8186f",
+    "paginas": 4,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "edu-01",
+    "titulo": "Adventista — contrato educacional 2026",
+    "url": "https://s.educacaoadventista.org.br/escola/arquivos/TDLFbJJU9BKA5qB6hoOHW5RUGBa7eoHFdZpDxDvX.pdf",
+    "sha256": "07990db835e307040c0502b53a5f5e3edc917839f798734e8094e9625d46aac1",
+    "paginas": 16,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "edu-02",
+    "titulo": "Anchieta Maceió — matrícula 2026",
+    "url": "https://www.anchietamaceio.com.br/downloads/contrato-de-matricula-e-prestacao-de-servicos-educacionais-2026.pdf",
+    "sha256": "8d0ef91d19452152a0aa7c667171cdbc4a35ed5b0e4cf47fade7679e9cfa6d9a",
+    "paginas": 3,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "edu-03",
+    "titulo": "Santa Teresinha — serviços escolares 2026",
+    "url": "https://matriculas.colegiosantateresinha.com.br/downloads/contrato.pdf",
+    "sha256": "7ecb6e7ac07ff529ca7cdd565dce52f78df69db353c87e4ff122436483519a62",
+    "paginas": 9,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "edu-08",
+    "titulo": "Silva Abreu — anual fundamental 2021",
+    "url": "https://www.colegiosilvaabreu.com/pdf/contratos/contrato-anual-2021-fundamental1.pdf",
+    "sha256": "6d90ab5cd95d1aad67da00bdd3b4dbd99ca93bef0ab0bbf4a4012df14b8e14da",
+    "paginas": 17,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "edu-10",
+    "titulo": "AEB — prestação de serviços educacionais",
+    "url": "https://aeb.edu.br/aeb/wp-content/uploads/2025/07/contrato-de-prestacao-de-servico.pdf",
+    "sha256": "e1589171a0f60607c007d5eebd52ac22da97f7676bed1cf394e3a3ae15b0f916",
+    "paginas": 11,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "fin-01",
+    "titulo": "Itaú — financiamento imobiliário taxa de mercado",
+    "url": "https://ww3.itau.com.br/imobline/pre/pdf/TaxadeMercado.pdf",
+    "sha256": "04cd66aa15e643eb6957328e72ba3b453dabac714a1290298c6e7d3da3e6e44d",
+    "paginas": 17,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "fin-06",
+    "titulo": "Porto Seguro — cédula de crédito bancário",
+    "url": "https://www.portoseguro.com.br/NovoInstitucional/static_files/CGs/auto_credito_porto_seguro/cg_cedula_de_credito_bancario.pdf",
+    "sha256": "94bff9e6c04027de8f222960de3fe7491b467e4d3ea020b887d1e9230f0213ad",
+    "paginas": 5,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "sau-01",
+    "titulo": "Norden — Plano A Copart",
+    "url": "https://meunorden.com/wp-content/uploads/Contrato-PlanoA-Copart.pdf",
+    "sha256": "cd66c21c800fc669b6e035380caf5dcfc823313544f93d1171989e32e608ce93",
+    "paginas": 33,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "sau-02",
+    "titulo": "NotreLife — ambulatorial SP",
+    "url": "https://www2.gndi.com.br/documents/20182/247210781/00%2BNDI%2BSP%2B-NOTRELIFE%2BAMB%2BSP%2BCP%2B-%2B495367233%2B-%2Bnov.24.pdf/dd343f2f-07e5-4e60-4724-8d083357617c",
+    "sha256": "50596eda65219ab8d0c507975e1e3c897984f7835389195535b0dd1f84f59879",
+    "paginas": 41,
+    "divisao": "teste",
+    "classificacao_automatica": "misto_ou_paginas_vazias"
+  },
+  {
+    "id": "sau-03",
+    "titulo": "NotreLife — apartamento RJ",
+    "url": "https://www2.gndi.com.br/documents/20182/240897362/NOTRELIFE%2B50%2B%2BAPTO%2BRJ%2BCP%2B-%2B495269233%2B-%2Bv.%2B07.2024.pdf/82219bb5-493e-83de-7f94-b1089af0f147",
+    "sha256": "dc73c179ba8c6439e853fac239ca2e3b725af652a84244c90c2f2ff5b4fcad56",
+    "paginas": 40,
+    "divisao": "teste",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "sau-06",
+    "titulo": "CAA-MG — Unipart Nacional 2022",
+    "url": "https://caamg.org.br/oab-caa-saude/pdf/contratounipartnacional2apartamento_2022.pdf",
+    "sha256": "da6e947f89540aceed1513e26b1dedcbaae7005ac0406409c758a64c5aa3772f",
+    "paginas": 25,
+    "divisao": "teste",
+    "classificacao_automatica": "sem_texto_util"
+  },
+  {
+    "id": "pub-alu-02",
+    "titulo": "Mafra — contrato de locação 054/2024",
+    "url": "https://mafra.sc.gov.br/uploads/sites/372/2024/03/Contr-054.2024-INEX.002.2024-Proc.-010.2024-MARCELO-SARTORI.pdf",
+    "sha256": "ff86412a437af5bf1d146c94b11feca5342c953f28a07f4c3f8ff9bfc17567f2",
+    "paginas": 12,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  },
+  {
+    "id": "pub-alu-03",
+    "titulo": "Cruz das Almas — contrato de locação 567/2022",
+    "url": "https://acessoainformacao.cruzdasalmas.ba.gov.br/uploads/contratos/20220712151103_GERAL_194003146462cdb9376aecc.pdf",
+    "sha256": "f5f51b72c9daa71553eeea00f8cce74c20ec197cdfb45320193150e980793736",
+    "paginas": 5,
+    "divisao": "desenvolvimento",
+    "classificacao_automatica": "texto"
+  }
+]

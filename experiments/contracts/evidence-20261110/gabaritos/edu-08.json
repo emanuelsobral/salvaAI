@@ -1,0 +1,112 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "edu-08",
+    "pdf_sha256": "6d90ab5cd95d1aad67da00bdd3b4dbd99ca93bef0ab0bbf4a4012df14b8e14da",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "Para matrículas até Dezembro de 2020 – 13 parcelas de R$ R$ 466,03.\nPara matrículas em Janeiro de 2021 – 12 parcelas de R$ 504,86.\nPara matrículas em Fevereiro de 2021 em diante – parcelas de R$ 550,76, correspondente ao mês da matrícula até Dezembro de 2021."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A Cláusula 9ª (pág. 4) prevê três valores distintos de parcela conforme a data da matrícula (R$ 466,03 até dez/2020; R$ 504,86 em jan/2021; R$ 550,76 de fev/2021 em diante), e a data de assinatura/matrícula está em branco na pág. 17."
+      },
+      "numero_parcelas": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "Para matrículas até Dezembro de 2020 – 13 parcelas de R$ R$ 466,03.\nPara matrículas em Janeiro de 2021 – 12 parcelas de R$ 504,86.\nPara matrículas em Fevereiro de 2021 em diante – parcelas de R$ 550,76, correspondente ao mês da matrícula até Dezembro de 2021."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A Cláusula 9ª (pág. 4) prevê 13 parcelas (matrículas até dez/2020), 12 parcelas (matrículas em jan/2021) ou quantidade variável conforme o mês da matrícula (fev/2021 em diante), sem data preenchida no modelo."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "Cláusula 18 – A primeira parcela da anuidade escolar deverá ser paga no ato da matrícula e as demais, no dia 10(dez) de cada mês, a partir de janeiro, terminando em 10(dez) de dezembro, salvo acordo específico e individual das partes, em adiantamento a este."
+        },
+        "evidencias": [
+          {
+            "pagina": 7,
+            "trecho": "Cláusula 18 – A primeira parcela da anuidade escolar deverá ser paga no ato da matrícula e as demais, no dia 10(dez) de cada mês, a partir de janeiro, terminando em 10(dez) de dezembro, salvo acordo específico e individual das partes, em adiantamento a este."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Vencimento na Cláusula 18: 1ª parcela no ato da matrícula e demais no dia 10 de cada mês de janeiro a dezembro."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": "2021-12-31",
+          "duracao_meses": null,
+          "regra": "Cláusula 43 – O presente contrato tem seus efeitos iniciados no ato da assinatura das partes e encerra-se a 31 de dezembro de 2021 gerando efeitos até a conclusão dos serviços educacionais e recebimento de sua contra prestação, não caracterizando direito de qualquer das partes à nova matrícula no período letivo seguinte."
+        },
+        "evidencias": [
+          {
+            "pagina": 14,
+            "trecho": "Cláusula 43 – O presente contrato tem seus efeitos iniciados no ato da assinatura das partes e encerra-se a 31 de dezembro de 2021 gerando efeitos até a conclusão dos serviços educacionais e"
+          },
+          {
+            "pagina": 15,
+            "trecho": "recebimento de sua contra prestação, não caracterizando direito de qualquer das partes à nova matrícula no período letivo seguinte."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Início no ato da assinatura (sem data preenchida na pág. 17) e término expresso em 31/12/2021 na Cláusula 43."
+      },
+      "regra_reajuste": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "indices": [],
+          "percentual": null,
+          "periodicidade_meses": null,
+          "regra": "Cláusula 12 – As parcelas terão sua expressão monetária corrigida por qualquer índice legalmente implacável, ou quando a política salarial do Governo causar reflexos superiores à sua variação, sendo automática a correção dos valores na mesma proporção do acréscimo, na forma da legislação aplicável à espécie. Parágrafo Único – O valor da mensalidade básica do Estabelecimento de Ensino é calculado com base no seu planejamento administrativo e pedagógico e reajustado em conformidade com a legislação em vigor;"
+        },
+        "evidencias": [
+          {
+            "pagina": 5,
+            "trecho": "Cláusula 12 – As parcelas terão sua expressão monetária corrigida por qualquer índice legalmente implacável, ou quando a política salarial do Governo causar reflexos superiores à sua variação, sendo automática a correção dos valores na mesma proporção do acréscimo, na forma da legislação aplicável à espécie.\nParágrafo Único – O valor da mensalidade básica do Estabelecimento de Ensino é calculado com base no seu planejamento administrativo e pedagógico e reajustado em conformidade com a legislação em vigor;"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Regra textual de reajuste na Cláusula 12 e Parágrafo Único, sem índice nominal específico."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "fb5664397301ca65ed271d28f99b4f4f54b486b7a2c28e76113a929b41c39d0a",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

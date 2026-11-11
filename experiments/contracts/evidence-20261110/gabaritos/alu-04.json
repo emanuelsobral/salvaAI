@@ -1,0 +1,107 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "alu-04",
+    "pdf_sha256": "c47f08bdf399040398f0f17776990ecdddaa9ecf3bff959f6c7d364792a8186f",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "VALOR MENSAL DA LOCAÇÃO: R$ em algarismos e por extenso"
+          },
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA TERCEIRA – O aluguel mensal fica estipulado em [valor], devendo ser pago no [...] dia útil do mês subseqüente ao vencido"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo em branco com marcadores de preenchimento: 'VALOR MENSAL DA LOCAÇÃO: R$ em algarismos e por extenso' (pág. 1) e 'O aluguel mensal fica estipulado em [valor]' (pág. 2)."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA SEGUNDA – O prazo de locação é de [...] meses, com termo inicial em [data] e termo final em [data]"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Modelo de locação residencial em branco sem previsão de número de parcelas."
+      },
+      "data_vencimento": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA TERCEIRA – O aluguel mensal fica estipulado em [valor], devendo ser pago no [...] dia útil do mês subseqüente ao vencido, por meio de [depósito bancário ou outra opção de pagamente], na conta corrente em nome do LOCADOR, Banco [....]. PARÁGRAFO PRIMEIRO – O LOCADOR concederá um desconto de 10% sobre o valor avençado caso o aluguel seja pago até o 5º dia útil do mês subseqüente ao vencido. [opcional]"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O dia útil de vencimento na Cláusula Terceira está com marcador em branco ('no [...] dia útil do mês subseqüente ao vencido'), e o desconto até o 5º dia útil no Parágrafo Primeiro é marcado como '[opcional]'."
+      },
+      "vigencia": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA SEGUNDA – O prazo de locação é de [...] meses, com termo inicial em [data] e termo final em [data], data em que o LOCATÁRIO se compromete a restituir o imóvel completamente desocupado, no estado em que o recebeu, independentemente de Notificação ou Interpelação Judicial, ressalvada a hipótese de prorrogação da locação, que somente se fará por escrito."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Prazo em meses, termo inicial e termo final estão com marcadores '[...]' e '[data]' em branco na Cláusula Segunda."
+      },
+      "regra_reajuste": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "indice",
+          "indices": [
+            "IGP-M"
+          ],
+          "percentual": null,
+          "periodicidade_meses": 12,
+          "regra": "PARÁGRAFO SEGUNDO – O valor locativo será reajustado anualmente, de acordo com a variação acumulada do IGP-M/FGV. Na ausência deste índice será eleito outro legalmente previsto, conforme prévia convenção das partes."
+        },
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "PERIODICIDADE DO REAJUSTE: anualmente"
+          },
+          {
+            "pagina": 2,
+            "trecho": "PARÁGRAFO SEGUNDO – O valor locativo será reajustado anualmente, de acordo com a variação acumulada do IGP-M/FGV. Na ausência deste índice será eleito outro legalmente previsto, conforme prévia convenção das partes."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Cláusula Terceira, § 2º e quadro inicial definem reajuste anual pelo IGP-M/FGV sem lacunas pendentes."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "813d25753cc9df3ebbb3131e563858319b668402253ca61e046d601218df4ea4",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

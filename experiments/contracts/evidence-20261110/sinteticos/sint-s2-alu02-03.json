@@ -1,0 +1,114 @@
+{
+  "id": "sint-s2-alu02-03",
+  "categoria": "aluguel",
+  "paginas": [
+    "INSTRUMENTO CONTRATUAL SINTÉTICO DERIVADO DO MODELO PÚBLICO ALU-02 — CATEGORIA ALUGUEL\n\nO aluguel mensal é de R$ 1.250,00 (mil e duzentos e cinquenta reais).\n\nSerão devidas 12 (doze) parcelas mensais.\n\nO vencimento ocorrerá todo dia 20 de cada mês.\n\nA vigência é de 01/01/2026 a 01/01/2027, pelo prazo de 12 meses.\n\nO valor será reajustado a cada 12 meses pelo INPC."
+  ],
+  "campos_gabarito": {
+    "valor_parcela": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "1250.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 1.250,00 (mil e duzentos e cinquenta reais)."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "numero_parcelas": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "determinado",
+        "quantidade": 12
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Serão devidas 12 (doze) parcelas mensais."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "data_vencimento": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 20,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O vencimento ocorrerá todo dia 20 de cada mês."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "vigencia": {
+      "estado": "presente",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2026-01-01",
+        "fim": "2027-01-01",
+        "duracao_meses": 12,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A vigência é de 01/01/2026 a 01/01/2027, pelo prazo de 12 meses."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "regra_reajuste": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "indice",
+        "indices": [
+          "INPC"
+        ],
+        "percentual": null,
+        "periodicidade_meses": 12,
+        "regra": "O valor será reajustado a cada 12 meses pelo INPC."
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O valor será reajustado a cada 12 meses pelo INPC."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    }
+  },
+  "parametros": {
+    "estrato": "S2",
+    "modelo_base": "alu-02",
+    "modo": "canonico_exato",
+    "valor_texto": "1250.00",
+    "valor_gabarito": "1250.00",
+    "numero_parcelas": 12,
+    "dia_vencimento": 20,
+    "duracao_meses": 12,
+    "inicio": "2026-01-01",
+    "fim": "2027-01-01",
+    "indice": "INPC"
+  }
+}

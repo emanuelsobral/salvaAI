@@ -1,0 +1,106 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "edu-03",
+    "pdf_sha256": "7ecb6e7ac07ff529ca7cdd565dce52f78df69db353c87e4ff122436483519a62",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "§ 1º - Conforme a série/ano em que se dará a matrícula do aluno, os valores da anuidade para o ano letivo de 2026 serão os seguintes:\nSérie/Ano Anuidade\nMaternal II e III – Ed. Infantil R$ 8.808,00\n1º e 2º Período – Ed. Infantil R$ 9.480,00\n1º Ano – Ens. Fundamental Anos Iniciais R$ 11.496,00\n2º ao 5º Ano – Ens. Fundamental Anos Iniciais R$ 11.652,00\n6º ao 8º Ano – Ens. Fundamental Anos Finais R$ 12.696,00\n9º Ano – Ens. Fundamental Anos Finais R$ 14.088,00\n1ª e 2ª Série – Ensino Médio R$ 16.416,00\n3ª Série – Ensino Médio R$ 19.836,00"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Série/ano do aluno está em branco na pág. 1 e a Cláusula 5ª, § 1º (pág. 3) lista 8 valores de anuidade diferentes por série (de R$ 8.808,00 a R$ 19.836,00), sem valor mensal explícito e com opção de pagamento à vista ou em 12 parcelas."
+      },
+      "numero_parcelas": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas:"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A Cláusula 6ª prevê pagamento 'à vista ou em 12 (doze) parcelas mensais e iguais', sem opção assinalada no modelo em branco."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas: 1ª Parc. 10/01/2026 2ª Parc. 10/02/2026 3ª Parc. 10/03/2026 4ª Parc. 10/04/2026 5ª Parc. 10/05/2026 6ª Parc. 10/06/2026 7ª Parc. 10/07/2026 8ª Parc. 10/08/2026 9ª Parc. 10/09/2026 10ª Parc. 10/10/2026 11ª Parc. 10/11/2026 12ª Parc. 10/12/2026 § 2º - A celebração e concretização do presente contrato dará com a confirmação do pagamento da primeira parcela até o dia 10/01/2026. As demais parcelas deverão ser pagas até a data de vencimento correspondente, sob pena das implicações previstas neste contrato."
+        },
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas:\n1ª Parc. 10/01/2026 4ª Parc. 10/04/2026 7ª Parc. 10/07/2026 10ª Parc. 10/10/2026\n2ª Parc. 10/02/2026 5ª Parc. 10/05/2026 8ª Parc. 10/08/2026 11ª Parc. 10/11/2026\n3ª Parc. 10/03/2026 6ª Parc. 10/06/2026 9ª Parc. 10/09/2026 12ª Parc. 10/12/2026\n§ 2º - A celebração e concretização do presente contrato dará com a confirmação do pagamento da primeira parcela até o dia 10/01/2026. As demais parcelas deverão ser pagas até a data de vencimento correspondente, sob pena das implicações previstas neste contrato."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Cronograma de vencimento expresso na Cláusula 6ª (dia 10 de cada mês de 10/01/2026 a 10/12/2026, com 1ª parcela até 10/01/2026 / ato da assinatura no § 3º)."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": null,
+          "duracao_meses": null,
+          "regra": "firmam, para o ano letivo de 2026 o presente CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE EDUCAÇÃO ESCOLAR"
+        },
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "firmam, para o ano letivo de 2026 o presente CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE EDUCAÇÃO ESCOLAR, mediante as cláusulas e condições a seguir especificadas"
+          },
+          {
+            "pagina": 1,
+            "trecho": "Cláusula 3ª - As aulas serão ministradas nas salas de aula ou em locais que a CONTRATADA indicar, tendo em vista a natureza do conteúdo e da técnica pedagógica que se fizerem necessários, conforme disposição no Calendário Escolar – 2026."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Vigência para o ano letivo de 2026 conforme preâmbulo e Cláusula 3ª."
+      },
+      "regra_reajuste": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "Cláusula 7ª - Em caso de falta de pagamento no vencimento, se o atraso for superior a 30 (trinta) dias, o valor da parcela em atraso será devidamente corrigido pela Tabela Prática do Poder Judiciário para atualização de débitos judiciais (ou pelo IGP/FGV, na falta desta), desde a data do vencimento até a data do efetivo pagamento, acrescido de juros de 1% (um por cento) ao mês e multa de 2% (dois por cento), incidente sobre o valor corrigido."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Não há cláusula de reajuste periódico da mensalidade/anuidade (a Cláusula 7ª na pág. 4 trata apenas de correção, juros de 1% a.m. e multa de 2% em caso de inadimplência superior a 30 dias)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "570eddffa81bf029d6a79a8fc3d6c701803624535389616087384890f699b811",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

@@ -1,0 +1,114 @@
+{
+  "id": "sint-s2-alu01-01",
+  "categoria": "aluguel",
+  "paginas": [
+    "INSTRUMENTO CONTRATUAL SINTÉTICO DERIVADO DO MODELO PÚBLICO ALU-01 — CATEGORIA ALUGUEL\n\nO aluguel mensal é de R$ 4.200,00 (quatro mil e duzentos reais).\n\nSerão devidas 48 (quarenta e oito) parcelas mensais.\n\nO vencimento ocorrerá todo dia 10 de cada mês.\n\nA vigência é de 01/06/2026 a 01/06/2030, pelo prazo de 48 meses.\n\nO valor será reajustado a cada 12 meses pelo IPCA."
+  ],
+  "campos_gabarito": {
+    "valor_parcela": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "4200.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O aluguel mensal é de R$ 4.200,00 (quatro mil e duzentos reais)."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "numero_parcelas": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "determinado",
+        "quantidade": 48
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Serão devidas 48 (quarenta e oito) parcelas mensais."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "data_vencimento": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 10,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O vencimento ocorrerá todo dia 10 de cada mês."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "vigencia": {
+      "estado": "presente",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2026-06-01",
+        "fim": "2030-06-01",
+        "duracao_meses": 48,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A vigência é de 01/06/2026 a 01/06/2030, pelo prazo de 48 meses."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "regra_reajuste": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "indice",
+        "indices": [
+          "IPCA"
+        ],
+        "percentual": null,
+        "periodicidade_meses": 12,
+        "regra": "O valor será reajustado a cada 12 meses pelo IPCA."
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O valor será reajustado a cada 12 meses pelo IPCA."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    }
+  },
+  "parametros": {
+    "estrato": "S2",
+    "modelo_base": "alu-01",
+    "modo": "canonico_exato",
+    "valor_texto": "4200.00",
+    "valor_gabarito": "4200.00",
+    "numero_parcelas": 48,
+    "dia_vencimento": 10,
+    "duracao_meses": 48,
+    "inicio": "2026-06-01",
+    "fim": "2030-06-01",
+    "indice": "IPCA"
+  }
+}

@@ -1,0 +1,114 @@
+{
+  "id": "sint-s2-sau01-10",
+  "categoria": "saude",
+  "paginas": [
+    "INSTRUMENTO CONTRATUAL SINTÉTICO DERIVADO DO MODELO PÚBLICO SAU-01 — CATEGORIA SAUDE\n\nA mensalidade é de R$ 2.350,00 (dois mil e trezentos e cinquenta reais).\n\nSerão devidas 36 (trinta e seis) parcelas mensais.\n\nO vencimento ocorrerá todo dia 20 de cada mês.\n\nA vigência é de 01/02/2026 a 01/02/2029, pelo prazo de 36 meses.\n\nO valor será reajustado a cada 12 meses pelo IGP-M."
+  ],
+  "campos_gabarito": {
+    "valor_parcela": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "fixo",
+        "moeda": "BRL",
+        "quantia": "2350.00",
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A mensalidade é de R$ 2.350,00 (dois mil e trezentos e cinquenta reais)."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "numero_parcelas": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "determinado",
+        "quantidade": 36
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "Serão devidas 36 (trinta e seis) parcelas mensais."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "data_vencimento": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "mensal",
+        "data": null,
+        "dia": 20,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O vencimento ocorrerá todo dia 20 de cada mês."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "vigencia": {
+      "estado": "presente",
+      "valor": {
+        "prazo": "determinado",
+        "inicio": "2026-02-01",
+        "fim": "2029-02-01",
+        "duracao_meses": 36,
+        "regra": null
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "A vigência é de 01/02/2026 a 01/02/2029, pelo prazo de 36 meses."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    },
+    "regra_reajuste": {
+      "estado": "presente",
+      "valor": {
+        "tipo": "indice",
+        "indices": [
+          "IGP-M"
+        ],
+        "percentual": null,
+        "periodicidade_meses": 12,
+        "regra": "O valor será reajustado a cada 12 meses pelo IGP-M."
+      },
+      "evidencias": [
+        {
+          "pagina": 1,
+          "trecho": "O valor será reajustado a cada 12 meses pelo IGP-M."
+        }
+      ],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Gabarito automático de geração sintética a partir de modelo público."
+    }
+  },
+  "parametros": {
+    "estrato": "S2",
+    "modelo_base": "sau-01",
+    "modo": "canonico_exato",
+    "valor_texto": "2350.00",
+    "valor_gabarito": "2350.00",
+    "numero_parcelas": 36,
+    "dia_vencimento": 20,
+    "duracao_meses": 36,
+    "inicio": "2026-02-01",
+    "fim": "2029-02-01",
+    "indice": "IGP-M"
+  }
+}

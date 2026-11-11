@@ -1,0 +1,54 @@
+{
+  "id": "sint-s2-edu01-06",
+  "categoria": "educacao",
+  "paginas": [
+    "INSTRUMENTO CONTRATUAL SINTÉTICO DERIVADO DO MODELO PÚBLICO EDU-01 — CATEGORIA EDUCACAO\nCLÁUSULA PRIMEIRA - DO VALOR: O valor mensal será de R$ ________.\nCLÁUSULA SEGUNDA - DAS PARCELAS: O pagamento será dividido em ___ parcelas.\nCLÁUSULA TERCEIRA - DO VENCIMENTO: O vencimento ocorrerá todo dia ___ de cada mês.\nCLÁUSULA QUARTA - DA VIGÊNCIA: O prazo de vigência será de ___ meses, de __/__/____ a __/__/____.\nCLÁUSULA QUINTA - DO REAJUSTE: O reajuste ocorrerá conforme índice a definir: ______.\n"
+  ],
+  "campos_gabarito": {
+    "valor_parcela": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Cláusula mantida com lacuna em branco no controle sintético canônico (sint-s2-edu01-06)."
+    },
+    "numero_parcelas": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Cláusula mantida com lacuna em branco no controle sintético canônico (sint-s2-edu01-06)."
+    },
+    "data_vencimento": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Cláusula mantida com lacuna em branco no controle sintético canônico (sint-s2-edu01-06)."
+    },
+    "vigencia": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Cláusula mantida com lacuna em branco no controle sintético canônico (sint-s2-edu01-06)."
+    },
+    "regra_reajuste": {
+      "estado": "ausente",
+      "valor": null,
+      "evidencias": [],
+      "confianca": "nao_aplicavel",
+      "regra_id": null,
+      "motivo": "Cláusula mantida com lacuna em branco no controle sintético canônico (sint-s2-edu01-06)."
+    }
+  },
+  "parametros": {
+    "estrato": "S2",
+    "modelo_base": "edu-01",
+    "modo": "controle_em_branco"
+  }
+}

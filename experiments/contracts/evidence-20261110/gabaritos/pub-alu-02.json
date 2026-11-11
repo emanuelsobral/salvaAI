@@ -1,0 +1,138 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "pub-alu-02",
+    "pdf_sha256": "ff86412a437af5bf1d146c94b11feca5342c953f28a07f4c3f8ff9bfc17567f2",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-10-18"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "fixo",
+          "moeda": "BRL",
+          "quantia": "8825.50",
+          "regra": null
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA QUINTA: DO VALOR O LOCATÁRIO pagará pela locação do imóvel o valor mensal de R$8.825,50 (Oito mil, oitocentos e vinte e cinco e cinquenta centavos), não podendo este ser alterado durante a vigência do contrato, salvo os casos de reajustes anuais previstos neste instrumento."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Anotação fornecida pelo usuário nesta conversa em 18/10/2026; normalização monetária e transcrição técnica. Valor mensal com ressalva de reajustes anuais preservada na evidência. Conferência final do procedimento e revisão pendentes."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Usuário informou em 18/10/2026 que não encontrou outro trecho com quantidade explícita de pagamentos. A proposta de 12 decorre da combinação de aluguel mensal com vigência de 12 meses; preservada como inferência fora do valor extraído, conforme protocolo 1.0.0. Ausente significa quantidade não expressa, não ausência de obrigação de pagar. Confirmação final de leitura e revisão permanecem pendentes."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO Os pagamentos devidos serão efetuados, conforme a entrega do objeto licitado, sendo os pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal, devidamente ATESTADA pelo encarregado do recebimento de tal objeto."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "CLÁUSULA SEXTA: DA FORMA DE PAGAMENTO Os pagamentos devidos serão efetuados, conforme a entrega do objeto licitado, sendo os pagamentos efetuados no prazo de 30 (trinta) dias após protocolo da nota fiscal, devidamente ATESTADA pelo encarregado do recebimento de tal objeto."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Resposta do usuário em 18/10/2026. Prazo relativo ao protocolo da nota fiscal; preservadas as condições de entrega e ateste. Não convertido em dia fixo do mês ou data calculada. Revisão final pendente."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": null,
+          "duracao_meses": 12,
+          "regra": "CLÁUSULA OITAVA: DA VIGÊNCIA O presente instrumento terá vigência por 12 (doze) meses, a partir da data de assinatura, podendo o presente instrumento ser prorrogado e alterado mediante termo aditivo próprio, com justificativa do interesse público na renovação, bem como respeitando a legislação vigente. PARÁGRAFO ÚNICO Durante a vigência do contrato, a empresa fica obrigada a entregar/prestar os bens/serviços de acordo com o valor proposto, nas quantidades solicitadas e em conformidade com as especificações técnicas, prazos e horários estipulados neste instrumento e no termo de referência;"
+        },
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "CLÁUSULA OITAVA: DA VIGÊNCIA O presente instrumento terá vigência por 12 (doze) meses, a partir da data de assinatura, podendo o presente instrumento ser prorrogado e alterado mediante termo aditivo próprio, com justificativa do interesse público na renovação, bem como respeitando a legislação vigente. PARÁGRAFO ÚNICO Durante a vigência do contrato, a empresa fica obrigada a entregar/prestar os bens/serviços de acordo com o valor proposto, nas quantidades solicitadas e em conformidade com as especificações técnicas, prazos e horários estipulados neste instrumento e no termo de referência;"
+          },
+          {
+            "pagina": 11,
+            "trecho": "Assim, justo e de acordo, as partes assinam o presente Contrato, que servirá de instrumentos para fins de contratação. Mafra/SC, 13 de Março de 2024."
+          },
+          {
+            "pagina": 12,
+            "trecho": "Este documento foi assinado digitalmente pelos seguintes signatários nas datas indicadas:"
+          },
+          {
+            "pagina": 12,
+            "trecho": "em 13/03/2024 16:32:02 (GMT-03:00)"
+          },
+          {
+            "pagina": 12,
+            "trecho": "em 14/03/2024 08:25:06 (GMT-03:00)"
+          },
+          {
+            "pagina": 12,
+            "trecho": "em 14/03/2024 15:50:59 (GMT-03:00)"
+          },
+          {
+            "pagina": 12,
+            "trecho": "em 15/03/2024 15:16:43 (GMT-03:00)"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Cláusula integral e datas transcritas da resposta do usuário em 18/10/2026. Duração expressa de 12 meses a partir da assinatura, com condições de prorrogação/alteração e execução preservadas. Página 11 data o instrumento em 13/03/2024; página 12 registra assinaturas entre 13 e 15/03/2024. Início e fim continuam nulos: não escolhida uma das assinaturas como marco nem calculado término. Evidências de assinatura limitadas aos fragmentos literais das datas, sem nomes ou CPF. Confirmar esta representação na revisão humana final; nenhuma interpretação jurídica realizada."
+      },
+      "regra_reajuste": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "indice",
+          "indices": [
+            "IVAR"
+          ],
+          "percentual": null,
+          "periodicidade_meses": 12,
+          "regra": "CLÁUSULA SÉTIMA: DO REAJUSTE Será admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou superior a doze meses, mediante a aplicação do Índice de Variação de Aluguéis Residenciais - IVAR, desde que seja observado o interregno mínimo de 1 (um) ano, contado da data da assinatura do contrato, para o primeiro reajuste, ou da data do último reajuste, para os subsequentes. PARAGRAFO PRIMEIRO Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceitará negociar a adoção de preço compatível ao mercado de locação do município em que se situa o imóvel. PARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo.\n\nCLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS Os preços contratados somente poderão ser alterados durante a vigência do contrato em casos excepcionais, desde que atendido o disposto na Lei n.º 14.133/2021, sendo considerado o IVAR como índice referencial de correção, devendo para tanto CONTRATADO requerer expressamente junto à Prefeitura Municipal, anexando ao requerimento documento comprobatório da situação que enseja a revisão de preços."
+        },
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "CLÁUSULA SÉTIMA: DO REAJUSTE Será admitido o reajuste do preço do aluguel da locação com prazo de vigência igual ou superior a doze meses, mediante a aplicação do Índice de Variação de Aluguéis Residenciais - IVAR, desde que seja observado o interregno mínimo de 1 (um) ano, contado da data da assinatura do contrato, para o primeiro reajuste, ou da data do último reajuste, para os subsequentes. PARAGRAFO PRIMEIRO Se a variação do indexador adotado implicar em reajuste desproporcional ao preço médio de mercado para a presente locação, o LOCADOR aceitará negociar a adoção de preço compatível ao mercado de locação do município em que se situa o imóvel. PARAGRAFO SEGUNDO - O reajuste será formalizado mediante termo aditivo."
+          },
+          {
+            "pagina": 4,
+            "trecho": "CLÁUSULA NONA: DAS ALTERAÇÕES CONTRATUAIS Os preços contratados somente poderão ser alterados durante a vigência do contrato em casos excepcionais, desde que atendido o disposto na Lei n.º 14.133/2021, sendo considerado o IVAR como índice referencial de correção, devendo para tanto CONTRATADO requerer expressamente junto à Prefeitura Municipal, anexando ao requerimento documento comprobatório da situação que enseja a revisão de preços."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Transcrição da resposta do usuário em 18/10/2026. Periodicidade de 12 meses representa o interregno mínimo da Cláusula Sétima, não reajuste automático nem prazo imposto à revisão excepcional da Cláusula Nona. Preservadas as condições de vigência mínima, marco da assinatura/último reajuste, negociação, aditivo, requerimento e comprovação. INPC relatado para atraso não incluído como índice de reajuste do aluguel. Revisão final pendente."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "c49eeb075610cf9cfc4969b97a32dc53825f33cb5dae1f37da6ff15fd43ab5a9",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

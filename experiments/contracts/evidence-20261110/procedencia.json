@@ -1,0 +1,194 @@
+{
+  "edicao": "2026-11-10",
+  "origem_lotes": {
+    "reservados_v0125": "PDFs públicos reais, referência com revisão assistida",
+    "preenchidos_v0125": "PDFs públicos reais preenchidos, referência com revisão assistida",
+    "S1_v0125": "20 instâncias textuais sintéticas",
+    "S2_v0125": "10 instâncias textuais sintéticas"
+  },
+  "adaptador": "natureza=sintetica e tipos exemplo são requisitos da interface histórica do comparador; campos preservados, metadados de hash/versão removidos no espelho. Publicação acrescenta supressões declaradas.",
+  "correcao_formato": {
+    "documento": "sau-06",
+    "historico": "texto",
+    "catalogo": "sem_texto_util",
+    "correto": "digitalizado",
+    "aplicada_nas_entradas": false,
+    "motivo": "Preservar agrupamento histórico; não usar tabela histórica por formato sem ressalva."
+  },
+  "independencia_humana": "Não comprovada; não interpretar verificação de esquema como leitura cega.",
+  "supressoes": [
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "nome",
+      "marcador": "[NOME SUPRIMIDO]"
+    },
+    {
+      "categoria": "cpf",
+      "marcador": "[CPF SUPRIMIDO]"
+    },
+    {
+      "categoria": "email",
+      "marcador": "[EMAIL SUPRIMIDO]"
+    },
+    {
+      "categoria": "registro",
+      "marcador": "[REGISTRO SUPRIMIDO]"
+    },
+    {
+      "categoria": "imovel",
+      "marcador": "APARTAMENTO, [ENDEREÇO SUPRIMIDO]."
+    },
+    {
+      "categoria": "verificacao_assinatura",
+      "marcador": "[CODIGO SUPRIMIDO]"
+    }
+  ],
+  "arquivos": [
+    {
+      "arquivo": "modelos_base/alu-01-paginas.json",
+      "origem_sha256": "fed248b207626332b32c2fc53c19f5bd88c35aa612cab2ea8383503f471b9624",
+      "edicao_sha256": "e478867be39aba696b38f8c95bd7e5bc48bbdf62a056e3c29705c4ad2e8e87b9",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "modelos_base/alu-02-paginas.json",
+      "origem_sha256": "789fadb82fa6673942cc78589339045bd4422eda2591c263b46a748e22c1cb4a",
+      "edicao_sha256": "38182590f1433150541c8b33cc76d6a2de3f42ff33e570feb1c873501362ec93",
+      "conteudo_com_supressoes": true
+    },
+    {
+      "arquivo": "modelos_base/edu-01-paginas.json",
+      "origem_sha256": "914e3d19a8bc1729e8876fab088be512f9e61f975cf90083d8df5810abe5ef50",
+      "edicao_sha256": "e6a0e20c1c97ff8273bc233683965991a69a53283eb5f83292f4fed59be9a88c",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "modelos_base/fin-01-paginas.json",
+      "origem_sha256": "aac304073cbd9263f7f3fc35bd6e95be02a27dc2a1889dd6210df8059daf243f",
+      "edicao_sha256": "dd758a28a06a86fca140d84f836cd71579f25961f5b6f2c2edba176dac9c8cdc",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "modelos_base/sau-01-paginas.json",
+      "origem_sha256": "bf53f68444cfff5a09f63d1606dba27172e8feb2f87a868e1e3cff0a6f6b2f7a",
+      "edicao_sha256": "4b3feda25b4ff98d7935147986d263cc93c60e9787129c69f8859b090ae6dada",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/alu-03.json",
+      "origem_sha256": "164a777bf0962aed45465c3eb9c53c25af6ba12e47f2e21a14d30d3ab965820a",
+      "edicao_sha256": "29a4deb506feb185c63d560d6dbab3d27f131a549d63c6dd7980beea9b16e7a7",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/alu-04.json",
+      "origem_sha256": "bc8c8a311afeef24b8ea077981f10c78c299e5f3294eaf12057ad64bb727e686",
+      "edicao_sha256": "fb0a885cff44143a5391592ca3c1283005c5dba6960e85288ea8e23acab60311",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/edu-02.json",
+      "origem_sha256": "4a9315e9360738407ed767101c87abdf2972dadcf550dbed567da5ca9ae2b65d",
+      "edicao_sha256": "3ec50c93dc999b37c9b85d177316892c27335a7bc9e50e45a2a084217acd73b5",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/edu-03.json",
+      "origem_sha256": "9135080a6dcd3d32392b0985da3831f799048e2085886ce3d0eb86f237feac7a",
+      "edicao_sha256": "b6711ac5894349c339cfdb7f201040105a6773573be7b35fd4e3455635494c6b",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/edu-08.json",
+      "origem_sha256": "d9aacba6cfc9d64ca885fb57ac59c4b72d20921f32d84c6b3c5e17ec5783fec3",
+      "edicao_sha256": "60077e6b553c79fdcd350323dd941fbd65a616d10b5f3fd9319a7d5ed488de80",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/edu-10.json",
+      "origem_sha256": "e9376cc0517431105c0140e6fe52488e4344d34649b191eec19d3133f79d8fe8",
+      "edicao_sha256": "ebea5ea9515466c5bab7f39d09752d8b9828fae92a03a2b4ee6991f70e86e285",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/fin-06.json",
+      "origem_sha256": "adb4f933c2972e565d403c568e8f0cb5e8ad7f70f6d5c7d54ff5af2989686ef6",
+      "edicao_sha256": "1432657f72b0a28568bbc49eb328d5513eb9c92a7cedb02cbab1ac5c5d4977a3",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/pub-alu-02.json",
+      "origem_sha256": "88800c71dbcfab2933502f45c37de85b40ec11be9bfde329ad02fcc33ab31c7c",
+      "edicao_sha256": "84efa9b893812beb6db0ed9a0395a89c94c74d5e9488c70ec6808900a0a07455",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/pub-alu-03.json",
+      "origem_sha256": "707edccccecc4ef5f65154e250424f79717e72327918a0cfd955c4c4ab244568",
+      "edicao_sha256": "004d262c3c4c4b02901c7de3fa445ddcee82223d04b69d2d5b37fc987cba5d63",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/sau-02.json",
+      "origem_sha256": "f5bb5579b68fa36b888d7f42e7a42025c60c74f7b312e24a0259fd61b6fcaa6e",
+      "edicao_sha256": "6f1bc7738c9c0671a6b479510fcd24242d37eca5e2b3a4b2ffda060a9e50b5c8",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/sau-03.json",
+      "origem_sha256": "a401aee10bbd32df0c57e429c51b6edf8b4dbc24ae143809aeeacd9cb283785a",
+      "edicao_sha256": "3001c6d4634aecb24b278593ecd2c2ce6a26fbcad1c3a99e9ad5897397061ffe",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "gabaritos/sau-06.json",
+      "origem_sha256": "8075b44a1828dae2e35d360e981af84c7907297cddd913bab7bf76a774e3a0f0",
+      "edicao_sha256": "93ac323da11b7d353d4054fcb8fd2a2d36aa1d0f223eb21d46c1f706d3ad6b4b",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "entradas/reservados_v0125.json",
+      "origem_sha256": "3ee0815ea4191f894d5ecb6b94eee8586181f690e8d12f1f7932648a5d31d922",
+      "edicao_sha256": "3ee0815ea4191f894d5ecb6b94eee8586181f690e8d12f1f7932648a5d31d922",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "entradas/preenchidos_v0125.json",
+      "origem_sha256": "1c0219b3f72e34318174d108f9dd48ca00a951029cbd7ed9c6dbba8238951e21",
+      "edicao_sha256": "0f90f1b13c80c8d50decb31a9c1cba6d1da4f6165512d8d2027ddd9b9f352cbf",
+      "conteudo_com_supressoes": true
+    },
+    {
+      "arquivo": "entradas/S1_v0125.json",
+      "origem_sha256": "0b7f3c9506136901c3ec9f0146fa45f33c139d1c47f93fe8c7aabc6d007d08fd",
+      "edicao_sha256": "0b7f3c9506136901c3ec9f0146fa45f33c139d1c47f93fe8c7aabc6d007d08fd",
+      "conteudo_com_supressoes": false
+    },
+    {
+      "arquivo": "entradas/S2_v0125.json",
+      "origem_sha256": "527cbfd0400bfc0ee02e0dad0165ce52ad01e34d5a1622188cc9c1c6f6aa1cea",
+      "edicao_sha256": "527cbfd0400bfc0ee02e0dad0165ce52ad01e34d5a1622188cc9c1c6f6aa1cea",
+      "conteudo_com_supressoes": false
+    }
+  ],
+  "validado_em": "2026-11-11"
+}

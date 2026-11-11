@@ -1,0 +1,12 @@
+{
+  "natureza": "sintetica",
+  "executado_em": "2026-11-03T21:51:23.542Z",
+  "node": "v24.11.1",
+  "versao_avaliador": "0.1.0",
+  "entrada_sha256": "1c0219b3f72e34318174d108f9dd48ca00a951029cbd7ed9c6dbba8238951e21",
+  "fontes_sha256": {
+    "avaliar-sinteticos.mjs": "a40e8d86068288587bf40984b9c45c2af234cb4c0dc6ab5b62d91097df00cc17",
+    "registro.schema.json": "11120e497a2e996582ffcbe14505ca43481c5eccfec690a3857c8e5552f42d3d",
+    "protocolo.md": "5161598dca767ac252e7c72990bc40ebf189b0efb6fdecf70ef02b7a6bdfd050"
+  }
+}

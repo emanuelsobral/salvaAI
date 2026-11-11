@@ -1,0 +1,17 @@
+{
+  "data": "2026-11-11",
+  "ambiente": "Copia isolada fora do repositorio, npm ci --ignore-scripts",
+  "node": "v24.11.1",
+  "python": "3.12.14",
+  "lotes_com_metricas_e_decisoes_iguais": 4,
+  "total_lotes": 4,
+  "sinteticos_integralmente_reproduzidos": 30,
+  "total_sinteticos": 30,
+  "destino_existente_recusado": true,
+  "api_ia_utilizada": false,
+  "limites": [
+    "Nao e nova extracao dos PDFs reais",
+    "Nao certifica independencia humana do gabarito",
+    "Agrupamento historico por formato contem sau-06 como texto"
+  ]
+}

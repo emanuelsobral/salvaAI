@@ -1,0 +1,1231 @@
+{
+  "natureza": "sintetica",
+  "protocolo_versao": "1.0.0",
+  "documentos": [
+    {
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 193,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "alu-03",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "Valor Mensal do Aluguel: R$ _______________ (___________________________________)"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo de contrato de locação em branco: a Cláusula 4ª traz apenas a lacuna 'Valor Mensal do Aluguel: R$ _______________'."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "Data de Início: Data de Término: Duração (meses):"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo em branco sem campo ou cláusula de quantidade de parcelas (há apenas lacuna 'Duração (meses):' em branco na Cláusula 3ª)."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "Vencimento / Forma de Pagamento: Dia _____ · ☐ PIX ☐ TED ☐ Boleto ☐ Depósito"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo em branco: a Cláusula 4ª traz apenas 'Vencimento / Forma de Pagamento: Dia _____'."
+          },
+          "vigencia": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "CLÁUSULA 3ª — DO PRAZO DA LOCAÇÃO Data de Início: Data de Término: Duração (meses): § 1º — Findo o prazo, sem oposição das partes, a locação prorroga-se automaticamente por prazo indeterminado (art. 47, Lei 8.245/91)."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo em branco: datas de início, término e duração em meses estão em branco na Cláusula 3ª."
+          },
+          "regra_reajuste": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "§ 2º — Reajuste anual pelo índice: ☐ IGP-M/FGV ☐ IPCA/IBGE ☐ Outro: ___________."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A Cláusula 4ª, § 2º prevê reajuste anual, mas o índice depende de caixa de seleção não assinalada no modelo em branco (☐ IGP-M/FGV ☐ IPCA/IBGE ☐ Outro: ___________)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"alu-03\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 1, \"trecho\": \"CLÁUSULA 4ª — VALOR DO ALUGUEL E CONDIÇÕES DE PAGAMENTO\\nValor Mensal do Aluguel:\\nR$ _______________ (___________________________________)\\nVencimento / Forma de Pagamento:\\nDia _____  ·  ☐ PIX  ☐ TED  ☐ Boleto  ☐ Depósito\\nDados Bancários / Chave PIX:\\n§ 1º — O não pagamento no vencimento implicará multa de 2% + juros de 1% a.m.\\n+ correção monetária pelo IGP-M/FGV.\\n§ 2º — Reajuste anual pelo índice: ☐ IGP-M/FGV   ☐ IPCA/IBGE   ☐ Outro:\\n___________.\\n§ 3º — O Locador fornecerá recibo discriminado de cada pagamento.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 1, \"trecho\": \"CLÁUSULA 3ª — PRAZO DA LOCAÇÃO\\nData de Início: Data de Término: Duração (meses): §  1º —  Findo  o  prazo,  sem  oposição  das  partes,  a  locação  prorroga-se\\nautomaticamente por prazo indeterminado (art. 47, Lei 8.245/91).\\n§ 2º — Na prorrogação, qualquer parte poderá denunciar o contrato com aviso prévio\\nmínimo de 30 (trinta) dias.\"}, {\"pagina\": 2, \"trecho\": \"CLÁUSULA 8ª — PENALIDADES, RESCISÃO E DISPOSIÇÕES GERAIS\\n§ 1º — Multa por infração: 3 (três) vezes o valor do aluguel vigente, sem prejuízo\\nde perdas e danos.\\n§ 2º — Rescisão antecipada: multa proporcional ao período restante, equivalente a 3\\nmeses de aluguel, reduzida pro rata (art. 4º, Lei 8.245/91).\\n§  3º  —  Benfeitorias: Úteis  sem  autorização:  não  indenizadas.  Necessárias:\\nindenizadas pelo Locador.\\n§ 4º — Sublocação: expressamente vedada sem autorização escrita do Locador.\\n§ 5º — Visitas: com aviso prévio mínimo de 24 (vinte e quatro) horas.\\n§  6º  —  Foro  eleito: Comarca  de  _________________________,  Estado  de\\n________________, com exclusão de qualquer outro.\\nAs partes declaram ter lido e compreendido todas as cláusulas deste contrato, firmando-o em 2 (duas) vias de igual teor e forma, juntamente com os Anexos, na presença\\ndas duas testemunhas abaixo identificadas. \\n_______________________________________, _____ de __________________________ de __________ \\n(Cidade / Dia / Mês / Ano)\\nLOCADOR\\nNome: ______________________\\nCPF: _______________________\\nRG: ________________________\\nLOCATÁRIO\\nNome: ______________________\\nCPF: _______________________\\nRG: ________________________\\nTESTEMUNHA 1\\nNome: ______________________\\nCPF: _______________________\\nRG: ________________________\\nTESTEMUNHA 2\\nNome: ______________________\\nCPF: _______________________\\nRG: ________________________\\nFIADOR (SE APLICÁVEL)\\nNome: ____________________________ CPF: ___________________ RG:\\n_______________\\nCÔNJUGE DO FIADOR (SE CASADO — ART. 1.647 CC)\\nNome: ____________________________ CPF: ___________________ RG:\\n_______________\\nANEXO I — LAUDO DE VISTORIA DO IMÓVEL (ENTRADA / SAÍDA) — RUBRICAR CADA LINHA\\nImóvel: Data / Hora da Vistoria: Tipo:\\n☐ Entrada   ☐ Saída\\nResponsável:\\nCômodo Paredes / Pintura Piso Teto Instalações Rubrica\\nSala de Estar/Jantar☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nCozinha ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nQuarto 1 ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nQuarto 2 ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nBanheiro(s) ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nÁrea de Serviço ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim ___________ _______\\nGaragem / Quintal ☐Ótimo ☐Bom ☐Regular\\n☐Ruim\\n☐Ótimo ☐Bom ☐Regular\\n☐Ruim — ___________ _______\\nChaves entregues: Porta principal: _____ cópias  ·  Portão/Garagem: _____  · \\nOutras: _______________\\nMedidores: Energia: _______ kWh  ·  Água: _______ m³  ·  Gás: _______ m³\\nObservações gerais:\\n________________________________________________________________________________________________________________________________________________\\nLOCADOR / RESPONSÁVEL PELA VISTORIA\\nNome: ________________________________ Assinatura: _____________________\\nLOCATÁRIO / RESPONSÁVEL PELA VISTORIA\\nNome: ________________________________ Assinatura: _____________________\\nModelo de Contrato de Aluguel para Imprimir · Lei nº 8.245/1991 (Lei do Inquilinato) · Código Civil Brasileiro (Lei nº 10.406/2002) \\n⚠ Documento de referência — consulte um advogado especializado (OAB) antes de assinar · Todas as páginas devem ser rubricadas. \\n• \\n• \\n• \\n• \\n• \\n• \\n• \\n• \\n• \\n•\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}}}"
+    },
+    {
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 164,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "alu-04",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "VALOR MENSAL DA LOCAÇÃO: R$ em algarismos e por extenso"
+              },
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA TERCEIRA – O aluguel mensal fica estipulado em [valor], devendo ser pago no [...] dia útil do mês subseqüente ao vencido"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo em branco com marcadores de preenchimento: 'VALOR MENSAL DA LOCAÇÃO: R$ em algarismos e por extenso' (pág. 1) e 'O aluguel mensal fica estipulado em [valor]' (pág. 2)."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA SEGUNDA – O prazo de locação é de [...] meses, com termo inicial em [data] e termo final em [data]"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Modelo de locação residencial em branco sem previsão de número de parcelas."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA TERCEIRA – O aluguel mensal fica estipulado em [valor], devendo ser pago no [...] dia útil do mês subseqüente ao vencido, por meio de [depósito bancário ou outra opção de pagamente], na conta corrente em nome do LOCADOR, Banco [....]. PARÁGRAFO PRIMEIRO – O LOCADOR concederá um desconto de 10% sobre o valor avençado caso o aluguel seja pago até o 5º dia útil do mês subseqüente ao vencido. [opcional]"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O dia útil de vencimento na Cláusula Terceira está com marcador em branco ('no [...] dia útil do mês subseqüente ao vencido'), e o desconto até o 5º dia útil no Parágrafo Primeiro é marcado como '[opcional]'."
+          },
+          "vigencia": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "CLÁUSULA SEGUNDA – O prazo de locação é de [...] meses, com termo inicial em [data] e termo final em [data], data em que o LOCATÁRIO se compromete a restituir o imóvel completamente desocupado, no estado em que o recebeu, independentemente de Notificação ou Interpelação Judicial, ressalvada a hipótese de prorrogação da locação, que somente se fará por escrito."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Prazo em meses, termo inicial e termo final estão com marcadores '[...]' e '[data]' em branco na Cláusula Segunda."
+          },
+          "regra_reajuste": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "indice",
+              "indices": [
+                "IGP-M"
+              ],
+              "percentual": null,
+              "periodicidade_meses": 12,
+              "regra": "PARÁGRAFO SEGUNDO – O valor locativo será reajustado anualmente, de acordo com a variação acumulada do IGP-M/FGV. Na ausência deste índice será eleito outro legalmente previsto, conforme prévia convenção das partes."
+            },
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "PERIODICIDADE DO REAJUSTE: anualmente"
+              },
+              {
+                "pagina": 2,
+                "trecho": "PARÁGRAFO SEGUNDO – O valor locativo será reajustado anualmente, de acordo com a variação acumulada do IGP-M/FGV. Na ausência deste índice será eleito outro legalmente previsto, conforme prévia convenção das partes."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Cláusula Terceira, § 2º e quadro inicial definem reajuste anual pelo IGP-M/FGV sem lacunas pendentes."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"alu-04\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"PARÁGRAFO PRIMEIRO  – O LOCADOR concederá um desconto de 10% sobre o v alor \\navençado caso o aluguel seja pago até o 5º dia útil do mês subseqüente ao vencido. [opcional] \\nPARÁGRAFO SEGUNDO  – O valor locativo será reajustado anualmente, de acordo com a \\nvariação acumulada do IGP-M/FGV.\"}, {\"pagina\": 2, \"trecho\": \"CLÁUSULA TERCEIRA \\nO aluguel mensal fica estipulado em [valor], devend o ser pago no [...] dia útil do mês \\nsubseqüente ao vencido, por meio de [depósito bancá rio ou outra opção de pagamente], na \\nconta corrente em nome do LOCADOR, Banco [....].\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"CLÁUSULA SEGUNDA \\nO prazo de locação é de [...] meses, com termo inic ial em [data] e termo final em [data], data \\nem que o locatário se obriga a restituir o imóvel l ivre e desocupado, em condições idênticas à \\nque recebeu, ressalvando o desgaste natural do imóvel. \\nPARÁGRAFO PRIMEIRO  – Findo o prazo estipulado no caput desta Cláusula , operar-se-á o \\ntérmino da avença somente através de notificação por escrito do locador, sendo que, na falta de \\ntal notificação, ocorrerá a renovação automática do  contrato, conforme dispõe legislação \\nespecífica (Lei 12.112/09). \\nPARÁGRAFO SEGUNDO  – A LOCATÁRIO, juntamente com o LOCADOR, declaram que \\nvistoriarão o imóvel deste Contrato, registrando su as reais condições por meio de fotografias, \\nas quais seguem em anexo, passando a compor o prese nte contrato. Vistoria inicial, essa, que \\nservirá como base comparativa na vistoria final, qu e ocorrerá no momento da entrega do \\nimóvel, onde serão identificados possíveis danos e / ou alterações no imóvel.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 1, \"trecho\": \"VALOR MENSAL DA LOCAÇÃO: R$ em algarismos e por extenso \\nPERIODICIDADE DO REAJUSTE: anualmente\"}, {\"pagina\": 2, \"trecho\": \"PARÁGRAFO PRIMEIRO  – O LOCADOR concederá um desconto de 10% sobre o v alor \\navençado caso o aluguel seja pago até o 5º dia útil do mês subseqüente ao vencido. [opcional] \\nPARÁGRAFO SEGUNDO  – O valor locativo será reajustado anualmente, de acordo com a \\nvariação acumulada do IGP-M/FGV.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}}}"
+    },
+    {
+      "categoria": "educacao",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 220,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "edu-02",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "SÉRIE: _______________"
+              },
+              {
+                "pagina": 2,
+                "trecho": "Educação Infantil: Parcela de R$ 1.149,00 | Anuidade de R$ 13.788,00\nEnsino Fundamental Inicial: Parcela de R$ 1.166,00 | Anuidade de R$ 13.992,00\nEnsino Fundamental Final: Parcela de R$ 1.215,00 | Anuidade de R$ 14.580,00\nEnsino Médio: Parcela de R$ 1.408,00 | Anuidade de R$ 16.896,00"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A série/curso na Cláusula 1 (pág. 1) está em branco e a Cláusula 4 (pág. 2) apresenta quatro valores mensais distintos conforme o curso (R$ 1.149,00, R$ 1.166,00, R$ 1.215,00 e R$ 1.408,00)."
+          },
+          "numero_parcelas": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "determinado",
+              "quantidade": 12
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "O Contratante pagará uma anuidade dividida em 12 parcelas mensais, conforme os valores especificados:"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Quantidade explícita de 12 parcelas mensais na Cláusula 4."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "O pagamento da primeira parcela deve ocorrer no ato da matrícula. As demais parcelas vencem no dia 4 de cada mês, de fevereiro a dezembro."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "O pagamento da primeira parcela deve ocorrer no ato da matrícula. As demais parcelas vencem no dia 4 de cada mês, de fevereiro a dezembro."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Vencimento misto na Cláusula 4: 1ª parcela no ato da matrícula e demais no dia 4 de fevereiro a dezembro."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": null,
+              "regra": "O contrato cobre o período letivo de janeiro a dezembro de 2026, ou até o término das obrigações educacionais previstas. A renovação é anual e condicionada ao cumprimento do calendário escolar e à quitação das obrigações financeiras."
+            },
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "3. Período Letivo e Vigência\nO contrato cobre o período letivo de janeiro a dezembro de 2026, ou até o término das obrigações educacionais previstas. A renovação é anual e condicionada ao cumprimento do calendário escolar e à quitação das obrigações financeiras."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Vigência para o período letivo de janeiro a dezembro de 2026 na Cláusula 3, sem dia exato de início/fim em formato ISO."
+          },
+          "regra_reajuste": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "4.1. Atraso no Pagamento\nEm caso de atraso, o valor da parcela será acrescido de:\nMulta de 2% sobre o total devido;\nAtualização monetária e juros de 1% ao mês até a quitação."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Não há cláusula de reajuste periódico da mensalidade/anuidade no contrato (a Cláusula 4.1 trata apenas de multa de 2%, atualização monetária e juros de 1% ao mês por atraso)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"edu-02\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"numero_parcelas\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"determinado\", \"quantidade\": 12}, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"Valor da Anuidade e Condições de Pagamento \\nO Contratante pagara   uma anuidade dividida em 12 parcelas mensais, conforme os valores especificados: \\nCURSO VALOR MENSAL – R$ VALOR DA ANUIDADE – R$ \\nEducação Infantil: \\nInfantil-II, Infantil-III, Infantil-IV, \\nInfantil-V \\n1.149,00 13.788,00 \\nEnsino Fundamental Inicial: \\n1º, 2º, 3º, 4º, 5º Ano \\n1.166,00 13.992,00 \\nEnsino Fundamental Final: \\n6º, 7º, 8º, 9º Ano \\n1.215,00 14.580,00 \\nEnsino Médio: \\n1ª, 2ª, 3ª Série \\n1.408,00 16.896,00\"}], \"confianca\": \"media\", \"regra_id\": \"quantidade-explicita-v1\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}, \"data_vencimento\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}}}"
+    },
+    {
+      "categoria": "educacao",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 739,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "edu-03",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "§ 1º - Conforme a série/ano em que se dará a matrícula do aluno, os valores da anuidade para o ano letivo de 2026 serão os seguintes:\nSérie/Ano Anuidade\nMaternal II e III – Ed. Infantil R$ 8.808,00\n1º e 2º Período – Ed. Infantil R$ 9.480,00\n1º Ano – Ens. Fundamental Anos Iniciais R$ 11.496,00\n2º ao 5º Ano – Ens. Fundamental Anos Iniciais R$ 11.652,00\n6º ao 8º Ano – Ens. Fundamental Anos Finais R$ 12.696,00\n9º Ano – Ens. Fundamental Anos Finais R$ 14.088,00\n1ª e 2ª Série – Ensino Médio R$ 16.416,00\n3ª Série – Ensino Médio R$ 19.836,00"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Série/ano do aluno está em branco na pág. 1 e a Cláusula 5ª, § 1º (pág. 3) lista 8 valores de anuidade diferentes por série (de R$ 8.808,00 a R$ 19.836,00), sem valor mensal explícito e com opção de pagamento à vista ou em 12 parcelas."
+          },
+          "numero_parcelas": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas:"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A Cláusula 6ª prevê pagamento 'à vista ou em 12 (doze) parcelas mensais e iguais', sem opção assinalada no modelo em branco."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas: 1ª Parc. 10/01/2026 2ª Parc. 10/02/2026 3ª Parc. 10/03/2026 4ª Parc. 10/04/2026 5ª Parc. 10/05/2026 6ª Parc. 10/06/2026 7ª Parc. 10/07/2026 8ª Parc. 10/08/2026 9ª Parc. 10/09/2026 10ª Parc. 10/10/2026 11ª Parc. 10/11/2026 12ª Parc. 10/12/2026 § 2º - A celebração e concretização do presente contrato dará com a confirmação do pagamento da primeira parcela até o dia 10/01/2026. As demais parcelas deverão ser pagas até a data de vencimento correspondente, sob pena das implicações previstas neste contrato."
+            },
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "Cláusula 6ª - O valor da anuidade referido na cláusula 5ª, § 1º será pago à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas:\n1ª Parc. 10/01/2026 4ª Parc. 10/04/2026 7ª Parc. 10/07/2026 10ª Parc. 10/10/2026\n2ª Parc. 10/02/2026 5ª Parc. 10/05/2026 8ª Parc. 10/08/2026 11ª Parc. 10/11/2026\n3ª Parc. 10/03/2026 6ª Parc. 10/06/2026 9ª Parc. 10/09/2026 12ª Parc. 10/12/2026\n§ 2º - A celebração e concretização do presente contrato dará com a confirmação do pagamento da primeira parcela até o dia 10/01/2026. As demais parcelas deverão ser pagas até a data de vencimento correspondente, sob pena das implicações previstas neste contrato."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Cronograma de vencimento expresso na Cláusula 6ª (dia 10 de cada mês de 10/01/2026 a 10/12/2026, com 1ª parcela até 10/01/2026 / ato da assinatura no § 3º)."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": null,
+              "regra": "firmam, para o ano letivo de 2026 o presente CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE EDUCAÇÃO ESCOLAR"
+            },
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "firmam, para o ano letivo de 2026 o presente CONTRATO DE PRESTAÇÃO DE SERVIÇOS DE EDUCAÇÃO ESCOLAR, mediante as cláusulas e condições a seguir especificadas"
+              },
+              {
+                "pagina": 1,
+                "trecho": "Cláusula 3ª - As aulas serão ministradas nas salas de aula ou em locais que a CONTRATADA indicar, tendo em vista a natureza do conteúdo e da técnica pedagógica que se fizerem necessários, conforme disposição no Calendário Escolar – 2026."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Vigência para o ano letivo de 2026 conforme preâmbulo e Cláusula 3ª."
+          },
+          "regra_reajuste": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "Cláusula 7ª - Em caso de falta de pagamento no vencimento, se o atraso for superior a 30 (trinta) dias, o valor da parcela em atraso será devidamente corrigido pela Tabela Prática do Poder Judiciário para atualização de débitos judiciais (ou pelo IGP/FGV, na falta desta), desde a data do vencimento até a data do efetivo pagamento, acrescido de juros de 1% (um por cento) ao mês e multa de 2% (dois por cento), incidente sobre o valor corrigido."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Não há cláusula de reajuste periódico da mensalidade/anuidade (a Cláusula 7ª na pág. 4 trata apenas de correção, juros de 1% a.m. e multa de 2% em caso de inadimplência superior a 30 dias)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"edu-03\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA 6ª – FORMA DE PAGAMENTO: O valor da anuidade referido na cláusula 5ª, § 1º \\nserá pago  à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas: \\n1ª Parc. 10/01/2026 4ª Parc. 10/04/2026 7ª Parc. 10/07/2026 10ª Parc. 10/10/2026 \\n2ª Parc. 10/02/2026 5ª Parc. 10/05/2026 8ª Parc. 10/08/2026 11ª Parc. 10/11/2026 \\n3ª parc. 10/03/2026 6ª Parc. 10/06/2026 9ª Parc. 10/09/2026 12ª Parc. 10/12/2026\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há alternativas de pagamento ou preços por perfil escolar ainda não vinculados a um plano confirmado. Matrícula, parcelas e vencimentos são preservados nas evidências, sem escolher uma opção ou reconstruir calendário.\"}, \"numero_parcelas\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA 6ª – FORMA DE PAGAMENTO: O valor da anuidade referido na cláusula 5ª, § 1º \\nserá pago  à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas: \\n1ª Parc. 10/01/2026 4ª Parc. 10/04/2026 7ª Parc. 10/07/2026 10ª Parc. 10/10/2026 \\n2ª Parc. 10/02/2026 5ª Parc. 10/05/2026 8ª Parc. 10/08/2026 11ª Parc. 10/11/2026 \\n3ª parc. 10/03/2026 6ª Parc. 10/06/2026 9ª Parc. 10/09/2026 12ª Parc. 10/12/2026\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há alternativas de pagamento ou preços por perfil escolar ainda não vinculados a um plano confirmado. Matrícula, parcelas e vencimentos são preservados nas evidências, sem escolher uma opção ou reconstruir calendário.\"}, \"data_vencimento\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA 6ª – FORMA DE PAGAMENTO: O valor da anuidade referido na cláusula 5ª, § 1º \\nserá pago  à vista ou em 12 (doze) parcelas mensais e iguais, nas seguintes datas: \\n1ª Parc. 10/01/2026 4ª Parc. 10/04/2026 7ª Parc. 10/07/2026 10ª Parc. 10/10/2026 \\n2ª Parc. 10/02/2026 5ª Parc. 10/05/2026 8ª Parc. 10/08/2026 11ª Parc. 10/11/2026 \\n3ª parc. 10/03/2026 6ª Parc. 10/06/2026 9ª Parc. 10/09/2026 12ª Parc. 10/12/2026\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há alternativas de pagamento ou preços por perfil escolar ainda não vinculados a um plano confirmado. Matrícula, parcelas e vencimentos são preservados nas evidências, sem escolher uma opção ou reconstruir calendário.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"CLÁUSULA 7ª – ATRASO / INADIMPLÊNCIA - Havendo atraso no pagamento de qualquer das \\nparcelas descritas na Cláusula 6ª, o (a) CONTRATANTE pagará o valor em atraso acrescido de \\nmulta contratual de  2% (dois por cento) e juros de mora de 0,0333% por dia de atraso desde o \\nvencimento da respectiva parcela. \\n§ 1º- ATRASO SUPERIOR A 30 DIAS - Se o atraso for superior a 30 (trinta) dias, o valor em atraso \\nserá devidamente atualizado, com cobrança de 1% (um por cento) de juros ao mês, além da \\ncorreção monetária com base na Tabela utilizada pelo Poder Judiciário ou, na sua impossibilidade, \\npela variação do IGP/FGV, até  a “efetiva quitação”. Após 30 (trinta) dias a cobrança será realizada \\npor uma empresa especializada em cobranças, conforme acordo firmado pela CONTRATADA. \\n§ 2º - ATRASO SUPERIOR A 90 DIAS - Tem ciência, neste ato, o CONTRATANTE que, em caso \\nde inadimplência das parcelas ou qualquer obrigação de pagamento decorrente do presente \\nCONTRATO por 90 (noventa) dias ou mais, poderá a CONTRATADA: \\na) Inscrever o devedor em cadastro ou serviços de proteção ao crédito, desde que precedido \\nde notificação prévia e de que não exista discussão judicial do débito por parte do \\nCONTRATANTE. \\nb) Independente do procedimento anterior, promover cobrança administrativa ou execução \\njudicial do total do débito, pelos meios legalmente permitidos, hipótese na qual incidirão \\nhonorários advocatícios no percentual de 20% (vine por cento) do valor do débito. \\n§ 3º - NÃO RENOVAÇÃO DE MATRÍCULA – Havendo débito ao final no ano letivo, o (a) BENEFICI- \\nÁRIO (A) será automaticamente desligado da CONTRATADA (art. 6º - § 1º da Lei nº 9.870/1999), \\ndesobri gando-se esta de deferir pedido de renovação de matrícula (art. 5º da mesma Lei). Havendo \\ndébito no acompanhamento pedagógico comunicada por parte dos responsáveis no decorrer do \\nano letivo, de acordo com o  regimento escolar ou cláusula contratual, a escola fica desobrigada a \\ndeferir pedido de renovação de matrícula. (Art. 5º da citada Lei)\"}, {\"pagina\": 8, \"trecho\": \"CLAUSULA 25ª - RESCISÃO - O presente contrato poderá ser rescindido: \\nI - Pela CONTRATADA: \\na) Por motivo previsto no Regimento Escolar; \\nb) Por incompatibilidade do CONTRATANTE com as normas da CONTRATADA e/ou \\ndiscordância com sua proposta pedagógica e ou protocolos ou por qualquer outro motivo \\nque comprometa o bom nome da instituição de ensino; \\nc) Pela prática, por parte do (a) BENEFICIÁRIO (A), de ato indisciplinar que justifique, nos \\ntermos do  regimento escolar, seu desligamento da instituição de ensino, após esgotados \\ntodos os recursos pedagógicos e disciplinares. \\nd) Pela prática, por parte do(a) BENEFICIÁRIO(A), de ato infracional; \\ne) Por inadimplemento, na hipótese de decisão judicial. \\nII - Pelo CONTRATANTE, desde que observada a Cláusula 8ª; \\nIII - Por acordo entre as partes; \\nIV - Em razão do descumprimento de quaisquer obrigações previstas neste instrumento.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}}}"
+    },
+    {
+      "categoria": "educacao",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 810,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "edu-08",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "Para matrículas até Dezembro de 2020 – 13 parcelas de R$ R$ 466,03.\nPara matrículas em Janeiro de 2021 – 12 parcelas de R$ 504,86.\nPara matrículas em Fevereiro de 2021 em diante – parcelas de R$ 550,76, correspondente ao mês da matrícula até Dezembro de 2021."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A Cláusula 9ª (pág. 4) prevê três valores distintos de parcela conforme a data da matrícula (R$ 466,03 até dez/2020; R$ 504,86 em jan/2021; R$ 550,76 de fev/2021 em diante), e a data de assinatura/matrícula está em branco na pág. 17."
+          },
+          "numero_parcelas": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "Para matrículas até Dezembro de 2020 – 13 parcelas de R$ R$ 466,03.\nPara matrículas em Janeiro de 2021 – 12 parcelas de R$ 504,86.\nPara matrículas em Fevereiro de 2021 em diante – parcelas de R$ 550,76, correspondente ao mês da matrícula até Dezembro de 2021."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A Cláusula 9ª (pág. 4) prevê 13 parcelas (matrículas até dez/2020), 12 parcelas (matrículas em jan/2021) ou quantidade variável conforme o mês da matrícula (fev/2021 em diante), sem data preenchida no modelo."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Cláusula 18 – A primeira parcela da anuidade escolar deverá ser paga no ato da matrícula e as demais, no dia 10(dez) de cada mês, a partir de janeiro, terminando em 10(dez) de dezembro, salvo acordo específico e individual das partes, em adiantamento a este."
+            },
+            "evidencias": [
+              {
+                "pagina": 7,
+                "trecho": "Cláusula 18 – A primeira parcela da anuidade escolar deverá ser paga no ato da matrícula e as demais, no dia 10(dez) de cada mês, a partir de janeiro, terminando em 10(dez) de dezembro, salvo acordo específico e individual das partes, em adiantamento a este."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Vencimento na Cláusula 18: 1ª parcela no ato da matrícula e demais no dia 10 de cada mês de janeiro a dezembro."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": "2021-12-31",
+              "duracao_meses": null,
+              "regra": "Cláusula 43 – O presente contrato tem seus efeitos iniciados no ato da assinatura das partes e encerra-se a 31 de dezembro de 2021 gerando efeitos até a conclusão dos serviços educacionais e recebimento de sua contra prestação, não caracterizando direito de qualquer das partes à nova matrícula no período letivo seguinte."
+            },
+            "evidencias": [
+              {
+                "pagina": 14,
+                "trecho": "Cláusula 43 – O presente contrato tem seus efeitos iniciados no ato da assinatura das partes e encerra-se a 31 de dezembro de 2021 gerando efeitos até a conclusão dos serviços educacionais e"
+              },
+              {
+                "pagina": 15,
+                "trecho": "recebimento de sua contra prestação, não caracterizando direito de qualquer das partes à nova matrícula no período letivo seguinte."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Início no ato da assinatura (sem data preenchida na pág. 17) e término expresso em 31/12/2021 na Cláusula 43."
+          },
+          "regra_reajuste": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": null,
+              "regra": "Cláusula 12 – As parcelas terão sua expressão monetária corrigida por qualquer índice legalmente implacável, ou quando a política salarial do Governo causar reflexos superiores à sua variação, sendo automática a correção dos valores na mesma proporção do acréscimo, na forma da legislação aplicável à espécie. Parágrafo Único – O valor da mensalidade básica do Estabelecimento de Ensino é calculado com base no seu planejamento administrativo e pedagógico e reajustado em conformidade com a legislação em vigor;"
+            },
+            "evidencias": [
+              {
+                "pagina": 5,
+                "trecho": "Cláusula 12 – As parcelas terão sua expressão monetária corrigida por qualquer índice legalmente implacável, ou quando a política salarial do Governo causar reflexos superiores à sua variação, sendo automática a correção dos valores na mesma proporção do acréscimo, na forma da legislação aplicável à espécie.\nParágrafo Único – O valor da mensalidade básica do Estabelecimento de Ensino é calculado com base no seu planejamento administrativo e pedagógico e reajustado em conformidade com a legislação em vigor;"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Regra textual de reajuste na Cláusula 12 e Parágrafo Único, sem índice nominal específico."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"edu-08\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"12 parcelas de R$ \\n504,86\\n.\"}, {\"pagina\": 4, \"trecho\": \"13 parcelas de R$ R$ \\n466,03\\n.\"}, {\"pagina\": 4, \"trecho\": \"parcelas de R$ \\n550,76\\n, \\ncorrespondente ao mês da matrícula até Dezembro de \\n2021.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"numero_parcelas\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"13 parcelas de R$ R$ \\n466,03\\n.\"}, {\"pagina\": 4, \"trecho\": \"12 parcelas de R$ \\n504,86\\n.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"data_vencimento\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"A CONTRATADA habitualmente concede desconto de 10% no valor das mensalidades \\npagas até o dia 05 de cada mês, podendo este desconto ser suspenso a qualquer \\ntempo.\"}, {\"pagina\": 7, \"trecho\": \"A primeira parcela da anuidade escolar deverá ser paga no ato da \\nmatrícula e as demais, no dia 10(dez) de cada mês, a partir de \\njaneiro\\n, terminando em \\n10(dez) de \\ndezembro\\n, salvo acordo específico e individual das parte\\ns, em adiantamento \\na este.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 5, \"trecho\": \"Cláusula 1\\n3\\n \\n–\\n \\nNos termos do art. 478 a 480 do Código Civil/2002 fica assegurada a \\npossibilidade de alteração de valores, de modo a preservar o equilíbrio contratual, se \\nhouver modificações na política econômica e tributária que se traduzam em aumento de \\ncustos dos se\\nrviços.\\n \\nParágrafo Único\\n \\n–\\n \\nCaso o (s) \\nCONTRATANTE(S)\\n \\nnão concorde com tal alteração, lhe \\né facultado a rescindir o contrato, nos termos deste.\\n \\nLOCAL E FORMA PARA PAGAMENTO\"}, {\"pagina\": 6, \"trecho\": \"Cláusula 1\\n5\\n \\n–\\n \\nA CONTRATADA, salvo concessão especial, não receberá pagamento \\ncom cheque pré\\n-\\ndatado, de terceiros, de outra praça, para quitação de parcela em \\natraso, ou se o (s) CONTRATANTE\\n(S) estiver inadimplente.\\n \\n\\n \\n1º\\n \\n-\\n \\nO pagamento de qualquer uma das parcelas objeto deste contrato, efetuado \\natravés de cheque, somente se considerará liquidado após o respectivo crédito \\nem conta corrente da CONTRATADA a ser confirmado, ficando as eventuais \\nqui\\ntações e deferimentos subordinados a essa condição resolutiva. \\n \\n \\n\\n \\n2º \\n-\\n \\nO pagamento de eventual saldo devedor em parcelas será majorado \\nconforme prática de mercado vigente.\\n \\nNÃO ACEITAÇÃO E NÃO RENOVAÇÃO DE MATRÍCULA\"}, {\"pagina\": 8, \"trecho\": \"Cláusula 2\\n0\\n \\n–\\n \\nSem prejuízo do pagamento do que for devido e da indenização do \\nprejuízo, o descumprimento do presente contrato obriga o inadimplente ao pagamento \\nda multa de 10% (dez por cento) de seu valor.\\n \\nDA RESCISÃO DO CONTRATO\"}, {\"pagina\": 8, \"trecho\": \"Cláusula\\n \\n2\\n1\\n \\n–\\n \\nO presente Contrato poderá ser rescindido a qualquer momento, por \\nqualquer das partes, nos seguintes casos:\\n \\na)\\n \\nMediante notificação por escrito com antecedência mínima de 30(trinta) dias entre o \\nCONTRATANTE e o CONTRATADO com exposição dos motivos da\\n \\nrescisão;\\n \\nb)\\n \\nQuando ocorrer previsão legal;\\n \\nc)\\n \\nPelo CONTRATADO, por motivos disciplinar, por descumprimento de norma \\nregimental, incompatibilidade de aluno ou do seu responsável com a escola ou com \\noutro que não recomende ou inviabilize a permanência do discente no estabelecimento, \\npor prejuízo a ele,\\n \\na outros ou ao processo educacional;\\n \\nd)\\n \\nPelo CONTRATANTE em razão de sua vontade e se estiver quite com as parcelas \\ndevidas da anuidade escolar;\\n \\ne)\\n \\nPor qualquer uma das partes, por descumprimento contratual.\"}, {\"pagina\": 9, \"trecho\": \"Cláusula 25\\n \\n–\\n \\nApós 90(noventa) dias de atraso, sem prejuízo do previsto em lei \\nquanto à continuidade de frequência do aluno no respectivo período letivo ou, se \\nfor o caso, da expedição de transferência, o \\nCONTRATAD\\nO\\n \\npoderá rescindir o \\npresente contrato independentemente de notificação, ficando o CONTRANTANTE \\nresponsável pelo pagamento da multa contratual, bem como do débito existente, \\nalém dos prejuízos pelo inadimplemento (art. 476, cód. civil, bem como art. 6º da \\nlei 9.870/99 e medida provisória nº 2173\\n-\\n24, de 23 de agosto de 2001, \\nindependentemente de processo administrativo)\\n \\n\\n \\n1º \\n-\\n \\nPARCELAS VINCENDAS \\n–\\n \\nO \\nCONTRANTANTE\\n \\nficará ainda obrigado ao \\npagamento das parcelas que tiverem vencimento enquanto o aluno frequentar \\no \\nestabelecimento de ensino contratado.\\n \\n \\n\\n \\n2º\\n \\n-\\n \\nPara recebimento de seu crédito a \\nCONTRATADA\\n \\npoderá utilizar\\n-\\nse de sua \\nprópria organização ou de empresa especializada, sendo que, na segunda \\nhipótese o \\nCONTRATANTE\\n \\narcará com os honorários profissionais relativos à \\ncobrança, desde já fixados em 10% (dez por cento) sobre o valor total do débito, \\nmas despesas, reservando\\n-\\nlhe o direito de regresso em eventual sucumbência.\"}, {\"pagina\": 10, \"trecho\": \"Cláusula 3\\n0\\n \\n–\\n \\nPoderão ser concedidas pelo Estabelecimento de Ensino reduções \\nparciais de valores das parcelas mensais ou integrais na forma de bolsa de estudo, \\nsempre em caráter transitório, não gerando quaisquer direito e sendo, a qualquer \\ntempo, passíveis de diminu\\nição ou cancelamento, a critério do Estabelecimento de \\nEnsino;\\n \\nParágrafo Único \\n–\\n \\nOs descontos concedidos só terão validades até a data do \\nvencimento das parcelas, após o vencimento serão cobrados os valores integrais e \\nmajorados conforme cláusula 20 do pre\\nsente contrato.\\n \\nDA ADMINISTRAÇÃO PEDAGÓGICA\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"outra_regra\", \"indices\": [], \"percentual\": null, \"periodicidade_meses\": null, \"regra\": \"O valor da mensalidade básica do Estabelecimento de Ensino é \\ncalculado com base no seu planejamento administra\\ntivo e pedagógico e reajustado em \\nconformidade com a legislação em vigor;\"}, \"evidencias\": [{\"pagina\": 5, \"trecho\": \"O valor da mensalidade básica do Estabelecimento de Ensino é \\ncalculado com base no seu planejamento administra\\ntivo e pedagógico e reajustado em \\nconformidade com a legislação em vigor;\"}], \"confianca\": \"media\", \"regra_id\": \"reajuste-clausula-v2\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}}}"
+    },
+    {
+      "categoria": "educacao",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 727,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "edu-10",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "CURSO PERÍODO"
+              },
+              {
+                "pagina": 4,
+                "trecho": "§ 1º O valor da contraprestação do semestre 2025.2 será:\nI. para os cursos de Bacharelado em Administração, no valor de R$ 3.101,46 (três mil, cento e um reais e quarenta e seis centavos), em 06 parcelas de R$ 516,91 (quinhentos e dezesseis reais e noventa e um centavos);\nII. para os cursos de Licenciatura em História, Letras, Matemática, Pedagogia e Música, no valor de R$ 2.557,86 (dois mil quinhentos e cinquenta e sete reais e oitenta e seis centavos), em 06 parcelas de R$ 426,31 (quatrocentos e vinte e seis reais e trinta e um centavos);\nIII. para o curso de Bacharelado em Enfermagem, no valor de R$ 5.295,72 (cinco mil, duzentos e noventa e cinco reais e setenta e dois centavos), em 06 parcelas de 882,62 (oitocentos e oitenta e dois reais e sessenta e dois centavos);"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O curso no Termo de Adesão (pág. 1) está em branco e a Cláusula 7ª, § 1º (pág. 4) lista 6 cursos com valores distintos de parcela (R$ 516,91 a R$ 882,62), além de descontos condicionais na Cláusula 8ª e taxa de R$ 180,00 para dependência/TCC (págs. 7 e 9)."
+          },
+          "numero_parcelas": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula"
+              },
+              {
+                "pagina": 7,
+                "trecho": "§ 1º Para o cumprimento de componente curricular em regime de dependência é necessário o firmamento de requerimento específico no setor de Atendimento da CONTRATADA e o pagamento do valor de R$ 900,00 (novecentos reais), o qual poderá ser dividido em 05 (cinco) parcelas de R$ 180,00 (cento e oitenta reais), com vencimento até o dia 10 (dez) dos meses de agosto a dezembro, referente a cada componente curricular."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "A Cláusula 7ª, § 1º menciona '06 parcelas' para os cursos regulares, o § 2º menciona 'em até 06 (seis) parcelas', e as Cláusulas 12ª e 17ª (págs. 7 e 9) preveem '05 (cinco) parcelas' para dependência e TCC."
+          },
+          "data_vencimento": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula, a título de sinal e princípio de pagamento, condição para celebração e concretização do presente contrato, devendo as demais parcelas serem pagas até o dia 10 de cada mês, com o desconto previsto no inciso I da cláusula 8ª deste contrato."
+            },
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula, a título de sinal e princípio de pagamento, condição para celebração e concretização do presente contrato, devendo as demais parcelas serem pagas até o dia 10 de cada mês, com o desconto previsto no inciso I da cláusula 8ª deste contrato."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "1ª parcela paga no ato da matrícula e demais parcelas até o dia 10 de cada mês (Cláusula 7ª, § 2º)."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": "2025-07-01",
+              "fim": "2025-12-31",
+              "duracao_meses": null,
+              "regra": "§ 3º Este Contrato é por um semestre letivo, no período de 01/07/2025 a 31/12/2025, resguardada a sua eficácia pelo prazo prescricional de Lei, para o cumprimento de todas as obrigações previstas neste instrumento."
+            },
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "§ 3º Este Contrato é por um semestre letivo, no período de 01/07/2025 a 31/12/2025, resguardada a sua eficácia pelo prazo prescricional de Lei, para o cumprimento de todas as obrigações previstas neste instrumento."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Período de vigência explícito de 01/07/2025 a 31/12/2025 na Cláusula 5ª, § 3º."
+          },
+          "regra_reajuste": {
+            "estado": "presente",
+            "valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": 12,
+              "regra": "CLÁUSULA 7ª O reajuste no valor da semestralidade é anual, de acordo com o art. 1º, §5º, da Lei nº 9.870, de 23 de novembro de 1999, sendo aplicado em janeiro ou julho de cada ano em curso."
+            },
+            "evidencias": [
+              {
+                "pagina": 4,
+                "trecho": "CLÁUSULA 7ª O reajuste no valor da semestralidade é anual, de acordo com o art. 1º, §5º, da Lei nº 9.870, de 23 de novembro de 1999, sendo aplicado em janeiro ou julho de cada ano em curso."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Reajuste anual nos termos do art. 1º, § 5º da Lei 9.870/1999, aplicado em janeiro ou julho (Cláusula 7ª)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"edu-10\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"Curso de Administração: R$ 3.101,46 (três mil, cento e um reais e quarenta e seis centavos), dividido em \\n06 parcelas de R$ 516,91 (quinhentos e dezesseis reais e noventa e um centavos).\"}, {\"pagina\": 4, \"trecho\": \"Cursos de Li cenciaturas: R$ 2.557,86 (dois mil, quinhentos e cinquenta e sete reais e oitenta e seis \\ncentavos), dividido em 06 parcelas de R$ 426,31 (quatrocentos e vinte e seis reais e trinta e um centavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Psicologia: R$ 4.980,54 (quatro mil, novecentos e oitenta reais e cinquenta e quatro centavos), \\ndividido em 06 parcelas de R$ 830,09 (oitocentos e trinta reais e nove centavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Engenharia de Produção: R$ 4.340,52 (quatro mil, trezentos e quarenta reais e cinquenta e dois \\ncentavos), dividido em 06 parcelas de R$ 723,42 (setecentos e vinte e três reais e quarenta e dois  \\ncentavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Educação Física: R$ 3.467,16 (três mil, quatrocentos e sessenta e sete reais e dezesseis \\ncentavos), dividido em 06 parcelas de R$ 57 7,86 (quinhentos e setenta e sete reais e oitenta e seis \\ncentavos). \\n§ 2º O Contrato será firmado com o valor da semestralidade dividido em até 06 (seis) parcelas, das quais a \\nprimeira parcela será paga no ato da matrícula e será condição para concretização e celebração do  \\npresente Contrato de Prestação de Serviços Educacionais,  devendo as demais parcelas serem pagas até o \\ndia 10 de cada mês para garantir o desconto de 20% (vinte por cento) nos termos da cláusula seguinte. \\n§ 3º Os alunos Bolsistas somente serão contemplados com um desconto diferenciado, não sendo permitido \\nacúmulo de descontos.\"}, {\"pagina\": 7, \"trecho\": \"Sendo nos cursos de bach arelado, devido o \\npagamento pelo aluno do valor da matrícula mais cinco mensalidades no valor de R$ 180,00 (cento e \\noitenta reais). \\n§ 7º O aluno transferido de outra IES com disciplina de estágio  para cumprir deverá pagar matrícula \\nintegral mais cinco mensalidades de R$ 180,00 (cento e oitenta reais), para os cursos de Bacharelados. \\n§ 8º O não comparecimento do ALUNO/CONTRATANTE aos atos escolares contratados não o exime do \\npagamento das parcelas pactuadas da semestralidade integral, pois haverá continuidad e na prestação de \\nserviços colocados à sua disposição por parte da IES, apesar da sua ausência, justificada ou não. \\n§ 9º O (a) ALUNO/CONTRATANTE deverá acessar o endereço eletrônico da IES a fim de gerar o boleto \\nbancário para fins de pagamento da mensalidade até o último dia útil anterior ao vencimento. \\n§ 10º Não haverá, em hipótese alguma, recebimento de cheques nos pagamentos de matrículas, ou em \\nquaisquer outras modalidades junto à CONTRATADA. \\n§ 11º Todo e qualquer pagamento junto à AEB será feito media nte boleto bancário, cartão de crédito, \\ncartão de débito ou pix, não sendo, portanto, nenhum pagamento efetuado em dinheiro no setor  \\nfinanceiro desta autarquia. \\n§ 12º No caso de alunos transferidos para esta IES ou com pendências financeiras, retardatários , o \\npagamento das mensalidades deverá corresponder ao semestre integral, não sendo cabível pagamentos de \\nmensalidades isoladas, alternadamente ou do semestre parcialmente, mesmo que o ingresso do aluno se \\nrealize em período posterior ao início das aulas, c abendo a IES providenciar os atos necessários para que \\nnão haja prejuízo didático-pedagógico ao aluno.\"}, {\"pagina\": 9, \"trecho\": \"O aluno que perder todos os prazos estabelecidos para defesa do TCC deverá protocolar \\nrequerimento de matríc ula para o semestre seguinte, consoante se depreende de regulamentação \\nacadêmica. \\n§ 1º Na hipótese prevista no caput da presente cláusula, para cursar a disciplina do TCC concernente aos \\nCursos ofertados pela FBJ, o aluno pagará o valor integral da matrícu la do curso mais 05 parcelas no valor \\nde R$ 180,00 (cento e oitenta reais). \\n§ 2º Para fins de Antecipação de TCC e Colação de Grau somente será possível mediante antecipação \\nsemestral, uma vez que o aluno não poderá apresentar pendências pedagógicas e fina nceiras bem como \\npendências na biblioteca.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"numero_parcelas\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"Curso de Administração: R$ 3.101,46 (três mil, cento e um reais e quarenta e seis centavos), dividido em \\n06 parcelas de R$ 516,91 (quinhentos e dezesseis reais e noventa e um centavos).\"}, {\"pagina\": 4, \"trecho\": \"Cursos de Li cenciaturas: R$ 2.557,86 (dois mil, quinhentos e cinquenta e sete reais e oitenta e seis \\ncentavos), dividido em 06 parcelas de R$ 426,31 (quatrocentos e vinte e seis reais e trinta e um centavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Enfermagem: R$ 5.295,72 (cinco mil, duzentos e nov enta e cinco reais e setenta e dois \\ncentavos), dividido em 06 parcelas de 882,62 (oitocentos e oitenta e dois reais e sessenta e dois centavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Psicologia: R$ 4.980,54 (quatro mil, novecentos e oitenta reais e cinquenta e quatro centavos), \\ndividido em 06 parcelas de R$ 830,09 (oitocentos e trinta reais e nove centavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Engenharia de Produção: R$ 4.340,52 (quatro mil, trezentos e quarenta reais e cinquenta e dois \\ncentavos), dividido em 06 parcelas de R$ 723,42 (setecentos e vinte e três reais e quarenta e dois  \\ncentavos).\"}, {\"pagina\": 4, \"trecho\": \"Curso de Educação Física: R$ 3.467,16 (três mil, quatrocentos e sessenta e sete reais e dezesseis \\ncentavos), dividido em 06 parcelas de R$ 57 7,86 (quinhentos e setenta e sete reais e oitenta e seis \\ncentavos). \\n§ 2º O Contrato será firmado com o valor da semestralidade dividido em até 06 (seis) parcelas, das quais a \\nprimeira parcela será paga no ato da matrícula e será condição para concretização e celebração do  \\npresente Contrato de Prestação de Serviços Educacionais,  devendo as demais parcelas serem pagas até o \\ndia 10 de cada mês para garantir o desconto de 20% (vinte por cento) nos termos da cláusula seguinte. \\n§ 3º Os alunos Bolsistas somente serão contemplados com um desconto diferenciado, não sendo permitido \\nacúmulo de descontos.\"}, {\"pagina\": 9, \"trecho\": \"O aluno que perder todos os prazos estabelecidos para defesa do TCC deverá protocolar \\nrequerimento de matríc ula para o semestre seguinte, consoante se depreende de regulamentação \\nacadêmica. \\n§ 1º Na hipótese prevista no caput da presente cláusula, para cursar a disciplina do TCC concernente aos \\nCursos ofertados pela FBJ, o aluno pagará o valor integral da matrícu la do curso mais 05 parcelas no valor \\nde R$ 180,00 (cento e oitenta reais). \\n§ 2º Para fins de Antecipação de TCC e Colação de Grau somente será possível mediante antecipação \\nsemestral, uma vez que o aluno não poderá apresentar pendências pedagógicas e fina nceiras bem como \\npendências na biblioteca.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}, \"data_vencimento\": {\"estado\": \"encontrado\", \"valor\": {\"tipo\": \"outra_regra\", \"data\": null, \"dia\": null, \"regra\": \"Curso de Educação Física: R$ 3.467,16 (três mil, quatrocentos e sessenta e sete reais e dezesseis \\ncentavos), dividido em 06 parcelas de R$ 57 7,86 (quinhentos e setenta e sete reais e oitenta e seis \\ncentavos). \\n§ 2º O Contrato será firmado com o valor da semestralidade dividido em até 06 (seis) parcelas, das quais a \\nprimeira parcela será paga no ato da matrícula e será condição para concretização e celebração do  \\npresente Contrato de Prestação de Serviços Educacionais,  devendo as demais parcelas serem pagas até o \\ndia 10 de cada mês para garantir o desconto de 20% (vinte por cento) nos termos da cláusula seguinte. \\n§ 3º Os alunos Bolsistas somente serão contemplados com um desconto diferenciado, não sendo permitido \\nacúmulo de descontos.\"}, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"Curso de Educação Física: R$ 3.467,16 (três mil, quatrocentos e sessenta e sete reais e dezesseis \\ncentavos), dividido em 06 parcelas de R$ 57 7,86 (quinhentos e setenta e sete reais e oitenta e seis \\ncentavos). \\n§ 2º O Contrato será firmado com o valor da semestralidade dividido em até 06 (seis) parcelas, das quais a \\nprimeira parcela será paga no ato da matrícula e será condição para concretização e celebração do  \\npresente Contrato de Prestação de Serviços Educacionais,  devendo as demais parcelas serem pagas até o \\ndia 10 de cada mês para garantir o desconto de 20% (vinte por cento) nos termos da cláusula seguinte. \\n§ 3º Os alunos Bolsistas somente serão contemplados com um desconto diferenciado, não sendo permitido \\nacúmulo de descontos.\"}], \"confianca\": \"media\", \"regra_id\": \"vencimento-condicional-v2\", \"motivo\": \"Associação explícita reconhecida por regra local; requer revisão humana de contexto e completude.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"CLÁUSULA 5ª A configuração formal do ato da matrícula é caracterizada após o pagamento e nas condições \\ne requisitos estabelecidos cumulativamente e previamente pela IES. \\n§ 1º A cláusula acima se aplica ao ALUNO/CONTRATANTE que já estuda na Instituição, acrescida da \\ncondição de pagamento efetivo, adimplência das semestralidades do período letivo anterior, nos termos da \\nLei 9.870, de 23 de novembro de 1999. \\n§ 2º Este Contrato de Prestação de Serviços Educacionais somente terá validade com o deferimento \\nexpresso e formal da matrícula. \\n§ 3º Este Contrato é por um semestre letivo, no período de 01/07/2025 a 31/12/2025, resguardada a sua \\neficácia pelo prazo prescricional de Lei, relativamente à contraprestação remuneratória caso descumprida, \\nautorizando assim à CONTRATADA a cobrança da dívida no prazo legal. \\n§ 4º O CONTRATANTE deve estar em dia com a quota da semestralidade correspondente em todos os \\nprocessos de matrícula, à exceção do inicial (de calouros). A alocação das vagas é feita através da \\nordenação de cada aluno, conforme indicado nas normas da IES. \\n§ 5º A Faculdade se reserva o direito de não renovar a matrícula do (a) aluno(a) inadimplente com as \\nparcelas da semestralidade anterior e outros débitos, nos termos do art. 5º da Lei 9.870, de 23 de \\nnovembro de 1999. \\n§ 6º A efetivação da matrícula, em cada semestre, implica a necessidade de o(a) aluno(a) veterano realizá - \\nla no prazo fixado no calendário acadêmico. \\n§ 7º São essenciais, ainda, para a configuração da matrícula, consequentemente integrada a esse Contrato, \\no preenchimento e aceite das instruções e recomendações, pelo pai ou responsável, à CONTRATADA, em \\nrelação ao ALUNO menor de idade.\"}, {\"pagina\": 8, \"trecho\": \"§ 13º Em caso de rescisão ou cancelamento do presente Contrato por iniciativa do(a)  CONTRATANTE, \\nantes do término do semestre letivo, não haverá restituição de quaisquer valores já pagos.\"}, {\"pagina\": 9, \"trecho\": \"CLÁUSULA 18ª Este Contrato tem duração até o final do semestre letivo contratado, mas seus efeitos são \\nregidos pelas partes e pela legislação vigente, pelo prazo de 05 (cinco) anos e/ou até a conclusão do curso \\ndentro do prazo estabelecido pelo MEC e, além das hipóteses de inadimplência, poderá ser rescindido nas \\nseguintes hipóteses: \\nI. Pelo ALUNO/CONTRATANTE e/ou responsável: \\na) Por trancamento formal de matrícula. \\nb) Por transferência formal do ALUNO/CONTRATANTE. \\nc) Por desligamento nos termos do Estatuto e Regimento Interno da IES. \\nII. Pela CONTRATADA: \\na) Por desligamento nos termos do Estatuto e Regimento Interno da Instituição. \\nb) Por rescisão contratual nos termos acima elencados. \\nIII. Pela CONTRATADA e/ou ALUNO/CONTRATANTE: \\na) Pela prática de atos não condizentes com a vida acadêmica. \\n§ 1º Na hipótese do inciso III, alínea “a”, será procedido o competente processo administrativo. \\n§ 2º Fica o ALUNO/CONTRATANTE obrigado a pagar o valor da parcela do mês em que ocorrer os fatos \\nelencados nas alíneas “a”, “b” e “c”, do inciso I, desta Cláusula, além de outros débitos eventualmente \\nexistentes e devidamente corrigidos.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 4, \"trecho\": \"processo didático -pedagógico, além de outras providências que as atividades docentes exigirem, \\nobedecendo a seu exclu sivo critério o reajuste de valores das mensalidades, sem a ingerência do(a) \\nCONTRATANTE.\"}, {\"pagina\": 4, \"trecho\": \"CLÁUSULA 7ª O reajuste no valor da semestralidade é anual, de acordo com o art.  1º, §5º, da Lei nº 9.870, \\nde 23 de novembro de 1999, sendo aplicado em janeiro ou julho de cada ano em curso. \\n§ 1º Os valores globais para pagamento correspondentes ao semestre letivo são: \\nI.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há candidatos concorrentes ou informação relacionada que a regra não resolveu.\"}}}"
+    },
+    {
+      "categoria": "financiamento",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 249,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "fin-06",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "3. O EMITENTE obriga-se a restituir à PORTOSEG o valor total devido indicado neste instrumento, conforme prestações representativas do débito, aludidas no Quadro Resumo, campo IV, item 14."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Condições Gerais da CCB remetem o valor das prestações ao Quadro Resumo (campo IV, item 14), ausente do arquivo PDF."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "3.1. Os pagamentos à PORTOSEG ocorrerão pelo número de prestações designadas no Quadro Resumo, campo IV, item 13"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Condições Gerais da CCB remetem o número de prestações ao Quadro Resumo (campo IV, item 13), ausente do PDF."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 2,
+                "trecho": "cujo primeiro vencimento se dará no dia resultante da soma do número constante no Quadro Resumo, campo IV, item 12 à data de liberação do crédito, vencendo as demais prestações no mesmo dia dos meses subsequentes."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Condições Gerais da CCB remetem a data do primeiro vencimento e demais prestações ao Quadro Resumo (campo IV, item 12) e à data de liberação do crédito, ausentes do PDF."
+          },
+          "vigencia": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 1,
+                "trecho": "CÉDULA DE CRÉDITO BANCÁRIO - CONDIÇÕES GERAIS"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Condições Gerais da CCB não informam prazo ou datas de início/fim de vigência (dependentes do Quadro Resumo ausente)."
+          },
+          "regra_reajuste": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 3,
+                "trecho": "4.8. Na hipótese de liquidação ou amortização antecipada da dívida serão compreendidos, proporcionalmente, o principal, reajustes contratuais, encargos financeiros e demais acréscimos previstos contratualmente ou em lei."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Não há cláusula de índice ou periodicidade de reajuste nas Condições Gerais (apenas menção genérica na Cláusula 4.8 e encargos de mora na Cláusula 2.1)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"fin-06\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 2, \"trecho\": \"Caso o CLIENTE escolha o CARTÃO DE CRÉDITO “PORTO SEGURO VISA e/ou MASTERCARD” como meio de \\npagamento, e, no decorrer da vigência desta CÉDULA altere a data de vencimento da fatura do respectivo cartão de \\ncrédito, existe a possibilidade de não ser cobrada nenhuma parcela num determinado mês, sendo postada da cobrança \\nde 2 (duas) parcelas no mês seguinte, ou vice-versa.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"vigencia\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Prazo principal não identificado; avisos e prorrogações não o substituem.\"}, \"regra_reajuste\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [{\"pagina\": 3, \"trecho\": \"O INTERVENIENTE/AVALISTA, quando houver, será indicado e qualificado no Quadro Resumo, item II, e declara-\\nse solidariamente responsável pelo total pagamento do débito, o qual compreende o principal, reajustes contratuais, \\nencargos financeiros, cominações legais e convencionais, multas e quaisquer outras despesas/tarifas decorrentes da \\npresente CÉDULA, bem como do eventual inadimplemento do CLIENTE. \\n4.8.1.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há menções a objetos de reajuste (tarifa administrativa); os critérios não foram associados à obrigação principal. Exige revisão, sem transferir índice, taxa ou período entre objetos.\"}}}"
+    },
+    {
+      "categoria": "saude",
+      "formato": "texto",
+      "simulacao": {
+        "status": "parcial",
+        "duracao_ms": 1309,
+        "erros": [
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 1
+          }
+        ]
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "sau-02",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.3.2. O valor da contraprestação pecuniária mensal encontra-se fixado na Proposta de Contratação e/ou tabela de preços que regulará as condições desta contratação."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O item 14.3.2 (pág. 35) remete o valor da contraprestação pecuniária mensal à Proposta de Contratação e/ou tabela de preços, ausente do PDF."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.3.1. O preço dos serviços de assistência à saúde contratos é fixado na forma de preço preestabelecido per capita através de contraprestação pecuniária mensal, correspondente ao período de 01 (um) mês de cobertura, independente da data de vencimento."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Contrato de plano de saúde de trato sucessivo mensal sem número fixo de parcelas."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.4.1. A data de vencimento para o pagamento da Contraprestação Pecuniária Mensal é informada na Proposta de Contratação, que integra este contrato para todos os fins."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O item 14.4.1 (pág. 35) remete a data de vencimento da contraprestação mensal à Proposta de Contratação, ausente do PDF."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": 12,
+              "regra": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+            },
+            "evidencias": [
+              {
+                "pagina": 27,
+                "trecho": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Prazo mínimo de 12 meses com renovação automática por prazo indeterminado (item 11.1, pág. 27)."
+          },
+          "regra_reajuste": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "15.1. A contraprestação pecuniária mensal será reajustada nos termos da Lei nº 9.656/98 e suas atualizações e da regulamentação vigente específica editada pela Agência Nacional de Saúde Suplementar – ANS, que estabelece as normas para reajustes das contraprestações pecuniárias mensais dos planos privados de Assistência à Saúde na segmentação Individual, ou, na ausência deste, pelo índice Setorial que possa vir a ser criado. Na impossibilidade de utilização dos índices anteriores será aplicado o Índice de Preços ao Consumidor Amplo (IPCA) do Instituto Brasileiro de Geografia e Estatística (IBGE)."
+              },
+              {
+                "pagina": 36,
+                "trecho": "16. REAJUSTE POR MUDANÇA DE FAIXA ETÁRIA\n15.1. Independentemente do reajuste anual por variação de custos, as contraprestações pecuniárias mensais serão também reajustadas sempre que, no transcurso da vigência deste Contrato, ocorrer mudança de faixa etária do Beneficiário, de acordo com os valores então vigentes."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Coexistem duas modalidades de reajuste nas Condições Gerais: reajuste anual na Cláusula 15 (págs. 35–36, pelos percentuais da ANS, índice Setorial ou IPCA/IBGE) e reajuste por mudança de faixa etária na Cláusula 16 (pág. 36, tabela com percentuais de 0,00%, 50,20%, 2,46% e 42,95%)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"sau-02\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"numero_parcelas\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"data_vencimento\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"vigencia\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"regra_reajuste\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}}}"
+    },
+    {
+      "categoria": "saude",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 1489,
+        "erros": []
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "sau-03",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.3.2. O valor da contraprestação pecuniária mensal encontra-se fixado na Proposta de Contratação e/ou tabela de preços que regulará as condições desta contratação."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O item 14.3.2 (pág. 35) remete o valor da contraprestação pecuniária mensal à Proposta de Contratação e/ou tabela de preços, ausente do PDF."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.3.1. O preço dos serviços de assistência à saúde contratos é fixado na forma de preço preestabelecido per capita através de contraprestação pecuniária mensal, correspondente ao período de 01 (um) mês de cobertura, independente da data de vencimento."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Contrato de plano de saúde de trato sucessivo mensal sem número fixo de parcelas."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "14.4.1. A data de vencimento para o pagamento da Contraprestação Pecuniária Mensal é informada na Proposta de Contratação, que integra este contrato para todos os fins."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O item 14.4.1 (pág. 35) remete a data de vencimento da contraprestação mensal à Proposta de Contratação, ausente do PDF."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": 12,
+              "regra": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+            },
+            "evidencias": [
+              {
+                "pagina": 26,
+                "trecho": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Prazo mínimo de 12 meses com renovação automática por prazo indeterminado (item 11.1, pág. 26)."
+          },
+          "regra_reajuste": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 35,
+                "trecho": "15.1. A contraprestação pecuniária mensal será reajustada nos termos da Lei nº 9.656/98 e suas atualizações e da regulamentação vigente específica editada pela Agência Nacional de Saúde Suplementar – ANS, que estabelece as normas para reajustes das contraprestações pecuniárias mensais dos planos privados de Assistência à Saúde na segmentação Individual, ou, na ausência deste, pelo índice Setorial que possa vir a ser criado. Na impossibilidade de utilização dos índices anteriores será aplicado o Índice de Preços ao Consumidor Amplo (IPCA) do Instituto Brasileiro de Geografia e Estatística (IBGE)."
+              },
+              {
+                "pagina": 35,
+                "trecho": "16. REAJUSTE POR MUDANÇA DE FAIXA ETÁRIA\n15.1. Independentemente do reajuste anual por variação de custos, as contraprestações pecuniárias mensais serão também reajustadas sempre que, no transcurso da vigência deste Contrato, ocorrer mudança de faixa etária do Beneficiário, de acordo com os valores então vigentes."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Coexistem duas modalidades de reajuste nas Condições Gerais: reajuste anual na Cláusula 15 (pág. 35, pelos percentuais da ANS, índice Setorial ou IPCA/IBGE) e reajuste por mudança de faixa etária na Cláusula 16 (págs. 35–36, tabela com percentuais de 0,00%, 50,20%, 2,46% e 42,95%)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"sau-03\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"numero_parcelas\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"data_vencimento\": {\"estado\": \"nao_identificado\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Informação ausente, com lacunas ou fora das formas suportadas; não foi inferida.\"}, \"vigencia\": {\"estado\": \"encontrado\", \"valor\": {\"prazo\": \"determinado\", \"inicio\": null, \"fim\": null, \"duracao_meses\": 12, \"regra\": \"O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com \\nrenovação automática com prazo indeterminado após e sse período, renovação esta \\nisenta de quaisquer taxas ou cobranças.\\n2.2 . Integram o presente Contrato, para os devidos fin s, este documento, bem como \\ntodos os documentos complementares, como a Ficha de  Inscrição Cadastral, \\nDeclarações Pessoais de Saúde de todos os Beneficiá rios (quando exigível) e a \\nTabela de Reembolso, que se encontra disponível par a consulta no portal da \\nCONTRATADA. \\n \\n2.3. Exclusivamente nas hipóteses em que a CONTRATADA d isponibilizar a \\ncomercialização eletrônica do plano objeto do prese nte Contrato, observada a \\nlegislação e regulamentação vigentes, poderá o proponente, desde que não tenha se \\nutilizado dos serviços ora contratados, manifestar sua intenção de desistência em até \\n7 (sete) dias contados a partir da vigência inicial do presente Contrato. \\n \\n2.3.1.  Na hipótese de desistência prevista no item imedia tamente anterior, a \\nCONTRATATA  obriga-se a devolver os valores efetivamente pagos  pelo \\nProponente sem qualisquer ônus, ressalvada a possib ilidade de desconto dos \\nvalores relativos ao custeio de eventos/procediment os realizados pelo(s) \\nbeneficiário(s), limitado ao valor da multa rescisário prevista no presente Contrato.\\nO disposto no item 16.3 não se aplica às hipóteses de rescisão unilateral do \\ncontrato por fraude ou não pagamento da contraprestação pecuniária.\\nA CONTRATADA  poderá suspender ou rescindir o presente Contrato \\nunilateralmente nas seguintes hipóteses:\\nEm qualquer hipótese de rescisão/cancelamento do p resente Contrato, este \\nnão prejudicará a cobrança das contraprestações pec uniárias vencidas durante a \\nvigência do contrato, as quais as partes declaram-se cientes e concordes que tratam-\\nse de dívida líquida e certa, inclusive quanto à ev entuais multas e juros de mora, \\npodendo o nome da parte devedora ser incluído no ba nco de dados dos órgãos de \\nproteção ao crédito.\\nNos termos da legislação e regulamentação vigentes , terá o CONTRATANTE  \\no direito de rescindir unilateralmente o presente C ontrato a qualquer tempo, sendo \\ncerto que na hipótese de rescisão antes do término do primeiro ano de vigência do \\nContrato o CONTRATANTE  pagará multa de 10% (dez por cento) sobre o valor das \\ncontraprestações pecuniárias restantes para se comp letar os primeiros 12 (doze) \\nmeses em favor da CONTRATADA .\"}, \"evidencias\": [{\"pagina\": 26, \"trecho\": \"O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com \\nrenovação automática com prazo indeterminado após e sse período, renovação esta \\nisenta de quaisquer taxas ou cobranças.\"}, {\"pagina\": 8, \"trecho\": \"2.2 . Integram o presente Contrato, para os devidos fin s, este documento, bem como \\ntodos os documentos complementares, como a Ficha de  Inscrição Cadastral, \\nDeclarações Pessoais de Saúde de todos os Beneficiá rios (quando exigível) e a \\nTabela de Reembolso, que se encontra disponível par a consulta no portal da \\nCONTRATADA. \\n \\n2.3. Exclusivamente nas hipóteses em que a CONTRATADA d isponibilizar a \\ncomercialização eletrônica do plano objeto do prese nte Contrato, observada a \\nlegislação e regulamentação vigentes, poderá o proponente, desde que não tenha se \\nutilizado dos serviços ora contratados, manifestar sua intenção de desistência em até \\n7 (sete) dias contados a partir da vigência inicial do presente Contrato. \\n \\n2.3.1.  Na hipótese de desistência prevista no item imedia tamente anterior, a \\nCONTRATATA  obriga-se a devolver os valores efetivamente pagos  pelo \\nProponente sem qualisquer ônus, ressalvada a possib ilidade de desconto dos \\nvalores relativos ao custeio de eventos/procediment os realizados pelo(s) \\nbeneficiário(s), limitado ao valor da multa rescisário prevista no presente Contrato.\"}, {\"pagina\": 37, \"trecho\": \"O disposto no item 16.3 não se aplica às hipóteses de rescisão unilateral do \\ncontrato por fraude ou não pagamento da contraprestação pecuniária.\"}, {\"pagina\": 37, \"trecho\": \"A CONTRATADA  poderá suspender ou rescindir o presente Contrato \\nunilateralmente nas seguintes hipóteses:\"}, {\"pagina\": 37, \"trecho\": \"Em qualquer hipótese de rescisão/cancelamento do p resente Contrato, este \\nnão prejudicará a cobrança das contraprestações pec uniárias vencidas durante a \\nvigência do contrato, as quais as partes declaram-se cientes e concordes que tratam-\\nse de dívida líquida e certa, inclusive quanto à ev entuais multas e juros de mora, \\npodendo o nome da parte devedora ser incluído no ba nco de dados dos órgãos de \\nproteção ao crédito.\"}, {\"pagina\": 37, \"trecho\": \"Nos termos da legislação e regulamentação vigentes , terá o CONTRATANTE  \\no direito de rescindir unilateralmente o presente C ontrato a qualquer tempo, sendo \\ncerto que na hipótese de rescisão antes do término do primeiro ano de vigência do \\nContrato o CONTRATANTE  pagará multa de 10% (dez por cento) sobre o valor das \\ncontraprestações pecuniárias restantes para se comp letar os primeiros 12 (doze) \\nmeses em favor da CONTRATADA .\"}], \"confianca\": \"media\", \"regra_id\": \"vigencia-explicita-v2\", \"motivo\": \"Datas e condições explícitas reunidas sem calcular início, fim ou duração ausentes; requer revisão humana.\"}, \"regra_reajuste\": {\"estado\": \"ambiguo\", \"valor\": null, \"evidencias\": [{\"pagina\": 16, \"trecho\": \"O reajuste do valor da US para cálculo dos limites de reembolso, poderá \\nconsiderar a variação dos custos médico-hospitalare s dos procedimentos \\ncobertos por este contrato, não estando de qualquer  forma vinculado ao índice \\nde reajuste financeiro ou técnico do contrato, tend o como parâmetro o que \\ndispõe a a legislação e regulamentação vigentes.\"}, {\"pagina\": 34, \"trecho\": \"Os valores a título de franquia e coparticipação, quando previstas no plano \\ncontratado, constarão na TABELA DE VENDAS ou na PRO POSTA DE \\nCONTRATAÇÃO/ADESÃO ou no presente Contrato ou em AD ITIVO e serão \\nanualmente reajustados de acordo com a data base e percentual aplicado às \\ncontraprestações pecuniárias mensais.\"}, {\"pagina\": 35, \"trecho\": \"REAJUSTE ANUAL DA CONTRAPRESTAÇÃO PECUNIÁRIA MENSAL \\n15.1.\"}, {\"pagina\": 35, \"trecho\": \"A contraprestação pecuniária mensal será reajustad a nos termos da Lei nº \\n9.656/98 e suas atualizações e da regulamentação vi gente específica editada pela \\nAgência Nacional de Saúde Suplementar – ANS, que es tabelece as normas para \\nreajustes das contraprestações pecuniárias mensais dos planos privados de \\nAssistência à Saúde na segmentação Individual, ou, na ausência deste, pelo índice \\nSetorial que possa vir a ser criado.\"}, {\"pagina\": 35, \"trecho\": \"A aplicação do índice de reajuste da Contraprestaç ão Pecuniária Mensal \\nocorrerá sempre anualmente e no mês de aniversário do Contrato e nos percentuais \\npreviamente autorizados pela Agência Nacional de Saúde Suplementar - ANS.\"}, {\"pagina\": 35, \"trecho\": \"REAJUSTE POR MUDANÇA DE FAIXA ETÁRIA \\n15.1.\"}, {\"pagina\": 35, \"trecho\": \"Independentemente do reajuste anual por variação d e custos, as \\ncontraprestações pecuniárias mensais serão também r eajustadas sempre que, no \\ntranscurso da vigência deste Contrato, ocorrer muda nça de faixa etária do \\nBeneficiário, de acordo com os valores então vigentes.\"}, {\"pagina\": 36, \"trecho\": \"A variação do preço em razão da alteração da faixa  etária somente incidirá \\nquando o Beneficiário completar a idade limite abai xo prevista, sendo o reajuste \\naplicado no mês subsequente, conforme faixas etária s e percentuais constantes da \\ntabela a seguir:\"}, {\"pagina\": 1, \"trecho\": \"REAJUSTE ANUAL DA CONTRAPRESTAÇÃO PECUNIÁRIA MENSAL  ......................... 35  \\n16.\"}, {\"pagina\": 1, \"trecho\": \"REAJUSTE POR MUDANÇA DE FAIXA ETÁRIA  .................................................................. 35  \\n17.\"}], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Há menções a modalidades de reajuste (anual, faixa etária) e condições não consolidadas; exige revisão. Isso não comprova contradição entre as cláusulas.\"}}}"
+    },
+    {
+      "categoria": "saude",
+      "formato": "texto",
+      "simulacao": {
+        "status": "falhou",
+        "duracao_ms": 62,
+        "erros": [
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 1
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 2
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 3
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 4
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 5
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 6
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 7
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 8
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 9
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 10
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 11
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 12
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 13
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 14
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 15
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 16
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 17
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 18
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 19
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 20
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 21
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 22
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 23
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 24
+          },
+          {
+            "codigo": "SEM_CAMADA_TEXTO",
+            "mensagem": "Página sem texto extraível; OCR não executado.",
+            "pagina": 25
+          }
+        ]
+      },
+      "gabarito": {
+        "protocolo_versao": "1.0.0",
+        "esquema_versao": "1.0.0",
+        "tipo_registro": "exemplo_gabarito",
+        "documento_id": "sau-06",
+        "pdf_sha256": null,
+        "versao_extrator": null,
+        "anotacao": {
+          "anotador_id": "usuario-revisao-assistida-01",
+          "revisor_id": null,
+          "estado_revisao": "revisao_unica",
+          "data": "2026-11-03"
+        },
+        "processamento": {
+          "status": "nao_executado",
+          "duracao_ms": null,
+          "erros": []
+        },
+        "campos": {
+          "valor_parcela": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 17,
+                "trecho": "15.1. O CONTRATANTE se obriga a pagar mensalmente à CONTRATADA, através de recursos próprios, em função deste contrato, a soma das mensalidades correspondentes a cada faixa etária dos beneficiários, titulares e/ou dependentes, inscritos neste contrato, valores estes constantes na Proposta de Admissão, acrescida da taxa de administração, e a importância relativa à coparticipação."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Condições Gerais remetem os valores das mensalidades por faixa etária à Proposta de Admissão (Cláusula 15ª, item 15.1, pág. 17), ausente do PDF."
+          },
+          "numero_parcelas": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 22,
+                "trecho": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Contrato de assistência à saúde de prestação continuada mensal sem número total de parcelas."
+          },
+          "data_vencimento": {
+            "estado": "ausente",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 18,
+                "trecho": "15.2. As faturas das mensalidades e os eventuais valores relativos à coparticipação serão pagos até seus respectivos vencimentos, conforme acordado na Proposta de Admissão, sob pena de se caracterizar a inadimplência."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "O item 15.2 (pág. 18) remete a data de vencimento das faturas mensais ao acordado na Proposta de Admissão, ausente do PDF."
+          },
+          "vigencia": {
+            "estado": "presente",
+            "valor": {
+              "prazo": "determinado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": 12,
+              "regra": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação. 19.2. Considera-se como data do início de vigência, a data da assinatura do contrato, do primeiro pagamento ou a data acordada entre as Partes e contida na Proposta de Admissão ou termo apartado de forma a não haver prorrogação indevida dos prazos de carência admitidos pelo inciso V do artigo 12 da Lei 9.656/98."
+            },
+            "evidencias": [
+              {
+                "pagina": 22,
+                "trecho": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação. 19.2. Considera-se como data do início de vigência, a data da assinatura do contrato, do primeiro pagamento ou a data acordada entre as Partes e contida na Proposta de Admissão ou termo apartado de forma a não haver prorrogação indevida dos prazos de carência admitidos pelo inciso V do artigo 12 da Lei 9.656/98."
+              },
+              {
+                "pagina": 25,
+                "trecho": "Belo Horizonte, 30 de OUTUBRO de 2018"
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Duração mínima de 12 meses com prorrogação automática por prazo indeterminado (Cláusula 19ª, pág. 22). O início não é fixado como data única porque o item 19.2 prevê alternativa entre assinatura, primeiro pagamento ou data da Proposta de Admissão."
+          },
+          "regra_reajuste": {
+            "estado": "ambiguo",
+            "valor": null,
+            "evidencias": [
+              {
+                "pagina": 17,
+                "trecho": "14.1. As mensalidades são estabelecidas de acordo com a faixa etária de cada beneficiário inscrito. Ocorrendo alteração na idade de qualquer dos beneficiários que importe em deslocamento para a faixa etária superior, a contraprestação pecuniária será reajustada automaticamente, no mês seguinte ao do aniversário do beneficiário, considerando os percentuais abaixo descritos"
+              },
+              {
+                "pagina": 20,
+                "trecho": "18.1.3. Os valores das mensalidades e os valores relativos à coparticipação serão reajustados anualmente, no mês de aniversário deste contrato, de acordo com a variação positiva do Índice Geral de Preços do Mercado (IGP-M), calculado e divulgado pela Fundação Getúlio Vargas (FGV), acumulado nos últimos 12 (doze) meses anteriores à data de aniversário do contrato, sempre que o Índice de Utilização do contrato for menor ou igual a 75% (setenta e cinco por cento)."
+              },
+              {
+                "pagina": 21,
+                "trecho": "18.2.3. Os valores das mensalidades e os valores relativos à coparticipação serão reajustados anualmente, conforme normas da Agência Nacional de Saúde Suplementar (ANS) aplicáveis aos contratos coletivos com menos de 30 (trinta) beneficiários."
+              }
+            ],
+            "confianca": "nao_aplicavel",
+            "regra_id": null,
+            "motivo": "Coexistem múltiplas regras de reajuste no instrumento: reajuste por mudança de faixa etária em 10 faixas na Cláusula 14ª (pág. 17) e duas seções de reajuste anual financeiro/sinistralidade na Cláusula 18ª (págs. 20–22: Seção I com IGP-M ou fórmula de sinistralidade para >99 beneficiários; Seção II com índice ANS ou fórmula combinada para agrupamento de até 99 beneficiários)."
+          }
+        }
+      },
+      "extracao_bruta": "{\"protocolo_versao\": \"1.0.0\", \"esquema_versao\": \"1.0.0\", \"tipo_registro\": \"exemplo_extracao\", \"documento_id\": \"sau-06\", \"pdf_sha256\": null, \"versao_extrator\": null, \"anotacao\": null, \"processamento\": {\"status\": \"nao_executado\", \"duracao_ms\": null, \"erros\": []}, \"campos\": {\"valor_parcela\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"numero_parcelas\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"data_vencimento\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"vigencia\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}, \"regra_reajuste\": {\"estado\": \"erro_leitura\", \"valor\": null, \"evidencias\": [], \"confianca\": \"nao_aplicavel\", \"regra_id\": null, \"motivo\": \"Leitura incompleta do PDF; o campo exige revisão do documento original.\"}}}"
+    }
+  ]
+}

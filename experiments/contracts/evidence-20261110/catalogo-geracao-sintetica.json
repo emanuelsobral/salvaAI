@@ -1,0 +1,439 @@
+{
+  "gerado_em": "2026-11-03",
+  "semente": 20261103,
+  "modelos_publicos_base": [
+    "alu-01",
+    "alu-02",
+    "edu-01",
+    "fin-01",
+    "sau-01"
+  ],
+  "estratos": {
+    "S1": "Preenchimento estrito das lacunas originais dos 5 modelos públicos (20 contratos = 15 preenchidos + 5 controles em branco; 100 pares documento-campo).",
+    "S2": "Cláusulas canônicas em prosa nos 5 modelos públicos (10 contratos = 8 preenchidos, incluindo 1 caso de tolerância de 1 centavo, + 2 controles em branco; 50 pares documento-campo).",
+    "S1_S2_combinado": "Total de 30 contratos sintéticos (150 pares documento-campo)."
+  },
+  "documentos": [
+    {
+      "documento_id": "sint-s1-alu01-01",
+      "categoria": "aluguel",
+      "num_paginas": 2,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "1250.00",
+        "dia_vencimento": 10,
+        "duracao_meses": 24,
+        "inicio": "2026-02-01",
+        "fim": "2028-02-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu01-02",
+      "categoria": "aluguel",
+      "num_paginas": 2,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "1500.00",
+        "dia_vencimento": 25,
+        "duracao_meses": 24,
+        "inicio": "2026-01-01",
+        "fim": "2028-01-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu01-03",
+      "categoria": "aluguel",
+      "num_paginas": 2,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "2450.00",
+        "dia_vencimento": 15,
+        "duracao_meses": 12,
+        "inicio": "2026-02-01",
+        "fim": "2027-02-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu01-04",
+      "categoria": "aluguel",
+      "num_paginas": 2,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu02-01",
+      "categoria": "aluguel",
+      "num_paginas": 7,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-02",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "2750.00",
+        "dia_vencimento": 10,
+        "duracao_meses": 24,
+        "inicio": "2026-05-10",
+        "fim": "2028-05-10"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu02-02",
+      "categoria": "aluguel",
+      "num_paginas": 7,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-02",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "1950.00",
+        "dia_vencimento": 10,
+        "duracao_meses": 30,
+        "inicio": "2026-05-10",
+        "fim": "2028-11-10"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu02-03",
+      "categoria": "aluguel",
+      "num_paginas": 7,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-02",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "2750.00",
+        "dia_vencimento": 10,
+        "duracao_meses": 30,
+        "inicio": "2026-07-10",
+        "fim": "2029-01-10"
+      }
+    },
+    {
+      "documento_id": "sint-s1-alu02-04",
+      "categoria": "aluguel",
+      "num_paginas": 7,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "alu-02",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s1-edu01-01",
+      "categoria": "educacao",
+      "num_paginas": 16,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "edu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "1150.00",
+        "numero_parcelas": 12,
+        "dia_vencimento": 8
+      }
+    },
+    {
+      "documento_id": "sint-s1-edu01-02",
+      "categoria": "educacao",
+      "num_paginas": 16,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "edu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "980.00",
+        "numero_parcelas": 12,
+        "dia_vencimento": 5
+      }
+    },
+    {
+      "documento_id": "sint-s1-edu01-03",
+      "categoria": "educacao",
+      "num_paginas": 16,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "edu-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "980.00",
+        "numero_parcelas": 12,
+        "dia_vencimento": 10
+      }
+    },
+    {
+      "documento_id": "sint-s1-edu01-04",
+      "categoria": "educacao",
+      "num_paginas": 16,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "edu-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s1-fin01-01",
+      "categoria": "financiamento",
+      "num_paginas": 17,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "fin-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "3420.00",
+        "numero_parcelas": 360,
+        "dia_vencimento": 10
+      }
+    },
+    {
+      "documento_id": "sint-s1-fin01-02",
+      "categoria": "financiamento",
+      "num_paginas": 17,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "fin-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "4890.00",
+        "numero_parcelas": 240,
+        "dia_vencimento": 5
+      }
+    },
+    {
+      "documento_id": "sint-s1-fin01-03",
+      "categoria": "financiamento",
+      "num_paginas": 17,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "fin-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "4890.00",
+        "numero_parcelas": 180,
+        "dia_vencimento": 10
+      }
+    },
+    {
+      "documento_id": "sint-s1-fin01-04",
+      "categoria": "financiamento",
+      "num_paginas": 17,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "fin-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s1-sau01-01",
+      "categoria": "saude",
+      "num_paginas": 33,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "sau-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "690.00",
+        "dia_vencimento": 5,
+        "inicio": "2026-01-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-sau01-02",
+      "categoria": "saude",
+      "num_paginas": 33,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "sau-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "690.00",
+        "dia_vencimento": 10,
+        "inicio": "2026-04-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-sau01-03",
+      "categoria": "saude",
+      "num_paginas": 33,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "sau-01",
+        "modo": "preenchido_estrito",
+        "valor_parcela": "580.00",
+        "dia_vencimento": 20,
+        "inicio": "2026-01-01"
+      }
+    },
+    {
+      "documento_id": "sint-s1-sau01-04",
+      "categoria": "saude",
+      "num_paginas": 33,
+      "parametros": {
+        "estrato": "S1",
+        "modelo_base": "sau-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s2-alu01-01",
+      "categoria": "aluguel",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "alu-01",
+        "modo": "canonico_exato",
+        "valor_texto": "4200.00",
+        "valor_gabarito": "4200.00",
+        "numero_parcelas": 48,
+        "dia_vencimento": 10,
+        "duracao_meses": 48,
+        "inicio": "2026-06-01",
+        "fim": "2030-06-01",
+        "indice": "IPCA"
+      }
+    },
+    {
+      "documento_id": "sint-s2-alu01-02",
+      "categoria": "aluguel",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "alu-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s2-alu02-03",
+      "categoria": "aluguel",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "alu-02",
+        "modo": "canonico_exato",
+        "valor_texto": "1250.00",
+        "valor_gabarito": "1250.00",
+        "numero_parcelas": 12,
+        "dia_vencimento": 20,
+        "duracao_meses": 12,
+        "inicio": "2026-01-01",
+        "fim": "2027-01-01",
+        "indice": "INPC"
+      }
+    },
+    {
+      "documento_id": "sint-s2-alu02-04",
+      "categoria": "aluguel",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "alu-02",
+        "modo": "canonico_tolerancia_1cent",
+        "valor_texto": "3100.00",
+        "valor_gabarito": "3100.01",
+        "numero_parcelas": 12,
+        "dia_vencimento": 25,
+        "duracao_meses": 12,
+        "inicio": "2026-03-01",
+        "fim": "2027-03-01",
+        "indice": "INPC"
+      }
+    },
+    {
+      "documento_id": "sint-s2-edu01-05",
+      "categoria": "educacao",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "edu-01",
+        "modo": "canonico_exato",
+        "valor_texto": "1250.00",
+        "valor_gabarito": "1250.00",
+        "numero_parcelas": 24,
+        "dia_vencimento": 15,
+        "duracao_meses": 24,
+        "inicio": "2026-01-01",
+        "fim": "2028-01-01",
+        "indice": "IPCA"
+      }
+    },
+    {
+      "documento_id": "sint-s2-edu01-06",
+      "categoria": "educacao",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "edu-01",
+        "modo": "controle_em_branco"
+      }
+    },
+    {
+      "documento_id": "sint-s2-fin01-07",
+      "categoria": "financiamento",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "fin-01",
+        "modo": "canonico_exato",
+        "valor_texto": "1250.00",
+        "valor_gabarito": "1250.00",
+        "numero_parcelas": 24,
+        "dia_vencimento": 25,
+        "duracao_meses": 24,
+        "inicio": "2026-04-01",
+        "fim": "2028-04-01",
+        "indice": "IPCA"
+      }
+    },
+    {
+      "documento_id": "sint-s2-fin01-08",
+      "categoria": "financiamento",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "fin-01",
+        "modo": "canonico_exato",
+        "valor_texto": "1780.50",
+        "valor_gabarito": "1780.50",
+        "numero_parcelas": 36,
+        "dia_vencimento": 25,
+        "duracao_meses": 36,
+        "inicio": "2026-02-01",
+        "fim": "2029-02-01",
+        "indice": "INPC"
+      }
+    },
+    {
+      "documento_id": "sint-s2-sau01-09",
+      "categoria": "saude",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "sau-01",
+        "modo": "canonico_exato",
+        "valor_texto": "4200.00",
+        "valor_gabarito": "4200.00",
+        "numero_parcelas": 36,
+        "dia_vencimento": 25,
+        "duracao_meses": 36,
+        "inicio": "2026-04-01",
+        "fim": "2029-04-01",
+        "indice": "INPC"
+      }
+    },
+    {
+      "documento_id": "sint-s2-sau01-10",
+      "categoria": "saude",
+      "num_paginas": 1,
+      "parametros": {
+        "estrato": "S2",
+        "modelo_base": "sau-01",
+        "modo": "canonico_exato",
+        "valor_texto": "2350.00",
+        "valor_gabarito": "2350.00",
+        "numero_parcelas": 36,
+        "dia_vencimento": 20,
+        "duracao_meses": 36,
+        "inicio": "2026-02-01",
+        "fim": "2029-02-01",
+        "indice": "IGP-M"
+      }
+    }
+  ]
+}

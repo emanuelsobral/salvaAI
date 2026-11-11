@@ -1,0 +1,101 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "sau-03",
+    "pdf_sha256": "dc73c179ba8c6439e853fac239ca2e3b725af652a84244c90c2f2ff5b4fcad56",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 35,
+            "trecho": "14.3.2. O valor da contraprestação pecuniária mensal encontra-se fixado na Proposta de Contratação e/ou tabela de preços que regulará as condições desta contratação."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O item 14.3.2 (pág. 35) remete o valor da contraprestação pecuniária mensal à Proposta de Contratação e/ou tabela de preços, ausente do PDF."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 35,
+            "trecho": "14.3.1. O preço dos serviços de assistência à saúde contratos é fixado na forma de preço preestabelecido per capita através de contraprestação pecuniária mensal, correspondente ao período de 01 (um) mês de cobertura, independente da data de vencimento."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Contrato de plano de saúde de trato sucessivo mensal sem número fixo de parcelas."
+      },
+      "data_vencimento": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 35,
+            "trecho": "14.4.1. A data de vencimento para o pagamento da Contraprestação Pecuniária Mensal é informada na Proposta de Contratação, que integra este contrato para todos os fins."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O item 14.4.1 (pág. 35) remete a data de vencimento da contraprestação mensal à Proposta de Contratação, ausente do PDF."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": null,
+          "duracao_meses": 12,
+          "regra": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+        },
+        "evidencias": [
+          {
+            "pagina": 26,
+            "trecho": "11.1. O presente Contrato vigorará pelo prazo mínimo de 12 (doze) meses, com renovação automática com prazo indeterminado após esse período, renovação esta isenta de quaisquer taxas ou cobranças. A vigência inicial do presente Contrato se dará a partir da assinatura da Proposta de Contratação, da assinatura do presente instrumento ou da data de pagamento da primeira contraprestação pecuniária mensal, o que ocorrer primeiro."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Prazo mínimo de 12 meses com renovação automática por prazo indeterminado (item 11.1, pág. 26)."
+      },
+      "regra_reajuste": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 35,
+            "trecho": "15.1. A contraprestação pecuniária mensal será reajustada nos termos da Lei nº 9.656/98 e suas atualizações e da regulamentação vigente específica editada pela Agência Nacional de Saúde Suplementar – ANS, que estabelece as normas para reajustes das contraprestações pecuniárias mensais dos planos privados de Assistência à Saúde na segmentação Individual, ou, na ausência deste, pelo índice Setorial que possa vir a ser criado. Na impossibilidade de utilização dos índices anteriores será aplicado o Índice de Preços ao Consumidor Amplo (IPCA) do Instituto Brasileiro de Geografia e Estatística (IBGE)."
+          },
+          {
+            "pagina": 35,
+            "trecho": "16. REAJUSTE POR MUDANÇA DE FAIXA ETÁRIA\n15.1. Independentemente do reajuste anual por variação de custos, as contraprestações pecuniárias mensais serão também reajustadas sempre que, no transcurso da vigência deste Contrato, ocorrer mudança de faixa etária do Beneficiário, de acordo com os valores então vigentes."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Coexistem duas modalidades de reajuste nas Condições Gerais: reajuste anual na Cláusula 15 (pág. 35, pelos percentuais da ANS, índice Setorial ou IPCA/IBGE) e reajuste por mudança de faixa etária na Cláusula 16 (págs. 35–36, tabela com percentuais de 0,00%, 50,20%, 2,46% e 42,95%)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "81b17fb750f29e6fae9f5f7d8ffbef71945952cdf8393f495a489b26685e3ff4",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

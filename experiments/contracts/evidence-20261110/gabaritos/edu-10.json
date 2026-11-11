@@ -1,0 +1,116 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "edu-10",
+    "pdf_sha256": "e1589171a0f60607c007d5eebd52ac22da97f7676bed1cf394e3a3ae15b0f916",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "CURSO PERÍODO"
+          },
+          {
+            "pagina": 4,
+            "trecho": "§ 1º O valor da contraprestação do semestre 2025.2 será:\nI. para os cursos de Bacharelado em Administração, no valor de R$ 3.101,46 (três mil, cento e um reais e quarenta e seis centavos), em 06 parcelas de R$ 516,91 (quinhentos e dezesseis reais e noventa e um centavos);\nII. para os cursos de Licenciatura em História, Letras, Matemática, Pedagogia e Música, no valor de R$ 2.557,86 (dois mil quinhentos e cinquenta e sete reais e oitenta e seis centavos), em 06 parcelas de R$ 426,31 (quatrocentos e vinte e seis reais e trinta e um centavos);\nIII. para o curso de Bacharelado em Enfermagem, no valor de R$ 5.295,72 (cinco mil, duzentos e noventa e cinco reais e setenta e dois centavos), em 06 parcelas de 882,62 (oitocentos e oitenta e dois reais e sessenta e dois centavos);"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O curso no Termo de Adesão (pág. 1) está em branco e a Cláusula 7ª, § 1º (pág. 4) lista 6 cursos com valores distintos de parcela (R$ 516,91 a R$ 882,62), além de descontos condicionais na Cláusula 8ª e taxa de R$ 180,00 para dependência/TCC (págs. 7 e 9)."
+      },
+      "numero_parcelas": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula"
+          },
+          {
+            "pagina": 7,
+            "trecho": "§ 1º Para o cumprimento de componente curricular em regime de dependência é necessário o firmamento de requerimento específico no setor de Atendimento da CONTRATADA e o pagamento do valor de R$ 900,00 (novecentos reais), o qual poderá ser dividido em 05 (cinco) parcelas de R$ 180,00 (cento e oitenta reais), com vencimento até o dia 10 (dez) dos meses de agosto a dezembro, referente a cada componente curricular."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A Cláusula 7ª, § 1º menciona '06 parcelas' para os cursos regulares, o § 2º menciona 'em até 06 (seis) parcelas', e as Cláusulas 12ª e 17ª (págs. 7 e 9) preveem '05 (cinco) parcelas' para dependência e TCC."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula, a título de sinal e princípio de pagamento, condição para celebração e concretização do presente contrato, devendo as demais parcelas serem pagas até o dia 10 de cada mês, com o desconto previsto no inciso I da cláusula 8ª deste contrato."
+        },
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "§ 2º O valor da contraprestação previsto no §1º desta Cláusula será dividido em até 06 (seis) parcelas, das quais a primeira parcela será paga no ato da matrícula, a título de sinal e princípio de pagamento, condição para celebração e concretização do presente contrato, devendo as demais parcelas serem pagas até o dia 10 de cada mês, com o desconto previsto no inciso I da cláusula 8ª deste contrato."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "1ª parcela paga no ato da matrícula e demais parcelas até o dia 10 de cada mês (Cláusula 7ª, § 2º)."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": "2025-07-01",
+          "fim": "2025-12-31",
+          "duracao_meses": null,
+          "regra": "§ 3º Este Contrato é por um semestre letivo, no período de 01/07/2025 a 31/12/2025, resguardada a sua eficácia pelo prazo prescricional de Lei, para o cumprimento de todas as obrigações previstas neste instrumento."
+        },
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "§ 3º Este Contrato é por um semestre letivo, no período de 01/07/2025 a 31/12/2025, resguardada a sua eficácia pelo prazo prescricional de Lei, para o cumprimento de todas as obrigações previstas neste instrumento."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Período de vigência explícito de 01/07/2025 a 31/12/2025 na Cláusula 5ª, § 3º."
+      },
+      "regra_reajuste": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "indices": [],
+          "percentual": null,
+          "periodicidade_meses": 12,
+          "regra": "CLÁUSULA 7ª O reajuste no valor da semestralidade é anual, de acordo com o art. 1º, §5º, da Lei nº 9.870, de 23 de novembro de 1999, sendo aplicado em janeiro ou julho de cada ano em curso."
+        },
+        "evidencias": [
+          {
+            "pagina": 4,
+            "trecho": "CLÁUSULA 7ª O reajuste no valor da semestralidade é anual, de acordo com o art. 1º, §5º, da Lei nº 9.870, de 23 de novembro de 1999, sendo aplicado em janeiro ou julho de cada ano em curso."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Reajuste anual nos termos do art. 1º, § 5º da Lei 9.870/1999, aplicado em janeiro ou julho (Cláusula 7ª)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "794405058eed52ae1d7720c66380abf73bcc6d902bbb08a65a067ed815e68279",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

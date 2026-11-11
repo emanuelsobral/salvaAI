@@ -58,3 +58,7 @@ As conferências JSON usam Node e o AJV disponível nas dependências do projeto
 ## Dados locais
 
 Mantenha PDFs, textos extraídos, gabaritos reais e saídas em `data/` e `runs/`, ignorados pelo Git. Exemplos sintéticos e metadados públicos podem ser versionados. Documentos públicos também podem conter dados pessoais; não inclua os originais ou suas imagens no repositório.
+
+## Evidências publicáveis da avaliação
+
+O [pacote de evidências](evidence-20261110/README.md) reúne 30 instâncias sintéticas, 12 referências de documentos públicos, regras congeladas e o comparador. Inclui supressões de identificadores pessoais e instruções de reprodução. As limitações de independência dos gabaritos e de classificação do formato estão registradas no pacote. Essa edição constitui uma exceção documentada à orientação geral de manter gabaritos reais apenas localmente; os PDFs originais continuam fora do repositório.

@@ -1,0 +1,2847 @@
+{
+  "natureza": "sintetica",
+  "versao_avaliador": "0.1.0",
+  "protocolo_versao": "1.0.0",
+  "aviso": "Teste do comparador com dados fictícios. Não mede desempenho em contratos reais.",
+  "processamento": {
+    "documentos": 2,
+    "concluidos": 2,
+    "parciais": 0,
+    "falhas": 0,
+    "jsons_invalidos": 0
+  },
+  "global": {
+    "exato": {
+      "contagens": {
+        "D": 10,
+        "G": 8,
+        "P": 7,
+        "TP": 1,
+        "FP": 6,
+        "FN": 7,
+        "A": 2,
+        "omissoes": 1,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      },
+      "metricas": {
+        "acerto": {
+          "numerador": 3,
+          "denominador": 10,
+          "valor": 0.3,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 1,
+          "denominador": 7,
+          "valor": 0.14285714285714285,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 2,
+          "denominador": 2,
+          "valor": 1,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 10,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 7,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      }
+    },
+    "tolerante": {
+      "contagens": {
+        "D": 10,
+        "G": 8,
+        "P": 7,
+        "TP": 1,
+        "FP": 6,
+        "FN": 7,
+        "A": 2,
+        "omissoes": 1,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      },
+      "metricas": {
+        "acerto": {
+          "numerador": 3,
+          "denominador": 10,
+          "valor": 0.3,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 1,
+          "denominador": 7,
+          "valor": 0.14285714285714285,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 2,
+          "denominador": 2,
+          "valor": 1,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 10,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 7,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      }
+    }
+  },
+  "campos": {
+    "valor_parcela": {
+      "exato": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 1,
+          "TP": 1,
+          "FP": 0,
+          "FN": 1,
+          "A": 0,
+          "omissoes": 1,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 1,
+            "denominador": 1,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 1,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      },
+      "tolerante": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 1,
+          "TP": 1,
+          "FP": 0,
+          "FN": 1,
+          "A": 0,
+          "omissoes": 1,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 1,
+            "denominador": 1,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 1,
+            "denominador": 2,
+            "valor": 0.5,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 1,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      }
+    },
+    "numero_parcelas": {
+      "exato": {
+        "contagens": {
+          "D": 2,
+          "G": 0,
+          "P": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "A": 2,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 2,
+            "denominador": 2,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_ausentes": {
+            "numerador": 2,
+            "denominador": 2,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          }
+        }
+      },
+      "tolerante": {
+        "contagens": {
+          "D": 2,
+          "G": 0,
+          "P": 0,
+          "TP": 0,
+          "FP": 0,
+          "FN": 0,
+          "A": 2,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 2,
+            "denominador": 2,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_ausentes": {
+            "numerador": 2,
+            "denominador": 2,
+            "valor": 1,
+            "rotulo": "proporção"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          }
+        }
+      }
+    },
+    "data_vencimento": {
+      "exato": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      },
+      "tolerante": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      }
+    },
+    "vigencia": {
+      "exato": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      },
+      "tolerante": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      }
+    },
+    "regra_reajuste": {
+      "exato": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      },
+      "tolerante": {
+        "contagens": {
+          "D": 2,
+          "G": 2,
+          "P": 2,
+          "TP": 0,
+          "FP": 2,
+          "FN": 2,
+          "A": 0,
+          "omissoes": 0,
+          "alta": 0,
+          "erros_alta": 0,
+          "ambiguos": 0,
+          "ilegiveis": 0,
+          "respostas_excluidas": 0,
+          "alta_excluida": 0
+        },
+        "metricas": {
+          "acerto": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "precisao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "revocacao": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "taxa_nao_identificados": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "erro_alta_confianca": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "acerto_presentes": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "acerto_ausentes": {
+            "numerador": 0,
+            "denominador": 0,
+            "valor": null,
+            "rotulo": "não aplicável"
+          },
+          "cobertura_alta_confianca": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          },
+          "proporcao_alta_entre_respostas": {
+            "numerador": 0,
+            "denominador": 2,
+            "valor": 0,
+            "rotulo": "proporção"
+          }
+        }
+      }
+    }
+  },
+  "categorias": {
+    "aluguel": {
+      "global": {
+        "exato": {
+          "contagens": {
+            "D": 10,
+            "G": 8,
+            "P": 7,
+            "TP": 1,
+            "FP": 6,
+            "FN": 7,
+            "A": 2,
+            "omissoes": 1,
+            "alta": 0,
+            "erros_alta": 0,
+            "ambiguos": 0,
+            "ilegiveis": 0,
+            "respostas_excluidas": 0,
+            "alta_excluida": 0
+          },
+          "metricas": {
+            "acerto": {
+              "numerador": 3,
+              "denominador": 10,
+              "valor": 0.3,
+              "rotulo": "proporção"
+            },
+            "precisao": {
+              "numerador": 1,
+              "denominador": 7,
+              "valor": 0.14285714285714285,
+              "rotulo": "proporção"
+            },
+            "revocacao": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "taxa_nao_identificados": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "erro_alta_confianca": {
+              "numerador": 0,
+              "denominador": 0,
+              "valor": null,
+              "rotulo": "não aplicável"
+            },
+            "acerto_presentes": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "acerto_ausentes": {
+              "numerador": 2,
+              "denominador": 2,
+              "valor": 1,
+              "rotulo": "proporção"
+            },
+            "cobertura_alta_confianca": {
+              "numerador": 0,
+              "denominador": 10,
+              "valor": 0,
+              "rotulo": "proporção"
+            },
+            "proporcao_alta_entre_respostas": {
+              "numerador": 0,
+              "denominador": 7,
+              "valor": 0,
+              "rotulo": "proporção"
+            }
+          }
+        },
+        "tolerante": {
+          "contagens": {
+            "D": 10,
+            "G": 8,
+            "P": 7,
+            "TP": 1,
+            "FP": 6,
+            "FN": 7,
+            "A": 2,
+            "omissoes": 1,
+            "alta": 0,
+            "erros_alta": 0,
+            "ambiguos": 0,
+            "ilegiveis": 0,
+            "respostas_excluidas": 0,
+            "alta_excluida": 0
+          },
+          "metricas": {
+            "acerto": {
+              "numerador": 3,
+              "denominador": 10,
+              "valor": 0.3,
+              "rotulo": "proporção"
+            },
+            "precisao": {
+              "numerador": 1,
+              "denominador": 7,
+              "valor": 0.14285714285714285,
+              "rotulo": "proporção"
+            },
+            "revocacao": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "taxa_nao_identificados": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "erro_alta_confianca": {
+              "numerador": 0,
+              "denominador": 0,
+              "valor": null,
+              "rotulo": "não aplicável"
+            },
+            "acerto_presentes": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "acerto_ausentes": {
+              "numerador": 2,
+              "denominador": 2,
+              "valor": 1,
+              "rotulo": "proporção"
+            },
+            "cobertura_alta_confianca": {
+              "numerador": 0,
+              "denominador": 10,
+              "valor": 0,
+              "rotulo": "proporção"
+            },
+            "proporcao_alta_entre_respostas": {
+              "numerador": 0,
+              "denominador": 7,
+              "valor": 0,
+              "rotulo": "proporção"
+            }
+          }
+        }
+      },
+      "campos": {
+        "valor_parcela": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 1,
+              "TP": 1,
+              "FP": 0,
+              "FN": 1,
+              "A": 0,
+              "omissoes": 1,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 1,
+                "denominador": 1,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 1,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 1,
+              "TP": 1,
+              "FP": 0,
+              "FN": 1,
+              "A": 0,
+              "omissoes": 1,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 1,
+                "denominador": 1,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 1,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "numero_parcelas": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 0,
+              "P": 0,
+              "TP": 0,
+              "FP": 0,
+              "FN": 0,
+              "A": 2,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_ausentes": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 0,
+              "P": 0,
+              "TP": 0,
+              "FP": 0,
+              "FN": 0,
+              "A": 2,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_ausentes": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              }
+            }
+          }
+        },
+        "data_vencimento": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "vigencia": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "regra_reajuste": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "formatos": {
+    "texto": {
+      "global": {
+        "exato": {
+          "contagens": {
+            "D": 10,
+            "G": 8,
+            "P": 7,
+            "TP": 1,
+            "FP": 6,
+            "FN": 7,
+            "A": 2,
+            "omissoes": 1,
+            "alta": 0,
+            "erros_alta": 0,
+            "ambiguos": 0,
+            "ilegiveis": 0,
+            "respostas_excluidas": 0,
+            "alta_excluida": 0
+          },
+          "metricas": {
+            "acerto": {
+              "numerador": 3,
+              "denominador": 10,
+              "valor": 0.3,
+              "rotulo": "proporção"
+            },
+            "precisao": {
+              "numerador": 1,
+              "denominador": 7,
+              "valor": 0.14285714285714285,
+              "rotulo": "proporção"
+            },
+            "revocacao": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "taxa_nao_identificados": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "erro_alta_confianca": {
+              "numerador": 0,
+              "denominador": 0,
+              "valor": null,
+              "rotulo": "não aplicável"
+            },
+            "acerto_presentes": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "acerto_ausentes": {
+              "numerador": 2,
+              "denominador": 2,
+              "valor": 1,
+              "rotulo": "proporção"
+            },
+            "cobertura_alta_confianca": {
+              "numerador": 0,
+              "denominador": 10,
+              "valor": 0,
+              "rotulo": "proporção"
+            },
+            "proporcao_alta_entre_respostas": {
+              "numerador": 0,
+              "denominador": 7,
+              "valor": 0,
+              "rotulo": "proporção"
+            }
+          }
+        },
+        "tolerante": {
+          "contagens": {
+            "D": 10,
+            "G": 8,
+            "P": 7,
+            "TP": 1,
+            "FP": 6,
+            "FN": 7,
+            "A": 2,
+            "omissoes": 1,
+            "alta": 0,
+            "erros_alta": 0,
+            "ambiguos": 0,
+            "ilegiveis": 0,
+            "respostas_excluidas": 0,
+            "alta_excluida": 0
+          },
+          "metricas": {
+            "acerto": {
+              "numerador": 3,
+              "denominador": 10,
+              "valor": 0.3,
+              "rotulo": "proporção"
+            },
+            "precisao": {
+              "numerador": 1,
+              "denominador": 7,
+              "valor": 0.14285714285714285,
+              "rotulo": "proporção"
+            },
+            "revocacao": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "taxa_nao_identificados": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "erro_alta_confianca": {
+              "numerador": 0,
+              "denominador": 0,
+              "valor": null,
+              "rotulo": "não aplicável"
+            },
+            "acerto_presentes": {
+              "numerador": 1,
+              "denominador": 8,
+              "valor": 0.125,
+              "rotulo": "proporção"
+            },
+            "acerto_ausentes": {
+              "numerador": 2,
+              "denominador": 2,
+              "valor": 1,
+              "rotulo": "proporção"
+            },
+            "cobertura_alta_confianca": {
+              "numerador": 0,
+              "denominador": 10,
+              "valor": 0,
+              "rotulo": "proporção"
+            },
+            "proporcao_alta_entre_respostas": {
+              "numerador": 0,
+              "denominador": 7,
+              "valor": 0,
+              "rotulo": "proporção"
+            }
+          }
+        }
+      },
+      "campos": {
+        "valor_parcela": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 1,
+              "TP": 1,
+              "FP": 0,
+              "FN": 1,
+              "A": 0,
+              "omissoes": 1,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 1,
+                "denominador": 1,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 1,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 1,
+              "TP": 1,
+              "FP": 0,
+              "FN": 1,
+              "A": 0,
+              "omissoes": 1,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 1,
+                "denominador": 1,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 1,
+                "denominador": 2,
+                "valor": 0.5,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 1,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "numero_parcelas": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 0,
+              "P": 0,
+              "TP": 0,
+              "FP": 0,
+              "FN": 0,
+              "A": 2,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_ausentes": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 0,
+              "P": 0,
+              "TP": 0,
+              "FP": 0,
+              "FN": 0,
+              "A": 2,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_ausentes": {
+                "numerador": 2,
+                "denominador": 2,
+                "valor": 1,
+                "rotulo": "proporção"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              }
+            }
+          }
+        },
+        "data_vencimento": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "vigencia": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        },
+        "regra_reajuste": {
+          "exato": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          },
+          "tolerante": {
+            "contagens": {
+              "D": 2,
+              "G": 2,
+              "P": 2,
+              "TP": 0,
+              "FP": 2,
+              "FN": 2,
+              "A": 0,
+              "omissoes": 0,
+              "alta": 0,
+              "erros_alta": 0,
+              "ambiguos": 0,
+              "ilegiveis": 0,
+              "respostas_excluidas": 0,
+              "alta_excluida": 0
+            },
+            "metricas": {
+              "acerto": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "precisao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "revocacao": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "taxa_nao_identificados": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "erro_alta_confianca": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "acerto_presentes": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "acerto_ausentes": {
+                "numerador": 0,
+                "denominador": 0,
+                "valor": null,
+                "rotulo": "não aplicável"
+              },
+              "cobertura_alta_confianca": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              },
+              "proporcao_alta_entre_respostas": {
+                "numerador": 0,
+                "denominador": 2,
+                "valor": 0,
+                "rotulo": "proporção"
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "documentos": [
+    {
+      "id": "pub-alu-02",
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 478,
+        "erros": []
+      },
+      "codigo": null,
+      "extracao_sha256": "9e42d6729a223564c547c064d529e0d2034261c7c436592b359553b84a74bf53",
+      "campos": {
+        "valor_parcela": {
+          "gabarito": "presente",
+          "previsto": "nao_identificado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "numero_parcelas": {
+          "gabarito": "ausente",
+          "previsto": "nao_identificado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "data_vencimento": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "vigencia": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "regra_reajuste": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        }
+      }
+    },
+    {
+      "id": "pub-alu-03",
+      "categoria": "aluguel",
+      "formato": "texto",
+      "simulacao": {
+        "status": "concluido",
+        "duracao_ms": 135,
+        "erros": []
+      },
+      "codigo": null,
+      "extracao_sha256": "373825bb77688a6c44158c839902cf3403f6181517f33b592a0f882521551811",
+      "campos": {
+        "valor_parcela": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": true,
+            "tolerante": true
+          }
+        },
+        "numero_parcelas": {
+          "gabarito": "ausente",
+          "previsto": "nao_identificado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "data_vencimento": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "vigencia": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        },
+        "regra_reajuste": {
+          "gabarito": "presente",
+          "previsto": "encontrado",
+          "excluido": false,
+          "correspondencia": {
+            "exato": false,
+            "tolerante": false
+          }
+        }
+      }
+    }
+  ]
+}

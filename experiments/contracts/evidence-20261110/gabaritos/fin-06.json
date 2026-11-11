@@ -1,0 +1,91 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "fin-06",
+    "pdf_sha256": "94bff9e6c04027de8f222960de3fe7491b467e4d3ea020b887d1e9230f0213ad",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "3. O EMITENTE obriga-se a restituir à PORTOSEG o valor total devido indicado neste instrumento, conforme prestações representativas do débito, aludidas no Quadro Resumo, campo IV, item 14."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Condições Gerais da CCB remetem o valor das prestações ao Quadro Resumo (campo IV, item 14), ausente do arquivo PDF."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "3.1. Os pagamentos à PORTOSEG ocorrerão pelo número de prestações designadas no Quadro Resumo, campo IV, item 13"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Condições Gerais da CCB remetem o número de prestações ao Quadro Resumo (campo IV, item 13), ausente do PDF."
+      },
+      "data_vencimento": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "cujo primeiro vencimento se dará no dia resultante da soma do número constante no Quadro Resumo, campo IV, item 12 à data de liberação do crédito, vencendo as demais prestações no mesmo dia dos meses subsequentes."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Condições Gerais da CCB remetem a data do primeiro vencimento e demais prestações ao Quadro Resumo (campo IV, item 12) e à data de liberação do crédito, ausentes do PDF."
+      },
+      "vigencia": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "CÉDULA DE CRÉDITO BANCÁRIO - CONDIÇÕES GERAIS"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Condições Gerais da CCB não informam prazo ou datas de início/fim de vigência (dependentes do Quadro Resumo ausente)."
+      },
+      "regra_reajuste": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 3,
+            "trecho": "4.8. Na hipótese de liquidação ou amortização antecipada da dívida serão compreendidos, proporcionalmente, o principal, reajustes contratuais, encargos financeiros e demais acréscimos previstos contratualmente ou em lei."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Não há cláusula de índice ou periodicidade de reajuste nas Condições Gerais (apenas menção genérica na Cláusula 4.8 e encargos de mora na Cláusula 2.1)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "4bef97ae99c6ee17194a17ab1c96307ca245fd965592bc635627029d3ddc49a7",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

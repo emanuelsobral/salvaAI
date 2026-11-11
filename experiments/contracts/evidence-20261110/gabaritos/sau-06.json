@@ -1,0 +1,109 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "sau-06",
+    "pdf_sha256": "da6e947f89540aceed1513e26b1dedcbaae7005ac0406409c758a64c5aa3772f",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 17,
+            "trecho": "15.1. O CONTRATANTE se obriga a pagar mensalmente à CONTRATADA, através de recursos próprios, em função deste contrato, a soma das mensalidades correspondentes a cada faixa etária dos beneficiários, titulares e/ou dependentes, inscritos neste contrato, valores estes constantes na Proposta de Admissão, acrescida da taxa de administração, e a importância relativa à coparticipação."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Condições Gerais remetem os valores das mensalidades por faixa etária à Proposta de Admissão (Cláusula 15ª, item 15.1, pág. 17), ausente do PDF."
+      },
+      "numero_parcelas": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 22,
+            "trecho": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Contrato de assistência à saúde de prestação continuada mensal sem número total de parcelas."
+      },
+      "data_vencimento": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 18,
+            "trecho": "15.2. As faturas das mensalidades e os eventuais valores relativos à coparticipação serão pagos até seus respectivos vencimentos, conforme acordado na Proposta de Admissão, sob pena de se caracterizar a inadimplência."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "O item 15.2 (pág. 18) remete a data de vencimento das faturas mensais ao acordado na Proposta de Admissão, ausente do PDF."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": null,
+          "duracao_meses": 12,
+          "regra": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação. 19.2. Considera-se como data do início de vigência, a data da assinatura do contrato, do primeiro pagamento ou a data acordada entre as Partes e contida na Proposta de Admissão ou termo apartado de forma a não haver prorrogação indevida dos prazos de carência admitidos pelo inciso V do artigo 12 da Lei 9.656/98."
+        },
+        "evidencias": [
+          {
+            "pagina": 22,
+            "trecho": "19.1. Este contrato terá duração mínima de 12 (doze) meses, a partir de sua vigência, prorrogando-se automaticamente e sucessivamente, por tempo indeterminado, não cabendo cobrança de taxas ou de qualquer outro valor para a renovação. 19.2. Considera-se como data do início de vigência, a data da assinatura do contrato, do primeiro pagamento ou a data acordada entre as Partes e contida na Proposta de Admissão ou termo apartado de forma a não haver prorrogação indevida dos prazos de carência admitidos pelo inciso V do artigo 12 da Lei 9.656/98."
+          },
+          {
+            "pagina": 25,
+            "trecho": "Belo Horizonte, 30 de OUTUBRO de 2018"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Duração mínima de 12 meses com prorrogação automática por prazo indeterminado (Cláusula 19ª, pág. 22). O início não é fixado como data única porque o item 19.2 prevê alternativa entre assinatura, primeiro pagamento ou data da Proposta de Admissão."
+      },
+      "regra_reajuste": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 17,
+            "trecho": "14.1. As mensalidades são estabelecidas de acordo com a faixa etária de cada beneficiário inscrito. Ocorrendo alteração na idade de qualquer dos beneficiários que importe em deslocamento para a faixa etária superior, a contraprestação pecuniária será reajustada automaticamente, no mês seguinte ao do aniversário do beneficiário, considerando os percentuais abaixo descritos"
+          },
+          {
+            "pagina": 20,
+            "trecho": "18.1.3. Os valores das mensalidades e os valores relativos à coparticipação serão reajustados anualmente, no mês de aniversário deste contrato, de acordo com a variação positiva do Índice Geral de Preços do Mercado (IGP-M), calculado e divulgado pela Fundação Getúlio Vargas (FGV), acumulado nos últimos 12 (doze) meses anteriores à data de aniversário do contrato, sempre que o Índice de Utilização do contrato for menor ou igual a 75% (setenta e cinco por cento)."
+          },
+          {
+            "pagina": 21,
+            "trecho": "18.2.3. Os valores das mensalidades e os valores relativos à coparticipação serão reajustados anualmente, conforme normas da Agência Nacional de Saúde Suplementar (ANS) aplicáveis aos contratos coletivos com menos de 30 (trinta) beneficiários."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Coexistem múltiplas regras de reajuste no instrumento: reajuste por mudança de faixa etária em 10 faixas na Cláusula 14ª (pág. 17) e duas seções de reajuste anual financeiro/sinistralidade na Cláusula 18ª (págs. 20–22: Seção I com IGP-M ou fórmula de sinistralidade para >99 beneficiários; Seção II com índice ANS ou fórmula combinada para agrupamento de até 99 beneficiários)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "787ee98bb9f4734aab2260159fba4fe843f5a582505a633b4908a7af28775d1d",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}

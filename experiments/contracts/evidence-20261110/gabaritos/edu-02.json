@@ -1,0 +1,109 @@
+{
+  "registro": {
+    "protocolo_versao": "1.0.0",
+    "esquema_versao": "1.0.0",
+    "tipo_registro": "gabarito",
+    "documento_id": "edu-02",
+    "pdf_sha256": "8d0ef91d19452152a0aa7c667171cdbc4a35ed5b0e4cf47fade7679e9cfa6d9a",
+    "versao_extrator": null,
+    "anotacao": {
+      "anotador_id": "usuario-revisao-assistida-01",
+      "revisor_id": null,
+      "estado_revisao": "revisao_unica",
+      "data": "2026-11-03"
+    },
+    "processamento": {
+      "status": "nao_executado",
+      "duracao_ms": null,
+      "erros": []
+    },
+    "campos": {
+      "valor_parcela": {
+        "estado": "ambiguo",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 1,
+            "trecho": "SÉRIE: _______________"
+          },
+          {
+            "pagina": 2,
+            "trecho": "Educação Infantil: Parcela de R$ 1.149,00 | Anuidade de R$ 13.788,00\nEnsino Fundamental Inicial: Parcela de R$ 1.166,00 | Anuidade de R$ 13.992,00\nEnsino Fundamental Final: Parcela de R$ 1.215,00 | Anuidade de R$ 14.580,00\nEnsino Médio: Parcela de R$ 1.408,00 | Anuidade de R$ 16.896,00"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "A série/curso na Cláusula 1 (pág. 1) está em branco e a Cláusula 4 (pág. 2) apresenta quatro valores mensais distintos conforme o curso (R$ 1.149,00, R$ 1.166,00, R$ 1.215,00 e R$ 1.408,00)."
+      },
+      "numero_parcelas": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "determinado",
+          "quantidade": 12
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "O Contratante pagará uma anuidade dividida em 12 parcelas mensais, conforme os valores especificados:"
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Quantidade explícita de 12 parcelas mensais na Cláusula 4."
+      },
+      "data_vencimento": {
+        "estado": "presente",
+        "valor": {
+          "tipo": "outra_regra",
+          "data": null,
+          "dia": null,
+          "regra": "O pagamento da primeira parcela deve ocorrer no ato da matrícula. As demais parcelas vencem no dia 4 de cada mês, de fevereiro a dezembro."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "O pagamento da primeira parcela deve ocorrer no ato da matrícula. As demais parcelas vencem no dia 4 de cada mês, de fevereiro a dezembro."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Vencimento misto na Cláusula 4: 1ª parcela no ato da matrícula e demais no dia 4 de fevereiro a dezembro."
+      },
+      "vigencia": {
+        "estado": "presente",
+        "valor": {
+          "prazo": "determinado",
+          "inicio": null,
+          "fim": null,
+          "duracao_meses": null,
+          "regra": "O contrato cobre o período letivo de janeiro a dezembro de 2026, ou até o término das obrigações educacionais previstas. A renovação é anual e condicionada ao cumprimento do calendário escolar e à quitação das obrigações financeiras."
+        },
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "3. Período Letivo e Vigência\nO contrato cobre o período letivo de janeiro a dezembro de 2026, ou até o término das obrigações educacionais previstas. A renovação é anual e condicionada ao cumprimento do calendário escolar e à quitação das obrigações financeiras."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Vigência para o período letivo de janeiro a dezembro de 2026 na Cláusula 3, sem dia exato de início/fim em formato ISO."
+      },
+      "regra_reajuste": {
+        "estado": "ausente",
+        "valor": null,
+        "evidencias": [
+          {
+            "pagina": 2,
+            "trecho": "4.1. Atraso no Pagamento\nEm caso de atraso, o valor da parcela será acrescido de:\nMulta de 2% sobre o total devido;\nAtualização monetária e juros de 1% ao mês até a quitação."
+          }
+        ],
+        "confianca": "nao_aplicavel",
+        "regra_id": null,
+        "motivo": "Não há cláusula de reajuste periódico da mensalidade/anuidade no contrato (a Cláusula 4.1 trata apenas de multa de 2%, atualização monetária e juros de 1% ao mês por atraso)."
+      }
+    }
+  },
+  "confirmacao_leitura_humana": false,
+  "origem_sha256": "d54b35758461240e5ae22cdf1a28d98ff87960145e10467b97d0f48565734cc8",
+  "status": "edicao_publica_com_supressoes_sem_validacao_humana_independente"
+}
