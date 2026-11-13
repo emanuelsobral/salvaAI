@@ -13,7 +13,7 @@ function response() {
 
 test('extração aceita evidência literal e mantém campos ausentes vazios', () => {
   const result = validateContractAi(response(), pages);
-  assert.equal(result.version, '1.0.2');
+  assert.equal(result.version, '1.1.0');
   assert.equal(result.fields.numero_parcelas.valor, null);
   assert.equal(result.fields.valor_parcela.confianca, 'baixa');
 });

@@ -1,6 +1,7 @@
+import { validateAmountAlternatives } from './contractAlternatives.js';
 import { contractDraft, CONTRACT_FIELDS } from './contractExtraction.js';
 
-export const CONTRACT_AI_VERSION = '1.0.2';
+export const CONTRACT_AI_VERSION = '1.1.0';
 
 // Only whitespace may differ. Store the original substring, never the model's rewritten text.
 export function originalEvidence(page, quote) {
@@ -29,17 +30,25 @@ export function validateContractAi(data, pages) {
     if (!field || !['encontrado', 'nao_identificado', 'ambiguo'].includes(field.estado) ||
         typeof field.motivo !== 'string' || !field.motivo.trim() || field.motivo.length > 1000 ||
         !Array.isArray(field.evidencias) || field.evidencias.length > 10) throw Error('Estado de campo inválido.');
-    const evidencias = field.evidencias.map(e => {
+    const evidence = e => {
       if (!e || !Number.isInteger(e.pagina) || e.pagina < 1 || e.pagina > pages.length ||
           typeof e.trecho !== 'string' || !e.trecho.trim() || e.trecho.length > 3000) throw Error('Evidência não corresponde à página.');
       const original = originalEvidence(pages[e.pagina - 1], e.trecho);
       if (!original) throw Error('Evidência não corresponde à página.');
       return { pagina: e.pagina, trecho: original };
-    });
+    };
+    const evidencias = field.evidencias.map(evidence);
+    if (field.selecaoUsuario !== undefined) throw Error('A IA não pode confirmar uma escolha pelo usuário.');
+    let alternativas;
+    if (field.alternativas !== undefined) {
+      if (key !== 'valor_parcela') throw Error('Alternativas não suportadas para este campo.');
+      validateAmountAlternatives(field);
+      alternativas = field.alternativas.map(item => ({ rotulo: item.rotulo, quantia: item.quantia, periodicidade: item.periodicidade, condicoes: item.condicoes, evidencias: item.evidencias.map(evidence) }));
+    }
     if (field.estado !== 'encontrado' && field.valor !== null) throw Error('Campo incerto deve permanecer vazio.');
     if (field.estado === 'encontrado' && (!evidencias.length || !field.valor || typeof field.valor !== 'object')) throw Error('Campo sem evidência.');
     // Confidence is not a calibrated probability. Never accept a model's numerical score.
-    fields[key] = { estado: field.estado, valor: field.valor, evidencias, motivo: field.motivo,
+    fields[key] = { ...(alternativas ? { alternativas } : {}), estado: field.estado, valor: field.valor, evidencias, motivo: field.motivo,
       confianca: field.estado === 'encontrado' ? 'baixa' : 'nao_aplicavel', regra_id: 'deepseek-fields-v1' };
   }
   const extraction = { version: CONTRACT_AI_VERSION, fields };

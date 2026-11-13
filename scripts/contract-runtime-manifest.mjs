@@ -7,6 +7,8 @@ import { fileURLToPath } from 'node:url';
 const root = fileURLToPath(new URL('../', import.meta.url));
 const paths = [
   'scripts/verify-contract-direct-development.mjs',
+  'src/utils/contractAlternatives.js', 'src/components/Contracts/ContractAmountChoice.jsx',
+  'src/pages/ContractsPage.jsx', 'src/components/Contracts/ExtractionEvidence.jsx', 'src/services/contractService.js',
   'server/contract-ai-prompt.js', 'src/utils/contractAi.js', 'src/components/Contracts/PdfContractImport.jsx',
   'scripts/contract-runtime-manifest.mjs', 'scripts/contract-run-record.mjs',
   'scripts/verify-contract-deepseek-development.mjs',

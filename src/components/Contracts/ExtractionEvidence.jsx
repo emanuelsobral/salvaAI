@@ -14,6 +14,8 @@ export default function ExtractionEvidence({ sourceReview }) {
       return <section key={key} aria-label={`Evidências: ${label}`}>
         <h3>{label} — {EXTRACTION_STATES[field.estado]}</h3>
         <p>{field.motivo}</p>
+        {field.selecaoUsuario ? <p>Escolha confirmada pelo usuário no cadastro: {field.alternativas[field.selecaoUsuario.indice].rotulo}, R$ {field.selecaoUsuario.quantia.replace('.', ',')} por mês. A extração original permanece ambígua; edições posteriores do cadastro podem alterar o valor.</p> : null}
+        {field.alternativas?.map((item, index) => <details key={index}><summary>{item.rotulo} — R$ {item.quantia.replace('.', ',')}/mês</summary><p>{item.condicoes}</p>{item.evidencias.map((e, i) => <blockquote key={i}><strong>Página {e.pagina}</strong><p>{e.trecho}</p></blockquote>)}</details>)}
         {field.evidencias.length ? field.evidencias.map((item, index) => <blockquote key={index}><strong>Página {item.pagina}</strong><p>{item.trecho}</p></blockquote>) : <p>Sem trecho reconhecido para este campo.</p>}
       </section>;
     })}

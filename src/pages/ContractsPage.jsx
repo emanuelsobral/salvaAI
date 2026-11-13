@@ -1,3 +1,5 @@
+import ContractAmountChoice from '../components/Contracts/ContractAmountChoice';
+import { selectContractAmount } from '../utils/contractAlternatives';
 import { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useAuth } from '../hooks/useAuth';
 import { useOperationKey } from '../hooks/useOperationKey';
@@ -14,8 +16,9 @@ const money = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL
 const dateLabel = value => value ? value.split('-').reverse().join('/') : 'Não informado';
 const PdfContractImport = lazy(() => import('../components/Contracts/PdfContractImport'));
 
-function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, onCancel }) {
+export function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, onCancel }) {
   const [fields, setFields] = useState(() => ({ ...EMPTY, ...draft, ...contract, amount: contract?.amount ?? draft?.amount ?? '', installments: contract?.installments ?? draft?.installments ?? '' }));
+  const [reviewSource, setReviewSource] = useState(sourceReview);
   const [reviewed, setReviewed] = useState(false);
   const [error, setError] = useState('');
   const [saving, setSaving] = useState(false);
@@ -24,7 +27,7 @@ function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, on
   const titleRef = useRef(null);
   const operation = useOperationKey();
   useEffect(() => { mounted.current = true; titleRef.current?.focus(); return () => { mounted.current = false; }; }, []);
-  const change = event => { setReviewed(false); setFields(previous => ({ ...previous, [event.target.name]: event.target.value })); };
+  const change = event => { if (event.target.name === 'amount' && reviewSource) setReviewSource(selectContractAmount(reviewSource, null).sourceReview); setReviewed(false); setFields(previous => ({ ...previous, [event.target.name]: event.target.value })); };
   async function submit(event) {
     event.preventDefault();
     if (locked.current || (sourceReview && !reviewed)) return;
@@ -32,7 +35,7 @@ function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, on
     setSaving(true);
     setError('');
     try {
-      const payload = { ...fields, ...(sourceReview ? { sourceReview } : {}), amount: fields.amount === '' ? null : Number(fields.amount), installments: fields.installments === '' ? null : Number(fields.installments) };
+      const payload = { ...fields, ...(reviewSource ? { sourceReview: reviewSource } : {}), amount: fields.amount === '' ? null : Number(fields.amount), installments: fields.installments === '' ? null : Number(fields.installments) };
       const options = { id: contract?.id ?? null, expectedRevision: contract?.revision ?? null };
       const result = await service.saveContract(uid, payload, { ...options, operationId: operation.keyFor({ payload, ...options }) });
       if (!mounted.current) return;
@@ -51,7 +54,11 @@ function ContractForm({ contract, draft, sourceReview, uid, service, onSaved, on
       <p>Informe o que consta no contrato. Apenas o título é obrigatório; deixe em branco o que não souber.</p>
       {contract?.commitmentPlan ? <p className="contract-notice">Editar este cadastro não altera o plano de compromissos já confirmado.</p> : null}
       {sourceReview ? <p className="contract-notice">Campos sugeridos a partir do PDF: confira o documento original. Ao salvar, os campos e os trechos de evidência serão guardados na sua conta. {sourceReview.method === 'PDF_DEEPSEEK_FIELDS_REVIEW' ? 'O texto foi enviado à DeepSeek para sugerir os campos. Se você ativou OCR com DeepSeek, as imagens também foram enviadas.' : sourceReview.method === 'PDF_DEEPSEEK_OCR_REVIEW' ? 'Imagens das páginas foram enviadas à DeepSeek para leitura.' : 'O arquivo PDF permanece neste dispositivo.'}</p> : null}
-      {(sourceReview || contract?.sourceReview) ? <ExtractionEvidence sourceReview={sourceReview || contract.sourceReview} /> : null}
+      {(sourceReview || contract?.sourceReview) ? <ExtractionEvidence sourceReview={reviewSource || contract.sourceReview} /> : null}
+      {reviewSource ? <ContractAmountChoice field={JSON.parse(reviewSource.resultJson).valor_parcela} disabled={saving} onSelect={index => {
+        const result = selectContractAmount(reviewSource, index);
+        setReviewSource(result.sourceReview); setFields(previous => ({ ...previous, amount: result.amount })); setReviewed(false);
+      }} /> : null}
       <form onSubmit={submit}>
         <fieldset disabled={saving} className="contract-fields">
           <legend className="contract-sr-only">Dados do contrato</legend>

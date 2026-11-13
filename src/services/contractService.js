@@ -22,6 +22,8 @@ export async function saveContract(uid, input, { id = null, expectedRevision = n
   const collectionRef = userPath(uid);
   const fields = normalizeContract(input);
   const sourceReview = !id && input.sourceReview ? validateSourceReview(input.sourceReview) : null;
+  const selectedAmount = sourceReview && JSON.parse(sourceReview.resultJson).valor_parcela.selecaoUsuario?.quantia;
+  if (selectedAmount && fields.amount !== Number(selectedAmount)) throw new Error('O valor mudou após a seleção. Revise a mensalidade.');
   if (id !== null && (typeof id !== 'string' || !/^[a-zA-Z0-9_-]{1,180}$/.test(id))) throw new Error('Contrato inválido.');
   if (id !== null && (!Number.isInteger(expectedRevision) || expectedRevision < 0)) throw new Error('Atualize a lista antes de editar o contrato.');
   return financialOperation(uid, operationId, { kind: 'CONTRACT_SAVE', id, expectedRevision, fields, sourceReview }, async (transaction, operationKey) => {

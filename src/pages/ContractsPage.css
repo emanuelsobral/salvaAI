@@ -60,3 +60,13 @@
   .contract-form-actions > button { flex: 1; }
   .contract-form-actions { flex-wrap: wrap; }
 }
+
+.contract-amount-dialog { width: min(680px, calc(100vw - 32px)); max-height: 85dvh; overflow-y: auto; box-sizing: border-box; padding: 1.25rem; border: 1px solid var(--border-color, #555); border-radius: 12px; background: var(--bg-card, #22242c); color: var(--text-main, #2b2d42); margin: auto; overflow-wrap: anywhere; }
+.contract-amount-dialog::backdrop { background: rgb(0 0 0 / 65%); }
+.contract-amount-dialog fieldset { min-width: 0; padding: 0.75rem; }
+.contract-amount-option { margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid #666; }
+.contract-amount-dialog input[type="radio"] { width: auto; accent-color: #38bdf8; }
+.contract-amount-dialog blockquote { margin: 0.75rem 0; white-space: pre-wrap; }
+.contract-amount-dialog .contract-form-actions { flex-wrap: wrap; }
+
+.contract-amount-dialog label { color: var(--text-main, #2b2d42); }

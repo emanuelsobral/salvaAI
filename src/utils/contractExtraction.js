@@ -1,3 +1,4 @@
+import { validateAmountSelection } from './contractAlternatives.js';
 import { positiveMoney, validDate } from './finance.js';
 
 export const CONTRACT_FIELDS = {
@@ -48,6 +49,7 @@ export function validateSourceReview(value) {
   for (const key of Object.keys(CONTRACT_FIELDS)) {
     const field = fields[key];
     if (!field || !Object.hasOwn(EXTRACTION_STATES, field.estado) || !Array.isArray(field.evidencias) || typeof field.motivo !== 'string') throw Error('Evidências inválidas.');
+    if (key === 'valor_parcela') validateAmountSelection(field);
     for (const evidence of field.evidencias) if (!Number.isInteger(evidence.pagina) || evidence.pagina < 1 || evidence.pagina > 50 || typeof evidence.trecho !== 'string') throw Error('Evidências inválidas.');
   }
   return { method: value.method, pdfSha256: value.pdfSha256, extractorVersion: value.extractorVersion, resultJson: value.resultJson };
