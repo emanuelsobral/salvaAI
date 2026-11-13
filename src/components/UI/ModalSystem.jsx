@@ -9,6 +9,7 @@
  */
 
 import { useState, createContext, useContext, useCallback, useRef } from 'react';
+import ModalFrame from './ModalFrame';
 
 const ModalContext = createContext(null);
 
@@ -54,42 +55,46 @@ export function ModalProvider({ children }) {
       {children}
 
       {/* Custom Alert Modal */}
-      <div className={`modal-overlay ${alertState.open ? 'active' : ''}`} style={{ zIndex: 9999 }}>
-        <div className="modal-content" style={{ borderTop: '5px solid var(--accent-primary)', maxWidth: 400, textAlign: 'center', padding: '2rem' }}>
-          <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{alertState.icon}</div>
-          <h2 style={{ marginBottom: '1rem' }}>{alertState.title}</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
-            {alertState.message}
-          </p>
-          <button className="btn-primary" onClick={closeAlert} style={{ width: '100%', border: 'none', fontWeight: 700, padding: '1rem', borderRadius: 8 }}>
-            Entendido
-          </button>
-        </div>
-      </div>
-
-      {/* Custom Confirm Modal */}
-      <div className={`modal-overlay ${confirmState.open ? 'active' : ''}`} style={{ zIndex: 9999 }}>
-        <div className="modal-content" style={{ borderTop: '5px solid var(--accent-red)', maxWidth: 450, padding: '2.5rem' }}>
-          <h2 style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>{confirmState.title}</h2>
-          <p style={{ color: 'var(--text-muted)', fontSize: '1rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
-            {confirmState.message}
-          </p>
-          <div style={{ display: 'flex', gap: '1rem' }}>
-            <button
-              onClick={() => closeConfirm(false)}
-              style={{ flex: 1, padding: '1rem', borderRadius: 8, border: '1px solid var(--border-color)', background: 'transparent', color: 'var(--text-muted)', fontWeight: 600, cursor: 'pointer' }}
-            >
-              Cancelar
-            </button>
-            <button
-              onClick={() => closeConfirm(true)}
-              style={{ flex: 1, padding: '1rem', borderRadius: 8, border: 'none', background: 'var(--accent-red)', color: 'white', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 15px rgba(239, 35, 60, 0.3)' }}
-            >
-              Confirmar
+      {alertState.open && (
+        <ModalFrame onClose={closeAlert} style={{ zIndex: 9999 }}>
+          <div className="modal-content" role="alertdialog" aria-modal="true" aria-labelledby="system-alert-title" style={{ borderTop: '5px solid var(--accent-primary)', maxWidth: 400, textAlign: 'center', padding: '2rem' }}>
+            <div style={{ fontSize: '3rem', marginBottom: '1rem' }}>{alertState.icon}</div>
+            <h2 id="system-alert-title" style={{ marginBottom: '1rem' }}>{alertState.title}</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '0.95rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
+              {alertState.message}
+            </p>
+            <button className="btn-primary" onClick={closeAlert} style={{ width: '100%', border: 'none', fontWeight: 700, padding: '1rem', borderRadius: 8 }}>
+              Entendido
             </button>
           </div>
-        </div>
-      </div>
+        </ModalFrame>
+      )}
+
+      {/* Custom Confirm Modal */}
+      {confirmState.open && (
+        <ModalFrame onClose={() => closeConfirm(false)} style={{ zIndex: 9999 }}>
+          <div className="modal-content" role="alertdialog" aria-modal="true" aria-labelledby="system-confirm-title" style={{ borderTop: '5px solid var(--accent-red)', maxWidth: 450, padding: '2.5rem' }}>
+            <h2 id="system-confirm-title" style={{ marginBottom: '1rem', color: 'var(--text-main)' }}>{confirmState.title}</h2>
+            <p style={{ color: 'var(--text-muted)', fontSize: '1rem', marginBottom: '2rem', whiteSpace: 'pre-wrap', lineHeight: 1.5 }}>
+              {confirmState.message}
+            </p>
+            <div style={{ display: 'flex', gap: '1rem' }}>
+              <button
+                onClick={() => closeConfirm(false)}
+                style={{ flex: 1, padding: '1rem', borderRadius: 8, border: '1px solid var(--border-color)', background: 'transparent', color: 'var(--text-muted)', fontWeight: 600, cursor: 'pointer' }}
+              >
+                Cancelar
+              </button>
+              <button
+                onClick={() => closeConfirm(true)}
+                style={{ flex: 1, padding: '1rem', borderRadius: 8, border: 'none', background: 'var(--accent-red)', color: 'white', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 15px rgba(239, 35, 60, 0.3)' }}
+              >
+                Confirmar
+              </button>
+            </div>
+          </div>
+        </ModalFrame>
+      )}
     </ModalContext.Provider>
   );
 }
