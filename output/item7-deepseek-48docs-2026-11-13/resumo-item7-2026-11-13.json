@@ -1,0 +1,1289 @@
+{
+  "data": "2026-11-13",
+  "escopo": "Item 7 — 48 documentos (30 sinteticos S1+S2, 2 preenchidos de desenvolvimento e 16 demais de desenvolvimento)",
+  "modelo_solicitado": "deepseek-flash",
+  "modelos_retornados": [
+    "deepseek-flash"
+  ],
+  "chamadas_totais": 87,
+  "chamadas_ok": 70,
+  "chamadas_com_erro": [
+    {
+      "docId": "sint-s1-alu01-02",
+      "chunkIndex": 0,
+      "error": "Expected ':' after property name in JSON at position 771 (line 1 column 772)"
+    },
+    {
+      "docId": "sint-s1-fin01-01",
+      "chunkIndex": 0,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "sint-s1-fin01-03",
+      "chunkIndex": 0,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "sint-s1-fin01-04",
+      "chunkIndex": 0,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "sint-s1-fin01-04",
+      "chunkIndex": 1,
+      "error": "Evidência não corresponde à página."
+    },
+    {
+      "docId": "sint-s1-sau01-01",
+      "chunkIndex": 1,
+      "error": "Expected ',' or '}' after property value in JSON at position 3844 (line 1 column 3845)"
+    },
+    {
+      "docId": "sint-s1-sau01-02",
+      "chunkIndex": 1,
+      "error": "Expected ',' or '}' after property value in JSON at position 4509 (line 1 column 4510)"
+    },
+    {
+      "docId": "sint-s1-sau01-02",
+      "chunkIndex": 2,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "sint-s1-sau01-03",
+      "chunkIndex": 1,
+      "error": "Expected ',' or '}' after property value in JSON at position 5090 (line 1 column 5091)"
+    },
+    {
+      "docId": "sint-s1-sau01-04",
+      "chunkIndex": 1,
+      "error": "Estado de campo inválido."
+    },
+    {
+      "docId": "edu-07",
+      "chunkIndex": 0,
+      "error": "Evidência não corresponde à página."
+    },
+    {
+      "docId": "fin-01",
+      "chunkIndex": 0,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "fin-04",
+      "chunkIndex": 0,
+      "error": "Estado de campo inválido."
+    },
+    {
+      "docId": "fin-05",
+      "chunkIndex": 0,
+      "error": "Evidência não corresponde à página."
+    },
+    {
+      "docId": "sau-01",
+      "chunkIndex": 1,
+      "error": "Valor inválido ou fora do formato suportado. Revise manualmente."
+    },
+    {
+      "docId": "sau-07",
+      "chunkIndex": 3,
+      "error": "Evidência não corresponde à página."
+    },
+    {
+      "docId": "sau-07",
+      "chunkIndex": 4,
+      "error": "Evidência não corresponde à página."
+    }
+  ],
+  "tokens": {
+    "prompt_tokens": 611870,
+    "completion_tokens": 62663,
+    "total_tokens": 674533
+  },
+  "metricas_contra_gabarito": {
+    "S1": {
+      "processamento": {
+        "documentos": 20,
+        "concluidos": 12,
+        "parciais": 6,
+        "falhas": 2,
+        "jsons_invalidos": 0
+      },
+      "exato": {
+        "acerto": {
+          "numerador": 28,
+          "denominador": 92,
+          "valor": 0.30434782608695654,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 7,
+          "denominador": 33,
+          "valor": 0.21212121212121213,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 7,
+          "denominador": 62,
+          "valor": 0.11290322580645161,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 31,
+          "denominador": 62,
+          "valor": 0.5,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 7,
+          "denominador": 62,
+          "valor": 0.11290322580645161,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 21,
+          "denominador": 30,
+          "valor": 0.7,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 92,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 33,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "tolerante": {
+        "acerto": {
+          "numerador": 28,
+          "denominador": 92,
+          "valor": 0.30434782608695654,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 7,
+          "denominador": 33,
+          "valor": 0.21212121212121213,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 7,
+          "denominador": 62,
+          "valor": 0.11290322580645161,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 31,
+          "denominador": 62,
+          "valor": 0.5,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 7,
+          "denominador": 62,
+          "valor": 0.11290322580645161,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 21,
+          "denominador": 30,
+          "valor": 0.7,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 92,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 33,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "contagens_exato": {
+        "D": 92,
+        "G": 62,
+        "P": 33,
+        "TP": 7,
+        "FP": 26,
+        "FN": 55,
+        "A": 21,
+        "omissoes": 31,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 8,
+        "ilegiveis": 0,
+        "respostas_excluidas": 3,
+        "alta_excluida": 0
+      },
+      "contagens_tolerante": {
+        "D": 92,
+        "G": 62,
+        "P": 33,
+        "TP": 7,
+        "FP": 26,
+        "FN": 55,
+        "A": 21,
+        "omissoes": 31,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 8,
+        "ilegiveis": 0,
+        "respostas_excluidas": 3,
+        "alta_excluida": 0
+      }
+    },
+    "S2": {
+      "processamento": {
+        "documentos": 10,
+        "concluidos": 10,
+        "parciais": 0,
+        "falhas": 0,
+        "jsons_invalidos": 0
+      },
+      "exato": {
+        "acerto": {
+          "numerador": 25,
+          "denominador": 50,
+          "valor": 0.5,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 15,
+          "denominador": 40,
+          "valor": 0.375,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 15,
+          "denominador": 40,
+          "valor": 0.375,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 0,
+          "denominador": 40,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 15,
+          "denominador": 40,
+          "valor": 0.375,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 10,
+          "denominador": 10,
+          "valor": 1,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 50,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 40,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "tolerante": {
+        "acerto": {
+          "numerador": 26,
+          "denominador": 50,
+          "valor": 0.52,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 16,
+          "denominador": 40,
+          "valor": 0.4,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 16,
+          "denominador": 40,
+          "valor": 0.4,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 0,
+          "denominador": 40,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 16,
+          "denominador": 40,
+          "valor": 0.4,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 10,
+          "denominador": 10,
+          "valor": 1,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 50,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 40,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "contagens_exato": {
+        "D": 50,
+        "G": 40,
+        "P": 40,
+        "TP": 15,
+        "FP": 25,
+        "FN": 25,
+        "A": 10,
+        "omissoes": 0,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      },
+      "contagens_tolerante": {
+        "D": 50,
+        "G": 40,
+        "P": 40,
+        "TP": 16,
+        "FP": 24,
+        "FN": 24,
+        "A": 10,
+        "omissoes": 0,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      }
+    },
+    "preenchidos": {
+      "processamento": {
+        "documentos": 2,
+        "concluidos": 2,
+        "parciais": 0,
+        "falhas": 0,
+        "jsons_invalidos": 0
+      },
+      "exato": {
+        "acerto": {
+          "numerador": 3,
+          "denominador": 10,
+          "valor": 0.3,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 1,
+          "denominador": 2,
+          "valor": 0.5,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 10,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 8,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "tolerante": {
+        "acerto": {
+          "numerador": 3,
+          "denominador": 10,
+          "valor": 0.3,
+          "rotulo": "proporção"
+        },
+        "precisao": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "revocacao": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "taxa_nao_identificados": {
+          "numerador": 1,
+          "denominador": 8,
+          "valor": 0.125,
+          "rotulo": "proporção"
+        },
+        "erro_alta_confianca": {
+          "numerador": 0,
+          "denominador": 0,
+          "valor": null,
+          "rotulo": "não aplicável"
+        },
+        "acerto_presentes": {
+          "numerador": 2,
+          "denominador": 8,
+          "valor": 0.25,
+          "rotulo": "proporção"
+        },
+        "acerto_ausentes": {
+          "numerador": 1,
+          "denominador": 2,
+          "valor": 0.5,
+          "rotulo": "proporção"
+        },
+        "cobertura_alta_confianca": {
+          "numerador": 0,
+          "denominador": 10,
+          "valor": 0,
+          "rotulo": "proporção"
+        },
+        "proporcao_alta_entre_respostas": {
+          "numerador": 0,
+          "denominador": 8,
+          "valor": 0,
+          "rotulo": "proporção"
+        }
+      },
+      "contagens_exato": {
+        "D": 10,
+        "G": 8,
+        "P": 8,
+        "TP": 2,
+        "FP": 6,
+        "FN": 6,
+        "A": 1,
+        "omissoes": 1,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      },
+      "contagens_tolerante": {
+        "D": 10,
+        "G": 8,
+        "P": 8,
+        "TP": 2,
+        "FP": 6,
+        "FN": 6,
+        "A": 1,
+        "omissoes": 1,
+        "alta": 0,
+        "erros_alta": 0,
+        "ambiguos": 0,
+        "ilegiveis": 0,
+        "respostas_excluidas": 0,
+        "alta_excluida": 0
+      }
+    }
+  },
+  "comparacao_16_desenvolvimento_deepseek_vs_regras": {
+    "total_pares": 80,
+    "mesmo_estado": 41,
+    "ambos_encontrado": 3,
+    "mesmo_valor_json_entre_ambos_encontrados": 1,
+    "apenas_deepseek_encontrado": 13,
+    "apenas_regras_encontrado": 3,
+    "detalhes": [
+      {
+        "id": "alu-01",
+        "categoria": "aluguel",
+        "paginas": 2,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Pagamento todo dia (___) de cada mês, com o número do dia em branco no documento; não há dia definido de forma explícita."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "alu-02",
+        "categoria": "aluguel",
+        "paginas": 7,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Pagamento mensal até o dia 10 (dez) de cada mês, mediante boleto bancário emitido pelo Administrador, com acréscimo da respectiva tarifa bancária."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": null,
+              "regra": "Reajuste anual do aluguel pelo índice oficial IGPM/FGV; na falta ou extinção do índice, pelo valor de mercado de aluguéis de imóveis semelhantes ao locado; o reajuste só é aplicado se o índice escolhido apresentar valor positivo; se o índice apresentar valor negativo, mantém-se o valor do aluguel."
+            },
+            "regras_valor": {
+              "tipo": "indice",
+              "indices": [
+                "IGP-M"
+              ],
+              "percentual": null,
+              "periodicidade_meses": 12,
+              "regra": "CLÁUSULA TERCEIRA – O aluguel avençado entre Locador e Locatário na cláusula \nanterior sofrerá reajuste anual, de acordo com índice oficial do IGPM/FGV, ou na sua falta ou \nextinção, de acordo com o valor de mercado de alugueis de imóveis semelhantes ao ora \nlocado, será aplicado somente se o índice escolhido apresentar valor positivo, na hipótese \ndesse índice apresentar negativo, manter-se ao valor do aluguel."
+            }
+          }
+        }
+      },
+      {
+        "id": "edu-01",
+        "categoria": "mensalidade_escolar",
+        "paginas": 16,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "determinado",
+              "quantidade": 11
+            },
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Vencimento das parcelas no dia <#PARCELA_DIA_VCTO#> de cada mês."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": null,
+              "regra": "Reajuste da anuidade conforme edital para os anos subsequentes; a CONTRATADA pode estipular o valor da anuidade a cada período letivo, nos termos da Lei Federal nº 9.870/99, por edital divulgado 45 dias antes do encerramento do ano letivo em curso. Disciplinas eletivas podem acrescer valor conforme edital. Correção por INPC, multa de 2% e juros de 1% ao mês referem-se à mora, não ao reajuste."
+            },
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "edu-04",
+        "categoria": "mensalidade_escolar",
+        "paginas": 4,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "fixo",
+              "moeda": "BRL",
+              "quantia": "1944.00",
+              "regra": null
+            },
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "determinado",
+              "quantidade": 6
+            },
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "A primeira parcela de R$ 1.944,00 deve ser paga no ato da matrícula, como sinal, arras e princípio de pagamento e condição para concretização e celebração do contrato. As demais parcelas vencem nas datas: 2ª em 31/08/2021, 3ª em 30/09/2021, 4ª em 31/10/2021, 5ª em 30/11/2021 e 6ª em 31/12/2021."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "edu-05",
+        "categoria": "mensalidade_escolar",
+        "paginas": 21,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "edu-06",
+        "categoria": "mensalidade_escolar",
+        "paginas": 2,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "determinado",
+              "quantidade": 10
+            },
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "Vencimento até o dia 08 de cada mês; pagamento até o dia 08 garante desconto de R$ 22,00 (valor de R$ 267,00)."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "edu-07",
+        "categoria": "mensalidade_escolar",
+        "paginas": 7,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "edu-09",
+        "categoria": "mensalidade_escolar",
+        "paginas": 5,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": {
+              "tipo": "determinado",
+              "quantidade": 12
+            },
+            "regras_valor": {
+              "tipo": "determinado",
+              "quantidade": 12
+            }
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "A matrícula corresponde à primeira parcela, paga no ato da matrícula; as demais parcelas vencem sequencialmente no dia 7 de cada mês, a contar de fevereiro, em agência bancária, e após o vencimento somente no Banco emissor dos boletos."
+            },
+            "regras_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "XIII - A anuidade escolar será paga pelo CONTRATANTE à CONTRATADA em 12 (doze) parcelas \nmensais, consecutivas, sendo que a matrícula corresponderá à primeira parcela, a ser paga por ocasião \ndo ato da matrícula e, as seguintes, vincendas sequen cialmente no dia 7 (sete) de cada mês, a contar \nde fevereiro, em agê ncias bancárias, e, após o vencimento, somente no Banco emissor dos b oletos \nbancários. \n§ 1º."
+            }
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "fin-01",
+        "categoria": "financiamento",
+        "paginas": 17,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": null,
+            "regras_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "PARÁGRAFO QUARTO: - Na data do vencimento da primeira pres tação, o(a,s) Compra dor(a,es,s) pagará(ão) \no(s) prêmio(s) do(s) seguro(s) no valor constante dos it ens 7-C e 7-D, que deveria(m) ter sido pago(s) no ato da \nassinatura do contrato em face da vigência da cobertura securitária a partir daquela data."
+            }
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": null,
+            "regras_valor": {
+              "prazo": "nao_informado",
+              "inicio": null,
+              "fim": null,
+              "duracao_meses": null,
+              "regra": "PARÁGRAFO QUARTO: - Na data do vencimento da primeira pres tação, o(a,s) Compra dor(a,es,s) pagará(ão) \no(s) prêmio(s) do(s) seguro(s) no valor constante dos it ens 7-C e 7-D, que deveria(m) ter sido pago(s) no ato da \nassinatura do contrato em face da vigência da cobertura securitária a partir daquela data."
+            }
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "fin-04",
+        "categoria": "financiamento",
+        "paginas": 20,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "encontrado",
+            "deepseek_valor": null,
+            "regras_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "As parcelas terão vencimento mensal, devendo a primeira parcela de amortização ser paga na \ndata indicada no item \"Vencimento da 1ª Parcela\" do Quadro “Características do Crédito” do \npreâmbulo da Cédula, vencendo -se as demais nos mesmos dias dos meses imediatamente \nsubsequentes, sendo que o valor a ser pago pela Emitente será aquele identificado no item \"Valor de \ncada Parcela\" do Quadro “Características do Crédito” do preâmbulo da Cédula, ressalvados os casos \nde disposição em contrário estabelecida nas Condições Específicas da Cédula."
+            }
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "fin-05",
+        "categoria": "financiamento",
+        "paginas": 37,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "sau-01",
+        "categoria": "plano_saude",
+        "paginas": 33,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": null,
+              "regra": "Reajuste financeiro conforme índice divulgado pela ANS anualmente, aplicado aos planos individuais e familiares. O Anexo II também lista percentuais por faixa etária (0,00% a 42,50%), mas não explicita a periodicidade desses percentuais por faixa nem sua relação com o índice anual da ANS."
+            },
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "sau-04",
+        "categoria": "plano_saude",
+        "paginas": 37,
+        "formato": "sem_texto_util",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "sau-05",
+        "categoria": "plano_saude",
+        "paginas": 37,
+        "formato": "sem_texto_util",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "erro_leitura",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "sau-07",
+        "categoria": "plano_saude",
+        "paginas": 56,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "indices": [],
+              "percentual": null,
+              "periodicidade_meses": null,
+              "regra": "Reajuste anual aplicado às mensalidades dos contratos coletivos, prevalecendo o disposto no contrato; a periodicidade do reajuste não será inferior a 12 meses, contados da celebração do contrato ou do último reajuste aplicado, e não do ingresso do beneficiário ao plano. Haverá variação da mensalidade por mudança de faixa etária (aumento decorrente da alteração de idade), segundo faixas e percentuais de variação dispostos em contrato, atendendo à RN nº 63/2003. Planos coletivos não precisam de autorização prévia da ANS para aplicação do reajuste."
+            },
+            "regras_valor": null
+          }
+        }
+      },
+      {
+        "id": "sau-09",
+        "categoria": "plano_saude",
+        "paginas": 50,
+        "formato": "texto",
+        "campos": {
+          "valor_parcela": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "numero_parcelas": {
+            "deepseek_estado": "nao_identificado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "data_vencimento": {
+            "deepseek_estado": "encontrado",
+            "regras_estado": "nao_identificado",
+            "deepseek_valor": {
+              "tipo": "outra_regra",
+              "data": null,
+              "dia": null,
+              "regra": "As contribuições serão recolhidas à Saúde BRB até o 5º (quinto) dia do mês subsequente ao da competência da contribuição."
+            },
+            "regras_valor": null
+          },
+          "vigencia": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          },
+          "regra_reajuste": {
+            "deepseek_estado": "ambiguo",
+            "regras_estado": "ambiguo",
+            "deepseek_valor": null,
+            "regras_valor": null
+          }
+        }
+      }
+    ]
+  }
+}
